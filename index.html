@@ -18,9 +18,8 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
 
     <!-- GSAP for Advanced Animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -58,9 +57,21 @@
                             '0%, 100%': { opacity: '1' },
                             '50%': { opacity: '0' },
                         },
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
+                        'float': {
+                            '0%, 100%': { transform: 'translate3d(0, 0, 0)' },
+                            '50%': { transform: 'translate3d(0, -20px, 0)' },
+                        },
+                        'move-blob-1': {
+                            '0%': { transform: 'translate3d(0px, 0px, 0) scale(1)' },
+                            '33%': { transform: 'translate3d(30px, -50px, 0) scale(1.1)' },
+                            '66%': { transform: 'translate3d(-20px, 20px, 0) scale(0.9)' },
+                            '100%': { transform: 'translate3d(0px, 0px, 0) scale(1)' },
+                        },
+                        'move-blob-2': {
+                            '0%': { transform: 'translate3d(0px, 0px, 0) scale(1)' },
+                            '33%': { transform: 'translate3d(-30px, 50px, 0) scale(1.1)' },
+                            '66%': { transform: 'translate3d(20px, -20px, 0) scale(0.9)' },
+                            '100%': { transform: 'translate3d(0px, 0px, 0) scale(1)' },
                         }
                     }
                 }
@@ -74,6 +85,19 @@
             background-color: #0f172a;
             color: #cbd5e1;
             overflow-x: hidden;
+        }
+
+        /* Hide default cursor when custom cursor is visible */
+        @media (pointer: fine) {
+            body {
+                cursor: none;
+            }
+
+            a,
+            button,
+            .cursor-pointer {
+                cursor: none;
+            }
         }
 
         /* Custom Scrollbar */
@@ -94,12 +118,51 @@
             background: #475569;
         }
 
+        /* Custom Cursor Styles - GPU Accelerated */
+        .cursor-dot {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 10px;
+            height: 10px;
+            background: #fff;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            will-change: transform;
+        }
+
+        .cursor-outline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 40px;
+            height: 40px;
+            border: 2px solid rgba(99, 102, 241, 0.6);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            will-change: transform, width, height;
+            transition: width 0.2s, height 0.2s, border-color 0.2s;
+        }
+
+        .cursor-outline.hover {
+            width: 60px;
+            height: 60px;
+            border-color: rgba(236, 72, 153, 0.8);
+        }
+
+        /* Glassmorphism Navigation */
         /* Glassmorphism Navigation */
         .nav-glass {
-            background: rgba(15, 23, 42, 0.7);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(15, 23, 42, 0.4);
+            /* More transparent */
+            backdrop-filter: blur(24px);
+            /* Stronger blur for glass effect */
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         /* Subtle Grid Background */
@@ -117,19 +180,38 @@
             background-clip: text;
         }
 
-        /* Card Styles */
+        /* Card Styles - GPU Accelerated */
         .glass-card {
             background: rgba(30, 41, 59, 0.4);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: background 0.4s, border-color 0.4s, transform 0.4s;
+            will-change: transform;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        /* Optimization: Shadow via pseudo-element to avoid repaint */
+        .glass-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            border-radius: inherit;
+            box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity 0.4s;
+            pointer-events: none;
         }
 
         .glass-card:hover {
             background: rgba(30, 41, 59, 0.6);
             border-color: rgba(99, 102, 241, 0.3);
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        .glass-card:hover::after {
+            opacity: 1;
         }
 
         /* Magnetic Button Effect */
@@ -156,86 +238,173 @@
         .text-balance {
             text-wrap: balance;
         }
+
+        /* Text Reveal Animation */
+        .reveal-text {
+            opacity: 0;
+            transform: translateY(60px);
+        }
+
+        .reveal-text.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Skill Tag Hover */
+        .skill-tag {
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: rgba(99, 102, 241, 0.2);
+            border-color: rgba(99, 102, 241, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* Interactive Elements Glow */
+        .glow-hover:hover {
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.4), 0 0 40px rgba(99, 102, 241, 0.2);
+        }
+
+        /* Floating Elements Animation */
+        .animate-blob-1 {
+            animation: move-blob-1 20s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .animate-blob-2 {
+            animation: move-blob-2 25s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes float-slow {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-15px) rotate(5deg);
+            }
+        }
+
+        .float-slow {
+            animation: float-slow 6s ease-in-out infinite;
+        }
+
+        /* Stagger Animation Delays */
+        .stagger-1 {
+            animation-delay: 0.1s;
+        }
+
+        .stagger-2 {
+            animation-delay: 0.2s;
+        }
+
+        .stagger-3 {
+            animation-delay: 0.3s;
+        }
+
+        .stagger-4 {
+            animation-delay: 0.4s;
+        }
     </style>
 </head>
 
 <body class="antialiased selection:bg-primary/30 selection:text-white">
 
+    <!-- Custom Cursor -->
+    <div class="cursor-dot hidden md:block"></div>
+    <div class="cursor-outline hidden md:block"></div>
+
     <!-- Background Elements -->
     <div class="fixed inset-0 z-0 pointer-events-none">
         <div class="absolute inset-0 bg-grid-pattern bg-grid opacity-[0.03]"></div>
-        <!-- Animated Blobs -->
-        <div
-            class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] mix-blend-screen animate-float opacity-40">
+        <!-- Animated Blobs (CSS Only - High Performance) -->
+        <div id="blob-1"
+            class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] mix-blend-screen animate-blob-1 opacity-40 will-change-transform">
         </div>
-        <div class="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[120px] mix-blend-screen animate-float opacity-30"
-            style="animation-delay: -4s;"></div>
+        <div id="blob-2"
+            class="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[120px] mix-blend-screen animate-blob-2 opacity-30 will-change-transform">
+        </div>
     </div>
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 nav-glass transition-all duration-500" id="navbar">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="flex justify-between items-center h-24">
+    <!-- Navigation (Floating Island Design) -->
+    <nav class="fixed top-6 left-0 right-0 max-w-5xl mx-auto w-[90%] z-50 transition-all duration-300 transform"
+        id="navbar">
+        <div class="nav-glass rounded-full border border-white/10 shadow-2xl backdrop-blur-xl px-2">
+            <div class="flex justify-between items-center h-16 px-6">
                 <!-- Logo -->
-                <a href="#" class="text-2xl font-bold text-white tracking-tight group">
-                    PORTFOLIO<span
-                        class="text-primary group-hover:text-secondary transition-colors duration-300">.</span>
+                <a href="#" class="text-xl font-bold text-white tracking-tight group flex items-center gap-2">
+                    <div
+                        class="w-8 h-8 rounded-full bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-white text-xs">
+                        P.</div>
+                    <span class="hidden sm:inline-block">PORTFOLIO</span>
                 </a>
 
                 <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-12">
-                    <div class="flex space-x-8">
-                        <a href="#about"
-                            class="text-sm font-medium text-slate-300 hover:text-white transition-colors relative group py-2">
-                            關於我
-                            <span
-                                class="absolute bottom-0 left-0 w-0 h-[1px] bg-primary transition-all duration-300 group-hover:w-full"></span>
-                        </a>
-                        <a href="#expertise"
-                            class="text-sm font-medium text-slate-300 hover:text-white transition-colors relative group py-2">
-                            核心職能
-                            <span
-                                class="absolute bottom-0 left-0 w-0 h-[1px] bg-primary transition-all duration-300 group-hover:w-full"></span>
-                        </a>
-                        <a href="#works"
-                            class="text-sm font-medium text-slate-300 hover:text-white transition-colors relative group py-2">
-                            精選作品
-                            <span
-                                class="absolute bottom-0 left-0 w-0 h-[1px] bg-primary transition-all duration-300 group-hover:w-full"></span>
-                        </a>
-                    </div>
-                    <a href="#contact"
-                        class="px-6 py-2.5 rounded-full bg-white text-dark font-bold hover:scale-105 transition-transform duration-300 shadow-[0_0_20px_rgba(255,255,255,0.2)]">
-                        聯絡我
+                <div class="hidden md:flex items-center gap-1">
+                    <a href="#about"
+                        class="text-sm font-medium text-slate-300 hover:text-white px-5 py-2 rounded-full hover:bg-white/5 transition-colors">
+                        關於我
+                    </a>
+                    <a href="#expertise"
+                        class="text-sm font-medium text-slate-300 hover:text-white px-5 py-2 rounded-full hover:bg-white/5 transition-colors">
+                        核心職能
+                    </a>
+                    <a href="#works"
+                        class="text-sm font-medium text-slate-300 hover:text-white px-5 py-2 rounded-full hover:bg-white/5 transition-colors">
+                        精選作品
                     </a>
                 </div>
 
-                <!-- Mobile menu button -->
-                <button id="mobile-menu-btn" class="md:hidden text-white p-2">
-                    <i data-lucide="menu" class="w-6 h-6"></i>
-                </button>
+                <!-- CTA -->
+                <div class="flex items-center gap-4">
+                    <a href="#contact"
+                        class="hidden md:flex px-5 py-2 rounded-full bg-white text-dark font-bold text-sm hover:scale-105 transition-transform duration-300 shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+                        聯絡我
+                    </a>
+
+                    <!-- Mobile menu button -->
+                    <button id="mobile-menu-btn" class="md:hidden text-white p-2 rounded-full hover:bg-white/10">
+                        <i data-lucide="menu" class="w-5 h-5"></i>
+                    </button>
+                </div>
             </div>
         </div>
 
-        <!-- Mobile Menu -->
+        <!-- Mobile Menu (Floating) -->
         <div id="mobile-menu"
-            class="hidden md:hidden bg-dark/95 backdrop-blur-xl border-t border-white/5 absolute w-full">
-            <div class="px-6 py-8 space-y-4">
-                <a href="#about" class="block text-lg font-medium text-white">關於我</a>
-                <a href="#expertise" class="block text-lg font-medium text-white">核心職能</a>
-                <a href="#works" class="block text-lg font-medium text-white">精選作品</a>
-                <a href="#contact" class="block text-lg font-medium text-primary mt-6">聯絡我</a>
+            class="hidden md:hidden absolute top-20 left-0 right-0 bg-[#0f172a]/95 backdrop-blur-xl border border-white/10 rounded-2xl p-4 shadow-2xl overflow-hidden origin-top animate-fade-in-down mx-auto w-full">
+            <div class="space-y-1">
+                <a href="#about"
+                    class="block px-4 py-3 text-base font-medium text-white hover:bg-white/5 rounded-xl">關於我</a>
+                <a href="#expertise"
+                    class="block px-4 py-3 text-base font-medium text-white hover:bg-white/5 rounded-xl">核心職能</a>
+                <a href="#works"
+                    class="block px-4 py-3 text-base font-medium text-white hover:bg-white/5 rounded-xl">精選作品</a>
+                <a href="#contact"
+                    class="block px-4 py-3 text-base font-medium text-primary hover:bg-primary/10 rounded-xl mt-2">聯絡我</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="about" class="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden">
+    <section id="about" class="relative min-h-screen flex items-center pt-48 pb-20 overflow-hidden">
+        <!-- Watermark Background -->
+        <div
+            class="absolute top-20 left-1/2 -translate-x-1/2 w-full text-center pointer-events-none select-none z-0 overflow-hidden">
+            <span
+                class="text-[12vw] sm:text-[15vw] font-bold text-white/[0.03] tracking-tighter leading-none whitespace-nowrap animate-float-slow"
+                style="display:inline-block">
+                PORTFOLIO
+            </span>
+        </div>
         <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 w-full">
             <div class="max-w-4xl">
                 <!-- Status Badge -->
-                <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-10 hover:border-primary/40 transition-colors"
-                    data-aos="fade-up">
+                <div
+                    class="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-10 hover:border-primary/40 transition-colors reveal-text">
                     <span class="relative flex h-2.5 w-2.5">
                         <span
                             class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -246,23 +415,23 @@
                 </div>
 
                 <!-- Main Headline -->
-                <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-[1.1] tracking-tight"
-                    data-aos="fade-up" data-aos-delay="100">
-                    Designing Logic.<br>
-                    <span class="text-gradient">Animating Emotion.</span>
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-[1.1] tracking-tight">
+                    <span class="reveal-text inline-block">Designing Logic.</span><br>
+                    <span class="text-gradient reveal-text inline-block">Animating Emotion.</span>
                 </h1>
 
                 <!-- Subheadline with Key Points -->
-                <p class="text-lg md:text-xl text-slate-400 mb-12 leading-relaxed max-w-2xl text-balance"
-                    data-aos="fade-up" data-aos-delay="200">
-                    我是 [您的姓名]，具備多年 <span class="text-white font-medium">Web/Mobile 團隊協作經驗</span> 的資深設計師。<br>
-                    專長於 UI 設計與動效製作，並擁有獨立製作 RWD 響應式網頁的實務能力，致力於打造兼具美感與效能的數位體驗。
+                <p class="text-lg md:text-xl text-slate-400 mb-12 leading-relaxed max-w-2xl text-balance reveal-text">
+                    我是前端設計師，擁有 <span class="text-white font-medium">多年 Web/Mobile 團隊協作開發經驗</span>，主要負責 UI
+                    設計及動畫製作。<br>
+                    熟練 Figma、Photoshop、Illustrator、After Effects 等工具，並具備 <span class="text-white font-medium">獨立製作 RWD
+                        響應式網頁</span> 的實務能力。
                 </p>
 
                 <!-- Buttons -->
-                <div class="flex flex-wrap gap-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="flex flex-wrap gap-6 reveal-text">
                     <a href="#works"
-                        class="magnetic-btn group px-8 py-4 rounded-full bg-primary text-white font-semibold text-lg hover:bg-primaryDark transition-all flex items-center gap-3 shadow-lg shadow-primary/25 hover:shadow-primary/40">
+                        class="magnetic-btn group px-8 py-4 rounded-full bg-primary text-white font-semibold text-lg hover:bg-primaryDark transition-all flex items-center gap-3 shadow-lg shadow-primary/25 hover:shadow-primary/40 glow-hover">
                         瀏覽作品
                         <i data-lucide="arrow-down" class="w-5 h-5 group-hover:translate-y-1 transition-transform"></i>
                     </a>
@@ -290,27 +459,31 @@
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
 
                 <!-- Section Header -->
-                <div class="lg:col-span-4" data-aos="fade-right">
+                <div class="lg:col-span-4 reveal-text">
                     <h2 class="text-sm font-bold text-primary uppercase tracking-[0.2em] mb-4">Core Expertise</h2>
                     <h3 class="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
                         設計、動效與程式的<br>
-                        完美整合。
+                        綜合能力。
                     </h3>
                     <p class="text-slate-400 text-lg leading-relaxed mb-8">
-                        我不僅產出設計稿，更提供可落地執行的解決方案。從使用者體驗的核心問題發掘，到最終的程式碼實現，確保設計品質不打折。
+                        我注重使用者體驗，追求核心問題的發掘和解決，致力於設計的「適用性」。從規劃設計到網站實現，確保設計品質不打折。
                     </p>
 
                     <!-- Skill Tags -->
                     <div class="flex flex-wrap gap-3">
                         <span
-                            class="px-3 py-1 rounded-md bg-white/5 border border-white/10 text-sm text-slate-300">Figma</span>
+                            class="skill-tag px-3 py-1 rounded-md bg-white/5 border border-white/10 text-sm text-slate-300">Figma</span>
                         <span
-                            class="px-3 py-1 rounded-md bg-white/5 border border-white/10 text-sm text-slate-300">Adobe
-                            CC</span>
+                            class="skill-tag px-3 py-1 rounded-md bg-white/5 border border-white/10 text-sm text-slate-300">Photoshop</span>
                         <span
-                            class="px-3 py-1 rounded-md bg-white/5 border border-white/10 text-sm text-slate-300">HTML/CSS</span>
+                            class="skill-tag px-3 py-1 rounded-md bg-white/5 border border-white/10 text-sm text-slate-300">Illustrator</span>
                         <span
-                            class="px-3 py-1 rounded-md bg-white/5 border border-white/10 text-sm text-slate-300">Lottie/SVGA</span>
+                            class="skill-tag px-3 py-1 rounded-md bg-white/5 border border-white/10 text-sm text-slate-300">After
+                            Effects</span>
+                        <span
+                            class="skill-tag px-3 py-1 rounded-md bg-white/5 border border-white/10 text-sm text-slate-300">HTML/CSS</span>
+                        <span
+                            class="skill-tag px-3 py-1 rounded-md bg-white/5 border border-white/10 text-sm text-slate-300">Lottie/SVGA</span>
                     </div>
                 </div>
 
@@ -318,8 +491,7 @@
                 <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
 
                     <!-- Card 1: UI/UX -->
-                    <div class="glass-card p-8 rounded-2xl md:col-span-2 relative overflow-hidden group"
-                        data-aos="fade-up">
+                    <div class="glass-card p-8 rounded-2xl md:col-span-2 relative overflow-hidden group tilt-card">
                         <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
                             <i data-lucide="layout" class="w-32 h-32 text-white"></i>
                         </div>
@@ -330,42 +502,48 @@
                             </div>
                             <h4 class="text-2xl font-bold text-white mb-4">UI/UX & 響應式設計 (RWD)</h4>
                             <p class="text-slate-400 mb-6 leading-relaxed max-w-xl">
-                                具備獨立製作 RWD 響應式網頁的實務經驗，熟悉 Figma、Photoshop、Illustrator 等工具。我注重使用者體驗
-                                (UX)，致力於發掘核心問題並提出高適用性的設計解決方案。
+                                具備 <span class="text-white font-medium">獨立製作 RWD 響應式網頁</span> 的能力與實務經驗。熟悉
+                                Figma、Photoshop、Illustrator 等設計工具。我追求使用者體驗的核心問題發掘和解決，設計的「適用性」是首要考量。
                             </p>
                             <ul class="space-y-2 text-slate-400 text-sm">
                                 <li class="flex items-center gap-2">
                                     <div class="w-1.5 h-1.5 rounded-full bg-primary"></div>獨立完成 Web/Mobile RWD 設計
                                 </li>
                                 <li class="flex items-center gap-2">
-                                    <div class="w-1.5 h-1.5 rounded-full bg-primary"></div>Design System 建置與維護
+                                    <div class="w-1.5 h-1.5 rounded-full bg-primary"></div>UI設計與團隊協作良好
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <div class="w-1.5 h-1.5 rounded-full bg-primary"></div>分析規劃與問題解決
                                 </li>
                             </ul>
                         </div>
                     </div>
 
                     <!-- Card 2: Motion -->
-                    <div class="glass-card p-8 rounded-2xl group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="glass-card p-8 rounded-2xl group tilt-card">
                         <div
                             class="w-12 h-12 bg-pink-500/20 rounded-xl flex items-center justify-center mb-6 text-secondary border border-secondary/20">
                             <i data-lucide="zap" class="w-6 h-6"></i>
                         </div>
                         <h4 class="text-xl font-bold text-white mb-4">Motion & 動效專長</h4>
                         <p class="text-slate-400 mb-6 text-sm leading-relaxed">
-                            曾有多年 <span class="text-white">Flash/Animate 專職經驗</span>，動效設計是我的拿手好戲。現專精於 Lottie 與 SVGA
-                            動畫製作，能為產品加入細膩的微互動 (Micro-interactions)，提升質感。
+                            曾有 <span class="text-white font-medium">多年 Flash/Animate 專職經驗</span>，動效設計是我的拿手項目。現專精於 <span
+                                class="text-white font-medium">Lottie 與 SVGA 動畫製作</span>，能為產品加入細膩的微互動
+                            (Micro-interactions)，提升產品質感與用戶體驗。
                         </p>
                     </div>
 
                     <!-- Card 3: Frontend -->
-                    <div class="glass-card p-8 rounded-2xl group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="glass-card p-8 rounded-2xl group tilt-card">
                         <div
                             class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mb-6 text-blue-400 border border-blue-400/20">
                             <i data-lucide="code-2" class="w-6 h-6"></i>
                         </div>
                         <h4 class="text-xl font-bold text-white mb-4">Frontend 開發經驗</h4>
                         <p class="text-slate-400 mb-6 text-sm leading-relaxed">
-                            擁有實際前端開發經驗，<span class="text-white">HTML/CSS 非常熟悉</span>。在設計階段即考量程式邏輯與切版可行性，能大幅降低與工程師的溝通成本。
+                            擁有 <span class="text-white font-medium">實際前端開發經驗</span>，<span
+                                class="text-white font-medium">HTML/CSS
+                                非常熟悉</span>。在設計階段即考量程式邏輯與切版可行性，能大幅降低與工程師的溝通成本，確保設計落地無縫。
                         </p>
                     </div>
 
@@ -378,101 +556,133 @@
     <section id="works" class="py-40 bg-black/20 relative">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
-                <div data-aos="fade-right">
+                <div class="reveal-text">
                     <h2 class="text-sm font-bold text-primary uppercase tracking-[0.2em] mb-4">Selected Works</h2>
-                    <h3 class="text-4xl md:text-5xl font-bold text-white">精選專案案例</h3>
-                </div>
-                <div data-aos="fade-left">
-                    <a href="#"
-                        class="inline-flex items-center gap-2 text-slate-300 hover:text-white transition-colors text-lg group">
-                        查看完整作品集 <i data-lucide="arrow-right"
-                            class="w-5 h-5 group-hover:translate-x-2 transition-transform"></i>
-                    </a>
+                    <h3 class="text-4xl md:text-5xl font-bold text-white">作品列表</h3>
                 </div>
             </div>
 
             <!-- Portfolio Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
 
-                <!-- Project 1 -->
-                <div class="group cursor-pointer" data-aos="fade-up">
+                <!-- Project 1: Graphic Design Portfolio -->
+                <a href="assets/Graphic_Portfolio.pdf" target="_blank" class="group cursor-pointer work-card block">
                     <div
-                        class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative border border-white/5 bg-slate-800">
-                        <img src="https://placehold.co/800x600/1e293b/FFF?text=E-Commerce+App+Redesign" alt="Project 1"
-                            class="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+                        class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative border border-white/5 bg-slate-800 isolate">
+
+                        <!-- Layer 1: Faint Collage Background -->
+                        <div class="absolute inset-0 z-0">
+                            <img src="assets/graphic_collage_bg.jpg" alt="Background Texture"
+                                class="object-cover w-full h-full opacity-20 grayscale group-hover:opacity-30 group-hover:grayscale-0 transition-all duration-700">
+                        </div>
+
+                        <!-- Layer 2: Original Foreground (Book Cover) -->
+                        <div
+                            class="absolute inset-0 z-10 flex items-center justify-center p-6 group-hover:scale-105 transition-transform duration-500">
+                            <img src="assets/graphic_portfolio_thumb.png" alt="Graphic Design Portfolio Cover"
+                                class="w-full h-full object-contain drop-shadow-2xl shadow-black rounded-lg">
+                        </div>
+
+                        <!-- Layer 3: Gradient Overlay -->
+                        <div
+                            class="absolute inset-0 z-20 bg-gradient-to-t from-slate-900/60 to-transparent pointer-events-none">
+                        </div>
+
+                        <!-- PDF Icon Overlay -->
+                        <div
+                            class="absolute top-4 right-4 z-30 bg-black/50 backdrop-blur-md p-2 rounded-lg border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i data-lucide="file-text" class="w-5 h-5 text-white"></i>
+                        </div>
                     </div>
                     <div class="flex justify-between items-start">
                         <div>
                             <h4 class="text-2xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
-                                E-Commerce App Redesign</h4>
-                            <p class="text-slate-400">Mobile UI • Lottie Animation • User Research</p>
+                                Graphic Design Portfolio</h4>
+                            <p class="text-slate-400">Branding • Layout • Visual Design</p>
                         </div>
                         <div
                             class="p-2 rounded-full border border-white/10 text-white group-hover:bg-primary group-hover:border-primary transition-all">
                             <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
                         </div>
                     </div>
-                </div>
+                </a>
 
-                <!-- Project 2 -->
-                <div class="group cursor-pointer" data-aos="fade-up" data-aos-delay="100">
+                <!-- Project 2: GoldLab Web Portal -->
+                <a href="https://goldlab.tw/" target="_blank" class="group cursor-pointer work-card block">
                     <div
                         class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative border border-white/5 bg-slate-800">
-                        <img src="https://placehold.co/800x600/1e293b/FFF?text=Tech+Corp+Official+Website"
-                            alt="Project 2"
+                        <img src="assets/goldlab_preview.png" alt="GoldLab Web Portal"
                             class="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700">
                         <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+
+                        <!-- External Link Icon Overlay -->
+                        <div
+                            class="absolute top-4 right-4 bg-black/50 backdrop-blur-md p-2 rounded-lg border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i data-lucide="external-link" class="w-5 h-5 text-white"></i>
+                        </div>
                     </div>
                     <div class="flex justify-between items-start">
                         <div>
                             <h4 class="text-2xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
-                                Tech Corp Official Site</h4>
-                            <p class="text-slate-400">RWD Web • HTML/CSS • SEO Strategy</p>
+                                Web Portal & Article Dashboard</h4>
+                            <p class="text-slate-400 text-sm">獨立規劃設計/製作 • RWD Web • Full Info Site • SEO Strategy</p>
                         </div>
                         <div
                             class="p-2 rounded-full border border-white/10 text-white group-hover:bg-primary group-hover:border-primary transition-all">
                             <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
                         </div>
                     </div>
-                </div>
+                </a>
 
-                <!-- Project 3 -->
-                <div class="group cursor-pointer" data-aos="fade-up">
+                <!-- Project 3: Shiny Jewelry Platform -->
+                <a href="https://my8020.cloud/" target="_blank" class="group cursor-pointer work-card block">
                     <div
                         class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative border border-white/5 bg-slate-800">
-                        <img src="https://placehold.co/800x600/1e293b/FFF?text=SaaS+Dashboard+System" alt="Project 3"
+                        <img src="assets/shiny_jewelry_preview.png" alt="Shiny Jewelry Platform" loading="lazy"
+                            decoding="async"
                             class="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700">
                         <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+
+                        <!-- External Link Icon Overlay -->
+                        <div
+                            class="absolute top-4 right-4 bg-black/50 backdrop-blur-md p-2 rounded-lg border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i data-lucide="external-link" class="w-5 h-5 text-white"></i>
+                        </div>
                     </div>
                     <div class="flex justify-between items-start">
                         <div>
                             <h4 class="text-2xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
-                                Analytics Dashboard</h4>
-                            <p class="text-slate-400">Design System • B2B SaaS • UX Logic</p>
+                                形像官網重新規劃製作</h4>
+                            <p class="text-slate-400 text-sm">需求規劃 • 風格提案 • UI/UX設計 • 網站開發</p>
                         </div>
                         <div
                             class="p-2 rounded-full border border-white/10 text-white group-hover:bg-primary group-hover:border-primary transition-all">
                             <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
                         </div>
                     </div>
-                </div>
+                </a>
 
-                <!-- Project 4: Motion Reel -->
-                <div class="group cursor-pointer" data-aos="fade-up" data-aos-delay="100">
+                <!-- Project 4: Motion Showreel -->
+                <div class="group cursor-pointer work-card" onclick="openVideo('V_f5eONwmPo')">
                     <div
                         class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative border border-white/5 bg-slate-800 flex items-center justify-center group-hover:border-secondary/50 transition-colors">
+
+                        <!-- YouTube Thumbnail -->
+                        <img src="https://img.youtube.com/vi/V_f5eONwmPo/maxresdefault.jpg" alt="Motion Showreel"
+                            class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-700 group-hover:scale-105 transform">
+
                         <div
                             class="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 opacity-50 group-hover:opacity-100 transition-opacity">
                         </div>
 
                         <div class="relative z-10 text-center transform group-hover:scale-105 transition-transform">
                             <div
-                                class="w-20 h-20 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center mx-auto mb-4 text-white group-hover:bg-secondary group-hover:text-white transition-all shadow-xl">
-                                <i data-lucide="play" class="w-8 h-8 fill-current"></i>
+                                class="w-20 h-20 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center mx-auto mb-4 text-white group-hover:bg-secondary group-hover:text-white transition-all shadow-xl border border-white/20">
+                                <i data-lucide="play" class="w-8 h-8 fill-current ml-1"></i>
                             </div>
-                            <h4 class="text-xl font-bold text-white">Motion Showreel</h4>
-                            <p class="text-sm text-slate-400 mt-2">Lottie / SVGA / AE / Flash</p>
+                            <h4 class="text-xl font-bold text-white drop-shadow-lg">Motion Showreel</h4>
+                            <p class="text-sm text-slate-200 mt-2 drop-shadow-md font-medium">Lottie / SVGA / AE / Flash
+                            </p>
                         </div>
                     </div>
                     <div class="flex justify-between items-start">
@@ -483,7 +693,7 @@
                         </div>
                         <div
                             class="p-2 rounded-full border border-white/10 text-white group-hover:bg-secondary group-hover:border-secondary transition-all">
-                            <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+                            <i data-lucide="play" class="w-5 h-5 fill-current"></i>
                         </div>
                     </div>
                 </div>
@@ -501,7 +711,7 @@
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
 
-                <div data-aos="fade-right">
+                <div class="reveal-text">
                     <h2 class="text-sm font-bold text-primary uppercase tracking-[0.2em] mb-4">Why Work With Me</h2>
                     <h3 class="text-4xl md:text-5xl font-bold text-white mb-8 leading-tight">
                         專業技能之外，<br>
@@ -509,36 +719,39 @@
                     </h3>
 
                     <div class="space-y-8">
-                        <div class="flex gap-5">
+                        <div class="flex gap-5 why-me-item">
                             <div
                                 class="flex-shrink-0 w-12 h-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-primary font-bold text-lg">
                                 01</div>
                             <div>
                                 <h4 class="text-xl font-bold text-white mb-2">多年團隊協作經驗</h4>
                                 <p class="text-slate-400 leading-relaxed">
-                                    習慣與 PM、工程師緊密合作。溝通良好，樂於接受挑戰，能適應遠端或混合辦公模式，確保專案進度順利。
+                                    擁有多年 <span class="text-white">Web/Mobile 團隊協作開發經驗</span>，習慣與 PM、工程師緊密合作。<span
+                                        class="text-white">溝通良好、樂於接受挑戰</span>，能適應遠端或混合辦公模式，確保專案進度順利。
                                 </p>
                             </div>
                         </div>
-                        <div class="flex gap-5">
+                        <div class="flex gap-5 why-me-item">
                             <div
                                 class="flex-shrink-0 w-12 h-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-secondary font-bold text-lg">
                                 02</div>
                             <div>
                                 <h4 class="text-xl font-bold text-white mb-2">解決問題的設計思維</h4>
                                 <p class="text-slate-400 leading-relaxed">
-                                    不只是追求視覺美感，更追求設計的「適用性」。我會主動挖掘核心問題，提供符合商業目標與開發成本的設計。
+                                    注重使用者體驗，<span
+                                        class="text-white">追求核心問題的發掘和解決</span>，而非只追求視覺美感。我提供符合商業目標與開發成本的高「適用性」設計。
                                 </p>
                             </div>
                         </div>
-                        <div class="flex gap-5">
+                        <div class="flex gap-5 why-me-item">
                             <div
                                 class="flex-shrink-0 w-12 h-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-blue-400 font-bold text-lg">
                                 03</div>
                             <div>
                                 <h4 class="text-xl font-bold text-white mb-2">技術與設計的翻譯機</h4>
                                 <p class="text-slate-400 leading-relaxed">
-                                    因為熟悉 HTML/CSS 與動效實作原理，我能精準評估設計的可行性，不僅減少來回修改，更能協助團隊提升開發效率。
+                                    擁有 <span class="text-white">實際前端開發經驗 (HTML/CSS
+                                        非常熟悉)</span>，能精準評估設計的可行性，不僅減少來回修改，更能協助團隊提升開發效率。
                                 </p>
                             </div>
                         </div>
@@ -546,7 +759,7 @@
                 </div>
 
                 <!-- Code Visual -->
-                <div class="relative" data-aos="fade-left">
+                <div class="relative code-block-container">
                     <div
                         class="absolute -inset-4 bg-gradient-to-r from-primary to-secondary opacity-20 blur-xl rounded-3xl">
                     </div>
@@ -572,6 +785,11 @@
     <span class="text-green-400">'Frontend (HTML/CSS)'</span>   <span class="text-slate-500">// 實際開發經驗</span>
   ],
 
+  <span class="text-slate-500">// 設計工具</span>
+  <span class="text-white">tools</span>: [
+    <span class="text-green-400">'Figma'</span>, <span class="text-green-400">'Photoshop'</span>, <span class="text-green-400">'Illustrator'</span>, <span class="text-green-400">'AE'</span>
+  ],
+
   <span class="text-slate-500">// 團隊協作特質</span>
   <span class="text-white">traits</span>: {
     <span class="text-white">communication</span>: <span class="text-secondary">true</span>, <span class="text-slate-500">// 溝通良好</span>
@@ -594,14 +812,14 @@
     <!-- Footer -->
     <footer id="contact" class="py-20 border-t border-white/5 bg-black/40">
         <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-8">Ready to collaborate?</h2>
-            <p class="text-slate-400 mb-12 text-lg">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-8 reveal-text">Ready to collaborate?</h2>
+            <p class="text-slate-400 mb-12 text-lg reveal-text">
                 如果您正在尋找一位能獨立作戰、懂技術的 UI/UX 設計師，<br>歡迎與我聯繫，聊聊我們可以如何一起創造價值。
             </p>
 
-            <div class="flex flex-col md:flex-row justify-center items-center gap-6 mb-16">
+            <div class="flex flex-col md:flex-row justify-center items-center gap-6 mb-16 reveal-text">
                 <a href="mailto:your.email@example.com"
-                    class="px-8 py-4 rounded-full bg-white text-dark font-bold hover:bg-slate-200 transition-colors flex items-center gap-2">
+                    class="px-8 py-4 rounded-full bg-white text-dark font-bold hover:bg-slate-200 transition-colors flex items-center gap-2 glow-hover">
                     <i data-lucide="mail" class="w-5 h-5"></i> your.email@example.com
                 </a>
                 <a href="tel:+886912345678"
@@ -610,7 +828,7 @@
                 </a>
             </div>
 
-            <div class="flex justify-center gap-8 mb-12">
+            <div class="flex justify-center gap-8 mb-12 reveal-text">
                 <a href="#"
                     class="text-slate-400 hover:text-white transition-colors hover:-translate-y-1 transform duration-300">
                     <i data-lucide="linkedin" class="w-6 h-6"></i>
@@ -631,46 +849,378 @@
         </div>
     </footer>
 
+    <div id="video-modal"
+        class="fixed inset-0 z-[9999] hidden flex items-center justify-center bg-black/90 backdrop-blur-md opacity-0 transition-opacity duration-300">
+        <div class="relative w-[90vw] md:w-[80vw] max-w-5xl aspect-video mx-6 bg-black rounded-2xl overflow-hidden shadow-2xl border border-white/10 transform scale-95 transition-transform duration-300"
+            id="video-container">
+            <button id="close-modal"
+                class="absolute top-4 right-4 text-white/70 hover:text-white z-10 p-2 bg-black/50 rounded-full hover:bg-primary/80 transition-all cursor-pointer">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <iframe id="youtube-player" class="w-full h-full relative z-0" src="" title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+
+            <!-- Fallback / External Link -->
+            <div
+                class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 opacity-0 hover:opacity-100 transition-opacity duration-300">
+                <a id="youtube-external-link" href="#" target="_blank"
+                    class="flex items-center gap-2 px-4 py-2 bg-red-600/90 hover:bg-red-600 text-white rounded-full text-sm font-medium backdrop-blur-sm transition-colors shadow-lg">
+                    <i data-lucide="external-link" class="w-4 h-4"></i> If video fails, Watch on YouTube ↗
+                </a>
+            </div>
+        </div>
+    </div>
+
     <script>
+        // Use document.addEventListener in case DOM is not fully ready if this script runs early, 
+        // though it is at the end of body so it should be fine.
+
+        // ===== Video Modal Logic =====
+        const modal = document.getElementById('video-modal');
+        const closeBtn = document.getElementById('close-modal');
+        const player = document.getElementById('youtube-player');
+        const videoContainer = document.getElementById('video-container');
+        const externalLink = document.getElementById('youtube-external-link');
+
+        // Expose openVideo to global scope for onclick handler
+        window.openVideo = function (videoId) {
+            if (!modal) return;
+            modal.classList.remove('hidden');
+            // Force reflow
+            void modal.offsetWidth;
+            modal.classList.remove('opacity-0');
+            videoContainer.classList.remove('scale-95');
+
+            // Setup embed src
+            let src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&origin=${window.location.origin}`;
+            if (videoId === 'V_f5eONwmPo') {
+                src += '&start=27';
+            }
+            player.src = src;
+
+            // Setup external link
+            if (externalLink) {
+                let watchUrl = `https://www.youtube.com/watch?v=${videoId}`;
+                if (videoId === 'V_f5eONwmPo') watchUrl += '&t=27s';
+                externalLink.href = watchUrl;
+            }
+
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+
+            // Update icons
+            if (window.lucide) lucide.createIcons();
+        };
+
+        function closeVideo() {
+            if (!modal) return;
+            modal.classList.add('opacity-0');
+            videoContainer.classList.add('scale-95');
+
+            // Wait for transition
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                player.src = ''; // Stop video
+                document.body.style.overflow = '';
+            }, 300);
+        }
+
+        if (closeBtn) closeBtn.addEventListener('click', closeVideo);
+
+        if (modal) {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeVideo();
+            });
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeVideo();
+        });
+
         // Initialize Icons
         lucide.createIcons();
 
-        // Initialize AOS
-        AOS.init({
-            once: true,
-            offset: 50,
-            duration: 1000,
-            easing: 'ease-out-cubic',
+        // ===== Lenis Smooth Scroll (Optimized) =====
+        const lenis = new Lenis({
+            duration: 1.0,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            orientation: 'vertical',
+            smoothWheel: true,
+            wheelMultiplier: 1,
         });
 
-        // Magnetic Button Effect (Simple implementation)
-        const btns = document.querySelectorAll('.magnetic-btn');
-        btns.forEach(btn => {
-            btn.addEventListener('mousemove', function (e) {
-                const rect = btn.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
+        // Integrate Lenis with GSAP ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+        lenis.on('scroll', ScrollTrigger.update);
 
-                // Move button slightly
-                btn.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
-            });
+        // Disable GSAP lag smoothing to prevent jumps
+        gsap.ticker.lagSmoothing(0);
 
-            btn.addEventListener('mouseleave', function () {
-                btn.style.transform = 'translate(0px, 0px)';
-            });
-        });
+        // ===== Unified Input Manager =====
+        // Tracks global mouse state to avoid multiple event listeners
+        const Mouse = { x: 0, y: 0 };
+        window.addEventListener('mousemove', (e) => {
+            Mouse.x = e.clientX;
+            Mouse.y = e.clientY;
+        }, { passive: true });
 
-        // Navbar Scroll Effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('shadow-lg', 'border-b', 'border-white/5');
-            } else {
-                navbar.classList.remove('shadow-lg', 'border-b', 'border-white/5');
+        // ===== Interactive Managers =====
+
+        // 1. Custom Cursor Manager
+        const cursorManager = {
+            dot: document.querySelector('.cursor-dot'),
+            outline: document.querySelector('.cursor-outline'),
+            outlineX: 0,
+            outlineY: 0,
+            hoverables: document.querySelectorAll('a, button, .cursor-pointer, .glass-card, .work-card'),
+
+            init() {
+                if (!this.dot || !this.outline) return;
+
+                // Add hover effects
+                this.hoverables.forEach(el => {
+                    el.addEventListener('mouseenter', () => this.outline.classList.add('hover'), { passive: true });
+                    el.addEventListener('mouseleave', () => this.outline.classList.remove('hover'), { passive: true });
+                });
+            },
+
+            update() {
+                if (!this.dot || !this.outline) return;
+
+                // Dot follows instantly
+                this.dot.style.transform = `translate(${Mouse.x - 5}px, ${Mouse.y - 5}px)`;
+
+                // Outline follows with lerp
+                this.outlineX += (Mouse.x - this.outlineX) * 0.12;
+                this.outlineY += (Mouse.y - this.outlineY) * 0.12;
+                this.outline.style.transform = `translate(${this.outlineX - 20}px, ${this.outlineY - 20}px)`;
+            }
+        };
+
+        // 2. Magnetic Buttons Manager
+        const magneticManager = {
+            elements: [],
+
+            init() {
+                document.querySelectorAll('.magnetic-btn').forEach(el => {
+                    this.elements.push({
+                        el: el,
+                        rect: null,
+                        isHovering: false
+                    });
+
+                    // Update rect on enter
+                    el.addEventListener('mouseenter', (e) => {
+                        const target = this.elements.find(item => item.el === el);
+                        if (target) {
+                            target.isHovering = true;
+                            target.rect = el.getBoundingClientRect();
+                        }
+                    }, { passive: true });
+
+                    el.addEventListener('mouseleave', (e) => {
+                        const target = this.elements.find(item => item.el === el);
+                        if (target) {
+                            target.isHovering = false;
+                            el.style.transform = 'translate(0px, 0px)';
+                        }
+                    }, { passive: true });
+                });
+            },
+
+            update() {
+                this.elements.forEach(item => {
+                    if (item.isHovering && item.rect) {
+                        const x = Mouse.x - item.rect.left - item.rect.width / 2;
+                        const y = Mouse.y - item.rect.top - item.rect.height / 2;
+                        // Apply magnetic effect
+                        item.el.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+                    }
+                });
+            }
+        };
+
+        // 3. Tilt Card Manager
+        const tiltManager = {
+            elements: [],
+
+            init() {
+                document.querySelectorAll('.tilt-card').forEach(el => {
+                    this.elements.push({
+                        el: el,
+                        rect: null,
+                        isHovering: false
+                    });
+
+                    el.addEventListener('mouseenter', () => {
+                        const target = this.elements.find(item => item.el === el);
+                        if (target) {
+                            target.isHovering = true;
+                            target.rect = el.getBoundingClientRect();
+                            el.style.transition = 'transform 0.1s ease-out';
+                        }
+                    }, { passive: true });
+
+                    el.addEventListener('mouseleave', () => {
+                        const target = this.elements.find(item => item.el === el);
+                        if (target) {
+                            target.isHovering = false;
+                            el.style.transition = 'transform 0.5s ease-out';
+                            el.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+                        }
+                    }, { passive: true });
+                });
+            },
+
+            update() {
+                this.elements.forEach(item => {
+                    if (item.isHovering && item.rect) {
+                        const centerX = item.rect.left + item.rect.width / 2;
+                        const centerY = item.rect.top + item.rect.height / 2;
+
+                        const rotateX = (Mouse.y - centerY) / 25;
+                        const rotateY = (centerX - Mouse.x) / 25; // Reversed for tilt effect
+
+                        item.el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+                    }
+                });
+            }
+        };
+
+        // ===== Initialization =====
+        const isDesktop = window.matchMedia('(pointer: fine)').matches;
+
+        if (isDesktop) {
+            cursorManager.init();
+            magneticManager.init();
+            tiltManager.init();
+        } else {
+            // Hide cursor on mobile
+            const dot = document.querySelector('.cursor-dot');
+            const outline = document.querySelector('.cursor-outline');
+            if (dot) dot.style.display = 'none';
+            if (outline) outline.style.display = 'none';
+        }
+
+        // ===== Unified Render Loop (GSAP Ticker) =====
+        // Single loop for ALL visual updates
+        gsap.ticker.add((time) => {
+            // 1. Update Scroll
+            lenis.raf(time * 1000);
+
+            // 2. Update Interactive Elements (Desktop only)
+            if (isDesktop) {
+                cursorManager.update();
+                magneticManager.update();
+                tiltManager.update();
             }
         });
 
-        // Mobile Menu Toggle
+        // ===== GSAP ScrollTrigger Animations =====
+        // Text Reveal Animations
+        ScrollTrigger.batch('.reveal-text', {
+            onEnter: (elements) => {
+                gsap.fromTo(elements,
+                    { opacity: 0, y: 40 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.8,
+                        ease: 'power2.out',
+                        stagger: 0.1
+                    }
+                );
+            },
+            start: 'top 85%',
+            once: true
+        });
+
+        // Work Cards
+        ScrollTrigger.batch('.work-card', {
+            onEnter: (elements) => {
+                gsap.fromTo(elements,
+                    { opacity: 0, y: 50 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.6,
+                        ease: 'power2.out',
+                        stagger: 0.1
+                    }
+                );
+            },
+            start: 'top 90%',
+            once: true
+        });
+
+        // Why Me Items
+        ScrollTrigger.batch('.why-me-item', {
+            onEnter: (elements) => {
+                gsap.fromTo(elements,
+                    { opacity: 0, x: -30 },
+                    {
+                        opacity: 1,
+                        x: 0,
+                        duration: 0.6,
+                        ease: 'power2.out',
+                        stagger: 0.15
+                    }
+                );
+            },
+            start: 'top 85%',
+            once: true
+        });
+
+        // ===== Navbar Scroll Effect (Floating Island) =====
+        let lastScrollY = 0;
+        let ticking = false;
+
+        window.addEventListener('scroll', () => {
+            lastScrollY = window.scrollY;
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    const navbar = document.getElementById('navbar');
+                    if (lastScrollY > 50) {
+                        navbar.classList.add('translate-y-2');
+                        navbar.querySelector('.nav-glass').classList.add('bg-[#0f172a]/80');
+                    } else {
+                        navbar.classList.remove('translate-y-2');
+                        navbar.querySelector('.nav-glass').classList.remove('bg-[#0f172a]/80');
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
+
+        // ===== Lenis Smooth Scroll for Nav Links =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    lenis.scrollTo(targetElement, {
+                        offset: -100, // Adjust for fixed header if needed, though floating island is small
+                        duration: 1.5, // Slower, smoother duration
+                        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) // Same easing as main lenis setup
+                    });
+
+                    // Close mobile menu if open
+                    if (isMenuOpen) {
+                        isMenuOpen = false;
+                        document.getElementById('mobile-menu').classList.add('hidden');
+                        document.getElementById('mobile-menu-btn').innerHTML = '<i data-lucide="menu" class="w-5 h-5"></i>';
+                        lucide.createIcons();
+                    }
+                }
+            });
+        });
+
+        // ===== Mobile Menu Toggle =====
         const menuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         let isMenuOpen = false;
