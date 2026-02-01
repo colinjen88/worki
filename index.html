@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UI/UX Designer & Motion Specialist | Portfolio</title>
     <meta name="description" content="具備前端思維與動效專業的資深 UI/UX 設計師作品集。">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -51,6 +52,8 @@
                         'cursor': 'cursor .75s step-end infinite',
                         'float': 'float 8s ease-in-out infinite',
                         'spin-slow': 'spin 12s linear infinite',
+                        'blob': 'move-blob-1 10s infinite alternate',
+                        'blob-reverse': 'move-blob-2 10s infinite alternate',
                     },
                     keyframes: {
                         cursor: {
@@ -591,7 +594,7 @@
                         <!-- Layer 2: Original Foreground (Book Cover) -->
                         <div
                             class="absolute inset-0 z-10 flex items-center justify-center p-6 group-hover:scale-105 transition-transform duration-500">
-                            <img src="assets/graphic_portfolio_thumb.png" alt="Graphic Design Portfolio Cover"
+                            <img src="assets/graphic_portfolio_thumb.jpg" alt="Graphic Design Portfolio Cover"
                                 class="w-full h-full object-contain drop-shadow-2xl shadow-black rounded-lg">
                         </div>
 
@@ -675,26 +678,32 @@
                 </a>
 
                 <!-- Project 4: Motion Showreel -->
-                <div class="group cursor-pointer work-card" onclick="openVideo('V_f5eONwmPo')">
+                <!-- Project 4: Motion Showreel -->
+                <a href="https://www.youtube.com/watch?v=V_f5eONwmPo" target="_blank"
+                    class="group cursor-pointer work-card block">
                     <div
                         class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative border border-white/5 bg-slate-800 flex items-center justify-center group-hover:border-secondary/50 transition-colors">
 
-                        <!-- YouTube Thumbnail -->
-                        <img src="https://img.youtube.com/vi/V_f5eONwmPo/maxresdefault.jpg" alt="Motion Showreel"
-                            class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-700 group-hover:scale-105 transform">
+                        <!-- Preview Image -->
+                        <img src="assets/motion_preview.png" alt="Motion Showreel"
+                            class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
 
+                        <!-- Dark Overlay -->
+                        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+
+                        <!-- Play Button Overlay -->
                         <div
-                            class="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 opacity-50 group-hover:opacity-100 transition-opacity">
-                        </div>
-
-                        <div class="relative z-10 text-center transform group-hover:scale-105 transition-transform">
+                            class="relative z-10 text-center transform group-hover:scale-110 transition-transform duration-300">
                             <div
-                                class="w-20 h-20 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center mx-auto mb-4 text-white group-hover:bg-secondary group-hover:text-white transition-all shadow-xl border border-white/20">
+                                class="w-20 h-20 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center mx-auto text-white group-hover:bg-red-600 group-hover:text-white transition-all shadow-xl border border-white/20">
                                 <i data-lucide="play" class="w-8 h-8 fill-current ml-1"></i>
                             </div>
-                            <h4 class="text-xl font-bold text-white drop-shadow-lg">Motion Showreel</h4>
-                            <p class="text-sm text-slate-200 mt-2 drop-shadow-md font-medium">Lottie / SVGA / AE / Flash
-                            </p>
+                        </div>
+
+                        <!-- External Link Icon -->
+                        <div
+                            class="absolute top-4 right-4 bg-black/50 backdrop-blur-md p-2 rounded-lg border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i data-lucide="external-link" class="w-5 h-5 text-white"></i>
                         </div>
                     </div>
                     <div class="flex justify-between items-start">
@@ -706,6 +715,67 @@
                         <div
                             class="p-2 rounded-full border border-white/10 text-white group-hover:bg-secondary group-hover:border-secondary transition-all">
                             <i data-lucide="play" class="w-5 h-5 fill-current"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Project 5: Content SEO Strategy -->
+                <a href="https://seo.gowork.run/" target="_blank" class="group cursor-pointer work-card block">
+                    <div
+                        class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative border border-white/5 bg-slate-800">
+                        <img src="assets/seo_preview.png" alt="Content SEO Strategy" loading="lazy" decoding="async"
+                            class="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+
+                        <!-- External Link Icon Overlay -->
+                        <div
+                            class="absolute top-4 right-4 bg-black/50 backdrop-blur-md p-2 rounded-lg border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i data-lucide="external-link" class="w-5 h-5 text-white"></i>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h4 class="text-2xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
+                                Content SEO Strategy</h4>
+                            <p class="text-slate-400 text-sm">研究規劃產出內容 • 取得搜尋排名 • AI摘要</p>
+                        </div>
+                        <div
+                            class="p-2 rounded-full border border-white/10 text-white group-hover:bg-primary group-hover:border-primary transition-all">
+                            <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Project 6: Lottie & Micro-interactions (Coming Soon) -->
+                <div class="group work-card block cursor-not-allowed">
+                    <div
+                        class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative border border-white/10 bg-slate-800">
+
+                        <!-- Background Texture -->
+                        <div class="absolute inset-0 bg-grid opacity-20"></div>
+
+                        <!-- Dynamic Subtle Background -->
+                        <div class="absolute inset-0 overflow-hidden">
+                            <div
+                                class="absolute -top-[20%] -left-[20%] w-[70%] h-[70%] bg-primary/20 rounded-full blur-[60px] animate-blob">
+                            </div>
+                            <div
+                                class="absolute -bottom-[20%] -right-[20%] w-[70%] h-[70%] bg-secondary/20 rounded-full blur-[60px] animate-blob-reverse">
+                            </div>
+                        </div>
+
+                        <div class="absolute inset-0 flex items-center justify-center z-10">
+                            <span
+                                class="px-5 py-2.5 bg-slate-900/50 backdrop-blur-md rounded-full text-white font-medium text-sm border border-white/20 tracking-wider shadow-lg">
+                                整理中
+                            </span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h4 class="text-2xl font-bold text-slate-300 mb-2">
+                                Lottie & Micro-interactions</h4>
+                            <p class="text-slate-500 text-sm">Animation • JSON • UI Dynamic</p>
                         </div>
                     </div>
                 </div>
@@ -904,21 +974,16 @@
             videoContainer.classList.remove('scale-95');
 
             // Setup embed src
-            // Hardcode the working embed URL for this specific video to match user request exactly
-            let src = "";
-            if (videoId === 'V_f5eONwmPo') {
-                src = "https://www.youtube.com/embed/V_f5eONwmPo?si=JgSotvfP9hyOcbnb&autoplay=1";
-            } else {
-                // Fallback for other potential videos
-                src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-            }
+            // Optimized: Added origin to fix Error 153 and removed tracking parameters
+            // Note: If running from file:// protocol, some videos may still fail. Use a local server (python -m http.server).
+            const origin = window.location.origin === 'null' ? '*' : window.location.origin;
+            let src = `https://www.youtube.com/embed/${videoId}?autoplay=1&origin=${origin}`;
 
             player.src = src;
 
             // Setup external link
             if (externalLink) {
                 let watchUrl = `https://www.youtube.com/watch?v=${videoId}`;
-                if (videoId === 'V_f5eONwmPo') watchUrl += '&t=27s';
                 externalLink.href = watchUrl;
             }
 
