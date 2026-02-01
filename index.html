@@ -123,33 +123,38 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 10px;
-            height: 10px;
-            background: #fff;
+            width: 16px;
+            height: 16px;
+            background: #6366f1;
+            /* Primary Brand Color */
+            border: 2px solid #ffffff;
             border-radius: 50%;
             pointer-events: none;
             z-index: 9999;
-            mix-blend-mode: difference;
+            box-shadow: 0 0 12px rgba(99, 102, 241, 0.6);
             will-change: transform;
+            transition: transform 0.1s;
         }
 
         .cursor-outline {
             position: fixed;
             top: 0;
             left: 0;
-            width: 40px;
-            height: 40px;
-            border: 2px solid rgba(99, 102, 241, 0.6);
+            width: 48px;
+            height: 48px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            background: rgba(99, 102, 241, 0.05);
             border-radius: 50%;
             pointer-events: none;
             z-index: 9998;
             will-change: transform, width, height;
-            transition: width 0.2s, height 0.2s, border-color 0.2s;
+            transition: width 0.2s, height 0.2s, background 0.2s, border-color 0.2s;
         }
 
         .cursor-outline.hover {
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
+            background: rgba(99, 102, 241, 0.1);
             border-color: rgba(236, 72, 153, 0.8);
         }
 
@@ -356,6 +361,10 @@
                         class="text-sm font-medium text-slate-300 hover:text-white px-5 py-2 rounded-full hover:bg-white/5 transition-colors">
                         精選作品
                     </a>
+                    <a href="#whyme"
+                        class="text-sm font-medium text-slate-300 hover:text-white px-5 py-2 rounded-full hover:bg-white/5 transition-colors">
+                        個人特點
+                    </a>
                 </div>
 
                 <!-- CTA -->
@@ -383,6 +392,8 @@
                     class="block px-4 py-3 text-base font-medium text-white hover:bg-white/5 rounded-xl">核心職能</a>
                 <a href="#works"
                     class="block px-4 py-3 text-base font-medium text-white hover:bg-white/5 rounded-xl">精選作品</a>
+                <a href="#whyme"
+                    class="block px-4 py-3 text-base font-medium text-white hover:bg-white/5 rounded-xl">個人特點</a>
                 <a href="#contact"
                     class="block px-4 py-3 text-base font-medium text-primary hover:bg-primary/10 rounded-xl mt-2">聯絡我</a>
             </div>
@@ -390,7 +401,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="about" class="relative min-h-screen flex items-center pt-48 pb-20 overflow-hidden">
+    <section id="about" class="relative min-h-screen flex items-center pt-24 pb-20 overflow-hidden">
         <!-- Watermark Background -->
         <div
             class="absolute top-20 left-1/2 -translate-x-1/2 w-full text-center pointer-events-none select-none z-0 overflow-hidden">
@@ -410,22 +421,23 @@
                             class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
                     </span>
-                    <span class="text-sm font-medium text-slate-300 tracking-wide">Available for Remote
-                        Opportunities</span>
+                    <span
+                        class="text-sm font-medium text-slate-300 tracking-wide">可可設計的主管您好，我想應徵貴公司的「UI,UX設計師（全遠端）」職務，希望自己能有這個機會。</span>
                 </div>
 
                 <!-- Main Headline -->
                 <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-[1.1] tracking-tight">
                     <span class="reveal-text inline-block">Designing Logic.</span><br>
-                    <span class="text-gradient reveal-text inline-block">Animating Emotion.</span>
+                    <span class="text-gradient reveal-text inline-block pb-2">Animating Emotion.</span>
                 </h1>
 
                 <!-- Subheadline with Key Points -->
                 <p class="text-lg md:text-xl text-slate-400 mb-12 leading-relaxed max-w-2xl text-balance reveal-text">
-                    我是前端設計師，擁有 <span class="text-white font-medium">多年 Web/Mobile 團隊協作開發經驗</span>，主要負責 UI
+                    我是前端設計師，擁有 <span class="text-white font-medium whitespace-nowrap">多年 Web/Mobile 團隊協作開發經驗</span>，主要負責
+                    UI
                     設計及動畫製作。<br>
-                    熟練 Figma、Photoshop、Illustrator、After Effects 等工具，並具備 <span class="text-white font-medium">獨立製作 RWD
-                        響應式網頁</span> 的實務能力。
+                    熟練 Figma、Photoshop、Illustrator、After Effects 等工具，並具備 <span
+                        class="text-white font-medium whitespace-nowrap">獨立製作 RWD 響應式網頁</span> 的實務能力。
                 </p>
 
                 <!-- Buttons -->
@@ -454,7 +466,7 @@
     </section>
 
     <!-- Expertise Section (Detailed & Professional) -->
-    <section id="expertise" class="py-40 relative z-10">
+    <section id="expertise" class="py-24 relative z-10">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
 
@@ -553,7 +565,7 @@
     </section>
 
     <!-- Works Section (Visual Focus) -->
-    <section id="works" class="py-40 bg-black/20 relative">
+    <section id="works" class="py-24 bg-black/20 relative">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
                 <div class="reveal-text">
@@ -688,8 +700,8 @@
                     <div class="flex justify-between items-start">
                         <div>
                             <h4 class="text-2xl font-bold text-white mb-2 group-hover:text-secondary transition-colors">
-                                Motion & Micro-interactions</h4>
-                            <p class="text-slate-400">Animation Collection • Interaction Design</p>
+                                Motion - Animation Collection </h4>
+                            <p class="text-slate-400">SVGA直播動效設計、廣告banner動畫、動態人物</p>
                         </div>
                         <div
                             class="p-2 rounded-full border border-white/10 text-white group-hover:bg-secondary group-hover:border-secondary transition-all">
@@ -703,7 +715,7 @@
     </section>
 
     <!-- Why Me Section (Soft Skills Focus) -->
-    <section class="py-40 relative overflow-hidden">
+    <section id="whyme" class="py-24 relative overflow-hidden">
         <!-- Decoration -->
         <div class="absolute right-0 top-1/4 w-1/2 h-1/2 bg-gradient-to-b from-primary/5 to-transparent blur-3xl -z-10">
         </div>
@@ -814,17 +826,17 @@
         <div class="max-w-4xl mx-auto px-6 text-center">
             <h2 class="text-3xl md:text-4xl font-bold text-white mb-8 reveal-text">Ready to collaborate?</h2>
             <p class="text-slate-400 mb-12 text-lg reveal-text">
-                如果您正在尋找一位能獨立作戰、懂技術的 UI/UX 設計師，<br>歡迎與我聯繫，聊聊我們可以如何一起創造價值。
+                如果您正在尋找一位善於團隊合作，也能獨立作業、懂技術的設計師，<br>歡迎與我聯繫，聊聊我們可以如何一起創造價值，感恩。
             </p>
 
             <div class="flex flex-col md:flex-row justify-center items-center gap-6 mb-16 reveal-text">
-                <a href="mailto:your.email@example.com"
+                <a href="mailto:flashjen@gmail.com"
                     class="px-8 py-4 rounded-full bg-white text-dark font-bold hover:bg-slate-200 transition-colors flex items-center gap-2 glow-hover">
-                    <i data-lucide="mail" class="w-5 h-5"></i> your.email@example.com
+                    <i data-lucide="mail" class="w-5 h-5"></i> flashjen@gmail.com
                 </a>
-                <a href="tel:+886912345678"
+                <a href="#"
                     class="px-8 py-4 rounded-full border border-white/10 hover:bg-white/5 transition-colors text-white font-medium flex items-center gap-2">
-                    <i data-lucide="phone" class="w-5 h-5"></i> 0912-345-678
+                    <i data-lucide="message-circle" class="w-5 h-5"></i> LINE ID: flashjen
                 </a>
             </div>
 
@@ -844,7 +856,7 @@
             </div>
 
             <p class="text-slate-600 text-sm">
-                &copy; 2024 Designed & Coded by [Your Name]. All rights reserved.
+                &copy; 2026 Designed & Coded by WANG All rights reserved.
             </p>
         </div>
     </footer>
@@ -857,17 +869,15 @@
                 class="absolute top-4 right-4 text-white/70 hover:text-white z-10 p-2 bg-black/50 rounded-full hover:bg-primary/80 transition-all cursor-pointer">
                 <i data-lucide="x" class="w-6 h-6"></i>
             </button>
-            <iframe id="youtube-player" class="w-full h-full relative z-0" src="" title="YouTube video player"
-                frameborder="0"
+            <iframe id="youtube-player" class="w-full h-full" src="" title="YouTube video player" frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe>
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
             <!-- Fallback / External Link -->
-            <div
-                class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 opacity-0 hover:opacity-100 transition-opacity duration-300">
+            <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 transition-opacity duration-300">
                 <a id="youtube-external-link" href="#" target="_blank"
-                    class="flex items-center gap-2 px-4 py-2 bg-red-600/90 hover:bg-red-600 text-white rounded-full text-sm font-medium backdrop-blur-sm transition-colors shadow-lg">
-                    <i data-lucide="external-link" class="w-4 h-4"></i> If video fails, Watch on YouTube ↗
+                    class="flex items-center gap-2 px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-full text-base font-bold backdrop-blur-sm transition-all shadow-xl hover:scale-105">
+                    <i data-lucide="external-link" class="w-5 h-5"></i> 有問題？直接前往 YouTube 觀看 ↗
                 </a>
             </div>
         </div>
@@ -894,10 +904,15 @@
             videoContainer.classList.remove('scale-95');
 
             // Setup embed src
-            let src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&origin=${window.location.origin}`;
+            // Hardcode the working embed URL for this specific video to match user request exactly
+            let src = "";
             if (videoId === 'V_f5eONwmPo') {
-                src += '&start=27';
+                src = "https://www.youtube.com/embed/V_f5eONwmPo?si=JgSotvfP9hyOcbnb&autoplay=1";
+            } else {
+                // Fallback for other potential videos
+                src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
             }
+
             player.src = src;
 
             // Setup external link
