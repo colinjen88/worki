@@ -8,8 +8,8 @@
     <meta name="description" content="具備前端思維與動效專業的資深 UI/UX 設計師作品集。">
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS (Local Build) -->
+    <link href="assets/styles.css" rel="stylesheet">
 
     <!-- Google Fonts -->
     <link
@@ -26,61 +26,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#6366f1', // Indigo 500
-                        primaryDark: '#4338ca', // Indigo 700
-                        secondary: '#ec4899', // Pink 500
-                        dark: '#0f172a', // Slate 900
-                        card: '#1e293b', // Slate 800
-                        border: 'rgba(255, 255, 255, 0.08)',
-                    },
-                    fontFamily: {
-                        sans: ['"Inter"', '"Noto Sans TC"', 'sans-serif'],
-                        mono: ['"Fira Code"', 'monospace'],
-                    },
-                    spacing: {
-                        '128': '32rem',
-                    },
-                    backgroundImage: {
-                        'grid-pattern': "linear-gradient(to right, #334155 1px, transparent 1px), linear-gradient(to bottom, #334155 1px, transparent 1px)",
-                    },
-                    animation: {
-                        'cursor': 'cursor .75s step-end infinite',
-                        'float': 'float 8s ease-in-out infinite',
-                        'spin-slow': 'spin 12s linear infinite',
-                        'blob': 'move-blob-1 10s infinite alternate',
-                        'blob-reverse': 'move-blob-2 10s infinite alternate',
-                    },
-                    keyframes: {
-                        cursor: {
-                            '0%, 100%': { opacity: '1' },
-                            '50%': { opacity: '0' },
-                        },
-                        'float': {
-                            '0%, 100%': { transform: 'translate3d(0, 0, 0)' },
-                            '50%': { transform: 'translate3d(0, -20px, 0)' },
-                        },
-                        'move-blob-1': {
-                            '0%': { transform: 'translate3d(0px, 0px, 0) scale(1)' },
-                            '33%': { transform: 'translate3d(30px, -50px, 0) scale(1.1)' },
-                            '66%': { transform: 'translate3d(-20px, 20px, 0) scale(0.9)' },
-                            '100%': { transform: 'translate3d(0px, 0px, 0) scale(1)' },
-                        },
-                        'move-blob-2': {
-                            '0%': { transform: 'translate3d(0px, 0px, 0) scale(1)' },
-                            '33%': { transform: 'translate3d(-30px, 50px, 0) scale(1.1)' },
-                            '66%': { transform: 'translate3d(20px, -20px, 0) scale(0.9)' },
-                            '100%': { transform: 'translate3d(0px, 0px, 0) scale(1)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+
 
     <style>
         /* Base Styles */
@@ -588,14 +534,16 @@
                         <!-- Layer 1: Faint Collage Background -->
                         <div class="absolute inset-0 z-0">
                             <img src="assets/graphic_collage_bg.jpg" alt="Background Texture"
-                                class="object-cover w-full h-full opacity-20 grayscale group-hover:opacity-30 group-hover:grayscale-0 transition-all duration-700">
+                                class="object-cover w-full h-full opacity-20 grayscale group-hover:opacity-30 group-hover:grayscale-0 transition-all duration-700"
+                                loading="lazy" decoding="async">
                         </div>
 
                         <!-- Layer 2: Original Foreground (Book Cover) -->
                         <div
                             class="absolute inset-0 z-10 flex items-center justify-center p-6 group-hover:scale-105 transition-transform duration-500">
                             <img src="assets/graphic_portfolio_thumb.jpg" alt="Graphic Design Portfolio Cover"
-                                class="w-full h-full object-contain drop-shadow-2xl shadow-black rounded-lg">
+                                class="w-full h-full object-contain drop-shadow-2xl shadow-black rounded-lg"
+                                loading="lazy" decoding="async">
                         </div>
 
                         <!-- Layer 3: Gradient Overlay -->
@@ -626,7 +574,7 @@
                 <a href="https://goldlab.tw/" target="_blank" class="group cursor-pointer work-card block">
                     <div
                         class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative border border-white/5 bg-slate-800">
-                        <img src="assets/goldlab_preview.png" alt="GoldLab Web Portal"
+                        <img src="assets/goldlab_preview.png" alt="GoldLab Web Portal" loading="lazy" decoding="async"
                             class="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700">
                         <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
 
@@ -685,7 +633,7 @@
                         class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative border border-white/5 bg-slate-800 flex items-center justify-center group-hover:border-secondary/50 transition-colors">
 
                         <!-- Preview Image -->
-                        <img src="assets/motion_preview.png" alt="Motion Showreel"
+                        <img src="assets/motion_preview.png" alt="Motion Showreel" loading="lazy" decoding="async"
                             class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
 
                         <!-- Dark Overlay -->
@@ -1183,14 +1131,44 @@
             if (outline) outline.style.display = 'none';
         }
 
-        // ===== Unified Render Loop (GSAP Ticker) =====
+        // ===== Unified Render Loop (GSAP Ticker - Optimized) =====
+        // Idle detection
+        let lastActivity = Date.now();
+        const IDLE_THRESHOLD = 2000; // Stop loop after 2 seconds of inactivity
+        let isIdle = false;
+
+        function updateActivity() {
+            if (isIdle) {
+                isIdle = false;
+                gsap.ticker.wake();
+            }
+            lastActivity = Date.now();
+        }
+
+        window.addEventListener('mousemove', updateActivity, { passive: true });
+        window.addEventListener('scroll', updateActivity, { passive: true });
+        window.addEventListener('keydown', updateActivity, { passive: true });
+        window.addEventListener('touchstart', updateActivity, { passive: true });
+
         // Single loop for ALL visual updates
         gsap.ticker.add((time) => {
-            // 1. Update Scroll
+            // Check idle state
+            if (!lenis.isScrolling && Date.now() - lastActivity > IDLE_THRESHOLD) {
+                if (!isIdle) {
+                    isIdle = true;
+                    // We don't sleep the ticker completely because we need to check for activity, 
+                    // but we can skip heavy updates. 
+                    // Or better, let GSAP sleep itself (it does by default if no animations), 
+                    // but we have manual updates here.
+                    // Effectively we just skip our manual updates.
+                }
+            }
+
+            // Always update Lenis (it handles its own idle state mostly, but needs raf)
             lenis.raf(time * 1000);
 
-            // 2. Update Interactive Elements (Desktop only)
-            if (isDesktop) {
+            // Skip visual effects if idle
+            if (!isIdle && isDesktop) {
                 cursorManager.update();
                 magneticManager.update();
                 tiltManager.update();
@@ -1252,27 +1230,18 @@
             once: true
         });
 
-        // ===== Navbar Scroll Effect (Floating Island) =====
-        let lastScrollY = 0;
-        let ticking = false;
-
-        window.addEventListener('scroll', () => {
-            lastScrollY = window.scrollY;
-            if (!ticking) {
-                requestAnimationFrame(() => {
-                    const navbar = document.getElementById('navbar');
-                    if (lastScrollY > 50) {
-                        navbar.classList.add('translate-y-2');
-                        navbar.querySelector('.nav-glass').classList.add('bg-[#0f172a]/80');
-                    } else {
-                        navbar.classList.remove('translate-y-2');
-                        navbar.querySelector('.nav-glass').classList.remove('bg-[#0f172a]/80');
-                    }
-                    ticking = false;
-                });
-                ticking = true;
+        // ===== Navbar Scroll Effect (Optimized via Lenis) =====
+        // Move logic to Lenis scroll event to avoid separate rAF
+        lenis.on('scroll', ({ scroll }) => {
+            const navbar = document.getElementById('navbar');
+            if (scroll > 50) {
+                navbar.classList.add('translate-y-2');
+                navbar.querySelector('.nav-glass').classList.add('bg-[#0f172a]/80');
+            } else {
+                navbar.classList.remove('translate-y-2');
+                navbar.querySelector('.nav-glass').classList.remove('bg-[#0f172a]/80');
             }
-        }, { passive: true });
+        });
 
         // ===== Lenis Smooth Scroll for Nav Links =====
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {

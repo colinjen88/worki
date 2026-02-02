@@ -1,0 +1,29 @@
+{
+  "name": "worki",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:css": "npx @tailwindcss/cli -i ./src/input.css -o ./assets/styles.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/colinjen88/worki.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/colinjen88/worki/issues"
+  },
+  "homepage": "https://github.com/colinjen88/worki#readme",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.18",
+    "tailwindcss": "^4.1.18"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.24",
+    "postcss": "^8.5.6"
+  }
+}
