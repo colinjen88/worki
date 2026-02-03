@@ -1041,13 +1041,14 @@
             videoObserver.observe(video);
         });
 
-        // ===== Lenis Smooth Scroll (Optimized) =====
+        // ===== Lenis Smooth Scroll (Native Scroll + Programmatic Smooth) =====
+        // Disabled smoothWheel - let browser handle native scrolling (works better with touchpad)
+        // Lenis only used for smooth anchor navigation
         const lenis = new Lenis({
-            duration: 1.0,
+            duration: 1.2,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            orientation: 'vertical',
-            smoothWheel: true,
-            wheelMultiplier: 1,
+            smoothWheel: false,  // Use native scroll for wheel/touchpad
+            syncTouch: false,    // Use native touch scrolling
         });
 
         // Integrate Lenis with GSAP ScrollTrigger
