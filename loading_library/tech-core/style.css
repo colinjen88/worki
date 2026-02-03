@@ -58,5 +58,6 @@ body { background: var(--bg-color); color: var(--text-color); font-family: 'Inte
     font-family: sans-serif; font-weight: 300; letter-spacing: 4px; font-size: 9px; color: var(--text-color); opacity: 0.5;
 }
 .loading-card:hover .brand-Minimal { opacity: 0.9; letter-spacing: 6px; transition: all 0.5s ease; }
-\n.ld-tech-7 { width: 50px; height: 50px; border: 4px solid transparent; border-top-color: var(--accent); border-bottom-color: var(--accent); border-radius: 50%; animation: rotate 2s infinite linear; position: relative; }
+
+.ld-tech-7 { width: 50px; height: 50px; border: 4px solid transparent; border-top-color: var(--accent); border-bottom-color: var(--accent); border-radius: 50%; animation: rotate 2s infinite linear; position: relative; }
 .ld-tech-7::after { content: ''; position: absolute; inset: 6px; border: 4px solid transparent; border-left-color: var(--secondary); border-right-color: var(--secondary); border-radius: 50%; animation: rotate 1s infinite reverse linear; }

@@ -58,6 +58,7 @@ body { background: var(--bg-color); color: var(--text-color); font-family: 'Inte
     font-family: sans-serif; font-weight: 300; letter-spacing: 4px; font-size: 9px; color: var(--text-color); opacity: 0.5;
 }
 .loading-card:hover .brand-Minimal { opacity: 0.9; letter-spacing: 6px; transition: all 0.5s ease; }
-\n.ld-min-4 { width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; position: relative; }
+
+.ld-min-4 { width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; position: relative; }
 .ld-min-4::after { content: ''; position: absolute; top: -3px; left: 50%; transform: translateX(-50%); width: 6px; height: 6px; background: var(--text-color); border-radius: 50%; }
 .ld-min-4 { animation: rotate 2s infinite linear; }

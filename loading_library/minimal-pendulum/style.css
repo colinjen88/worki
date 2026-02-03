@@ -58,6 +58,7 @@ body { background: var(--bg-color); color: var(--text-color); font-family: 'Inte
     font-family: sans-serif; font-weight: 300; letter-spacing: 4px; font-size: 9px; color: var(--text-color); opacity: 0.5;
 }
 .loading-card:hover .brand-Minimal { opacity: 0.9; letter-spacing: 6px; transition: all 0.5s ease; }
-\n.ld-min-2-wrap { transform-origin: top center; animation: ld-min-2-swing 1s infinite alternate ease-in-out; width: 2px; height: 25px; background: var(--text-color); margin: 0 auto; position: relative; }
+
+.ld-min-2-wrap { transform-origin: top center; animation: ld-min-2-swing 1s infinite alternate ease-in-out; width: 2px; height: 25px; background: var(--text-color); margin: 0 auto; position: relative; }
 .ld-min-2-wrap::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 8px; height: 8px; background: var(--text-color); border-radius: 50%; }
 @keyframes ld-min-2-swing { from { transform: rotate(-30deg); } to { transform: rotate(30deg); } }

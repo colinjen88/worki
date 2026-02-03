@@ -58,5 +58,6 @@ body { background: var(--bg-color); color: var(--text-color); font-family: 'Inte
     font-family: sans-serif; font-weight: 300; letter-spacing: 4px; font-size: 9px; color: var(--text-color); opacity: 0.5;
 }
 .loading-card:hover .brand-Minimal { opacity: 0.9; letter-spacing: 6px; transition: all 0.5s ease; }
-\n.ld-tech-5 { width: 40px; height: 40px; background: var(--bg-color); border-radius: 50%; box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.7); animation: ld-tech-5-pulse 1.5s infinite cubic-bezier(0.66, 0, 0, 1); }
+
+.ld-tech-5 { width: 40px; height: 40px; background: var(--bg-color); border-radius: 50%; box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.7); animation: ld-tech-5-pulse 1.5s infinite cubic-bezier(0.66, 0, 0, 1); }
 @keyframes ld-tech-5-pulse { to { box-shadow: 0 0 0 20px rgba(34, 211, 238, 0); } }

@@ -58,7 +58,8 @@ body { background: var(--bg-color); color: var(--text-color); font-family: 'Inte
     font-family: sans-serif; font-weight: 300; letter-spacing: 4px; font-size: 9px; color: var(--text-color); opacity: 0.5;
 }
 .loading-card:hover .brand-Minimal { opacity: 0.9; letter-spacing: 6px; transition: all 0.5s ease; }
-\n.ld-geo-6 { width: 40px; height: 40px; display: flex; flex-wrap: wrap; animation: rotate 4s linear infinite; }
+
+.ld-geo-6 { width: 40px; height: 40px; display: flex; flex-wrap: wrap; animation: rotate 4s linear infinite; }
 .ld-geo-6 div { width: 50%; height: 50%; background-color: var(--primary); animation: ld-geo-6-anim 2s infinite ease-in-out; }
 .ld-geo-6 div:nth-child(2) { background-color: var(--secondary); animation-delay: 0.5s; } .ld-geo-6 div:nth-child(3) { background-color: var(--accent); animation-delay: 1s; } .ld-geo-6 div:nth-child(4) { background-color: white; animation-delay: 1.5s; }
 @keyframes ld-geo-6-anim { 0%, 100% { transform: scale(0); opacity: 0; } 50% { transform: scale(1); opacity: 1; } }

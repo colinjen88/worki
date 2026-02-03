@@ -58,7 +58,8 @@ body { background: var(--bg-color); color: var(--text-color); font-family: 'Inte
     font-family: sans-serif; font-weight: 300; letter-spacing: 4px; font-size: 9px; color: var(--text-color); opacity: 0.5;
 }
 .loading-card:hover .brand-Minimal { opacity: 0.9; letter-spacing: 6px; transition: all 0.5s ease; }
-\n.ld-tech-3 { width: 50px; height: 50px; position: relative; display: flex; justify-content: center; align-items: center; }
+
+.ld-tech-3 { width: 50px; height: 50px; position: relative; display: flex; justify-content: center; align-items: center; }
 .ld-tech-3 svg { width: 100%; height: 100%; }
 .ld-tech-3 path { fill: none; stroke: var(--accent); stroke-width: 2; stroke-dasharray: 100; stroke-dashoffset: 100; animation: ld-tech-3-anim 2s infinite ease-in-out; }
 @keyframes ld-tech-3-anim { 0% { stroke-dashoffset: 100; } 50% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -100; } }

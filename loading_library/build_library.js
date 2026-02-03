@@ -151,7 +151,7 @@ animations.forEach(anim => {
     ensureDir(dir);
 
     // 1. Create style.css
-    const fullCss = baseCss + '\\n' + anim.css;
+    const fullCss = baseCss + '\n' + anim.css;
     fs.writeFileSync(path.join(dir, 'style.css'), fullCss);
 
     // 2. Create index.html (Preview)
@@ -200,7 +200,7 @@ console.log('Generated main index.html');
 /* 4. Update Main Styles.css */
 let mainCssContent = baseCss;
 animations.forEach(anim => {
-    mainCssContent += '\\n/* ' + anim.name + ' */\\n' + anim.css + '\\n';
+    mainCssContent += '\n/* ' + anim.name + ' */\n' + anim.css + '\n';
 });
 fs.writeFileSync(path.join(baseDir, 'styles.css'), mainCssContent);
 console.log('Updated main styles.css');

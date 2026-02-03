@@ -58,7 +58,8 @@ body { background: var(--bg-color); color: var(--text-color); font-family: 'Inte
     font-family: sans-serif; font-weight: 300; letter-spacing: 4px; font-size: 9px; color: var(--text-color); opacity: 0.5;
 }
 .loading-card:hover .brand-Minimal { opacity: 0.9; letter-spacing: 6px; transition: all 0.5s ease; }
-\n.ld-fluid-7 { width: 60px; height: 60px; position: relative; filter: blur(5px); }
+
+.ld-fluid-7 { width: 60px; height: 60px; position: relative; filter: blur(5px); }
 .ld-fluid-7 div { position: absolute; width: 20px; height: 20px; border-radius: 50%; background: white; opacity: 0.6; animation: ld-fluid-7-anim 2s infinite linear; }
 .ld-fluid-7 div:nth-child(1) { top: 0; left: 20px; } .ld-fluid-7 div:nth-child(2) { top: 20px; right: 0; animation-delay: -0.6s; background: var(--primary); }
 .ld-fluid-7 div:nth-child(3) { bottom: 0; left: 20px; animation-delay: -1.2s; background: var(--secondary); } .ld-fluid-7 div:nth-child(4) { top: 20px; left: 0; animation-delay: -1.8s; background: var(--accent); }

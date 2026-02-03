@@ -58,7 +58,8 @@ body { background: var(--bg-color); color: var(--text-color); font-family: 'Inte
     font-family: sans-serif; font-weight: 300; letter-spacing: 4px; font-size: 9px; color: var(--text-color); opacity: 0.5;
 }
 .loading-card:hover .brand-Minimal { opacity: 0.9; letter-spacing: 6px; transition: all 0.5s ease; }
-\n.ld-fluid-1-filter { filter: url('#goo'); width: 100px; height: 100px; position: absolute; display: flex; justify-content: center; align-items: center; }
+
+.ld-fluid-1-filter { filter: url('#goo'); width: 100px; height: 100px; position: absolute; display: flex; justify-content: center; align-items: center; }
 .ld-fluid-1 { position: relative; width: 100%; height: 100%; }
 .ld-fluid-1::before, .ld-fluid-1::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 20px; height: 20px; background: var(--secondary); border-radius: 50%; animation: ld-fluid-1-anim 2s infinite ease-in-out; }
 .ld-fluid-1::after { animation-delay: -1s; background: var(--primary); }
