@@ -1322,7 +1322,7 @@
             }
         });
 
-        // ===== Lenis Smooth Scroll for Nav Links =====
+        // ===== Smooth Scroll for Nav Links (Native for Performance) =====
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1331,10 +1331,10 @@
 
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
-                    lenis.scrollTo(targetElement, {
-                        offset: -100, // Adjust for fixed header if needed, though floating island is small
-                        duration: 1.5, // Slower, smoother duration
-                        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) // Same easing as main lenis setup
+                    // Use native smooth scroll for instant response
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
                     });
 
                     // Close mobile menu if open
