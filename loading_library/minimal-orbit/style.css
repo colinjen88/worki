@@ -62,7 +62,6 @@ body { background: var(--bg-color); color: var(--text-color); font-family: 'Inte
 .ld-min-4 { width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; position: relative; }
 .ld-min-4::after { content: ''; position: absolute; top: -3px; left: 50%; transform: translateX(-50%); width: 6px; height: 6px; background: var(--text-color); border-radius: 50%; }
 .ld-min-4 { animation: rotate 2s infinite linear; }
-/* Unique Brand Style */
 .brand-min-4 { position: relative; display: inline-block; }
 .brand-min-4::before { content: ""; position: absolute; width: 4px; height: 4px; background: var(--text-color); border-radius: 50%; top: 50%; left: -10px; transform: translateY(-50%); animation: brand-min-4-dot 2s infinite ease-in-out; opacity: 0; }
 @keyframes brand-min-4-dot { 0% { opacity:0; left: -10px; } 50% { opacity:1; } 100% { opacity:0; left: 100px; } }

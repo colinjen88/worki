@@ -63,6 +63,5 @@ body { background: var(--bg-color); color: var(--text-color); font-family: 'Inte
 .ld-geo-6 div { width: 50%; height: 50%; background-color: var(--primary); animation: ld-geo-6-anim 2s infinite ease-in-out; }
 .ld-geo-6 div:nth-child(2) { background-color: var(--secondary); animation-delay: 0.5s; } .ld-geo-6 div:nth-child(3) { background-color: var(--accent); animation-delay: 1s; } .ld-geo-6 div:nth-child(4) { background-color: white; animation-delay: 1.5s; }
 @keyframes ld-geo-6-anim { 0%, 100% { transform: scale(0); opacity: 0; } 50% { transform: scale(1); opacity: 1; } }
-/* Unique Brand Style */
 .brand-geo-6 { clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); animation: brand-geo-6-reveal 4s infinite steps(2); }
 @keyframes brand-geo-6-reveal { 0% { opacity: 0.5; } 50% { opacity: 1; color: var(--primary); } }

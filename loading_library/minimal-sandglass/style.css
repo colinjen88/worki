@@ -61,6 +61,5 @@ body { background: var(--bg-color); color: var(--text-color); font-family: 'Inte
 
 .ld-min-7 { width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 15px solid var(--text-color); border-bottom: 15px solid var(--text-color); animation: ld-min-7-anim 2s infinite; }
 @keyframes ld-min-7-anim { 0% { transform: rotate(0deg); } 50% { transform: rotate(180deg); } 100% { transform: rotate(180deg); } }
-/* Unique Brand Style */
 .brand-min-7 { animation: brand-min-7-flip 2s infinite ease-in-out; display: inline-block; }
 @keyframes brand-min-7-flip { 0%, 40% { transform: rotateX(0deg); } 90%, 100% { transform: rotateX(360deg); } }

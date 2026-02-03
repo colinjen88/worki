@@ -102,7 +102,7 @@ const animations = [
         id: 'tech-3', folder: 'tech-circuit', name: 'Circuit Path', category: 'Tech',
         html: '<div class="ld-tech-3"><svg viewBox="0 0 100 100"><path d="M10,50 Q25,25 50,50 T90,50" /></svg></div>',
         css: '.ld-tech-3 { width: 50px; height: 50px; position: relative; display: flex; justify-content: center; align-items: center; }\n.ld-tech-3 svg { width: 100%; height: 100%; }\n.ld-tech-3 path { fill: none; stroke: var(--accent); stroke-width: 2; stroke-dasharray: 100; stroke-dashoffset: 100; animation: ld-tech-3-anim 2s infinite ease-in-out; }\n@keyframes ld-tech-3-anim { 0% { stroke-dashoffset: 100; } 50% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -100; } }',
-        brandCss: '.brand-tech-3 { border-bottom: 2px solid var(--accent); width: 0; white-space: nowrap; overflow: hidden; animation: brand-tech-3-draw 2s infinite ease-in-out; display: inline-block; }\n@keyframes brand-tech-3-draw { 0% { width: 0; opacity: 0.5; } 50% { width: 100%; opacity: 1; } 100% { width: 0; opacity: 0.5; border-right: none; } }'
+        brandCss: '.brand-tech-3 { position: relative; display: inline-block; color: var(--accent); opacity: 0.8; }\n.brand-tech-3::after { content: ""; position: absolute; bottom: -2px; left: 0; height: 1px; background: var(--accent); animation: brand-tech-3-line 2s infinite ease-in-out; }\n@keyframes brand-tech-3-line { 0% { width: 0; opacity: 0; } 50% { width: 100%; opacity: 1; } 100% { width: 100%; opacity: 0; } }'
     },
     {
         id: 'tech-5', folder: 'tech-neon', name: 'Neon Pulse', category: 'Tech',
@@ -175,21 +175,16 @@ animations.forEach(anim => {
     const dir = path.join(baseDir, anim.folder);
     ensureDir(dir);
 
-    // 1. Create style.css (Include base + anim + brand unique)
-    // We add the brandCss if it exists
-    const brandCssToAdd = anim.brandCss ? ('\n/* Unique Brand Style */\n' + anim.brandCss) : '';
+    // 1. Create style.css
+    const brandCssToAdd = anim.brandCss ? ('\n' + anim.brandCss) : '';
     const fullCss = baseCss + '\n' + anim.css + brandCssToAdd;
     fs.writeFileSync(path.join(dir, 'style.css'), fullCss);
 
     // 2. Create index.html (Preview)
     const gooSvg = '<svg style="position: absolute; width: 0; height: 0; overflow: hidden;"><defs><filter id="goo"><feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" /><feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" /><feComposite in="SourceGraphic" in2="goo" operator="atop"/></filter></defs></svg>';
-
-    // Add unique brand class
     const brandClassUnique = anim.id ? ('brand-' + anim.id) : '';
     const brandHtml = '<div class="portfolio-brand brand-' + anim.category + ' ' + brandClassUnique + '">WANG Portfolio</div>';
-
     const htmlContent = '<!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <title>' + anim.name + ' - WANG Portfolio</title>\n    <link rel="stylesheet" href="style.css">\n    ' + (anim.id === 'fluid-1' ? gooSvg : '') + '\n</head>\n<body>\n    <div style="display:flex; flex-direction:column; align-items:center; height: 100vh; justify-content: center;">\n        ' + anim.html + '\n        ' + brandHtml + '\n    </div>\n</body>\n</html>';
-
     fs.writeFileSync(path.join(dir, 'index.html'), htmlContent);
     console.log('Updated ' + anim.folder);
 });
@@ -218,19 +213,16 @@ for (const [category, items] of Object.entries(groups)) {
         const brandClassUnique = anim.id ? ('brand-' + anim.id) : '';
         mainIndexHtml += '                <!-- ' + anim.name + ' -->\n                <a href="./' + anim.folder + '/index.html" target="_blank" class="loading-card">\n                    ' + anim.html + '\n                    <div class="portfolio-brand brand-' + category + ' ' + brandClassUnique + '">WANG Portfolio</div>\n                </a>\n';
     });
-
     mainIndexHtml += '            </div>\n        </section>';
 }
 
 mainIndexHtml += '    </main>\n    <footer class="mt-20 text-center text-slate-600">\n        &copy; 2026 WANG Portfolio. All Rights Reserved.\n    </footer>\n</body>\n</html>';
-
 fs.writeFileSync(path.join(baseDir, 'index.html'), mainIndexHtml);
 console.log('Generated main index.html');
 
 /* 4. Update Main Styles.css */
 let mainCssContent = baseCss;
 animations.forEach(anim => {
-    // Add unique brand CSS to main styles
     const brandCssToAdd = anim.brandCss ? ('\n' + anim.brandCss) : '';
     mainCssContent += '\n/* ' + anim.name + ' */\n' + anim.css + brandCssToAdd + '\n';
 });

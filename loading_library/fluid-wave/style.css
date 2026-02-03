@@ -63,6 +63,5 @@ body { background: var(--bg-color); color: var(--text-color); font-family: 'Inte
 .ld-fluid-2 div { width: 6px; height: 40px; background: linear-gradient(to top, var(--primary), var(--accent)); border-radius: 99px; animation: ld-fluid-2-anim 1s infinite ease-in-out; }
 .ld-fluid-2 div:nth-child(odd) { animation-direction: reverse; background: linear-gradient(to top, var(--secondary), var(--primary)); }
 @keyframes ld-fluid-2-anim { 0%, 100% { height: 10px; opacity: 0.5; } 50% { height: 40px; opacity: 1; } }
-/* Unique Brand Style */
 .brand-fluid-2 { display: inline-block; animation: brand-fluid-2-wave 1s infinite ease-in-out; transform-origin: center; }
 @keyframes brand-fluid-2-wave { 0%, 100% { transform: skewX(0deg); } 50% { transform: skewX(-10deg); color: var(--accent); } }

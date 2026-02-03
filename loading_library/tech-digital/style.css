@@ -65,6 +65,5 @@ body { background: var(--bg-color); color: var(--text-color); font-family: 'Inte
 .ld-tech-6 div:nth-child(3) { animation-delay: 0.3s; } .ld-tech-6 div:nth-child(4) { animation-delay: 0.4s; }
 .ld-tech-6 div:nth-child(5) { animation-delay: 0.5s; }
 @keyframes ld-tech-6-anim { 0%, 100% { opacity: 0; } 50% { opacity: 1; } }
-/* Unique Brand Style */
 .brand-tech-6 { background: linear-gradient(90deg, transparent, var(--primary), transparent); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: brand-tech-6-scan 2s infinite linear; }
 @keyframes brand-tech-6-scan { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
