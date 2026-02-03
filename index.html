@@ -8,6 +8,12 @@
     <meta name="description" content="具備前端思維與動效專業的資深 UI/UX 設計師作品集。">
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
+    <!-- Preconnect for faster external resource loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
     <!-- Tailwind CSS (Local Build) -->
     <link href="assets/styles.css" rel="stylesheet">
 
@@ -107,14 +113,11 @@
             border-color: rgba(236, 72, 153, 0.8);
         }
 
-        /* Glassmorphism Navigation */
-        /* Glassmorphism Navigation */
+        /* Glassmorphism Navigation - Optimized blur for performance */
         .nav-glass {
-            background: rgba(15, 23, 42, 0.4);
-            /* More transparent */
-            backdrop-filter: blur(24px);
-            /* Stronger blur for glass effect */
-            -webkit-backdrop-filter: blur(24px);
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
@@ -134,15 +137,17 @@
             background-clip: text;
         }
 
-        /* Card Styles - GPU Accelerated */
+        /* Card Styles - GPU Accelerated, reduced backdrop-filter for performance */
         .glass-card {
-            background: rgba(30, 41, 59, 0.4);
-            backdrop-filter: blur(12px);
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.05);
             transition: background 0.4s, border-color 0.4s, transform 0.4s;
             will-change: transform;
             transform-style: preserve-3d;
             position: relative;
+            contain: layout style paint;
         }
 
         /* Optimization: Shadow via pseudo-element to avoid repaint */
@@ -266,19 +271,32 @@
 
 <body class="antialiased selection:bg-primary/30 selection:text-white">
 
+    <!-- Loading Screen -->
+    <div id="loading-screen"
+        class="fixed inset-0 z-[10000] bg-[#0f172a] flex items-center justify-center transition-opacity duration-500">
+        <div class="text-center">
+            <div
+                class="w-12 h-12 border-4 border-indigo-500/30 border-t-indigo-500 rounded-full animate-spin mb-4 mx-auto">
+            </div>
+            <p class="text-slate-400 text-sm">Loading...</p>
+        </div>
+    </div>
+
     <!-- Custom Cursor -->
     <div class="cursor-dot hidden md:block"></div>
     <div class="cursor-outline hidden md:block"></div>
 
-    <!-- Background Elements -->
-    <div class="fixed inset-0 z-0 pointer-events-none">
+    <!-- Background Elements - Optimized with CSS containment -->
+    <div class="fixed inset-0 z-0 pointer-events-none" style="contain: strict;">
         <div class="absolute inset-0 bg-grid-pattern bg-grid opacity-[0.03]"></div>
-        <!-- Animated Blobs (CSS Only - High Performance) -->
+        <!-- Animated Blobs - Reduced blur for performance -->
         <div id="blob-1"
-            class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] mix-blend-screen animate-blob-1 opacity-40 will-change-transform">
+            class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[80px] mix-blend-screen animate-blob-1 opacity-40"
+            style="contain: layout style paint;">
         </div>
         <div id="blob-2"
-            class="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[120px] mix-blend-screen animate-blob-2 opacity-30 will-change-transform">
+            class="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[80px] mix-blend-screen animate-blob-2 opacity-30"
+            style="contain: layout style paint;">
         </div>
     </div>
 
@@ -699,9 +717,8 @@
                     <div
                         class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative border border-white/10 bg-slate-800">
                         <video
-                            class="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-700 opacity-80"
-                            autoplay loop muted playsinline>
-                            <source src="assets/loading_animation.mp4" type="video/mp4">
+                            class="lazy-video w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-700 opacity-80"
+                            loop muted playsinline preload="none" data-src="assets/loading_animation.mp4">
                             Your browser does not support the video tag.
                         </video>
 
@@ -726,9 +743,8 @@
                     <div
                         class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative border border-white/10 bg-slate-800">
                         <video
-                            class="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-700 opacity-80"
-                            autoplay loop muted playsinline>
-                            <source src="assets/lottie_animate.mp4" type="video/mp4">
+                            class="lazy-video w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-700 opacity-80"
+                            loop muted playsinline preload="none" data-src="assets/lottie_animate.mp4">
                             Your browser does not support the video tag.
                         </video>
 
@@ -986,8 +1002,44 @@
             if (e.key === 'Escape') closeVideo();
         });
 
-        // Initialize Icons
-        lucide.createIcons();
+        // ===== Loading Screen Dismissal =====
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loading-screen');
+            if (loader) {
+                // Small delay to ensure everything is rendered
+                setTimeout(() => {
+                    loader.style.opacity = '0';
+                    setTimeout(() => {
+                        loader.style.display = 'none';
+                    }, 500);
+                }, 100);
+            }
+        });
+
+        // ===== Lazy Video Loading with Intersection Observer =====
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const video = entry.target;
+                if (entry.isIntersecting) {
+                    // Load and play video when visible
+                    if (!video.src && video.dataset.src) {
+                        video.src = video.dataset.src;
+                    }
+                    video.play().catch(() => { }); // Ignore autoplay errors
+                } else {
+                    // Pause when not visible to save resources
+                    video.pause();
+                }
+            });
+        }, {
+            rootMargin: '100px',
+            threshold: 0.1
+        });
+
+        // Observe all lazy videos
+        document.querySelectorAll('.lazy-video').forEach(video => {
+            videoObserver.observe(video);
+        });
 
         // ===== Lenis Smooth Scroll (Optimized) =====
         const lenis = new Lenis({
@@ -1151,11 +1203,12 @@
             if (outline) outline.style.display = 'none';
         }
 
-        // ===== Unified Render Loop (GSAP Ticker - Optimized) =====
+        // ===== Unified Render Loop (GSAP Ticker - Optimized with Frame Skipping) =====
         // Idle detection
         let lastActivity = Date.now();
         const IDLE_THRESHOLD = 2000; // Stop loop after 2 seconds of inactivity
         let isIdle = false;
+        let frameCount = 0; // For frame skipping
 
         function updateActivity() {
             if (isIdle) {
@@ -1170,30 +1223,35 @@
         window.addEventListener('keydown', updateActivity, { passive: true });
         window.addEventListener('touchstart', updateActivity, { passive: true });
 
-        // Single loop for ALL visual updates
+        // Single loop for ALL visual updates - with frame skipping for performance
         gsap.ticker.add((time) => {
+            frameCount++;
+
             // Check idle state
             if (!lenis.isScrolling && Date.now() - lastActivity > IDLE_THRESHOLD) {
                 if (!isIdle) {
                     isIdle = true;
-                    // We don't sleep the ticker completely because we need to check for activity, 
-                    // but we can skip heavy updates. 
-                    // Or better, let GSAP sleep itself (it does by default if no animations), 
-                    // but we have manual updates here.
-                    // Effectively we just skip our manual updates.
                 }
             }
 
             // Always update Lenis (it handles its own idle state mostly, but needs raf)
             lenis.raf(time * 1000);
 
-            // Skip visual effects if idle
+            // Skip visual effects if idle OR on alternate frames for performance
+            // Cursor updates every frame, but magnetic/tilt only every 2nd frame
             if (!isIdle && isDesktop) {
-                cursorManager.update();
-                magneticManager.update();
-                tiltManager.update();
+                cursorManager.update(); // Keep cursor smooth
+
+                // Update magnetic and tilt effects every 2 frames to reduce load
+                if (frameCount % 2 === 0) {
+                    magneticManager.update();
+                    tiltManager.update();
+                }
             }
         });
+
+        // Initialize Icons after DOM is ready
+        lucide.createIcons();
 
         // ===== GSAP ScrollTrigger Animations =====
         // Text Reveal Animations
