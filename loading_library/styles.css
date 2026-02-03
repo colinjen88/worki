@@ -646,99 +646,7 @@ body {
 
 
 /* --- GROUP C: TECH --- */
-
-/* 15. Cyber Glitch Text */
-.ld-tech-1 {
-    font-family: monospace;
-    font-weight: bold;
-    font-size: 14px;
-    color: var(--accent);
-    position: relative;
-}
-
-.ld-tech-1::before,
-.ld-tech-1::after {
-    content: attr(data-text);
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0.8;
-}
-
-.ld-tech-1::before {
-    color: var(--primary);
-    animation: ld-tech-1-glitch 2s infinite;
-    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
-    transform: translate(-2px, -2px);
-}
-
-.ld-tech-1::after {
-    color: var(--secondary);
-    animation: ld-tech-1-glitch 2s infinite reverse;
-    clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
-    transform: translate(2px, 2px);
-}
-
-@keyframes ld-tech-1-glitch {
-    0% {
-        transform: translate(0);
-    }
-
-    20% {
-        transform: translate(-2px, 2px);
-    }
-
-    40% {
-        transform: translate(-2px, -2px);
-    }
-
-    60% {
-        transform: translate(2px, 2px);
-    }
-
-    80% {
-        transform: translate(2px, -2px);
-    }
-
-    100% {
-        transform: translate(0);
-    }
-}
-
-/* 16. Radar Scan */
-.ld-tech-2 {
-    width: 50px;
-    height: 50px;
-    border: 2px solid var(--primary);
-    border-radius: 50%;
-    position: relative;
-    overflow: hidden;
-    background: rgba(99, 102, 241, 0.1);
-}
-
-.ld-tech-2::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 50%;
-    height: 50%;
-    background: linear-gradient(45deg, transparent 50%, var(--primary) 100%);
-    transform-origin: top left;
-    animation: rotate 2s infinite linear;
-}
-
-.ld-tech-2::before {
-    content: '';
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: var(--accent);
-    border-radius: 50%;
-    top: 10px;
-    left: 20px;
-    animation: opacity 1s infinite alternate;
-}
+/* (Removed Glitch, Radar, Data as requested) */
 
 /* 17. Circuit Path */
 .ld-tech-3 {
@@ -775,40 +683,6 @@ body {
 
     100% {
         stroke-dashoffset: -100;
-    }
-}
-
-/* 18. Data Decoding */
-.ld-tech-4 {
-    font-family: monospace;
-    font-size: 14px;
-    color: var(--success);
-}
-
-.ld-tech-4::after {
-    content: '...';
-    animation: ld-tech-4-anim 1.5s infinite steps(4);
-}
-
-@keyframes ld-tech-4-anim {
-    0% {
-        content: '10';
-    }
-
-    25% {
-        content: '01';
-    }
-
-    50% {
-        content: '00';
-    }
-
-    75% {
-        content: '11';
-    }
-
-    100% {
-        content: '10';
     }
 }
 
@@ -959,10 +833,8 @@ body {
     transform: translateX(-50%);
     animation: ld-min-2-ball 1s infinite alternate cubic-bezier(0.45, 0.05, 0.55, 0.95);
     margin-left: 0;
-    /* Handled by transform in animation context */
 }
 
-/* Actually easier to rotate the stick */
 .ld-min-2-wrap {
     transform-origin: top center;
     animation: ld-min-2-swing 1s infinite alternate ease-in-out;
