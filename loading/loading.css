@@ -1,0 +1,33 @@
+/* Loading Screen Styles */
+#loading-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background-color: #0f172a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.7s ease-out;
+}
+
+/* Shimmer Animation Keyframes */
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Utility classes for the loader (if not using Tailwind) */
+.loader-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loader-ring {
+    position: relative;
+    width: 5rem; /* 20 */
+    height: 5rem; /* 20 */
+}
+
+/* You can import this CSS in preview_loading.html */
