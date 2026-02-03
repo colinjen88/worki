@@ -1,0 +1,67 @@
+:root {
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --text-color: #e2e8f0;
+    --primary: #6366f1;
+    --secondary: #ec4899;
+    --accent: #22d3ee;
+    --success: #10b981;
+}
+
+body { background: var(--bg-color); color: var(--text-color); font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
+
+.loading-card {
+    background-color: var(--card-bg);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 12px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.loading-card:hover { 
+    transform: translateY(-5px); 
+    border-color: rgba(99, 102, 241, 0.3); 
+    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5); 
+}
+
+.portfolio-brand { margin-top: 20px; transition: opacity 0.3s; }
+
+/* Geometric Style */
+.brand-Geometric {
+    font-family: 'Inter', sans-serif; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 10px; color: #64748b;
+}
+.loading-card:hover .brand-Geometric { color: var(--primary); letter-spacing: 3px; transition: all 0.5s ease; }
+
+/* Fluid Style */
+.brand-Fluid {
+    font-family: sans-serif; font-weight: 500; letter-spacing: 1px; color: var(--secondary); opacity: 0.7; font-size: 10px;
+}
+.loading-card:hover .brand-Fluid { opacity: 1; letter-spacing: 2px; transition: all 0.5s ease; }
+
+/* Tech Style */
+.brand-Tech {
+    font-family: monospace; color: var(--accent); font-size: 10px; opacity: 0.7;
+}
+.brand-Tech::after { content: '_'; animation: blink 1s infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.loading-card:hover .brand-Tech { opacity: 1; text-shadow: 0 0 5px var(--accent); }
+
+/* Minimal Style */
+.brand-Minimal {
+    font-family: sans-serif; font-weight: 300; letter-spacing: 4px; font-size: 9px; color: var(--text-color); opacity: 0.5;
+}
+.loading-card:hover .brand-Minimal { opacity: 0.9; letter-spacing: 6px; transition: all 0.5s ease; }
+
+.ld-fluid-7 { width: 60px; height: 60px; position: relative; filter: blur(5px); }
+.ld-fluid-7 div { position: absolute; width: 20px; height: 20px; border-radius: 50%; background: white; opacity: 0.6; animation: ld-fluid-7-anim 2s infinite linear; }
+.ld-fluid-7 div:nth-child(1) { top: 0; left: 20px; } .ld-fluid-7 div:nth-child(2) { top: 20px; right: 0; animation-delay: -0.6s; background: var(--primary); }
+.ld-fluid-7 div:nth-child(3) { bottom: 0; left: 20px; animation-delay: -1.2s; background: var(--secondary); } .ld-fluid-7 div:nth-child(4) { top: 20px; left: 0; animation-delay: -1.8s; background: var(--accent); }
+@keyframes ld-fluid-7-anim { 0% { transform: rotate(0deg) translateX(10px) rotate(0deg); } 100% { transform: rotate(360deg) translateX(10px) rotate(-360deg); } }
+.brand-fluid-7 { filter: blur(0.8px); letter-spacing: 2px; opacity: 0.6; }

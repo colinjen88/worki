@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lottie Loading - WANG Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Load Lottie Web Player -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+</head>
+
+<body>
+
+    <div id="lottie-container"></div>
+    <div class="portfolio-brand">WANG Portfolio . LOTTIE</div>
+
+    <script>
+        // Initialize Lottie Animation
+        var animation = lottie.loadAnimation({
+            container: document.getElementById('lottie-container'), // the dom element that will contain the animation
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            // Using a high-quality tech loading animation from LottieFiles (public URL)
+            path: 'https://lottie.host/80261313-9a3b-4819-bf95-97210e7561f5/l6H8YcZf5a.json'
+            // Alternative backup: 'https://assets9.lottiefiles.com/packages/lf20_b88nh30c.json'
+        });
+
+        // Add some interaction
+        document.getElementById('lottie-container').addEventListener('click', function () {
+            animation.stop();
+            animation.play();
+        });
+    </script>
+</body>
+
+</html>

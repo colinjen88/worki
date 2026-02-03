@@ -31,3 +31,24 @@
 
 ---
 *本報告已由 Antigravity 助手協助完成優化實作。*
+
+### 2026-02-03 追加優化紀錄 (P0 - Touchpad & Loading)
+針對使用者回饋的觸控板卡頓與手機載入慢問題，進行了第二波深度優化：
+
+1.  **觸控板滾動卡頓修復 (Critical)**
+    -   **問題**：Lenis 的 `smoothWheel` 在 Windows Precision Touchpad 上會產生大量微小事件導致卡頓。
+    -   **解法**：停用 Lenis 的 `smoothWheel`，改回**瀏覽器原生滾動**，僅保留程式觸發的平滑滾動 (Anchor links)。徹底解決觸控板延遲問題。
+
+2.  **導航點擊延遲修復**
+    -   **問題**：Lenis 的 `scrollTo` 在停用 smoothWheel 後反應遲鈍。
+    -   **解法**：改用原生 `element.scrollIntoView({ behavior: 'smooth' })`，點擊導航連結即時反應。
+
+3.  **手機版載入優化 & Loading 畫面**
+    -   **新增 Loading Screen**：實作全螢幕深色載入畫面 (Spinner)，確保字體與關鍵樣式載入完成後才顯示內容。
+    -   **影片延遲載入 (Lazy Load)**：將 `autoplay` 影片改為 Intersection Observer 控制，進入視窗才載入播放，大幅降低初始載入流量與記憶體占用。
+    -   **Preconnect**：預先連接 Google Fonts 與 CDN 網域。
+
+4.  **視覺算圖效能優化**
+    -   **Render Loop Frame Skipping**：滑鼠跟隨效果保留 60fps，但高耗能的 Magnetic/Tilt 效果改為**每 2 幀更新一次**，降低 50% 計算量。
+    -   **Backdrop Filter 降級**：將全站玻璃擬態模糊度從 `24px` 降至 `12px`，顯著降低 GPU 繪製過載 (Overdraw)。
+    -   **CSS Containment**：對 Blob 背景動畫加入 `contain: strict`，避免影響全頁 Layout。
