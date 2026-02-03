@@ -62,3 +62,6 @@ body { background: var(--bg-color); color: var(--text-color); font-family: 'Inte
 .ld-min-2-wrap { transform-origin: top center; animation: ld-min-2-swing 1s infinite alternate ease-in-out; width: 2px; height: 25px; background: var(--text-color); margin: 0 auto; position: relative; }
 .ld-min-2-wrap::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 8px; height: 8px; background: var(--text-color); border-radius: 50%; }
 @keyframes ld-min-2-swing { from { transform: rotate(-30deg); } to { transform: rotate(30deg); } }
+/* Unique Brand Style */
+.brand-min-2 { display: inline-block; transform-origin: top center; animation: brand-min-2-swing 1s infinite alternate ease-in-out; }
+@keyframes brand-min-2-swing { from { transform: rotate(-2deg); } to { transform: rotate(2deg); } }

@@ -64,3 +64,5 @@ body { background: var(--bg-color); color: var(--text-color); font-family: 'Inte
 .ld-fluid-7 div:nth-child(1) { top: 0; left: 20px; } .ld-fluid-7 div:nth-child(2) { top: 20px; right: 0; animation-delay: -0.6s; background: var(--primary); }
 .ld-fluid-7 div:nth-child(3) { bottom: 0; left: 20px; animation-delay: -1.2s; background: var(--secondary); } .ld-fluid-7 div:nth-child(4) { top: 20px; left: 0; animation-delay: -1.8s; background: var(--accent); }
 @keyframes ld-fluid-7-anim { 0% { transform: rotate(0deg) translateX(10px) rotate(0deg); } 100% { transform: rotate(360deg) translateX(10px) rotate(-360deg); } }
+/* Unique Brand Style */
+.brand-fluid-7 { filter: blur(0.8px); letter-spacing: 2px; opacity: 0.6; }

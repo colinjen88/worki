@@ -64,3 +64,6 @@ body { background: var(--bg-color); color: var(--text-color); font-family: 'Inte
 .ld-geo-5 div:nth-child(1) { top: 0; left: 22.5px; } .ld-geo-5 div:nth-child(2) { bottom: 0; left: 22.5px; background: var(--secondary); }
 .ld-geo-5 div:nth-child(3) { top: 22.5px; left: 0; background: var(--accent); } .ld-geo-5 div:nth-child(4) { top: 22.5px; right: 0; background: white; }
 @keyframes rotate { 100% { transform: rotate(360deg); } }
+/* Unique Brand Style */
+.brand-geo-5 { letter-spacing: 2px; animation: brand-geo-5-space 2s infinite ease-in-out; }
+@keyframes brand-geo-5-space { 0%, 100% { letter-spacing: 2px; } 50% { letter-spacing: 6px; color: var(--accent); } }

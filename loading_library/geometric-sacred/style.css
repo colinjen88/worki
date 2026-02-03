@@ -63,3 +63,6 @@ body { background: var(--bg-color); color: var(--text-color); font-family: 'Inte
 .ld-geo-7::before, .ld-geo-7::after { content: ''; position: absolute; inset: 0; border: 3px solid var(--primary); border-radius: 4px; animation: ld-geo-7-anim 2s infinite linear; }
 .ld-geo-7::after { border-color: var(--secondary); animation-direction: reverse; transform: rotate(45deg); }
 @keyframes ld-geo-7-anim { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+/* Unique Brand Style */
+.brand-geo-7 { border-bottom: 1px solid var(--primary); padding-bottom: 2px; animation: brand-geo-7-border 2s infinite linear; display: inline-block; }
+@keyframes brand-geo-7-border { 0% { border-color: var(--primary); } 50% { border-color: var(--secondary); } 100% { border-color: var(--primary); } }

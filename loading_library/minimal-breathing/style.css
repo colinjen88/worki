@@ -61,3 +61,6 @@ body { background: var(--bg-color); color: var(--text-color); font-family: 'Inte
 
 .ld-min-1 { width: 12px; height: 12px; background: var(--text-color); border-radius: 50%; animation: ld-min-1-anim 1.5s infinite ease-in-out; }
 @keyframes ld-min-1-anim { 0%, 100% { transform: scale(0.5); opacity: 0.5; } 50% { transform: scale(1.5); opacity: 1; } }
+/* Unique Brand Style */
+.brand-min-1 { animation: brand-min-1-breath 1.5s infinite ease-in-out; }
+@keyframes brand-min-1-breath { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }

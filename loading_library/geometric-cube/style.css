@@ -65,3 +65,6 @@ body { background: var(--bg-color); color: var(--text-color); font-family: 'Inte
 .ld-geo-3 div:nth-child(3) { transform: rotateY(90deg) translateZ(20px); } .ld-geo-3 div:nth-child(4) { transform: rotateY(-90deg) translateZ(20px); }
 .ld-geo-3 div:nth-child(5) { transform: rotateX(90deg) translateZ(20px); } .ld-geo-3 div:nth-child(6) { transform: rotateX(-90deg) translateZ(20px); }
 @keyframes ld-geo-3-spin { 0% { transform: rotateX(0deg) rotateY(0deg); } 100% { transform: rotateX(360deg) rotateY(360deg); } }
+/* Unique Brand Style */
+.brand-geo-3 { transform-style: preserve-3d; animation: brand-geo-3-flip 3s infinite linear; display: inline-block; }
+@keyframes brand-geo-3-flip { 0% { transform: rotateX(0deg); } 25% { transform: rotateX(10deg); } 75% { transform: rotateX(-10deg); } 100% { transform: rotateX(0deg); } }

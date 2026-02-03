@@ -64,3 +64,6 @@ body { background: var(--bg-color); color: var(--text-color); font-family: 'Inte
 .ld-fluid-1::before, .ld-fluid-1::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 20px; height: 20px; background: var(--secondary); border-radius: 50%; animation: ld-fluid-1-anim 2s infinite ease-in-out; }
 .ld-fluid-1::after { animation-delay: -1s; background: var(--primary); }
 @keyframes ld-fluid-1-anim { 0% { transform: translate(-50%, -50%) translateX(-20px); } 50% { transform: translate(-50%, -50%) translateX(20px); } 100% { transform: translate(-50%, -50%) translateX(-20px); } }
+/* Unique Brand Style */
+.brand-fluid-1 { filter: blur(0.5px); animation: brand-fluid-1-goo 2s infinite ease-in-out; }
+@keyframes brand-fluid-1-goo { 0%, 100% { filter: blur(0.5px); opacity: 0.8; } 50% { filter: blur(0px); opacity: 1; } }

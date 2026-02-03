@@ -13,133 +13,158 @@ const animations = [
     {
         id: 'geo-1', folder: 'geometric-morphing', name: 'Morphing Shape', category: 'Geometric',
         html: '<div class="ld-geo-1"></div>',
-        css: '.ld-geo-1 { width: 40px; height: 40px; background: var(--primary); animation: ld-geo-1-anim 2s infinite ease-in-out; }\n@keyframes ld-geo-1-anim { 0% { transform: perspective(120px) rotateX(0deg) rotateY(0deg); border-radius: 0; background: var(--primary); } 50% { transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg); border-radius: 50%; background: var(--secondary); } 100% { transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg); border-radius: 0; background: var(--primary); } }'
+        css: '.ld-geo-1 { width: 40px; height: 40px; background: var(--primary); animation: ld-geo-1-anim 2s infinite ease-in-out; }\n@keyframes ld-geo-1-anim { 0% { transform: perspective(120px) rotateX(0deg) rotateY(0deg); border-radius: 0; background: var(--primary); } 50% { transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg); border-radius: 50%; background: var(--secondary); } 100% { transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg); border-radius: 0; background: var(--primary); } }',
+        brandCss: '.brand-geo-1 { animation: brand-geo-1-anim 2s infinite ease-in-out; }\n@keyframes brand-geo-1-anim { 0%, 100% { color: var(--text-color); } 50% { color: var(--secondary); letter-spacing: 2px; } }'
     },
     {
         id: 'geo-2', folder: 'geometric-grid', name: 'Rhythmic Grid', category: 'Geometric',
         html: '<div class="ld-geo-2"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>',
-        css: '.ld-geo-2 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; width: 40px; }\n.ld-geo-2 span { width: 10px; height: 10px; background: var(--accent); animation: ld-geo-2-anim 1s infinite ease-in-out both; }\n.ld-geo-2 span:nth-child(1) { animation-delay: 0.1s; } .ld-geo-2 span:nth-child(2) { animation-delay: 0.2s; } .ld-geo-2 span:nth-child(3) { animation-delay: 0.3s; }\n.ld-geo-2 span:nth-child(4) { animation-delay: 0.2s; } .ld-geo-2 span:nth-child(5) { animation-delay: 0.3s; } .ld-geo-2 span:nth-child(6) { animation-delay: 0.4s; }\n.ld-geo-2 span:nth-child(7) { animation-delay: 0.3s; } .ld-geo-2 span:nth-child(8) { animation-delay: 0.4s; } .ld-geo-2 span:nth-child(9) { animation-delay: 0.5s; }\n@keyframes ld-geo-2-anim { 0%, 100% { opacity: 0.3; transform: scale(0.8); } 50% { opacity: 1; transform: scale(1); background: white; } }'
+        css: '.ld-geo-2 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; width: 40px; }\n.ld-geo-2 span { width: 10px; height: 10px; background: var(--accent); animation: ld-geo-2-anim 1s infinite ease-in-out both; }\n.ld-geo-2 span:nth-child(1) { animation-delay: 0.1s; } .ld-geo-2 span:nth-child(2) { animation-delay: 0.2s; } .ld-geo-2 span:nth-child(3) { animation-delay: 0.3s; }\n.ld-geo-2 span:nth-child(4) { animation-delay: 0.2s; } .ld-geo-2 span:nth-child(5) { animation-delay: 0.3s; } .ld-geo-2 span:nth-child(6) { animation-delay: 0.4s; }\n.ld-geo-2 span:nth-child(7) { animation-delay: 0.3s; } .ld-geo-2 span:nth-child(8) { animation-delay: 0.4s; } .ld-geo-2 span:nth-child(9) { animation-delay: 0.5s; }\n@keyframes ld-geo-2-anim { 0%, 100% { opacity: 0.3; transform: scale(0.8); } 50% { opacity: 1; transform: scale(1); background: white; } }',
+        brandCss: '.brand-geo-2 { display: inline-block; position: relative; }\n.brand-geo-2::after { content: ""; position: absolute; top: -5px; right: -5px; width: 4px; height: 4px; background: var(--accent); animation: brand-geo-2-dot 1s infinite; }\n@keyframes brand-geo-2-dot { 0%, 100% { opacity: 0; } 50% { opacity: 1; } }'
     },
     {
         id: 'geo-3', folder: 'geometric-cube', name: 'Spinning Cube 3D', category: 'Geometric',
         html: '<div class="ld-geo-3"><div></div><div></div><div></div><div></div><div></div><div></div></div>',
-        css: '.ld-geo-3 { width: 40px; height: 40px; transform-style: preserve-3d; animation: ld-geo-3-spin 3s infinite linear; }\n.ld-geo-3 div { position: absolute; width: 100%; height: 100%; border: 2px solid var(--secondary); opacity: 0.7; }\n.ld-geo-3 div:nth-child(1) { transform: translateZ(20px); } .ld-geo-3 div:nth-child(2) { transform: rotateY(180deg) translateZ(20px); }\n.ld-geo-3 div:nth-child(3) { transform: rotateY(90deg) translateZ(20px); } .ld-geo-3 div:nth-child(4) { transform: rotateY(-90deg) translateZ(20px); }\n.ld-geo-3 div:nth-child(5) { transform: rotateX(90deg) translateZ(20px); } .ld-geo-3 div:nth-child(6) { transform: rotateX(-90deg) translateZ(20px); }\n@keyframes ld-geo-3-spin { 0% { transform: rotateX(0deg) rotateY(0deg); } 100% { transform: rotateX(360deg) rotateY(360deg); } }'
+        css: '.ld-geo-3 { width: 40px; height: 40px; transform-style: preserve-3d; animation: ld-geo-3-spin 3s infinite linear; }\n.ld-geo-3 div { position: absolute; width: 100%; height: 100%; border: 2px solid var(--secondary); opacity: 0.7; }\n.ld-geo-3 div:nth-child(1) { transform: translateZ(20px); } .ld-geo-3 div:nth-child(2) { transform: rotateY(180deg) translateZ(20px); }\n.ld-geo-3 div:nth-child(3) { transform: rotateY(90deg) translateZ(20px); } .ld-geo-3 div:nth-child(4) { transform: rotateY(-90deg) translateZ(20px); }\n.ld-geo-3 div:nth-child(5) { transform: rotateX(90deg) translateZ(20px); } .ld-geo-3 div:nth-child(6) { transform: rotateX(-90deg) translateZ(20px); }\n@keyframes ld-geo-3-spin { 0% { transform: rotateX(0deg) rotateY(0deg); } 100% { transform: rotateX(360deg) rotateY(360deg); } }',
+        brandCss: '.brand-geo-3 { transform-style: preserve-3d; animation: brand-geo-3-flip 3s infinite linear; display: inline-block; }\n@keyframes brand-geo-3-flip { 0% { transform: rotateX(0deg); } 25% { transform: rotateX(10deg); } 75% { transform: rotateX(-10deg); } 100% { transform: rotateX(0deg); } }'
     },
     {
         id: 'geo-4', folder: 'geometric-elastic', name: 'Elastic Band', category: 'Geometric',
         html: '<div class="ld-geo-4"><div></div><div></div><div></div></div>',
-        css: '.ld-geo-4 { display: flex; gap: 10px; }\n.ld-geo-4 div { width: 8px; height: 40px; background: var(--primary); animation: ld-geo-4-anim 1s infinite ease-in-out; }\n.ld-geo-4 div:nth-child(2) { animation-delay: 0.1s; height: 30px; background: var(--secondary); } .ld-geo-4 div:nth-child(3) { animation-delay: 0.2s; background: var(--accent); }\n@keyframes ld-geo-4-anim { 0%, 100% { transform: scaleY(0.5); } 50% { transform: scaleY(1.5); } }'
+        css: '.ld-geo-4 { display: flex; gap: 10px; }\n.ld-geo-4 div { width: 8px; height: 40px; background: var(--primary); animation: ld-geo-4-anim 1s infinite ease-in-out; }\n.ld-geo-4 div:nth-child(2) { animation-delay: 0.1s; height: 30px; background: var(--secondary); } .ld-geo-4 div:nth-child(3) { animation-delay: 0.2s; background: var(--accent); }\n@keyframes ld-geo-4-anim { 0%, 100% { transform: scaleY(0.5); } 50% { transform: scaleY(1.5); } }',
+        brandCss: '.brand-geo-4 { animation: brand-geo-4-stretch 1s infinite ease-in-out; display: inline-block; transform-origin: bottom; }\n@keyframes brand-geo-4-stretch { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(1.2); } }'
     },
     {
         id: 'geo-5', folder: 'geometric-orbit', name: 'Orbiting Dots', category: 'Geometric',
         html: '<div class="ld-geo-5"><div></div><div></div><div></div><div></div></div>',
-        css: '.ld-geo-5 { width: 60px; height: 60px; position: relative; animation: rotate 2s linear infinite; }\n.ld-geo-5 div { position: absolute; width: 15px; height: 15px; border-radius: 50%; background: var(--primary); }\n.ld-geo-5 div:nth-child(1) { top: 0; left: 22.5px; } .ld-geo-5 div:nth-child(2) { bottom: 0; left: 22.5px; background: var(--secondary); }\n.ld-geo-5 div:nth-child(3) { top: 22.5px; left: 0; background: var(--accent); } .ld-geo-5 div:nth-child(4) { top: 22.5px; right: 0; background: white; }\n@keyframes rotate { 100% { transform: rotate(360deg); } }'
+        css: '.ld-geo-5 { width: 60px; height: 60px; position: relative; animation: rotate 2s linear infinite; }\n.ld-geo-5 div { position: absolute; width: 15px; height: 15px; border-radius: 50%; background: var(--primary); }\n.ld-geo-5 div:nth-child(1) { top: 0; left: 22.5px; } .ld-geo-5 div:nth-child(2) { bottom: 0; left: 22.5px; background: var(--secondary); }\n.ld-geo-5 div:nth-child(3) { top: 22.5px; left: 0; background: var(--accent); } .ld-geo-5 div:nth-child(4) { top: 22.5px; right: 0; background: white; }\n@keyframes rotate { 100% { transform: rotate(360deg); } }',
+        brandCss: '.brand-geo-5 { letter-spacing: 2px; animation: brand-geo-5-space 2s infinite ease-in-out; }\n@keyframes brand-geo-5-space { 0%, 100% { letter-spacing: 2px; } 50% { letter-spacing: 6px; color: var(--accent); } }'
     },
     {
         id: 'geo-6', folder: 'geometric-mosaic', name: 'Mosaic Reveal', category: 'Geometric',
         html: '<div class="ld-geo-6"><div></div><div></div><div></div><div></div></div>',
-        css: '.ld-geo-6 { width: 40px; height: 40px; display: flex; flex-wrap: wrap; animation: rotate 4s linear infinite; }\n.ld-geo-6 div { width: 50%; height: 50%; background-color: var(--primary); animation: ld-geo-6-anim 2s infinite ease-in-out; }\n.ld-geo-6 div:nth-child(2) { background-color: var(--secondary); animation-delay: 0.5s; } .ld-geo-6 div:nth-child(3) { background-color: var(--accent); animation-delay: 1s; } .ld-geo-6 div:nth-child(4) { background-color: white; animation-delay: 1.5s; }\n@keyframes ld-geo-6-anim { 0%, 100% { transform: scale(0); opacity: 0; } 50% { transform: scale(1); opacity: 1; } }'
+        css: '.ld-geo-6 { width: 40px; height: 40px; display: flex; flex-wrap: wrap; animation: rotate 4s linear infinite; }\n.ld-geo-6 div { width: 50%; height: 50%; background-color: var(--primary); animation: ld-geo-6-anim 2s infinite ease-in-out; }\n.ld-geo-6 div:nth-child(2) { background-color: var(--secondary); animation-delay: 0.5s; } .ld-geo-6 div:nth-child(3) { background-color: var(--accent); animation-delay: 1s; } .ld-geo-6 div:nth-child(4) { background-color: white; animation-delay: 1.5s; }\n@keyframes ld-geo-6-anim { 0%, 100% { transform: scale(0); opacity: 0; } 50% { transform: scale(1); opacity: 1; } }',
+        brandCss: '.brand-geo-6 { clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); animation: brand-geo-6-reveal 4s infinite steps(2); }\n@keyframes brand-geo-6-reveal { 0% { opacity: 0.5; } 50% { opacity: 1; color: var(--primary); } }'
     },
     {
         id: 'geo-7', folder: 'geometric-sacred', name: 'Sacred Geometry', category: 'Geometric',
         html: '<div class="ld-geo-7"></div>',
-        css: '.ld-geo-7 { width: 50px; height: 50px; position: relative; }\n.ld-geo-7::before, .ld-geo-7::after { content: \'\'; position: absolute; inset: 0; border: 3px solid var(--primary); border-radius: 4px; animation: ld-geo-7-anim 2s infinite linear; }\n.ld-geo-7::after { border-color: var(--secondary); animation-direction: reverse; transform: rotate(45deg); }\n@keyframes ld-geo-7-anim { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }'
+        css: '.ld-geo-7 { width: 50px; height: 50px; position: relative; }\n.ld-geo-7::before, .ld-geo-7::after { content: \'\'; position: absolute; inset: 0; border: 3px solid var(--primary); border-radius: 4px; animation: ld-geo-7-anim 2s infinite linear; }\n.ld-geo-7::after { border-color: var(--secondary); animation-direction: reverse; transform: rotate(45deg); }\n@keyframes ld-geo-7-anim { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }',
+        brandCss: '.brand-geo-7 { border-bottom: 1px solid var(--primary); padding-bottom: 2px; animation: brand-geo-7-border 2s infinite linear; display: inline-block; }\n@keyframes brand-geo-7-border { 0% { border-color: var(--primary); } 50% { border-color: var(--secondary); } 100% { border-color: var(--primary); } }'
     },
 
     // GROUP B: FLUID
     {
         id: 'fluid-1', folder: 'fluid-gooey', name: 'Gooey Balls', category: 'Fluid',
         html: '<div class="ld-fluid-1-filter"><div class="ld-fluid-1"></div></div>',
-        css: '.ld-fluid-1-filter { filter: url(\'#goo\'); width: 100px; height: 100px; position: absolute; display: flex; justify-content: center; align-items: center; }\n.ld-fluid-1 { position: relative; width: 100%; height: 100%; }\n.ld-fluid-1::before, .ld-fluid-1::after { content: \'\'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 20px; height: 20px; background: var(--secondary); border-radius: 50%; animation: ld-fluid-1-anim 2s infinite ease-in-out; }\n.ld-fluid-1::after { animation-delay: -1s; background: var(--primary); }\n@keyframes ld-fluid-1-anim { 0% { transform: translate(-50%, -50%) translateX(-20px); } 50% { transform: translate(-50%, -50%) translateX(20px); } 100% { transform: translate(-50%, -50%) translateX(-20px); } }'
+        css: '.ld-fluid-1-filter { filter: url(\'#goo\'); width: 100px; height: 100px; position: absolute; display: flex; justify-content: center; align-items: center; }\n.ld-fluid-1 { position: relative; width: 100%; height: 100%; }\n.ld-fluid-1::before, .ld-fluid-1::after { content: \'\'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 20px; height: 20px; background: var(--secondary); border-radius: 50%; animation: ld-fluid-1-anim 2s infinite ease-in-out; }\n.ld-fluid-1::after { animation-delay: -1s; background: var(--primary); }\n@keyframes ld-fluid-1-anim { 0% { transform: translate(-50%, -50%) translateX(-20px); } 50% { transform: translate(-50%, -50%) translateX(20px); } 100% { transform: translate(-50%, -50%) translateX(-20px); } }',
+        brandCss: '.brand-fluid-1 { filter: blur(0.5px); animation: brand-fluid-1-goo 2s infinite ease-in-out; }\n@keyframes brand-fluid-1-goo { 0%, 100% { filter: blur(0.5px); opacity: 0.8; } 50% { filter: blur(0px); opacity: 1; } }'
     },
     {
         id: 'fluid-2', folder: 'fluid-wave', name: 'Wave Motion', category: 'Fluid',
         html: '<div class="ld-fluid-2"><div></div><div></div><div></div><div></div><div></div></div>',
-        css: '.ld-fluid-2 { display: flex; gap: 5px; }\n.ld-fluid-2 div { width: 6px; height: 40px; background: linear-gradient(to top, var(--primary), var(--accent)); border-radius: 99px; animation: ld-fluid-2-anim 1s infinite ease-in-out; }\n.ld-fluid-2 div:nth-child(odd) { animation-direction: reverse; background: linear-gradient(to top, var(--secondary), var(--primary)); }\n@keyframes ld-fluid-2-anim { 0%, 100% { height: 10px; opacity: 0.5; } 50% { height: 40px; opacity: 1; } }'
+        css: '.ld-fluid-2 { display: flex; gap: 5px; }\n.ld-fluid-2 div { width: 6px; height: 40px; background: linear-gradient(to top, var(--primary), var(--accent)); border-radius: 99px; animation: ld-fluid-2-anim 1s infinite ease-in-out; }\n.ld-fluid-2 div:nth-child(odd) { animation-direction: reverse; background: linear-gradient(to top, var(--secondary), var(--primary)); }\n@keyframes ld-fluid-2-anim { 0%, 100% { height: 10px; opacity: 0.5; } 50% { height: 40px; opacity: 1; } }',
+        brandCss: '.brand-fluid-2 { display: inline-block; animation: brand-fluid-2-wave 1s infinite ease-in-out; transform-origin: center; }\n@keyframes brand-fluid-2-wave { 0%, 100% { transform: skewX(0deg); } 50% { transform: skewX(-10deg); color: var(--accent); } }'
     },
     {
         id: 'fluid-3', folder: 'fluid-bubble', name: 'Bubble Rise', category: 'Fluid',
         html: '<div class="ld-fluid-3"></div>',
-        css: '.ld-fluid-3 { width: 40px; height: 40px; border: 2px solid rgba(255,255,255,0.1); border-radius: 50%; position: relative; overflow: hidden; }\n.ld-fluid-3::after { content: \'\'; position: absolute; bottom: -50%; left: -50%; width: 200%; height: 200%; background: var(--primary); border-radius: 40%; animation: ld-fluid-3-anim 3s infinite linear; opacity: 0.8; }\n@keyframes ld-fluid-3-anim { 0% { transform: translateY(0) rotate(0deg); } 100% { transform: translateY(-30px) rotate(360deg); } }'
+        css: '.ld-fluid-3 { width: 40px; height: 40px; border: 2px solid rgba(255,255,255,0.1); border-radius: 50%; position: relative; overflow: hidden; }\n.ld-fluid-3::after { content: \'\'; position: absolute; bottom: -50%; left: -50%; width: 200%; height: 200%; background: var(--primary); border-radius: 40%; animation: ld-fluid-3-anim 3s infinite linear; opacity: 0.8; }\n@keyframes ld-fluid-3-anim { 0% { transform: translateY(0) rotate(0deg); } 100% { transform: translateY(-30px) rotate(360deg); } }',
+        brandCss: '.brand-fluid-3 { animation: brand-fluid-3-float 3s infinite ease-in-out; display: inline-block; }\n@keyframes brand-fluid-3-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }'
     },
     {
         id: 'fluid-4', folder: 'fluid-paint', name: 'Paint Drop', category: 'Fluid',
         html: '<div class="ld-fluid-4"></div>',
-        css: '.ld-fluid-4 { width: 15px; height: 15px; background: var(--secondary); border-radius: 50%; position: relative; animation: ld-fluid-4-drop 1.5s infinite cubic-bezier(0.5, 0, 1, 0.5); }\n.ld-fluid-4::after { content: \'\'; position: absolute; top: 0; left: 0; right: 0; bottom: 0; border-radius: 50%; border: 1px solid var(--secondary); opacity: 0; animation: ld-fluid-4-ripple 1.5s infinite cubic-bezier(0, 0.2, 0.8, 1); }\n@keyframes ld-fluid-4-drop { 0% { transform: translateY(-20px); } 50% { transform: translateY(10px) scaleY(0.8); } 100% { transform: translateY(-20px); } }\n@keyframes ld-fluid-4-ripple { 40% { transform: scale(1); opacity: 1; } 100% { transform: scale(3); opacity: 0; } }'
+        css: '.ld-fluid-4 { width: 15px; height: 15px; background: var(--secondary); border-radius: 50%; position: relative; animation: ld-fluid-4-drop 1.5s infinite cubic-bezier(0.5, 0, 1, 0.5); }\n.ld-fluid-4::after { content: \'\'; position: absolute; top: 0; left: 0; right: 0; bottom: 0; border-radius: 50%; border: 1px solid var(--secondary); opacity: 0; animation: ld-fluid-4-ripple 1.5s infinite cubic-bezier(0, 0.2, 0.8, 1); }\n@keyframes ld-fluid-4-drop { 0% { transform: translateY(-20px); } 50% { transform: translateY(10px) scaleY(0.8); } 100% { transform: translateY(-20px); } }\n@keyframes ld-fluid-4-ripple { 40% { transform: scale(1); opacity: 1; } 100% { transform: scale(3); opacity: 0; } }',
+        brandCss: '.brand-fluid-4 { position: relative; }\n.brand-fluid-4::after { content: "."; position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); color: var(--secondary); animation: brand-fluid-4-drip 1.5s infinite; opacity: 0; }\n@keyframes brand-fluid-4-drip { 0% { transform: translate(-50%, -5px); opacity: 1; } 100% { transform: translate(-50%, 5px); opacity: 0; } }'
     },
     {
         id: 'fluid-5', folder: 'fluid-jelly', name: 'Jelly Box', category: 'Fluid',
         html: '<div class="ld-fluid-5"></div>',
-        css: '.ld-fluid-5 { width: 30px; height: 30px; background: var(--accent); border-radius: 4px; animation: ld-fluid-5-anim 0.8s infinite alternate cubic-bezier(0.5, 0.05, 0.1, 0.3); }\n@keyframes ld-fluid-5-anim { 0% { transform: translateY(0) scale(1, 1); border-radius: 4px; } 100% { transform: translateY(-20px) scale(0.9, 1.1); border-radius: 12px; } }'
+        css: '.ld-fluid-5 { width: 30px; height: 30px; background: var(--accent); border-radius: 4px; animation: ld-fluid-5-anim 0.8s infinite alternate cubic-bezier(0.5, 0.05, 0.1, 0.3); }\n@keyframes ld-fluid-5-anim { 0% { transform: translateY(0) scale(1, 1); border-radius: 4px; } 100% { transform: translateY(-20px) scale(0.9, 1.1); border-radius: 12px; } }',
+        brandCss: '.brand-fluid-5 { display: inline-block; animation: brand-fluid-5-jelly 0.8s infinite alternate; }\n@keyframes brand-fluid-5-jelly { 0% { transform: scaleX(1); } 100% { transform: scaleX(1.1); } }'
     },
     {
         id: 'fluid-6', folder: 'fluid-energy', name: 'Energy Flow', category: 'Fluid',
         html: '<div class="ld-fluid-6"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" /></svg></div>',
-        css: '.ld-fluid-6 { width: 50px; height: 50px; position: relative; }\n.ld-fluid-6 svg { width: 100%; height: 100%; animation: rotate 3s linear infinite; }\n.ld-fluid-6 circle { fill: none; stroke: var(--primary); stroke-width: 4; stroke-dasharray: 80; stroke-dashoffset: 80; stroke-linecap: round; animation: ld-fluid-6-dash 2s infinite ease-in-out; }\n@keyframes ld-fluid-6-dash { 0% { stroke-dashoffset: 80; } 50% { stroke-dashoffset: 20; transform: rotate(135deg); } 100% { stroke-dashoffset: 80; transform: rotate(450deg); } }'
+        css: '.ld-fluid-6 { width: 50px; height: 50px; position: relative; }\n.ld-fluid-6 svg { width: 100%; height: 100%; animation: rotate 3s linear infinite; }\n.ld-fluid-6 circle { fill: none; stroke: var(--primary); stroke-width: 4; stroke-dasharray: 80; stroke-dashoffset: 80; stroke-linecap: round; animation: ld-fluid-6-dash 2s infinite ease-in-out; }\n@keyframes ld-fluid-6-dash { 0% { stroke-dashoffset: 80; } 50% { stroke-dashoffset: 20; transform: rotate(135deg); } 100% { stroke-dashoffset: 80; transform: rotate(450deg); } }',
+        brandCss: '.brand-fluid-6 { text-shadow: 0 0 2px var(--primary); animation: brand-fluid-6-glow 3s infinite; }\n@keyframes brand-fluid-6-glow { 0%, 100% { text-shadow: 0 0 2px var(--primary); opacity: 0.7; } 50% { text-shadow: 0 0 8px var(--primary); opacity: 1; } }'
     },
     {
         id: 'fluid-7', folder: 'fluid-smoke', name: 'Smoke Twirl', category: 'Fluid',
         html: '<div class="ld-fluid-7"><div></div><div></div><div></div><div></div></div>',
-        css: '.ld-fluid-7 { width: 60px; height: 60px; position: relative; filter: blur(5px); }\n.ld-fluid-7 div { position: absolute; width: 20px; height: 20px; border-radius: 50%; background: white; opacity: 0.6; animation: ld-fluid-7-anim 2s infinite linear; }\n.ld-fluid-7 div:nth-child(1) { top: 0; left: 20px; } .ld-fluid-7 div:nth-child(2) { top: 20px; right: 0; animation-delay: -0.6s; background: var(--primary); }\n.ld-fluid-7 div:nth-child(3) { bottom: 0; left: 20px; animation-delay: -1.2s; background: var(--secondary); } .ld-fluid-7 div:nth-child(4) { top: 20px; left: 0; animation-delay: -1.8s; background: var(--accent); }\n@keyframes ld-fluid-7-anim { 0% { transform: rotate(0deg) translateX(10px) rotate(0deg); } 100% { transform: rotate(360deg) translateX(10px) rotate(-360deg); } }'
+        css: '.ld-fluid-7 { width: 60px; height: 60px; position: relative; filter: blur(5px); }\n.ld-fluid-7 div { position: absolute; width: 20px; height: 20px; border-radius: 50%; background: white; opacity: 0.6; animation: ld-fluid-7-anim 2s infinite linear; }\n.ld-fluid-7 div:nth-child(1) { top: 0; left: 20px; } .ld-fluid-7 div:nth-child(2) { top: 20px; right: 0; animation-delay: -0.6s; background: var(--primary); }\n.ld-fluid-7 div:nth-child(3) { bottom: 0; left: 20px; animation-delay: -1.2s; background: var(--secondary); } .ld-fluid-7 div:nth-child(4) { top: 20px; left: 0; animation-delay: -1.8s; background: var(--accent); }\n@keyframes ld-fluid-7-anim { 0% { transform: rotate(0deg) translateX(10px) rotate(0deg); } 100% { transform: rotate(360deg) translateX(10px) rotate(-360deg); } }',
+        brandCss: '.brand-fluid-7 { filter: blur(0.8px); letter-spacing: 2px; opacity: 0.6; }'
     },
 
     // GROUP C: TECH
     {
         id: 'tech-3', folder: 'tech-circuit', name: 'Circuit Path', category: 'Tech',
         html: '<div class="ld-tech-3"><svg viewBox="0 0 100 100"><path d="M10,50 Q25,25 50,50 T90,50" /></svg></div>',
-        css: '.ld-tech-3 { width: 50px; height: 50px; position: relative; display: flex; justify-content: center; align-items: center; }\n.ld-tech-3 svg { width: 100%; height: 100%; }\n.ld-tech-3 path { fill: none; stroke: var(--accent); stroke-width: 2; stroke-dasharray: 100; stroke-dashoffset: 100; animation: ld-tech-3-anim 2s infinite ease-in-out; }\n@keyframes ld-tech-3-anim { 0% { stroke-dashoffset: 100; } 50% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -100; } }'
+        css: '.ld-tech-3 { width: 50px; height: 50px; position: relative; display: flex; justify-content: center; align-items: center; }\n.ld-tech-3 svg { width: 100%; height: 100%; }\n.ld-tech-3 path { fill: none; stroke: var(--accent); stroke-width: 2; stroke-dasharray: 100; stroke-dashoffset: 100; animation: ld-tech-3-anim 2s infinite ease-in-out; }\n@keyframes ld-tech-3-anim { 0% { stroke-dashoffset: 100; } 50% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -100; } }',
+        brandCss: '.brand-tech-3 { border-bottom: 2px solid var(--accent); width: 0; white-space: nowrap; overflow: hidden; animation: brand-tech-3-draw 2s infinite ease-in-out; display: inline-block; }\n@keyframes brand-tech-3-draw { 0% { width: 0; opacity: 0.5; } 50% { width: 100%; opacity: 1; } 100% { width: 0; opacity: 0.5; border-right: none; } }'
     },
     {
         id: 'tech-5', folder: 'tech-neon', name: 'Neon Pulse', category: 'Tech',
         html: '<div class="ld-tech-5"></div>',
-        css: '.ld-tech-5 { width: 40px; height: 40px; background: var(--bg-color); border-radius: 50%; box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.7); animation: ld-tech-5-pulse 1.5s infinite cubic-bezier(0.66, 0, 0, 1); }\n@keyframes ld-tech-5-pulse { to { box-shadow: 0 0 0 20px rgba(34, 211, 238, 0); } }'
+        css: '.ld-tech-5 { width: 40px; height: 40px; background: var(--bg-color); border-radius: 50%; box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.7); animation: ld-tech-5-pulse 1.5s infinite cubic-bezier(0.66, 0, 0, 1); }\n@keyframes ld-tech-5-pulse { to { box-shadow: 0 0 0 20px rgba(34, 211, 238, 0); } }',
+        brandCss: '.brand-tech-5 { color: #fff; text-shadow: 0 0 5px var(--accent), 0 0 10px var(--accent); animation: brand-tech-5-flicker 1.5s infinite; }\n@keyframes brand-tech-5-flicker { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; text-shadow: 0 0 2px var(--accent); } }'
     },
     {
         id: 'tech-6', folder: 'tech-digital', name: 'Digital Bar', category: 'Tech',
         html: '<div class="ld-tech-6"><div></div><div></div><div></div><div></div><div></div></div>',
-        css: '.ld-tech-6 { width: 60px; height: 10px; border: 1px solid var(--primary); padding: 2px; display: flex; gap: 2px; }\n.ld-tech-6 div { flex: 1; background: var(--primary); opacity: 0; animation: ld-tech-6-anim 1.5s infinite; }\n.ld-tech-6 div:nth-child(1) { animation-delay: 0.1s; } .ld-tech-6 div:nth-child(2) { animation-delay: 0.2s; }\n.ld-tech-6 div:nth-child(3) { animation-delay: 0.3s; } .ld-tech-6 div:nth-child(4) { animation-delay: 0.4s; }\n.ld-tech-6 div:nth-child(5) { animation-delay: 0.5s; }\n@keyframes ld-tech-6-anim { 0%, 100% { opacity: 0; } 50% { opacity: 1; } }'
+        css: '.ld-tech-6 { width: 60px; height: 10px; border: 1px solid var(--primary); padding: 2px; display: flex; gap: 2px; }\n.ld-tech-6 div { flex: 1; background: var(--primary); opacity: 0; animation: ld-tech-6-anim 1.5s infinite; }\n.ld-tech-6 div:nth-child(1) { animation-delay: 0.1s; } .ld-tech-6 div:nth-child(2) { animation-delay: 0.2s; }\n.ld-tech-6 div:nth-child(3) { animation-delay: 0.3s; } .ld-tech-6 div:nth-child(4) { animation-delay: 0.4s; }\n.ld-tech-6 div:nth-child(5) { animation-delay: 0.5s; }\n@keyframes ld-tech-6-anim { 0%, 100% { opacity: 0; } 50% { opacity: 1; } }',
+        brandCss: '.brand-tech-6 { background: linear-gradient(90deg, transparent, var(--primary), transparent); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: brand-tech-6-scan 2s infinite linear; }\n@keyframes brand-tech-6-scan { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }'
     },
     {
         id: 'tech-7', folder: 'tech-core', name: 'System Core', category: 'Tech',
         html: '<div class="ld-tech-7"></div>',
-        css: '.ld-tech-7 { width: 50px; height: 50px; border: 4px solid transparent; border-top-color: var(--accent); border-bottom-color: var(--accent); border-radius: 50%; animation: rotate 2s infinite linear; position: relative; }\n.ld-tech-7::after { content: \'\'; position: absolute; inset: 6px; border: 4px solid transparent; border-left-color: var(--secondary); border-right-color: var(--secondary); border-radius: 50%; animation: rotate 1s infinite reverse linear; }'
+        css: '.ld-tech-7 { width: 50px; height: 50px; border: 4px solid transparent; border-top-color: var(--accent); border-bottom-color: var(--accent); border-radius: 50%; animation: rotate 2s infinite linear; position: relative; }\n.ld-tech-7::after { content: \'\'; position: absolute; inset: 6px; border: 4px solid transparent; border-left-color: var(--secondary); border-right-color: var(--secondary); border-radius: 50%; animation: rotate 1s infinite reverse linear; }',
+        brandCss: '.brand-tech-7 { letter-spacing: 0px; animation: brand-tech-7-glitch 2s infinite; }\n@keyframes brand-tech-7-glitch { 0% { letter-spacing: 0px; } 20% { letter-spacing: 2px; color: var(--secondary); } 40% { letter-spacing: 0px; } 100% { letter-spacing: 0px; } }'
     },
 
     // GROUP D: MINIMAL
     {
         id: 'min-1', folder: 'minimal-breathing', name: 'Breathing Dot', category: 'Minimal',
         html: '<div class="ld-min-1"></div>',
-        css: '.ld-min-1 { width: 12px; height: 12px; background: var(--text-color); border-radius: 50%; animation: ld-min-1-anim 1.5s infinite ease-in-out; }\n@keyframes ld-min-1-anim { 0%, 100% { transform: scale(0.5); opacity: 0.5; } 50% { transform: scale(1.5); opacity: 1; } }'
+        css: '.ld-min-1 { width: 12px; height: 12px; background: var(--text-color); border-radius: 50%; animation: ld-min-1-anim 1.5s infinite ease-in-out; }\n@keyframes ld-min-1-anim { 0%, 100% { transform: scale(0.5); opacity: 0.5; } 50% { transform: scale(1.5); opacity: 1; } }',
+        brandCss: '.brand-min-1 { animation: brand-min-1-breath 1.5s infinite ease-in-out; }\n@keyframes brand-min-1-breath { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }'
     },
     {
         id: 'min-2', folder: 'minimal-pendulum', name: 'Pendulum', category: 'Minimal',
         html: '<div class="ld-min-2-wrap"></div>',
-        css: '.ld-min-2-wrap { transform-origin: top center; animation: ld-min-2-swing 1s infinite alternate ease-in-out; width: 2px; height: 25px; background: var(--text-color); margin: 0 auto; position: relative; }\n.ld-min-2-wrap::after { content: \'\'; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 8px; height: 8px; background: var(--text-color); border-radius: 50%; }\n@keyframes ld-min-2-swing { from { transform: rotate(-30deg); } to { transform: rotate(30deg); } }'
+        css: '.ld-min-2-wrap { transform-origin: top center; animation: ld-min-2-swing 1s infinite alternate ease-in-out; width: 2px; height: 25px; background: var(--text-color); margin: 0 auto; position: relative; }\n.ld-min-2-wrap::after { content: \'\'; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 8px; height: 8px; background: var(--text-color); border-radius: 50%; }\n@keyframes ld-min-2-swing { from { transform: rotate(-30deg); } to { transform: rotate(30deg); } }',
+        brandCss: '.brand-min-2 { display: inline-block; transform-origin: top center; animation: brand-min-2-swing 1s infinite alternate ease-in-out; }\n@keyframes brand-min-2-swing { from { transform: rotate(-2deg); } to { transform: rotate(2deg); } }'
     },
     {
         id: 'min-3', folder: 'minimal-progress', name: 'Line Progress', category: 'Minimal',
         html: '<div class="ld-min-3"></div>',
-        css: '.ld-min-3 { width: 80px; height: 2px; background: rgba(255,255,255,0.1); position: relative; overflow: hidden; }\n.ld-min-3::after { content: \'\'; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--text-color); transform: translateX(-100%); animation: ld-min-3-anim 1.5s infinite cubic-bezier(0.4, 0, 0.2, 1); }\n@keyframes ld-min-3-anim { 0% { transform: translateX(-100%); } 50% { transform: translateX(0); } 100% { transform: translateX(100%); } }'
+        css: '.ld-min-3 { width: 80px; height: 2px; background: rgba(255,255,255,0.1); position: relative; overflow: hidden; }\n.ld-min-3::after { content: \'\'; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--text-color); transform: translateX(-100%); animation: ld-min-3-anim 1.5s infinite cubic-bezier(0.4, 0, 0.2, 1); }\n@keyframes ld-min-3-anim { 0% { transform: translateX(-100%); } 50% { transform: translateX(0); } 100% { transform: translateX(100%); } }',
+        brandCss: '.brand-min-3 { border-bottom: 1px solid rgba(255,255,255,0.1); position: relative; display: inline-block; overflow: hidden; }\n.brand-min-3::after { content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 1px; background: var(--text-color); transform: translateX(-100%); animation: ld-min-3-anim 1.5s infinite cubic-bezier(0.4, 0, 0.2, 1); }'
     },
     {
         id: 'min-4', folder: 'minimal-orbit', name: 'Orbit', category: 'Minimal',
         html: '<div class="ld-min-4"></div>',
-        css: '.ld-min-4 { width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; position: relative; }\n.ld-min-4::after { content: \'\'; position: absolute; top: -3px; left: 50%; transform: translateX(-50%); width: 6px; height: 6px; background: var(--text-color); border-radius: 50%; }\n.ld-min-4 { animation: rotate 2s infinite linear; }'
+        css: '.ld-min-4 { width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; position: relative; }\n.ld-min-4::after { content: \'\'; position: absolute; top: -3px; left: 50%; transform: translateX(-50%); width: 6px; height: 6px; background: var(--text-color); border-radius: 50%; }\n.ld-min-4 { animation: rotate 2s infinite linear; }',
+        brandCss: '.brand-min-4 { position: relative; display: inline-block; }\n.brand-min-4::before { content: ""; position: absolute; width: 4px; height: 4px; background: var(--text-color); border-radius: 50%; top: 50%; left: -10px; transform: translateY(-50%); animation: brand-min-4-dot 2s infinite ease-in-out; opacity: 0; }\n@keyframes brand-min-4-dot { 0% { opacity:0; left: -10px; } 50% { opacity:1; } 100% { opacity:0; left: 100px; } }'
     },
     {
         id: 'min-5', folder: 'minimal-typewriter', name: 'Typewriter', category: 'Minimal',
         html: '<div class="ld-min-5"><div></div><div></div><div></div></div>',
-        css: '.ld-min-5 { display: flex; gap: 4px; align-items: flex-end; height: 20px; }\n.ld-min-5 div { width: 4px; height: 4px; background: var(--text-color); border-radius: 50%; animation: ld-min-5-anim 1s infinite; }\n.ld-min-5 div:nth-child(2) { animation-delay: 0.2s; } .ld-min-5 div:nth-child(3) { animation-delay: 0.4s; }\n@keyframes ld-min-5-anim { 0%, 100% { opacity: 0.2; transform: translateY(0); } 50% { opacity: 1; transform: translateY(-5px); } }'
+        css: '.ld-min-5 { display: flex; gap: 4px; align-items: flex-end; height: 20px; }\n.ld-min-5 div { width: 4px; height: 4px; background: var(--text-color); border-radius: 50%; animation: ld-min-5-anim 1s infinite; }\n.ld-min-5 div:nth-child(2) { animation-delay: 0.2s; } .ld-min-5 div:nth-child(3) { animation-delay: 0.4s; }\n@keyframes ld-min-5-anim { 0%, 100% { opacity: 0.2; transform: translateY(0); } 50% { opacity: 1; transform: translateY(-5px); } }',
+        brandCss: '.brand-min-5 { overflow: hidden; white-space: nowrap; border-right: 2px solid var(--text-color); animation: brand-min-5-type 2s steps(14) infinite; display: inline-block; max-width: 0; }\n@keyframes brand-min-5-type { 0% { max-width: 0; } 50% { max-width: 100px; } 80% { max-width: 100px; } 100% { max-width: 0; } }'
     },
     {
         id: 'min-6', folder: 'minimal-grid', name: 'Fade Grid', category: 'Minimal',
         html: '<div class="ld-min-6"><div></div><div></div><div></div><div></div></div>',
-        css: '.ld-min-6 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px; width: 24px; }\n.ld-min-6 div { width: 10px; height: 10px; background: var(--text-color); animation: opacity 1s infinite alternate; }\n.ld-min-6 div:nth-child(2) { animation-delay: 0.5s; } .ld-min-6 div:nth-child(3) { animation-delay: 0.5s; } .ld-min-6 div:nth-child(4) { animation-delay: 1s; }'
+        css: '.ld-min-6 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px; width: 24px; }\n.ld-min-6 div { width: 10px; height: 10px; background: var(--text-color); animation: opacity 1s infinite alternate; }\n.ld-min-6 div:nth-child(2) { animation-delay: 0.5s; } .ld-min-6 div:nth-child(3) { animation-delay: 0.5s; } .ld-min-6 div:nth-child(4) { animation-delay: 1s; }',
+        brandCss: '.brand-min-6 { color: transparent; background: linear-gradient(90deg, var(--text-color) 50%, rgba(255,255,255,0.1) 50%); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; animation: brand-min-6-fade 2s infinite ease-in-out; }\n@keyframes brand-min-6-fade { 0% { background-position: 100% 0; } 100% { background-position: 0 0; } }'
     },
     {
         id: 'min-7', folder: 'minimal-sandglass', name: 'Sandglass', category: 'Minimal',
         html: '<div class="ld-min-7"></div>',
-        css: '.ld-min-7 { width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 15px solid var(--text-color); border-bottom: 15px solid var(--text-color); animation: ld-min-7-anim 2s infinite; }\n@keyframes ld-min-7-anim { 0% { transform: rotate(0deg); } 50% { transform: rotate(180deg); } 100% { transform: rotate(180deg); } }'
+        css: '.ld-min-7 { width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 15px solid var(--text-color); border-bottom: 15px solid var(--text-color); animation: ld-min-7-anim 2s infinite; }\n@keyframes ld-min-7-anim { 0% { transform: rotate(0deg); } 50% { transform: rotate(180deg); } 100% { transform: rotate(180deg); } }',
+        brandCss: '.brand-min-7 { animation: brand-min-7-flip 2s infinite ease-in-out; display: inline-block; }\n@keyframes brand-min-7-flip { 0%, 40% { transform: rotateX(0deg); } 90%, 100% { transform: rotateX(360deg); } }'
     }
 ];
 
@@ -150,14 +175,18 @@ animations.forEach(anim => {
     const dir = path.join(baseDir, anim.folder);
     ensureDir(dir);
 
-    // 1. Create style.css
-    const fullCss = baseCss + '\n' + anim.css;
+    // 1. Create style.css (Include base + anim + brand unique)
+    // We add the brandCss if it exists
+    const brandCssToAdd = anim.brandCss ? ('\n/* Unique Brand Style */\n' + anim.brandCss) : '';
+    const fullCss = baseCss + '\n' + anim.css + brandCssToAdd;
     fs.writeFileSync(path.join(dir, 'style.css'), fullCss);
 
     // 2. Create index.html (Preview)
     const gooSvg = '<svg style="position: absolute; width: 0; height: 0; overflow: hidden;"><defs><filter id="goo"><feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" /><feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" /><feComposite in="SourceGraphic" in2="goo" operator="atop"/></filter></defs></svg>';
 
-    const brandHtml = '<div class="portfolio-brand brand-' + anim.category + '">WANG Portfolio</div>';
+    // Add unique brand class
+    const brandClassUnique = anim.id ? ('brand-' + anim.id) : '';
+    const brandHtml = '<div class="portfolio-brand brand-' + anim.category + ' ' + brandClassUnique + '">WANG Portfolio</div>';
 
     const htmlContent = '<!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <title>' + anim.name + ' - WANG Portfolio</title>\n    <link rel="stylesheet" href="style.css">\n    ' + (anim.id === 'fluid-1' ? gooSvg : '') + '\n</head>\n<body>\n    <div style="display:flex; flex-direction:column; align-items:center; height: 100vh; justify-content: center;">\n        ' + anim.html + '\n        ' + brandHtml + '\n    </div>\n</body>\n</html>';
 
@@ -186,7 +215,8 @@ for (const [category, items] of Object.entries(groups)) {
     mainIndexHtml += '        <section>\n            <div class="flex items-center space-x-4 mb-8">\n                <div class="h-px bg-slate-700 flex-1"></div>\n                <h2 class="text-2xl font-bold ' + groupColors[category] + '">' + category + ' Collection</h2>\n                <div class="h-px bg-slate-700 flex-1"></div>\n            </div>\n            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">\n';
 
     items.forEach(anim => {
-        mainIndexHtml += '                <!-- ' + anim.name + ' -->\n                <a href="./' + anim.folder + '/index.html" target="_blank" class="loading-card">\n                    ' + anim.html + '\n                    <div class="portfolio-brand brand-' + category + '">WANG Portfolio</div>\n                </a>\n';
+        const brandClassUnique = anim.id ? ('brand-' + anim.id) : '';
+        mainIndexHtml += '                <!-- ' + anim.name + ' -->\n                <a href="./' + anim.folder + '/index.html" target="_blank" class="loading-card">\n                    ' + anim.html + '\n                    <div class="portfolio-brand brand-' + category + ' ' + brandClassUnique + '">WANG Portfolio</div>\n                </a>\n';
     });
 
     mainIndexHtml += '            </div>\n        </section>';
@@ -200,7 +230,9 @@ console.log('Generated main index.html');
 /* 4. Update Main Styles.css */
 let mainCssContent = baseCss;
 animations.forEach(anim => {
-    mainCssContent += '\n/* ' + anim.name + ' */\n' + anim.css + '\n';
+    // Add unique brand CSS to main styles
+    const brandCssToAdd = anim.brandCss ? ('\n' + anim.brandCss) : '';
+    mainCssContent += '\n/* ' + anim.name + ' */\n' + anim.css + brandCssToAdd + '\n';
 });
 fs.writeFileSync(path.join(baseDir, 'styles.css'), mainCssContent);
 console.log('Updated main styles.css');

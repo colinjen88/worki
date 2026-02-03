@@ -65,3 +65,7 @@ body { background: var(--bg-color); color: var(--text-color); font-family: 'Inte
 .ld-geo-2 span:nth-child(4) { animation-delay: 0.2s; } .ld-geo-2 span:nth-child(5) { animation-delay: 0.3s; } .ld-geo-2 span:nth-child(6) { animation-delay: 0.4s; }
 .ld-geo-2 span:nth-child(7) { animation-delay: 0.3s; } .ld-geo-2 span:nth-child(8) { animation-delay: 0.4s; } .ld-geo-2 span:nth-child(9) { animation-delay: 0.5s; }
 @keyframes ld-geo-2-anim { 0%, 100% { opacity: 0.3; transform: scale(0.8); } 50% { opacity: 1; transform: scale(1); background: white; } }
+/* Unique Brand Style */
+.brand-geo-2 { display: inline-block; position: relative; }
+.brand-geo-2::after { content: ""; position: absolute; top: -5px; right: -5px; width: 4px; height: 4px; background: var(--accent); animation: brand-geo-2-dot 1s infinite; }
+@keyframes brand-geo-2-dot { 0%, 100% { opacity: 0; } 50% { opacity: 1; } }
