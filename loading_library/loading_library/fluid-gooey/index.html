@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gooey Balls - Loading Preview</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- SVG Filter for Gooey Effect -->
+    <svg style="position: absolute; width: 0; height: 0; overflow: hidden;">
+        <defs>
+            <filter id="goo">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+                <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+            </filter>
+        </defs>
+    </svg>
+</head>
+<body>
+    <div class="ld-fluid-1-filter"><div class="ld-fluid-1"></div></div>
+<!-- SVG Filter needed for effect (automatically added in head for full page, but needs to be in body for snippets sometimes if not global) -->
+</body>
+</html>

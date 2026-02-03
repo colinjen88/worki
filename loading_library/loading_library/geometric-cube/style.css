@@ -1,0 +1,17 @@
+:root {
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --text-color: #e2e8f0;
+    --primary: #6366f1;
+    --secondary: #ec4899;
+    --accent: #22d3ee;
+    --success: #10b981;
+}
+body { background: var(--bg-color); color: var(--text-color); display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+
+.ld-geo-3 { width: 40px; height: 40px; transform-style: preserve-3d; animation: ld-geo-3-spin 3s infinite linear; }
+.ld-geo-3 div { position: absolute; width: 100%; height: 100%; border: 2px solid var(--secondary); opacity: 0.7; }
+.ld-geo-3 div:nth-child(1) { transform: translateZ(20px); } .ld-geo-3 div:nth-child(2) { transform: rotateY(180deg) translateZ(20px); }
+.ld-geo-3 div:nth-child(3) { transform: rotateY(90deg) translateZ(20px); } .ld-geo-3 div:nth-child(4) { transform: rotateY(-90deg) translateZ(20px); }
+.ld-geo-3 div:nth-child(5) { transform: rotateX(90deg) translateZ(20px); } .ld-geo-3 div:nth-child(6) { transform: rotateX(-90deg) translateZ(20px); }
+@keyframes ld-geo-3-spin { 0% { transform: rotateX(0deg) rotateY(0deg); } 100% { transform: rotateX(360deg) rotateY(360deg); } }

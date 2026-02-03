@@ -1,0 +1,16 @@
+:root {
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --text-color: #e2e8f0;
+    --primary: #6366f1;
+    --secondary: #ec4899;
+    --accent: #22d3ee;
+    --success: #10b981;
+}
+body { background: var(--bg-color); color: var(--text-color); display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+
+.ld-fluid-7 { width: 60px; height: 60px; position: relative; filter: blur(5px); }
+.ld-fluid-7 div { position: absolute; width: 20px; height: 20px; border-radius: 50%; background: white; opacity: 0.6; animation: ld-fluid-7-anim 2s infinite linear; }
+.ld-fluid-7 div:nth-child(1) { top: 0; left: 20px; } .ld-fluid-7 div:nth-child(2) { top: 20px; right: 0; animation-delay: -0.6s; background: var(--primary); }
+.ld-fluid-7 div:nth-child(3) { bottom: 0; left: 20px; animation-delay: -1.2s; background: var(--secondary); } .ld-fluid-7 div:nth-child(4) { top: 20px; left: 0; animation-delay: -1.8s; background: var(--accent); }
+@keyframes ld-fluid-7-anim { 0% { transform: rotate(0deg) translateX(10px) rotate(0deg); } 100% { transform: rotate(360deg) translateX(10px) rotate(-360deg); } }

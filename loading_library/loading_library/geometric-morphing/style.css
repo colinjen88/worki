@@ -1,0 +1,13 @@
+:root {
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --text-color: #e2e8f0;
+    --primary: #6366f1;
+    --secondary: #ec4899;
+    --accent: #22d3ee;
+    --success: #10b981;
+}
+body { background: var(--bg-color); color: var(--text-color); display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+
+.ld-geo-1 { width: 40px; height: 40px; background: var(--primary); animation: ld-geo-1-anim 2s infinite ease-in-out; }
+@keyframes ld-geo-1-anim { 0% { transform: perspective(120px) rotateX(0deg) rotateY(0deg); border-radius: 0; background: var(--primary); } 50% { transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg); border-radius: 50%; background: var(--secondary); } 100% { transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg); border-radius: 0; background: var(--primary); } }

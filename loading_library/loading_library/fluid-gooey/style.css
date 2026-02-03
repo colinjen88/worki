@@ -1,0 +1,16 @@
+:root {
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --text-color: #e2e8f0;
+    --primary: #6366f1;
+    --secondary: #ec4899;
+    --accent: #22d3ee;
+    --success: #10b981;
+}
+body { background: var(--bg-color); color: var(--text-color); display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+
+.ld-fluid-1-filter { filter: url('#goo'); width: 100px; height: 100px; position: absolute; display: flex; justify-content: center; align-items: center; }
+.ld-fluid-1 { position: relative; width: 100%; height: 100%; }
+.ld-fluid-1::before, .ld-fluid-1::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 20px; height: 20px; background: var(--secondary); border-radius: 50%; animation: ld-fluid-1-anim 2s infinite ease-in-out; }
+.ld-fluid-1::after { animation-delay: -1s; background: var(--primary); }
+@keyframes ld-fluid-1-anim { 0% { transform: translate(-50%, -50%) translateX(-20px); } 50% { transform: translate(-50%, -50%) translateX(20px); } 100% { transform: translate(-50%, -50%) translateX(-20px); } }
