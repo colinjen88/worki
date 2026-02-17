@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>微互動動效套件 | let.gowork.run</title>
+  <meta name="description" content="Motion 專案：微互動動效套件與節奏規範。" />
+  <link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link href="../../../assets/styles.css" rel="stylesheet" />
+  <link href="../../assets/let.css" rel="stylesheet" />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap"
+    rel="stylesheet" />
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="min-h-screen text-slate-200 selection:bg-indigo-500/30 selection:text-slate-50">
+  <a href="#main"
+    class="focus-ring sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-slate-900 focus:px-4 focus:py-2">跳到主要內容</a>
+
+  <header class="sticky top-0 z-40 border-b border-white/10 bg-slate-950/30 backdrop-blur">
+    <div class="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-3 md:px-6">
+      <a class="focus-ring flex items-center gap-2 rounded-lg px-2 py-1" href="../../index.html" aria-label="回到首頁">
+        <span class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-indigo-500/15 text-indigo-300">
+          <i data-lucide="sparkles" class="h-4 w-4"></i>
+        </span>
+        <span class="font-semibold tracking-tight text-slate-50">let.gowork.run</span>
+      </a>
+
+      <nav class="hidden items-center gap-6 md:flex" aria-label="主要導覽">
+        <a class="focus-ring text-sm font-medium text-slate-50" href="../index.html">作品集</a>
+        <a class="focus-ring text-sm text-slate-200 hover:text-slate-50" href="../../about/index.html">關於</a>
+        <a class="focus-ring text-sm text-slate-200 hover:text-slate-50" href="../../contact/index.html">聯絡</a>
+      </nav>
+
+      <button data-nav-toggle
+        class="focus-ring inline-flex items-center justify-center rounded-xl border border-white/10 bg-slate-900/40 p-2 text-slate-100 md:hidden"
+        aria-label="開啟選單" aria-expanded="false">
+        <i data-lucide="menu" class="h-5 w-5"></i>
+      </button>
+    </div>
+
+    <div data-nav-panel data-open="false" class="hidden border-t border-white/10 bg-slate-950/60 md:hidden">
+      <div class="mx-auto flex w-full max-w-7xl flex-col gap-2 px-4 py-3">
+        <a class="focus-ring rounded-lg px-3 py-2 text-sm text-slate-200 hover:bg-white/5 hover:text-slate-50"
+          href="../index.html">作品集</a>
+        <a class="focus-ring rounded-lg px-3 py-2 text-sm text-slate-200 hover:bg-white/5 hover:text-slate-50"
+          href="../../about/index.html">關於</a>
+        <a class="focus-ring rounded-lg px-3 py-2 text-sm text-slate-200 hover:bg-white/5 hover:text-slate-50"
+          href="../../contact/index.html">聯絡</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="relative overflow-hidden border-b border-white/10">
+      <div class="hero-grid pointer-events-none absolute inset-0"></div>
+      <div
+        class="pointer-events-none absolute inset-0 bg-gradient-to-b from-purple-500/10 via-transparent to-transparent">
+      </div>
+
+      <div class="mx-auto w-full max-w-7xl px-4 py-12 md:px-6 md:py-14">
+        <div class="flex flex-col gap-4">
+          <div class="flex flex-wrap items-center gap-2 text-xs text-slate-300">
+            <a class="focus-ring rounded-full border border-white/10 bg-slate-900/20 px-3 py-1 hover:bg-white/5"
+              href="../index.html">作品集</a>
+            <span class="text-slate-500">/</span>
+            <span class="rounded-full border border-white/10 bg-slate-900/20 px-3 py-1">Motion</span>
+          </div>
+
+          <h1 class="text-balance text-3xl font-bold leading-tight text-slate-50 md:text-5xl">微互動動效套件</h1>
+          <p class="prose-max mt-1 text-sm leading-relaxed text-slate-200/80 md:text-base">
+            將分散的 hover/transition 行為收斂成一套可重用規範，讓動效「輔助理解」而不是「搶戲」。
+          </p>
+
+          <div class="mt-2 flex flex-wrap gap-2">
+            <span class="tag rounded-full px-3 py-1 text-xs">Role: Motion</span>
+            <span class="tag rounded-full px-3 py-1 text-xs">Deliverable: Guidelines</span>
+            <span class="tag rounded-full px-3 py-1 text-xs">Focus: Easing / Timing</span>
+          </div>
+        </div>
+
+        <div class="mt-8 overflow-hidden rounded-3xl border border-white/10 bg-slate-900/30">
+          <img src="../../../assets/lottie_animate.mp4" alt="動效展示" class="hidden" />
+          <video class="h-72 w-full object-cover md:h-96" src="../../../assets/loading_animation.mp4" autoplay muted
+            loop playsinline></video>
+        </div>
+      </div>
+    </section>
+
+    <section class="mx-auto w-full max-w-7xl px-4 py-12 md:px-6 md:py-14">
+      <div class="grid grid-cols-1 gap-10 md:grid-cols-12">
+        <aside class="md:col-span-4">
+          <div class="sticky top-24 rounded-3xl border border-white/10 bg-slate-900/20 p-6">
+            <h2 class="text-sm font-semibold text-slate-50">動效原則</h2>
+            <ul class="mt-4 space-y-2 text-sm text-slate-200/80">
+              <li class="flex gap-2"><span
+                  class="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-purple-400"></span><span>目的性：告訴使用者發生什麼事</span></li>
+              <li class="flex gap-2"><span
+                  class="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-purple-400"></span><span>一致性：同類互動用同樣節奏</span></li>
+              <li class="flex gap-2"><span
+                  class="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-purple-400"></span><span>克制：動效不遮蔽內容</span></li>
+            </ul>
+
+            <div class="mt-6 flex flex-col gap-3">
+              <a class="focus-ring inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-slate-900/20 px-5 py-3 text-sm font-semibold text-slate-100 hover:bg-white/5"
+                href="../index.html">
+                <i data-lucide="arrow-left" class="h-4 w-4"></i>
+                回作品集
+              </a>
+            </div>
+          </div>
+        </aside>
+
+        <div class="md:col-span-8">
+          <section class="rounded-3xl border border-white/10 bg-slate-900/20 p-6 md:p-8">
+            <h2 class="text-xl font-semibold text-slate-50">規範內容</h2>
+            <p class="prose-max mt-3 text-sm leading-relaxed text-slate-200/80">包含 easing、duration、hover
+              行為、以及進場動畫的節奏建議，讓 UI 在不同頁面保持一致。</p>
+
+            <div class="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div class="rounded-2xl border border-white/10 bg-slate-950/20 p-5">
+                <p class="text-sm font-semibold text-slate-50">Easing</p>
+                <p class="mt-2 text-sm text-slate-200/80">ease-out / ease-in-out / spring</p>
+              </div>
+              <div class="rounded-2xl border border-white/10 bg-slate-950/20 p-5">
+                <p class="text-sm font-semibold text-slate-50">Duration</p>
+                <p class="mt-2 text-sm text-slate-200/80">150ms / 300ms / 500ms</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="mt-6 rounded-3xl border border-white/10 bg-slate-900/20 p-6 md:p-8">
+            <h2 class="text-xl font-semibold text-slate-50">成果展示</h2>
+            <p class="prose-max mt-3 text-sm leading-relaxed text-slate-200/80">示意圖先用現有資產占位，後續可替換為你的動效截圖與 Lottie demo。
+            </p>
+
+            <div class="mt-5 grid grid-cols-1 gap-4 md:grid-cols-2">
+              <a class="focus-ring group relative overflow-hidden rounded-2xl border border-white/10 bg-slate-950/20"
+                href="#" data-lightbox-src="../../../assets/loading_animation.mp4" data-lightbox-alt="動效展示影片"
+                aria-label="播放動效展示影片">
+                <img class="h-56 w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+                  src="../../../assets/motion_preview.png" alt="動效展示影片縮圖" loading="lazy" />
+                <div
+                  class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/10 to-transparent">
+                </div>
+                <div class="pointer-events-none absolute inset-0 flex items-center justify-center">
+                  <span
+                    class="inline-flex h-14 w-14 items-center justify-center rounded-2xl border border-white/15 bg-slate-950/40 text-slate-50 shadow-lg shadow-black/30">
+                    <i data-lucide="play" class="h-6 w-6"></i>
+                  </span>
+                </div>
+                <div class="pointer-events-none absolute bottom-0 left-0 right-0 p-4">
+                  <p class="text-sm font-semibold text-slate-50">播放 Demo</p>
+                  <p class="mt-1 text-xs text-slate-200/80">點擊開啟影片 Lightbox</p>
+                </div>
+              </a>
+
+              <a class="focus-ring group overflow-hidden rounded-2xl border border-white/10 bg-slate-950/20" href="#"
+                data-lightbox-src="../../../assets/motion_preview.png" data-lightbox-alt="動效規範截圖" aria-label="放大動效規範截圖">
+                <img class="h-56 w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+                  src="../../../assets/goodeats_preview.jpg" alt="動效規範截圖" loading="lazy" />
+              </a>
+            </div>
+          </section>
+
+          <nav class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2" aria-label="專案導覽">
+            <a class="focus-ring rounded-2xl border border-white/10 bg-slate-900/20 p-5 hover:bg-white/5"
+              href="./mass.html">
+              <p class="text-xs text-slate-400">下一個</p>
+              <p class="mt-1 text-sm font-semibold text-slate-50">資訊架構與流程優化</p>
+            </a>
+            <a class="focus-ring rounded-2xl border border-white/10 bg-slate-900/20 p-5 hover:bg-white/5"
+              href="./seo.html">
+              <p class="text-xs text-slate-400">上一個</p>
+              <p class="mt-1 text-sm font-semibold text-slate-50">效能與 SEO 優化</p>
+            </a>
+          </nav>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="lightbox-overlay" data-lightbox data-open="false" role="dialog" aria-modal="true" aria-label="圖片預覽">
+    <div class="lightbox-panel">
+      <div class="flex items-center justify-between border-b border-white/10 bg-slate-950/40 px-4 py-3">
+        <p class="text-sm font-medium text-slate-100">Preview</p>
+        <button
+          class="focus-ring inline-flex items-center justify-center rounded-xl border border-white/10 bg-slate-900/40 p-2 text-slate-100"
+          type="button" data-lightbox-close aria-label="關閉">
+          <i data-lucide="x" class="h-4 w-4"></i>
+        </button>
+      </div>
+      <div data-lightbox-media></div>
+    </div>
+  </div>
+
+  <footer class="border-t border-white/10">
+    <div
+      class="mx-auto flex w-full max-w-7xl flex-col gap-4 px-4 py-10 md:flex-row md:items-center md:justify-between md:px-6">
+      <p class="text-sm text-slate-400">© <span id="year"></span> let.gowork.run</p>
+      <div class="flex items-center gap-4">
+        <a class="focus-ring text-sm text-slate-400 hover:text-slate-200" href="../../contact/index.html">Contact</a>
+        <a class="focus-ring text-sm text-slate-400 hover:text-slate-200" href="../index.html">Portfolio</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = String(new Date().getFullYear());
+  </script>
+  <script src="../../assets/let.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+
+</html>

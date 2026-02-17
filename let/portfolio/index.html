@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>作品集 | let.gowork.run</title>
+  <meta name="description" content="UI/UX、Motion、Graphic、Web 專案作品集。" />
+  <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link href="../../assets/styles.css" rel="stylesheet" />
+  <link href="../assets/let.css" rel="stylesheet" />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap"
+    rel="stylesheet" />
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="min-h-screen text-slate-200 selection:bg-indigo-500/30 selection:text-slate-50">
+  <a href="#main"
+    class="focus-ring sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-slate-900 focus:px-4 focus:py-2">跳到主要內容</a>
+
+  <header class="sticky top-0 z-40 border-b border-white/10 bg-slate-950/30 backdrop-blur">
+    <div class="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-3 md:px-6">
+      <a class="focus-ring flex items-center gap-2 rounded-lg px-2 py-1" href="../index.html" aria-label="回到首頁">
+        <span class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-indigo-500/15 text-indigo-300">
+          <i data-lucide="sparkles" class="h-4 w-4"></i>
+        </span>
+        <span class="font-semibold tracking-tight text-slate-50">let.gowork.run</span>
+      </a>
+
+      <nav class="hidden items-center gap-6 md:flex" aria-label="主要導覽">
+        <a class="focus-ring text-sm font-medium text-slate-50" href="./index.html">作品集</a>
+        <a class="focus-ring text-sm text-slate-200 hover:text-slate-50" href="../about/index.html">關於</a>
+        <a class="focus-ring text-sm text-slate-200 hover:text-slate-50" href="../contact/index.html">聯絡</a>
+      </nav>
+
+      <button data-nav-toggle
+        class="focus-ring inline-flex items-center justify-center rounded-xl border border-white/10 bg-slate-900/40 p-2 text-slate-100 md:hidden"
+        aria-label="開啟選單" aria-expanded="false">
+        <i data-lucide="menu" class="h-5 w-5"></i>
+      </button>
+    </div>
+
+    <div data-nav-panel data-open="false" class="hidden border-t border-white/10 bg-slate-950/60 md:hidden">
+      <div class="mx-auto flex w-full max-w-7xl flex-col gap-2 px-4 py-3">
+        <a class="focus-ring rounded-lg px-3 py-2 text-sm text-slate-200 hover:bg-white/5 hover:text-slate-50"
+          href="./index.html">作品集</a>
+        <a class="focus-ring rounded-lg px-3 py-2 text-sm text-slate-200 hover:bg-white/5 hover:text-slate-50"
+          href="../about/index.html">關於</a>
+        <a class="focus-ring rounded-lg px-3 py-2 text-sm text-slate-200 hover:bg-white/5 hover:text-slate-50"
+          href="../contact/index.html">聯絡</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="mx-auto w-full max-w-7xl px-4 py-12 md:px-6 md:py-14">
+    <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+      <div>
+        <h1 class="text-3xl font-bold text-slate-50 md:text-4xl">作品集</h1>
+        <p class="mt-2 max-w-2xl text-sm leading-relaxed text-slate-200/80">用分類快速找到你想看的類型。點進專案後會用「背景 → 過程 → 成果 →
+          反思」的故事線呈現。</p>
+      </div>
+      <div class="text-xs text-slate-400">快捷鍵：1=All 2=UI/UX 3=Motion 4=Graphic 5=Web</div>
+    </div>
+
+    <section class="mt-8">
+      <div class="flex flex-wrap gap-2" aria-label="作品分類篩選">
+        <button class="focus-ring rounded-full border border-white/10 bg-transparent px-4 py-2 text-sm text-slate-200"
+          type="button" data-filter="all" aria-pressed="true">All</button>
+        <button class="focus-ring rounded-full border border-white/10 bg-transparent px-4 py-2 text-sm text-slate-200"
+          type="button" data-filter="uiux" aria-pressed="false" id="uiux">UI/UX</button>
+        <button class="focus-ring rounded-full border border-white/10 bg-transparent px-4 py-2 text-sm text-slate-200"
+          type="button" data-filter="motion" aria-pressed="false" id="motion">Motion</button>
+        <button class="focus-ring rounded-full border border-white/10 bg-transparent px-4 py-2 text-sm text-slate-200"
+          type="button" data-filter="graphic" aria-pressed="false" id="graphic">Graphic</button>
+        <button class="focus-ring rounded-full border border-white/10 bg-transparent px-4 py-2 text-sm text-slate-200"
+          type="button" data-filter="web" aria-pressed="false" id="web">Web</button>
+      </div>
+
+      <div class="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3" id="featured">
+        <article class="group card-shadow rounded-3xl border border-white/10 bg-slate-900/30 overflow-hidden"
+          data-card-category="uiux">
+          <a class="focus-ring block" href="./projects/mass.html" aria-label="UI/UX 專案：資訊架構與流程優化">
+            <img class="h-48 w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+              src="../../assets/mass_preview.png" alt="UI/UX 專案預覽" loading="lazy" />
+            <div class="p-5">
+              <div class="flex flex-wrap gap-2">
+                <span class="tag rounded-full px-3 py-1 text-xs text-slate-200">UI/UX</span>
+                <span class="tag rounded-full px-3 py-1 text-xs text-slate-200">Flow</span>
+              </div>
+              <h2 class="mt-3 text-lg font-semibold text-slate-50">資訊架構與流程優化</h2>
+              <p class="mt-1 text-sm text-slate-200/80">以動線重整縮短完成任務的時間。</p>
+            </div>
+          </a>
+        </article>
+
+        <article class="group card-shadow rounded-3xl border border-white/10 bg-slate-900/30 overflow-hidden"
+          data-card-category="motion">
+          <a class="focus-ring block" href="./projects/motion.html" aria-label="Motion 專案：微互動動效套件">
+            <img class="h-48 w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+              src="../../assets/motion_preview.png" alt="Motion 專案預覽" loading="lazy" />
+            <div class="p-5">
+              <div class="flex flex-wrap gap-2">
+                <span class="tag rounded-full px-3 py-1 text-xs text-slate-200">Motion</span>
+                <span class="tag rounded-full px-3 py-1 text-xs text-slate-200">Lottie</span>
+              </div>
+              <h2 class="mt-3 text-lg font-semibold text-slate-50">微互動動效套件</h2>
+              <p class="mt-1 text-sm text-slate-200/80">建立一致的 easing 與 timing 規範。</p>
+            </div>
+          </a>
+        </article>
+
+        <article class="group card-shadow rounded-3xl border border-white/10 bg-slate-900/30 overflow-hidden"
+          data-card-category="web">
+          <a class="focus-ring block" href="./projects/seo.html" aria-label="Web 專案：效能與 SEO 優化">
+            <img class="h-48 w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+              src="../../assets/seo_preview.png" alt="Web 專案預覽" loading="lazy" />
+            <div class="p-5">
+              <div class="flex flex-wrap gap-2">
+                <span class="tag rounded-full px-3 py-1 text-xs text-slate-200">Web</span>
+                <span class="tag rounded-full px-3 py-1 text-xs text-slate-200">SEO</span>
+              </div>
+              <h2 class="mt-3 text-lg font-semibold text-slate-50">效能與 SEO 優化</h2>
+              <p class="mt-1 text-sm text-slate-200/80">從載入速度到結構化資料的落地。</p>
+            </div>
+          </a>
+        </article>
+
+        <article class="group card-shadow rounded-3xl border border-white/10 bg-slate-900/30 overflow-hidden"
+          data-card-category="graphic">
+          <a class="focus-ring block" href="#" aria-label="Graphic 專案（待補）">
+            <img class="h-48 w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+              src="../../assets/graphic_portfolio_thumb.jpg" alt="Graphic 專案預覽" loading="lazy" />
+            <div class="p-5">
+              <div class="flex flex-wrap gap-2">
+                <span class="tag rounded-full px-3 py-1 text-xs text-slate-200">Graphic</span>
+                <span class="tag rounded-full px-3 py-1 text-xs text-slate-200">Brand</span>
+              </div>
+              <h2 class="mt-3 text-lg font-semibold text-slate-50">品牌視覺與版面語言</h2>
+              <p class="mt-1 text-sm text-slate-200/80">以網格與留白建立一致的視覺節奏。</p>
+            </div>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <section class="mt-14 rounded-3xl border border-white/10 bg-slate-900/20 p-6 md:p-8">
+      <h2 class="text-lg font-semibold text-slate-50">下一步：補齊專案內容</h2>
+      <p class="mt-2 text-sm leading-relaxed text-slate-200/80">我會依照你的既有資源（圖片/影片/PDF）把每個專案做成可閱讀的詳細頁模板；先從 3 個代表作開始。</p>
+      <div class="mt-5 flex flex-col gap-3 sm:flex-row">
+        <a class="focus-ring inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 hover:brightness-110"
+          href="../contact/index.html">
+          <i data-lucide="message-circle" class="h-4 w-4"></i>
+          我想先補哪個專案
+        </a>
+        <a class="focus-ring inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-slate-900/20 px-6 py-3 text-sm font-semibold text-slate-100 hover:bg-white/5"
+          href="../index.html">
+          <i data-lucide="home" class="h-4 w-4"></i>
+          回首頁
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/10">
+    <div
+      class="mx-auto flex w-full max-w-7xl flex-col gap-4 px-4 py-10 md:flex-row md:items-center md:justify-between md:px-6">
+      <p class="text-sm text-slate-400">© <span id="year"></span> let.gowork.run</p>
+      <div class="flex items-center gap-4">
+        <a class="focus-ring text-sm text-slate-400 hover:text-slate-200" href="../contact/index.html">Contact</a>
+        <a class="focus-ring text-sm text-slate-400 hover:text-slate-200" href="../about/index.html">About</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = String(new Date().getFullYear());
+  </script>
+  <script src="../assets/let.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+
+</html>

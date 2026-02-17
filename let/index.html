@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>let.gowork.run | Portfolio</title>
+  <meta name="description" content="UI/UX × Motion × Web. 以設計驅動產品體驗的作品集。" />
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link href="../assets/styles.css" rel="stylesheet" />
+  <link href="./assets/let.css" rel="stylesheet" />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap"
+    rel="stylesheet" />
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="min-h-screen text-slate-200 selection:bg-indigo-500/30 selection:text-slate-50">
+  <a href="#main" class="focus-ring sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-slate-900 focus:px-4 focus:py-2">跳到主要內容</a>
+
+  <header class="sticky top-0 z-40 border-b border-white/10 bg-slate-950/30 backdrop-blur">
+    <div class="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-3 md:px-6">
+      <a class="focus-ring flex items-center gap-2 rounded-lg px-2 py-1" href="./index.html" aria-label="回到首頁">
+        <span class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-indigo-500/15 text-indigo-300">
+          <i data-lucide="sparkles" class="h-4 w-4"></i>
+        </span>
+        <span class="font-semibold tracking-tight text-slate-50">let.gowork.run</span>
+      </a>
+
+      <nav class="hidden items-center gap-6 md:flex" aria-label="主要導覽">
+        <a class="focus-ring text-sm text-slate-200 hover:text-slate-50" href="./portfolio/index.html">作品集</a>
+        <a class="focus-ring text-sm text-slate-200 hover:text-slate-50" href="./about/index.html">關於</a>
+        <a class="focus-ring text-sm text-slate-200 hover:text-slate-50" href="./contact/index.html">聯絡</a>
+        <a class="focus-ring inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-500 px-4 py-2 text-sm font-medium text-white shadow-lg shadow-indigo-500/20 hover:brightness-110"
+          href="./portfolio/index.html#featured">探索精選</a>
+      </nav>
+
+      <button data-nav-toggle class="focus-ring inline-flex items-center justify-center rounded-xl border border-white/10 bg-slate-900/40 p-2 text-slate-100 md:hidden" aria-label="開啟選單" aria-expanded="false">
+        <i data-lucide="menu" class="h-5 w-5"></i>
+      </button>
+    </div>
+
+    <div data-nav-panel data-open="false" class="hidden border-t border-white/10 bg-slate-950/60 md:hidden">
+      <div class="mx-auto flex w-full max-w-7xl flex-col gap-2 px-4 py-3">
+        <a class="focus-ring rounded-lg px-3 py-2 text-sm text-slate-200 hover:bg-white/5 hover:text-slate-50" href="./portfolio/index.html">作品集</a>
+        <a class="focus-ring rounded-lg px-3 py-2 text-sm text-slate-200 hover:bg-white/5 hover:text-slate-50" href="./about/index.html">關於</a>
+        <a class="focus-ring rounded-lg px-3 py-2 text-sm text-slate-200 hover:bg-white/5 hover:text-slate-50" href="./contact/index.html">聯絡</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="relative">
+    <section class="relative overflow-hidden">
+      <div class="hero-grid pointer-events-none absolute inset-0"></div>
+      <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-indigo-500/10 via-transparent to-transparent"></div>
+
+      <div class="mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-4 pb-16 pt-14 md:grid-cols-12 md:gap-12 md:px-6 md:pb-24 md:pt-20">
+        <div class="md:col-span-7">
+          <p class="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-slate-900/40 px-4 py-2 text-xs text-slate-200">
+            <span class="h-1.5 w-1.5 rounded-full bg-indigo-400"></span>
+            UI/UX × Motion × Web
+          </p>
+
+          <h1 class="text-balance text-4xl font-bold leading-tight text-slate-50 md:text-6xl">
+            讓作品用
+            <span class="bg-gradient-to-r from-indigo-300 to-purple-300 bg-clip-text text-transparent">視覺動線</span>
+            自己說服人
+          </h1>
+
+          <p class="mt-5 max-w-xl text-pretty text-base leading-relaxed text-slate-200/90 md:text-lg">
+            以設計系統與動效節奏，打造「看得懂、看得完、想聯絡」的作品集體驗。這裡是新版展示入口，舊版投履歷頁面保持不變。
+          </p>
+
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <a class="focus-ring inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 hover:brightness-110" href="./portfolio/index.html">
+              <i data-lucide="arrow-right" class="h-4 w-4"></i>
+              進入作品集
+            </a>
+            <a class="focus-ring inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-slate-900/30 px-6 py-3 text-sm font-semibold text-slate-100 hover:bg-slate-900/60" href="./contact/index.html">
+              <i data-lucide="mail" class="h-4 w-4"></i>
+              聯絡合作
+            </a>
+          </div>
+
+          <div class="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3">
+            <div class="rounded-2xl border border-white/10 bg-slate-900/30 p-4">
+              <p class="text-xs text-slate-300">專案節奏</p>
+              <p class="mt-1 text-lg font-semibold text-slate-50">從探索到落地</p>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-slate-900/30 p-4">
+              <p class="text-xs text-slate-300">輸出品質</p>
+              <p class="mt-1 text-lg font-semibold text-slate-50">Prototype / Motion</p>
+            </div>
+            <div class="hidden rounded-2xl border border-white/10 bg-slate-900/30 p-4 sm:block">
+              <p class="text-xs text-slate-300">協作方式</p>
+              <p class="mt-1 text-lg font-semibold text-slate-50">Design × Dev</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="md:col-span-5">
+          <div class="card-shadow relative rounded-3xl border border-white/10 bg-slate-900/30 p-6">
+            <div class="absolute inset-0 rounded-3xl bg-gradient-to-br from-indigo-500/10 to-purple-500/10"></div>
+            <div class="relative">
+              <h2 class="text-sm font-semibold text-slate-50">快速導覽</h2>
+              <p class="mt-2 text-sm leading-relaxed text-slate-200/80">用最少步驟找到你想看的類型，並在每個專案頁快速理解「我做了什麼、怎麼做、做出什麼影響」。</p>
+
+              <div class="mt-6 space-y-3">
+                <a class="focus-ring group flex items-center justify-between rounded-2xl border border-white/10 bg-slate-950/20 px-4 py-4 hover:bg-white/5" href="./portfolio/index.html#uiux">
+                  <div class="flex items-center gap-3">
+                    <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-indigo-500/15 text-indigo-200">
+                      <i data-lucide="layout" class="h-5 w-5"></i>
+                    </span>
+                    <div>
+                      <p class="text-sm font-semibold text-slate-50">UI/UX</p>
+                      <p class="text-xs text-slate-300">流程、版型、可用性</p>
+                    </div>
+                  </div>
+                  <i data-lucide="chevron-right" class="h-5 w-5 text-slate-400 group-hover:text-slate-200"></i>
+                </a>
+
+                <a class="focus-ring group flex items-center justify-between rounded-2xl border border-white/10 bg-slate-950/20 px-4 py-4 hover:bg-white/5" href="./portfolio/index.html#motion">
+                  <div class="flex items-center gap-3">
+                    <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-purple-500/15 text-purple-200">
+                      <i data-lucide="play" class="h-5 w-5"></i>
+                    </span>
+                    <div>
+                      <p class="text-sm font-semibold text-slate-50">Motion</p>
+                      <p class="text-xs text-slate-300">動效節奏、Lottie</p>
+                    </div>
+                  </div>
+                  <i data-lucide="chevron-right" class="h-5 w-5 text-slate-400 group-hover:text-slate-200"></i>
+                </a>
+
+                <a class="focus-ring group flex items-center justify-between rounded-2xl border border-white/10 bg-slate-950/20 px-4 py-4 hover:bg-white/5" href="./portfolio/index.html#web">
+                  <div class="flex items-center gap-3">
+                    <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-emerald-500/15 text-emerald-200">
+                      <i data-lucide="code" class="h-5 w-5"></i>
+                    </span>
+                    <div>
+                      <p class="text-sm font-semibold text-slate-50">Web</p>
+                      <p class="text-xs text-slate-300">前端整合、效能</p>
+                    </div>
+                  </div>
+                  <i data-lucide="chevron-right" class="h-5 w-5 text-slate-400 group-hover:text-slate-200"></i>
+                </a>
+              </div>
+
+              <p class="mt-6 text-xs text-slate-400">提示：作品集頁支援快速鍵 1-5 切換篩選。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mx-auto w-full max-w-7xl px-4 pb-16 md:px-6 md:pb-24" id="featured">
+      <div class="flex items-end justify-between gap-6">
+        <div>
+          <h2 class="text-2xl font-bold text-slate-50 md:text-3xl">精選作品</h2>
+          <p class="mt-2 max-w-2xl text-sm leading-relaxed text-slate-200/80">先看三個能快速理解價值與成果的專案。每個專案頁會用「背景 → 過程 → 成果」的故事線呈現。</p>
+        </div>
+        <a class="focus-ring hidden items-center gap-2 rounded-xl border border-white/10 bg-slate-900/20 px-4 py-2 text-sm text-slate-200 hover:bg-white/5 md:inline-flex" href="./portfolio/index.html">
+          查看全部
+          <i data-lucide="arrow-right" class="h-4 w-4"></i>
+        </a>
+      </div>
+
+      <div class="mt-8 grid grid-cols-1 gap-5 md:grid-cols-12">
+        <a class="focus-ring group md:col-span-7" href="./portfolio/index.html" aria-label="前往作品集列表">
+          <div class="card-shadow relative overflow-hidden rounded-3xl border border-white/10 bg-slate-900/30">
+            <img class="h-64 w-full object-cover transition duration-300 group-hover:scale-[1.03] md:h-80" src="../assets/mass_preview.png" alt="作品預覽" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6">
+              <div class="flex flex-wrap gap-2">
+                <span class="tag rounded-full px-3 py-1 text-xs text-slate-200">UI/UX</span>
+                <span class="tag rounded-full px-3 py-1 text-xs text-slate-200">Prototype</span>
+              </div>
+              <p class="mt-3 text-lg font-semibold text-white">資訊架構與互動流程重整</p>
+              <p class="mt-1 text-sm text-slate-200/80">以需求拆解 + 動線設計，讓使用者更快完成任務。</p>
+            </div>
+          </div>
+        </a>
+
+        <a class="focus-ring group md:col-span-5" href="./portfolio/index.html" aria-label="前往作品集列表">
+          <div class="card-shadow relative overflow-hidden rounded-3xl border border-white/10 bg-slate-900/30">
+            <img class="h-64 w-full object-cover transition duration-300 group-hover:scale-[1.03]" src="../assets/motion_preview.png" alt="動效作品預覽" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6">
+              <div class="flex flex-wrap gap-2">
+                <span class="tag rounded-full px-3 py-1 text-xs text-slate-200">Motion</span>
+                <span class="tag rounded-full px-3 py-1 text-xs text-slate-200">Lottie</span>
+              </div>
+              <p class="mt-3 text-lg font-semibold text-white">微互動與品牌動效節奏</p>
+              <p class="mt-1 text-sm text-slate-200/80">用一致的 easing 與 timing 強化理解。</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="mt-6 md:hidden">
+        <a class="focus-ring inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/10 bg-slate-900/20 px-4 py-3 text-sm text-slate-200 hover:bg-white/5" href="./portfolio/index.html">
+          查看全部作品
+          <i data-lucide="arrow-right" class="h-4 w-4"></i>
+        </a>
+      </div>
+    </section>
+
+    <section class="border-t border-white/10">
+      <div class="mx-auto w-full max-w-7xl px-4 py-12 md:px-6 md:py-14">
+        <div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+          <div>
+            <h2 class="text-xl font-semibold text-slate-50">想快速了解我適合的角色？</h2>
+            <p class="mt-2 max-w-2xl text-sm text-slate-200/80">你可以從「作品集」挑類型，或從「關於」看工作方式。若你正在招募，我也可以提供精簡版 PDF。</p>
+          </div>
+          <div class="flex flex-col gap-3 sm:flex-row">
+            <a class="focus-ring inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 hover:brightness-110" href="./about/index.html">
+              <i data-lucide="user" class="h-4 w-4"></i>
+              看我的工作方式
+            </a>
+            <a class="focus-ring inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-slate-900/20 px-6 py-3 text-sm font-semibold text-slate-100 hover:bg-white/5" href="../assets/Graphic_Portfolio.pdf">
+              <i data-lucide="download" class="h-4 w-4"></i>
+              下載 PDF
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/10">
+    <div class="mx-auto flex w-full max-w-7xl flex-col gap-4 px-4 py-10 md:flex-row md:items-center md:justify-between md:px-6">
+      <p class="text-sm text-slate-400">© <span id="year"></span> let.gowork.run</p>
+      <div class="flex items-center gap-4">
+        <a class="focus-ring text-sm text-slate-400 hover:text-slate-200" href="./contact/index.html">Contact</a>
+        <a class="focus-ring text-sm text-slate-400 hover:text-slate-200" href="./portfolio/index.html">Portfolio</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = String(new Date().getFullYear());
+  </script>
+  <script src="./assets/let.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+
+</html>
