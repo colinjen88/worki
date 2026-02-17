@@ -9,10 +9,11 @@
    - 作品詳細頁：`portfolio/projects/mass.html`、`seo.html`、`motion.html`
    - 共用資源：`assets/let.css`、`assets/let.js`
 
-2. **設計系統與樣式**
-   - Tailwind CSS 已擴充支援新站路徑（`content: ["./*.html", "./let/**/*.html"]`）
-   - 基礎設計系統：色彩、字體、間距、動效規範
-   - 響應式斷點：Desktop (1280px+) / Tablet (768-1279px) / Mobile (<768px)
+2. **設計系統與主視覺（重大更新 2026-02-17）**
+   - **大膽居中佈局**：重設計首頁 Hero Section，採用衝擊力強的居中對齊。
+   - **動態字效**：加入 `text-gradient-animated` 閃爍漸層標題。
+   - **視覺深度**：整合 `hero-grid` 3D 透視背景與動態發光氣泡（Orbs）。
+   - **互動組件**：採用特製玻璃面板（Glassmorphism）與懸浮島式（Floating Island）導航/功能設計。
 
 3. **核心功能**
    - 全域導航（含手機選單）
@@ -98,4 +99,4 @@ let/
 - 圖片/影片檔案若需更換，請放在 `assets/` 目錄
 
 ---
-*最後更新：2025-02-17*
+*最後更新：2026-02-17*

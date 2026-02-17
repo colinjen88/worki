@@ -1,4 +1,5 @@
 (function () {
+  // Navigation toggle
   const navToggle = document.querySelector('[data-nav-toggle]');
   const navPanel = document.querySelector('[data-nav-panel]');
 
@@ -12,9 +13,52 @@
     });
   }
 
+  // Scroll reveal animation with Intersection Observer
+  const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+
+  if (revealElements.length > 0) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          // Optionally unobserve after animation
+          // revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+  }
+
+  // Parallax effect for floating elements
+  const floatingElements = document.querySelectorAll('.float, .float-delayed');
+
+  if (floatingElements.length > 0 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let ticking = false;
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrollY = window.scrollY;
+          floatingElements.forEach((el, index) => {
+            const speed = index % 2 === 0 ? 0.3 : -0.2;
+            el.style.transform = `translateY(${scrollY * speed}px)`;
+          });
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
+  // Filter buttons and cards
   const filterButtons = Array.from(document.querySelectorAll('[data-filter]'));
   const cards = Array.from(document.querySelectorAll('[data-card-category]'));
 
+  // Lightbox functionality
   const lightbox = document.querySelector('[data-lightbox]');
   const lightboxImg = document.querySelector('[data-lightbox-img]');
   const lightboxMedia = document.querySelector('[data-lightbox-media]');
@@ -85,6 +129,7 @@
     });
   }
 
+  // Filter functionality
   if (filterButtons.length && cards.length) {
     const setActive = (btn) => {
       for (const b of filterButtons) {
@@ -119,6 +164,7 @@
       applyFilter(defaultBtn.getAttribute('data-filter') || 'all');
     }
 
+    // Keyboard shortcuts for filters
     document.addEventListener('keydown', (e) => {
       const mapping = {
         Digit1: 'all',
@@ -135,6 +181,45 @@
       if (!btn) return;
 
       btn.click();
+    });
+  }
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const href = this.getAttribute('href');
+      if (href === '#') return;
+
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+  // Add magnetic effect to cards on mouse move
+  const magneticCards = document.querySelectorAll('.stat-card, .card-shadow');
+
+  if (!window.matchMedia('(pointer: coarse)').matches) {
+    magneticCards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+
+        const rotateX = (y / rect.height) * -5;
+        const rotateY = (x / rect.width) * 5;
+
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
     });
   }
 })();
