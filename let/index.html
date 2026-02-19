@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UI/UX Designer & Motion Specialist | WANG's Portfolio</title>
     <meta name="description"
-        content="UI/UX 設計師作品集 | 專精於動效設計 (Lottie/SVGA)、RWD 響應式網頁設計與前端開發 (HTML/CSS)。致力於創造美感與實用兼具的數位體驗。">
+        content="前端工程師/設計師作品集 | 專精於動效設計 (Lottie/SVGA)、RWD 響應式網頁設計與前端開發，有獨立規劃設計及架站能力。致力於創造美感與實用兼具的數位體驗。">
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
     <!-- Preconnect for faster external resource loading -->
@@ -40,527 +40,7 @@
     <!-- Loading CSS -->
     <link rel="stylesheet" href="loading/loading.css">
 
-    <style>
-        /* Base Styles */
-        body {
-            background-color: #0f172a;
-            color: #cbd5e1;
-            overflow-x: hidden;
-        }
-
-        /* Hide default cursor when custom cursor is visible */
-        @media (pointer: fine) {
-            body {
-                cursor: none;
-            }
-
-            a,
-            button,
-            .cursor-pointer {
-                cursor: none;
-            }
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #0f172a;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #334155;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #475569;
-        }
-
-        /* Custom Cursor Styles - GPU Accelerated */
-        .cursor-dot {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 16px;
-            height: 16px;
-            background: #6366f1;
-            /* Primary Brand Color */
-            border: 2px solid #ffffff;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            box-shadow: 0 0 12px rgba(99, 102, 241, 0.6);
-            will-change: transform;
-            transition: transform 0.1s;
-        }
-
-        .cursor-outline {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 48px;
-            height: 48px;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            background: rgba(99, 102, 241, 0.05);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9998;
-            will-change: transform, width, height;
-            transition: width 0.2s, height 0.2s, background 0.2s, border-color 0.2s;
-        }
-
-        .cursor-outline.hover {
-            width: 70px;
-            height: 70px;
-            background: rgba(99, 102, 241, 0.1);
-            border-color: rgba(236, 72, 153, 0.8);
-        }
-
-        /* Glassmorphism Navigation - Optimized blur for performance */
-        .nav-glass {
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        /* Subtle Grid Background */
-        .bg-grid {
-            background-size: 60px 60px;
-            mask-image: radial-gradient(circle at center, black 0%, transparent 80%);
-            -webkit-mask-image: radial-gradient(circle at center, black 0%, transparent 80%);
-        }
-
-        /* Typography Enhancements */
-        .text-gradient {
-            background: linear-gradient(135deg, #a5b4fc 0%, #f472b6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Card Styles - GPU Accelerated, reduced backdrop-filter for performance */
-        .glass-card {
-            background: rgba(30, 41, 59, 0.5);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: background 0.4s, border-color 0.4s, transform 0.4s;
-            will-change: transform;
-            transform-style: preserve-3d;
-            position: relative;
-            contain: layout style paint;
-        }
-
-        /* Optimization: Shadow via pseudo-element to avoid repaint */
-        .glass-card::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            z-index: -1;
-            border-radius: inherit;
-            box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.3);
-            opacity: 0;
-            transition: opacity 0.4s;
-            pointer-events: none;
-        }
-
-        .glass-card:hover {
-            background: rgba(30, 41, 59, 0.6);
-            border-color: rgba(99, 102, 241, 0.3);
-            transform: translateY(-5px);
-        }
-
-        .glass-card:hover::after {
-            opacity: 1;
-        }
-
-        /* Magnetic Button Effect */
-        .magnetic-btn {
-            position: relative;
-            z-index: 1;
-            overflow: hidden;
-        }
-
-        .magnetic-btn::after {
-            content: '';
-            position: absolute;
-            z-index: -1;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: inherit;
-            border-radius: inherit;
-            transition: transform 0.3s;
-        }
-
-        /* Utility */
-        .text-balance {
-            text-wrap: balance;
-        }
-
-        /* Text Reveal Animation */
-        .reveal-text {
-            opacity: 0;
-            transform: translateY(60px);
-        }
-
-        .reveal-text.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Skill Tag Hover */
-        .skill-tag {
-            transition: all 0.3s ease;
-        }
-
-        .skill-tag:hover {
-            background: rgba(99, 102, 241, 0.2);
-            border-color: rgba(99, 102, 241, 0.5);
-            transform: translateY(-2px);
-        }
-
-        /* Interactive Elements Glow */
-        .glow-hover:hover {
-            box-shadow: 0 0 20px rgba(99, 102, 241, 0.4), 0 0 40px rgba(99, 102, 241, 0.2);
-        }
-
-        /* Floating Elements Animation */
-        .animate-blob-1 {
-            animation: move-blob-1 20s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .animate-blob-2 {
-            animation: move-blob-2 25s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        @keyframes float-slow {
-
-            0%,
-            100% {
-                transform: translateY(0) rotate(0deg);
-            }
-
-            50% {
-                transform: translateY(-15px) rotate(5deg);
-            }
-        }
-
-        .float-slow {
-            animation: float-slow 6s ease-in-out infinite;
-        }
-
-        /* Stagger Animation Delays */
-        .stagger-1 {
-            animation-delay: 0.1s;
-        }
-
-        .stagger-2 {
-            animation-delay: 0.2s;
-        }
-
-        .stagger-3 {
-            animation-delay: 0.3s;
-        }
-
-        .stagger-4 {
-            animation-delay: 0.4s;
-        }
-
-        /* Work Card Shimmer Hover Effect */
-        .work-card div[class*="aspect-"] {
-            position: relative;
-            overflow: hidden;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .work-card div[class*="aspect-"]::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg,
-                    transparent 0%,
-                    rgba(255, 255, 255, 0.15) 50%,
-                    transparent 100%);
-            transition: left 0.6s ease;
-            pointer-events: none;
-            z-index: 5;
-        }
-
-        .work-card:hover div[class*="aspect-"]::before {
-            left: 100%;
-        }
-
-        .work-card:hover div[class*="aspect-"] {
-            border-color: rgba(99, 102, 241, 0.5);
-            box-shadow: 0 0 40px rgba(99, 102, 241, 0.25);
-        }
-
-        /* Typewriter Effect */
-        .typewriter-cursor {
-            animation: blink 1s step-end infinite;
-            color: #6366f1;
-            font-weight: 100;
-        }
-
-        @keyframes blink {
-
-            0%,
-            100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0;
-            }
-        }
-
-        /* Progress Bar Rainbow Shimmer */
-        #scroll-progress {
-            background: linear-gradient(90deg, #6366f1, #a855f7, #3b82f6, #6366f1);
-            background-size: 200% 100%;
-            animation: rainbow-flow 3s linear infinite;
-        }
-
-        @keyframes rainbow-flow {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            100% {
-                background-position: 200% 50%;
-            }
-        }
-
-        /* Cursor Trail */
-        .cursor-trail {
-            position: fixed;
-            width: 8px;
-            height: 8px;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.6) 0%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-            transition: opacity 0.5s ease;
-        }
-
-        /* Shooting Stars for Night Mode */
-        .shooting-star {
-            position: fixed;
-            width: 100px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #fff, transparent);
-            animation: shoot 3s linear infinite;
-            opacity: 0;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        @keyframes shoot {
-            0% {
-                transform: translateX(-100px) rotate(-45deg);
-                opacity: 0;
-            }
-
-            10% {
-                opacity: 1;
-            }
-
-            90% {
-                opacity: 1;
-            }
-
-            100% {
-                transform: translateX(calc(100vw + 100px)) rotate(-45deg);
-                opacity: 0;
-            }
-        }
-
-        /* Card FLIP transition */
-        .work-card {
-            transition: transform 0.4s ease, opacity 0.4s ease;
-        }
-
-        .work-card.filtering-out {
-            transform: scale(0.9) translateY(20px);
-            opacity: 0;
-        }
-
-        .work-card.filtering-in {
-            animation: card-appear 0.4s ease forwards;
-        }
-
-        @keyframes card-appear {
-            from {
-                transform: scale(0.9) translateY(20px);
-                opacity: 0;
-            }
-
-            to {
-                transform: scale(1) translateY(0);
-                opacity: 1;
-            }
-        }
-
-        /* Konami Success Animation */
-        .konami-active {
-            animation: konami-pulse 0.5s ease;
-        }
-
-        @keyframes konami-pulse {
-
-            0%,
-            100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.02);
-            }
-        }
-
-        /* Vertical Carousel Animation */
-        .carousel-vertical {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            height: 100%;
-            animation: slide-vertical 16s ease-in-out infinite;
-        }
-
-        /* Pause on hover */
-        .group:hover .carousel-vertical {
-            animation-play-state: paused;
-        }
-
-        @keyframes slide-vertical {
-
-            0%,
-            18% {
-                transform: translateY(0%);
-            }
-
-            22% {
-                transform: translateY(-105%);
-            }
-
-            /* 小回彈 */
-            25%,
-            43% {
-                transform: translateY(-100%);
-            }
-
-            47% {
-                transform: translateY(-205%);
-            }
-
-            50%,
-            68% {
-                transform: translateY(-200%);
-            }
-
-            72% {
-                transform: translateY(-305%);
-            }
-
-            75%,
-            93% {
-                transform: translateY(-300%);
-            }
-
-            97% {
-                transform: translateY(-405%);
-            }
-
-            100% {
-                transform: translateY(-400%);
-            }
-        }
-
-        /* 6-Image Vertical Carousel Animation */
-        .carousel-vertical-6 {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            height: 100%;
-            animation: slide-vertical-6 24s ease-in-out infinite;
-        }
-
-        .group:hover .carousel-vertical-6 {
-            animation-play-state: paused;
-        }
-
-        @keyframes slide-vertical-6 {
-
-            0%,
-            12% {
-                transform: translateY(0%);
-            }
-
-            14% {
-                transform: translateY(-105%);
-            }
-
-            16%,
-            28% {
-                transform: translateY(-100%);
-            }
-
-            30% {
-                transform: translateY(-205%);
-            }
-
-            33%,
-            45% {
-                transform: translateY(-200%);
-            }
-
-            47% {
-                transform: translateY(-305%);
-            }
-
-            50%,
-            62% {
-                transform: translateY(-300%);
-            }
-
-            64% {
-                transform: translateY(-405%);
-            }
-
-            66%,
-            78% {
-                transform: translateY(-400%);
-            }
-
-            80% {
-                transform: translateY(-505%);
-            }
-
-            83%,
-            95% {
-                transform: translateY(-500%);
-            }
-
-            98% {
-                transform: translateY(-605%);
-            }
-
-            100% {
-                transform: translateY(-600%);
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="assets/portfolio.css">
 </head>
 
 <body class="antialiased selection:bg-primary/30 selection:text-white">
@@ -707,8 +187,9 @@
                             class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
                     </span>
-                    <span class="text-sm font-medium text-slate-300 tracking-wide">開放職涯機會 — <span
-                            class="text-white font-bold">網頁設計師</span> 職缺</span>
+                    <span class="text-sm font-medium text-slate-300 tracking-wide"><span
+                            class="text-white font-bold">前端工程師 / 前端設計師 作品集</span> | #SEO #前端 #設計 #動效<BR> 專精動效設計
+                        (Lottie/SVGA)、響應式網頁設計與前端開發，有獨立規劃及架站能力。致力於創造美感與實用兼具的數位體驗。</span>
                 </div>
 
                 <!-- Main Headline -->
@@ -719,11 +200,12 @@
 
                 <!-- Subheadline with Key Points -->
                 <p class="text-lg md:text-xl text-slate-400 mb-12 leading-relaxed max-w-2xl text-balance reveal-text">
-                    我是前端設計師，擁有 <span class="text-white font-medium whitespace-nowrap">多年 Web/Mobile 團隊協作開發經驗</span>，主要負責
-                    <span class="text-white font-medium whitespace-nowrap">UI/UX設計</span>及各類<span
+                    我是前端設計師/工程師，擁有 <span class="text-white font-medium whitespace-nowrap">多年 Web/Mobile
+                        團隊協作開發經驗</span>，主要負責
+                    <span class="text-white font-medium whitespace-nowrap">網頁設計、UI/UX設計</span>及各類<span
                         class="text-white font-medium whitespace-nowrap">動效製作</span>。<br>
                     熟練 Figma、Photoshop、Illustrator、After Effects 等工具，並具備 <span
-                        class="text-white font-medium whitespace-nowrap">獨立製作 RWD 響應式網頁</span> 的實務能力。
+                        class="text-white font-medium whitespace-nowrap">獨立製作開發網站</span> 的實務能力。
                 </p>
 
                 <!-- Buttons -->
@@ -863,14 +345,18 @@
                 <div class="flex flex-wrap gap-2" id="portfolio-filter">
                     <button data-filter="all"
                         class="filter-btn active px-4 py-2 rounded-full text-sm font-medium border border-white/20 bg-white/10 text-white hover:bg-white/15 transition-all">全部</button>
-                    <button data-filter="ui"
-                        class="filter-btn px-4 py-2 rounded-full text-sm font-medium border border-white/20 bg-slate-800/50 text-slate-300 hover:text-white hover:border-primary/50 hover:bg-slate-700/50 transition-all">UI/UX</button>
-                    <button data-filter="motion"
-                        class="filter-btn px-4 py-2 rounded-full text-sm font-medium border border-white/20 bg-slate-800/50 text-slate-300 hover:text-white hover:border-secondary/50 hover:bg-slate-700/50 transition-all">Motion</button>
-                    <button data-filter="web"
-                        class="filter-btn px-4 py-2 rounded-full text-sm font-medium border border-white/20 bg-slate-800/50 text-slate-300 hover:text-white hover:border-blue-400/50 hover:bg-slate-700/50 transition-all">Web</button>
-                    <button data-filter="other"
-                        class="filter-btn px-4 py-2 rounded-full text-sm font-medium border border-white/20 bg-slate-800/50 text-slate-300 hover:text-white hover:border-white/40 hover:bg-slate-700/50 transition-all">其他</button>
+                    <button data-filter="dynamic-web"
+                        class="filter-btn px-4 py-2 rounded-full text-sm font-medium border border-white/20 bg-slate-800/50 text-slate-300 hover:text-white hover:border-primary/50 hover:bg-slate-700/50 transition-all">動態式網頁</button>
+                    <button data-filter="functional-web"
+                        class="filter-btn px-4 py-2 rounded-full text-sm font-medium border border-white/20 bg-slate-800/50 text-slate-300 hover:text-white hover:border-blue-400/50 hover:bg-slate-700/50 transition-all">功能型網站</button>
+                    <button data-filter="web-design"
+                        class="filter-btn px-4 py-2 rounded-full text-sm font-medium border border-white/20 bg-slate-800/50 text-slate-300 hover:text-white hover:border-blue-400/50 hover:bg-slate-700/50 transition-all">網頁設計</button>
+                    <button data-filter="graphic-design"
+                        class="filter-btn px-4 py-2 rounded-full text-sm font-medium border border-white/20 bg-slate-800/50 text-slate-300 hover:text-white hover:border-white/40 hover:bg-slate-700/50 transition-all">平面設計</button>
+                    <button data-filter="seo"
+                        class="filter-btn px-4 py-2 rounded-full text-sm font-medium border border-white/20 bg-slate-800/50 text-slate-300 hover:text-white hover:border-green-400/50 hover:bg-slate-700/50 transition-all">SEO關鍵字</button>
+                    <button data-filter="motion-design"
+                        class="filter-btn px-4 py-2 rounded-full text-sm font-medium border border-white/20 bg-slate-800/50 text-slate-300 hover:text-white hover:border-secondary/50 hover:bg-slate-700/50 transition-all">動態設計</button>
                 </div>
             </div>
 
@@ -879,7 +365,7 @@
 
                 <!-- Project: GoodEats -->
                 <a href="https://goodeats.asia/" target="_blank" rel="noopener noreferrer"
-                    class="group cursor-pointer work-card block" data-category="ui">
+                    class="group cursor-pointer work-card block" data-category="dynamic-web web-design">
                     <div
                         class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative border border-white/5 bg-slate-800">
                         <img src="assets/goodeats_preview.jpg" alt="穀意 GoodEats" loading="lazy" decoding="async"
@@ -895,8 +381,8 @@
                     <div class="flex justify-between items-start">
                         <div>
                             <h4 class="text-2xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
-                                穀意 GoodEats</h4>
-                            <p class="text-slate-400 text-sm">RWD • Immersive Design • Landing Page</p>
+                                穀意 GoodEats (官網)</h4>
+                            <p class="text-slate-400 text-sm">沉浸式設計 • 動效 • RWD • 一頁式網站 •影片背景</p>
                         </div>
                         <div
                             class="p-2 rounded-full border border-white/10 text-white group-hover:bg-primary group-hover:border-primary transition-all">
@@ -907,7 +393,7 @@
 
                 <!-- Project: GoodEats Showcase -->
                 <a href="https://gowork.run/showGoodEats/" target="_blank" rel="noopener noreferrer"
-                    class="group cursor-pointer work-card block" data-category="ui">
+                    class="group cursor-pointer work-card block" data-category="dynamic-web web-design">
                     <div
                         class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative border border-white/5 bg-slate-800">
                         <img src="assets/showgoodeats.jpg" alt="穀意 GoodEats Showcase" loading="lazy" decoding="async"
@@ -923,8 +409,8 @@
                     <div class="flex justify-between items-start">
                         <div>
                             <h4 class="text-2xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
-                                穀意 GoodEats Showcase</h4>
-                            <p class="text-slate-400 text-sm">UI/UX • Interaction Design • Showcase</p>
+                                穀意 GoodEats Showcase (開發介紹)</h4>
+                            <p class="text-slate-400 text-sm">前台/後台開發介紹 • 互動式 UI/UX • 沉浸式設計 • 動效 • RWD • 創意版型</p>
                         </div>
                         <div
                             class="p-2 rounded-full border border-white/10 text-white group-hover:bg-primary group-hover:border-primary transition-all">
@@ -936,7 +422,7 @@
 
                 <!-- Project: 御手國醫-前後台試做 -->
                 <a href="https://book.gowork.run/showcase" target="_blank" rel="noopener noreferrer"
-                    class="group cursor-pointer work-card block" data-category="ui">
+                    class="group cursor-pointer work-card block" data-category="functional-web web-design">
                     <div
                         class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative border border-white/5 bg-slate-800 group-hover:border-primary/50 transition-colors">
 
@@ -970,8 +456,8 @@
                     <div class="flex justify-between items-start">
                         <div>
                             <h4 class="text-2xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
-                                御手國醫-前後台試做</h4>
-                            <p class="text-slate-400 text-sm">改版設計試做DEMO • RWD • 沉浸式設計</p>
+                                御手國醫-前/後台試做</h4>
+                            <p class="text-slate-400 text-sm">前台改版設計(御手寶典頁面) • 後台製作(預約/管理…) • RWD • 微互動 • 開發歷程</p>
                         </div>
                         <div
                             class="p-2 rounded-full border border-white/10 text-white group-hover:bg-primary group-hover:border-primary transition-all">
@@ -982,7 +468,7 @@
 
                 <!-- Project 2: GoldLab Web Portal -->
                 <a href="https://goldlab.tw/" target="_blank" rel="noopener noreferrer"
-                    class="group cursor-pointer work-card block" data-category="web">
+                    class="group cursor-pointer work-card block" data-category="functional-web web-design">
                     <div
                         class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative border border-white/5 bg-slate-800 group-hover:border-primary/50 transition-colors">
 
@@ -1020,8 +506,8 @@
                     <div class="flex justify-between items-start">
                         <div>
                             <h4 class="text-2xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
-                                Web Portal & Article Dashboard</h4>
-                            <p class="text-slate-400 text-sm">獨立規劃設計/製作 • RWD Web • Full Info Site • SEO Strategy</p>
+                                內容型網站完整建置</h4>
+                            <p class="text-slate-400 text-sm">獨立規劃設計/製作/佈署 • RWD • 資訊型網站 • SEO 策略 • 文章管理後台</p>
                         </div>
                         <div
                             class="p-2 rounded-full border border-white/10 text-white group-hover:bg-primary group-hover:border-primary transition-all">
@@ -1032,7 +518,7 @@
 
                 <!-- Project 3: Shiny Jewelry Platform -->
                 <a href="https://my8020.cloud/" target="_blank" rel="noopener noreferrer"
-                    class="group cursor-pointer work-card block" data-category="web">
+                    class="group cursor-pointer work-card block" data-category="web-design">
                     <div
                         class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative border border-white/5 bg-slate-800">
                         <img src="assets/shiny_jewelry_preview.jpg" alt="Shiny Jewelry Platform" loading="lazy"
@@ -1049,7 +535,7 @@
                     <div class="flex justify-between items-start">
                         <div>
                             <h4 class="text-2xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
-                                形像官網重新規劃製作</h4>
+                                形像官網一頁式網站(主頁設計)</h4>
                             <p class="text-slate-400 text-sm">需求規劃 • 風格提案 • UI/UX設計 • 網站開發</p>
                         </div>
                         <div
@@ -1062,7 +548,7 @@
                 <!-- Project 4: Motion Showreel -->
                 <!-- Project 4: Motion Showreel -->
                 <a href="https://www.youtube.com/watch?v=V_f5eONwmPo" target="_blank" rel="noopener noreferrer"
-                    class="group cursor-pointer work-card block" data-category="motion">
+                    class="group cursor-pointer work-card block" data-category="motion-design">
                     <div
                         class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative border border-white/5 bg-slate-800 flex items-center justify-center group-hover:border-secondary/50 transition-colors">
 
@@ -1103,7 +589,7 @@
 
                 <!-- Project 1: Graphic Design Portfolio -->
                 <a href="assets/Graphic_Portfolio.pdf" target="_blank" rel="noopener noreferrer"
-                    class="group cursor-pointer work-card block" data-category="other">
+                    class="group cursor-pointer work-card block" data-category="graphic-design">
                     <div
                         class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative border border-white/5 bg-slate-800 isolate">
 
@@ -1136,8 +622,9 @@
                     <div class="flex justify-between items-start">
                         <div>
                             <h4 class="text-2xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
-                                Graphic Design Portfolio</h4>
-                            <p class="text-slate-400">Branding • Layout • Visual Design</p>
+                                平面設計作品集</h4>
+                            <p class="text-slate-400">Graphic Design • 廣告設計 • 印刷品設計(立牌、公仔筆、海報…) • 活動頁設計 • Banner設計 •
+                                吉祥物設計 • LOGO及名片設計</p>
                         </div>
                         <div
                             class="p-2 rounded-full border border-white/10 text-white group-hover:bg-primary group-hover:border-primary transition-all">
@@ -1148,7 +635,7 @@
 
                 <!-- Project 5: Content SEO Strategy -->
                 <a href="https://seo.gowork.run/" target="_blank" rel="noopener noreferrer"
-                    class="group cursor-pointer work-card block" data-category="web">
+                    class="group cursor-pointer work-card block" data-category="seo">
                     <div
                         class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative border border-white/5 bg-slate-800">
                         <img src="assets/seo_preview.png" alt="Content SEO Strategy" loading="lazy" decoding="async"
@@ -1164,8 +651,8 @@
                     <div class="flex justify-between items-start">
                         <div>
                             <h4 class="text-2xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
-                                Content SEO Strategy</h4>
-                            <p class="text-slate-400 text-sm">研究規劃產出內容 • 取得搜尋排名 • AI摘要</p>
+                                SEO內容行銷</h4>
+                            <p class="text-slate-400 text-sm">研究規劃產出內容 • 取得關鍵字搜尋排名 • AI摘要引用</p>
                         </div>
                         <div
                             class="p-2 rounded-full border border-white/10 text-white group-hover:bg-primary group-hover:border-primary transition-all">
@@ -1175,7 +662,7 @@
                 </a>
 
                 <!-- Project 6: Lottie & Micro-interactions -->
-                <div class="group work-card block cursor-not-allowed" data-category="motion">
+                <div class="group work-card block cursor-not-allowed" data-category="motion-design">
                     <div
                         class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative border border-white/10 bg-slate-800">
                         <video
@@ -1195,13 +682,13 @@
                         <div>
                             <h4 class="text-2xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
                                 Micro-interactions</h4>
-                            <p class="text-slate-400 text-sm">Lottie • JSON • UI Dynamic</p>
+                            <p class="text-slate-400 text-sm">Lottie 客製化動效製作 • JSON • UI Dynamic</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Project 7: Lottie Animation Demo -->
-                <div class="group work-card block cursor-not-allowed" data-category="motion">
+                <div class="group work-card block cursor-not-allowed" data-category="motion-design">
                     <div
                         class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative border border-white/10 bg-slate-800">
                         <video
@@ -1221,7 +708,7 @@
                         <div>
                             <h4 class="text-2xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
                                 Animated Game Cards</h4>
-                            <p class="text-slate-400 text-sm">Lottie • JSON • Animation</p>
+                            <p class="text-slate-400 text-sm">圖片動態化 • Lottie • JSON • Animation</p>
                         </div>
                     </div>
                 </div>
@@ -1894,7 +1381,7 @@
                 workCards.forEach(card => {
                     const category = card.dataset.category || 'all';
 
-                    if (filter === 'all' || category === filter) {
+                    if (filter === 'all' || category.includes(filter)) {
                         // Show card with animation
                         if (card.style.display === 'none') {
                             card.style.display = 'block';
