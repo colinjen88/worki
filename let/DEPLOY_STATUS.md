@@ -5,6 +5,15 @@
 - **目標伺服器**: 72.62.66.151 (VPS)
 - **狀態**: ✅ 已成功部署
 
+## 🚧 已完成進度
+1. **GitHub 同步**: 本地代碼（包含最新的 CSS 抽取、分類篩選更新）已全部推送到 GitHub `master` 分支。
+2. **部署腳本**: 已建立自動化 PowerShell 部署腳本 (`deploy_vps_let.ps1`)。
+   - 功能：自動安裝 Nginx/Git/Certbot、拉取 GitHub 代碼、設定 Nginx、申請 SSL 憑證。
+   - 修正點：Nginx Root 路徑已修正為 `/var/www/html/worki/let` 以解決 403 錯誤。
+3. **UI 更新**:
+   - **御手國醫作品圖片**: 已將圖片更新為 `assets/royaltouch/` 資料夾下的 5 張新圖。
+   - **輪播動畫優化**: 更新 `portfolio.css` 中的 `carousel-vertical` 動畫，支援 5 張圖無縫循環播放，並優化切換節奏。
+
 ## 🚀 快速部署流程 (手動操作)
 
 如果自動腳本無法執行，請依照以下步驟手動更新與部署：

@@ -386,13 +386,13 @@ body {
     }
 }
 
-/* Vertical Carousel Animation */
+/* Vertical Carousel Animation (5 Images) */
 .carousel-vertical {
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
-    animation: slide-vertical 16s ease-in-out infinite;
+    animation: slide-vertical 20s ease-in-out infinite;
 }
 
 /* Pause on hover */
@@ -403,44 +403,52 @@ body {
 @keyframes slide-vertical {
 
     0%,
-    18% {
+    14% {
         transform: translateY(0%);
     }
 
-    22% {
+    17% {
         transform: translateY(-105%);
     }
 
-    /* 小回彈 */
-    25%,
-    43% {
+    20%,
+    34% {
         transform: translateY(-100%);
     }
 
-    47% {
+    37% {
         transform: translateY(-205%);
     }
 
-    50%,
-    68% {
+    40%,
+    54% {
         transform: translateY(-200%);
     }
 
-    72% {
+    57% {
         transform: translateY(-305%);
     }
 
-    75%,
-    93% {
+    60%,
+    74% {
         transform: translateY(-300%);
     }
 
-    97% {
+    77% {
         transform: translateY(-405%);
     }
 
-    100% {
+    80%,
+    94% {
         transform: translateY(-400%);
+    }
+
+    97% {
+        transform: translateY(-505%);
+    }
+
+    100% {
+        transform: translateY(-500%);
     }
 }
 
