@@ -4,8 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UI/UX Designer & Motion Specialist | Portfolio</title>
-    <meta name="description" content="具備前端思維與動效專業的資深 UI/UX 設計師作品集。">
+    <title>UI/UX Designer & Motion Specialist | WANG's Portfolio</title>
+    <meta name="description"
+        content="前端工程師/設計師作品集 | 專精於動效設計 (Lottie/SVGA)、RWD 響應式網頁設計與前端開發，有獨立規劃設計及架站能力。致力於創造美感與實用兼具的數位體驗。">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="UI/UX Designer & Motion Specialist | WANG's Portfolio">
+    <meta property="og:description" content="前端工程師/設計師作品集 | 專精於動效設計 (Lottie/SVGA)、RWD 響應式網頁設計與前端開發，有獨立規劃設計及架站能力。">
+    <meta property="og:url" content="https://gowork.run/">
+    <meta property="og:image" content="https://gowork.run/assets/goodeats_preview.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="UI/UX Designer & Motion Specialist | Portfolio">
+    <meta name="twitter:description" content="前端工程師/設計師作品集 | 專精於動效設計、RWD 響應式網頁設計與前端開發。">
+    <meta name="twitter:image" content="https://gowork.run/assets/goodeats_preview.jpg">
+
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
     <!-- Preconnect for faster external resource loading -->
@@ -15,15 +28,19 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
     <!-- Tailwind CSS (Local Build) -->
+    <link rel="preload" href="assets/styles.css" as="style">
     <link href="assets/styles.css" rel="stylesheet">
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts (preloaded) -->
+    <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap"
+        as="style">
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap"
         rel="stylesheet">
 
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Lucide Icons (locked version) -->
+    <script src="https://unpkg.com/lucide@0.575.0"></script>
 
     <!-- Lenis Smooth Scroll -->
     <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
@@ -33,243 +50,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
 
-
     <!-- Loading CSS -->
     <link rel="stylesheet" href="loading/loading.css">
-
-    <style>
-        /* Base Styles */
-        body {
-            background-color: #0f172a;
-            color: #cbd5e1;
-            overflow-x: hidden;
-        }
-
-        /* Hide default cursor when custom cursor is visible */
-        @media (pointer: fine) {
-            body {
-                cursor: none;
-            }
-
-            a,
-            button,
-            .cursor-pointer {
-                cursor: none;
-            }
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #0f172a;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #334155;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #475569;
-        }
-
-        /* Custom Cursor Styles - GPU Accelerated */
-        .cursor-dot {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 16px;
-            height: 16px;
-            background: #6366f1;
-            /* Primary Brand Color */
-            border: 2px solid #ffffff;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            box-shadow: 0 0 12px rgba(99, 102, 241, 0.6);
-            will-change: transform;
-            transition: transform 0.1s;
-        }
-
-        .cursor-outline {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 48px;
-            height: 48px;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            background: rgba(99, 102, 241, 0.05);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9998;
-            will-change: transform, width, height;
-            transition: width 0.2s, height 0.2s, background 0.2s, border-color 0.2s;
-        }
-
-        .cursor-outline.hover {
-            width: 70px;
-            height: 70px;
-            background: rgba(99, 102, 241, 0.1);
-            border-color: rgba(236, 72, 153, 0.8);
-        }
-
-        /* Glassmorphism Navigation - Optimized blur for performance */
-        .nav-glass {
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        /* Subtle Grid Background */
-        .bg-grid {
-            background-size: 60px 60px;
-            mask-image: radial-gradient(circle at center, black 0%, transparent 80%);
-            -webkit-mask-image: radial-gradient(circle at center, black 0%, transparent 80%);
-        }
-
-        /* Typography Enhancements */
-        .text-gradient {
-            background: linear-gradient(135deg, #a5b4fc 0%, #f472b6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Card Styles - GPU Accelerated, reduced backdrop-filter for performance */
-        .glass-card {
-            background: rgba(30, 41, 59, 0.5);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: background 0.4s, border-color 0.4s, transform 0.4s;
-            will-change: transform;
-            transform-style: preserve-3d;
-            position: relative;
-            contain: layout style paint;
-        }
-
-        /* Optimization: Shadow via pseudo-element to avoid repaint */
-        .glass-card::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            z-index: -1;
-            border-radius: inherit;
-            box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.3);
-            opacity: 0;
-            transition: opacity 0.4s;
-            pointer-events: none;
-        }
-
-        .glass-card:hover {
-            background: rgba(30, 41, 59, 0.6);
-            border-color: rgba(99, 102, 241, 0.3);
-            transform: translateY(-5px);
-        }
-
-        .glass-card:hover::after {
-            opacity: 1;
-        }
-
-        /* Magnetic Button Effect */
-        .magnetic-btn {
-            position: relative;
-            z-index: 1;
-            overflow: hidden;
-        }
-
-        .magnetic-btn::after {
-            content: '';
-            position: absolute;
-            z-index: -1;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: inherit;
-            border-radius: inherit;
-            transition: transform 0.3s;
-        }
-
-        /* Utility */
-        .text-balance {
-            text-wrap: balance;
-        }
-
-        /* Text Reveal Animation */
-        .reveal-text {
-            opacity: 0;
-            transform: translateY(60px);
-        }
-
-        .reveal-text.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Skill Tag Hover */
-        .skill-tag {
-            transition: all 0.3s ease;
-        }
-
-        .skill-tag:hover {
-            background: rgba(99, 102, 241, 0.2);
-            border-color: rgba(99, 102, 241, 0.5);
-            transform: translateY(-2px);
-        }
-
-        /* Interactive Elements Glow */
-        .glow-hover:hover {
-            box-shadow: 0 0 20px rgba(99, 102, 241, 0.4), 0 0 40px rgba(99, 102, 241, 0.2);
-        }
-
-        /* Floating Elements Animation */
-        .animate-blob-1 {
-            animation: move-blob-1 20s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .animate-blob-2 {
-            animation: move-blob-2 25s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        @keyframes float-slow {
-
-            0%,
-            100% {
-                transform: translateY(0) rotate(0deg);
-            }
-
-            50% {
-                transform: translateY(-15px) rotate(5deg);
-            }
-        }
-
-        .float-slow {
-            animation: float-slow 6s ease-in-out infinite;
-        }
-
-        /* Stagger Animation Delays */
-        .stagger-1 {
-            animation-delay: 0.1s;
-        }
-
-        .stagger-2 {
-            animation-delay: 0.2s;
-        }
-
-        .stagger-3 {
-            animation-delay: 0.3s;
-        }
-
-        .stagger-4 {
-            animation-delay: 0.4s;
-        }
-    </style>
+    <link rel="stylesheet" href="assets/portfolio.css">
 </head>
 
 <body class="antialiased selection:bg-primary/30 selection:text-white">
@@ -305,6 +88,11 @@
         </div>
     </div>
 
+    <!-- Scroll Progress Indicator -->
+    <div id="scroll-progress"
+        class="fixed top-0 left-0 h-1 bg-gradient-to-r from-primary via-secondary to-primary z-[60] w-0 transition-all duration-150 shadow-[0_0_10px_rgba(99,102,241,0.5)]">
+    </div>
+
     <!-- Custom Cursor -->
     <div class="cursor-dot hidden md:block"></div>
     <div class="cursor-outline hidden md:block"></div>
@@ -323,7 +111,6 @@
         </div>
     </div>
 
-    <!-- Navigation -->
     <!-- Navigation (Floating Island Design) -->
     <nav class="fixed top-6 left-0 right-0 max-w-5xl mx-auto w-[90%] z-50 transition-all duration-300 transform"
         id="navbar">
@@ -411,23 +198,25 @@
                             class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
                     </span>
-                    <span class="text-sm font-medium text-slate-300 tracking-wide">可可設計的主管您好，我想應徵貴公司的「UI動畫設計師 和
-                        UI,UX設計師（全遠端）」職務，<br>覺得自己非常符合條件，我的配合度很高，希望能有這個機會，感謝。</span>
+                    <span class="text-sm font-medium text-slate-300 tracking-wide"><span
+                            class="text-white font-bold">網頁設計師 / UI/UX 設計師 / 動效設計</span> | #HTML #CSS #Figma #Motion<BR>
+                        具備多年團隊協作研發經驗，專精於動效設計與響應式網頁開發。</span>
                 </div>
 
                 <!-- Main Headline -->
                 <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-[1.1] tracking-tight">
-                    <span class="reveal-text inline-block">Designing Logic.</span><br>
-                    <span class="text-gradient reveal-text inline-block pb-2">Animating Emotion.</span>
+                    <span id="typewriter-line1" class="inline-block"></span><span class="typewriter-cursor">|</span><br>
+                    <span id="typewriter-line2" class="text-gradient inline-block pb-2"></span>
                 </h1>
 
                 <!-- Subheadline with Key Points -->
                 <p class="text-lg md:text-xl text-slate-400 mb-12 leading-relaxed max-w-2xl text-balance reveal-text">
-                    我是前端設計師，擁有 <span class="text-white font-medium whitespace-nowrap">多年 Web/Mobile 團隊協作開發經驗</span>，主要負責
-                    <span class="text-white font-medium whitespace-nowrap">UI/UX設計</span>及各類<span
+                    我是前端設計師/工程師，擁有 <span class="text-white font-medium whitespace-nowrap">多年 Web/Mobile
+                        團隊協作開發經驗</span>，主要負責
+                    <span class="text-white font-medium whitespace-nowrap">網頁設計、UI/UX設計</span>及各類<span
                         class="text-white font-medium whitespace-nowrap">動效製作</span>。<br>
-                    熟練 Figma、Photoshop、Illustrator、After Effects 等工具，並具備 <span
-                        class="text-white font-medium whitespace-nowrap">獨立製作 RWD 響應式網頁</span> 的實務能力。
+                    熟練 Figma、Photoshop、Illustrator、After Effects、Antigravity等工具，並具備 <span
+                        class="text-white font-medium whitespace-nowrap">獨立製作開發網站</span> 的實務能力。
                 </p>
 
                 <!-- Buttons -->
@@ -477,16 +266,21 @@
                         <span
                             class="skill-tag px-3 py-1 rounded-md bg-white/5 border border-white/10 text-sm text-slate-300">Figma</span>
                         <span
-                            class="skill-tag px-3 py-1 rounded-md bg-white/5 border border-white/10 text-sm text-slate-300">Photoshop</span>
+                            class="skill-tag px-3 py-1 rounded-md bg-white/5 border border-white/10 text-sm text-slate-300">SVGA</span>
+                        <span
+                            class="skill-tag px-3 py-1 rounded-md bg-white/5 border border-white/10 text-sm text-slate-300">Lottie</span>
                         <span
                             class="skill-tag px-3 py-1 rounded-md bg-white/5 border border-white/10 text-sm text-slate-300">Illustrator</span>
+                        <span
+                            class="skill-tag px-3 py-1 rounded-md bg-white/5 border border-white/10 text-sm text-slate-300">Photoshop</span>
                         <span
                             class="skill-tag px-3 py-1 rounded-md bg-white/5 border border-white/10 text-sm text-slate-300">After
                             Effects</span>
                         <span
-                            class="skill-tag px-3 py-1 rounded-md bg-white/5 border border-white/10 text-sm text-slate-300">HTML/CSS</span>
+                            class="skill-tag px-3 py-1 rounded-md bg-white/5 border border-white/10 text-sm text-slate-300">HTML
+                            / CSS</span>
                         <span
-                            class="skill-tag px-3 py-1 rounded-md bg-white/5 border border-white/10 text-sm text-slate-300">Lottie/SVGA</span>
+                            class="skill-tag px-3 py-1 rounded-md bg-white/5 border border-white/10 text-sm text-slate-300">JavaScript</span>
                     </div>
                 </div>
 
@@ -563,57 +357,30 @@
                     <h2 class="text-sm font-bold text-primary uppercase tracking-[0.2em] mb-4">Selected Works</h2>
                     <h3 class="text-4xl md:text-5xl font-bold text-white">作品列表</h3>
                 </div>
+                <!-- Portfolio Filter -->
+                <div class="flex flex-wrap gap-2" id="portfolio-filter">
+                    <button data-filter="all"
+                        class="filter-btn active px-4 py-2 rounded-full text-sm font-medium border border-white/20 bg-white/10 text-white hover:bg-white/15 transition-all">全部</button>
+                    <button data-filter="dynamic-web"
+                        class="filter-btn px-4 py-2 rounded-full text-sm font-medium border border-white/20 bg-slate-800/50 text-slate-300 hover:text-white hover:border-primary/50 hover:bg-slate-700/50 transition-all">動態式網頁</button>
+                    <button data-filter="functional-web"
+                        class="filter-btn px-4 py-2 rounded-full text-sm font-medium border border-white/20 bg-slate-800/50 text-slate-300 hover:text-white hover:border-blue-400/50 hover:bg-slate-700/50 transition-all">功能型網站</button>
+
+                    <button data-filter="graphic-design"
+                        class="filter-btn px-4 py-2 rounded-full text-sm font-medium border border-white/20 bg-slate-800/50 text-slate-300 hover:text-white hover:border-white/40 hover:bg-slate-700/50 transition-all">平面設計</button>
+                    <button data-filter="seo"
+                        class="filter-btn px-4 py-2 rounded-full text-sm font-medium border border-white/20 bg-slate-800/50 text-slate-300 hover:text-white hover:border-green-400/50 hover:bg-slate-700/50 transition-all">SEO關鍵字</button>
+                    <button data-filter="motion-design"
+                        class="filter-btn px-4 py-2 rounded-full text-sm font-medium border border-white/20 bg-slate-800/50 text-slate-300 hover:text-white hover:border-secondary/50 hover:bg-slate-700/50 transition-all">動態設計</button>
+                </div>
             </div>
 
             <!-- Portfolio Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
 
-                <!-- Project 1: Graphic Design Portfolio -->
-                <a href="assets/Graphic_Portfolio.pdf" target="_blank" class="group cursor-pointer work-card block">
-                    <div
-                        class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative border border-white/5 bg-slate-800 isolate">
-
-                        <!-- Layer 1: Faint Collage Background -->
-                        <div class="absolute inset-0 z-0">
-                            <img src="assets/graphic_collage_bg.jpg" alt="Background Texture"
-                                class="object-cover w-full h-full opacity-20 grayscale group-hover:opacity-30 group-hover:grayscale-0 transition-all duration-700"
-                                loading="lazy" decoding="async">
-                        </div>
-
-                        <!-- Layer 2: Original Foreground (Book Cover) -->
-                        <div
-                            class="absolute inset-0 z-10 flex items-center justify-center p-6 group-hover:scale-105 transition-transform duration-500">
-                            <img src="assets/graphic_portfolio_thumb.jpg" alt="Graphic Design Portfolio Cover"
-                                class="w-full h-full object-contain drop-shadow-2xl shadow-black rounded-lg"
-                                loading="lazy" decoding="async">
-                        </div>
-
-                        <!-- Layer 3: Gradient Overlay -->
-                        <div
-                            class="absolute inset-0 z-20 bg-gradient-to-t from-slate-900/60 to-transparent pointer-events-none">
-                        </div>
-
-                        <!-- PDF Icon Overlay -->
-                        <div
-                            class="absolute top-4 right-4 z-30 bg-black/50 backdrop-blur-md p-2 rounded-lg border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity">
-                            <i data-lucide="file-text" class="w-5 h-5 text-white"></i>
-                        </div>
-                    </div>
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <h4 class="text-2xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
-                                Graphic Design Portfolio</h4>
-                            <p class="text-slate-400">Branding • Layout • Visual Design</p>
-                        </div>
-                        <div
-                            class="p-2 rounded-full border border-white/10 text-white group-hover:bg-primary group-hover:border-primary transition-all">
-                            <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
-                        </div>
-                    </div>
-                </a>
-
                 <!-- Project: GoodEats -->
-                <a href="https://goodeats.asia/" target="_blank" class="group cursor-pointer work-card block">
+                <a href="https://goodeats.asia/" target="_blank" rel="noopener noreferrer"
+                    class="group cursor-pointer work-card block" data-category="dynamic-web web-design">
                     <div
                         class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative border border-white/5 bg-slate-800">
                         <img src="assets/goodeats_preview.jpg" alt="穀意 GoodEats" loading="lazy" decoding="async"
@@ -629,8 +396,8 @@
                     <div class="flex justify-between items-start">
                         <div>
                             <h4 class="text-2xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
-                                穀意 GoodEats</h4>
-                            <p class="text-slate-400 text-sm">RWD • Immersive Design • Landing Page</p>
+                                穀意 GoodEats (官網)</h4>
+                            <p class="text-slate-400 text-sm">沉浸式設計 • 動效 • RWD • 一頁式網站 •影片背景</p>
                         </div>
                         <div
                             class="p-2 rounded-full border border-white/10 text-white group-hover:bg-primary group-hover:border-primary transition-all">
@@ -639,11 +406,12 @@
                     </div>
                 </a>
 
-                <!-- Project: 御手國醫養生會館 改版設計試做DEMO -->
-                <a href="https://gowork.run/mass/" target="_blank" class="group cursor-pointer work-card block">
+                <!-- Project: GoodEats Showcase -->
+                <a href="https://gowork.run/showGoodEats/" target="_blank" rel="noopener noreferrer"
+                    class="group cursor-pointer work-card block" data-category="dynamic-web web-design">
                     <div
                         class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative border border-white/5 bg-slate-800">
-                        <img src="assets/mass_preview.png" alt="御手國醫養生會館 改版設計試做DEMO" loading="lazy" decoding="async"
+                        <img src="assets/showgoodeats.jpg" alt="穀意 GoodEats Showcase" loading="lazy" decoding="async"
                             class="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700">
                         <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
 
@@ -656,8 +424,81 @@
                     <div class="flex justify-between items-start">
                         <div>
                             <h4 class="text-2xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
-                                御手國醫養生會館</h4>
-                            <p class="text-slate-400 text-sm">改版設計試做DEMO • RWD • 沉浸式設計</p>
+                                穀意 GoodEats Showcase (開發介紹)</h4>
+                            <p class="text-slate-400 text-sm">前台/後台開發介紹 • 互動式 UI/UX • 沉浸式設計 • 動效 • RWD • 創意版型</p>
+                        </div>
+                        <div
+                            class="p-2 rounded-full border border-white/10 text-white group-hover:bg-primary group-hover:border-primary transition-all">
+                            <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+                        </div>
+                    </div>
+                </a>
+
+
+                <!-- Project: 御手國醫-前後台試做 -->
+                <a href="https://royal.gowork.run/showcase" target="_blank" rel="noopener noreferrer"
+                    class="group cursor-pointer work-card block" data-category="functional-web web-design">
+                    <div
+                        class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative border border-white/5 bg-slate-800 group-hover:border-primary/50 transition-colors">
+
+                        <!-- Carousel Container -->
+                        <div class="absolute inset-0 w-full h-full">
+                            <div class="carousel-vertical">
+                                <div class="carousel-slide">
+                                    <img src="assets/royaltouch/royal01.jpg" alt="" class="carousel-slide-bg"
+                                        loading="lazy">
+                                    <img src="assets/royaltouch/royal01.jpg" alt="御手國醫-前後台試做 1"
+                                        class="carousel-slide-fg" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/royaltouch/royal02.jpg" alt="" class="carousel-slide-bg"
+                                        loading="lazy">
+                                    <img src="assets/royaltouch/royal02.jpg" alt="御手國醫-前後台試做 2"
+                                        class="carousel-slide-fg" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/royaltouch/royal03.jpg" alt="" class="carousel-slide-bg"
+                                        loading="lazy">
+                                    <img src="assets/royaltouch/royal03.jpg" alt="御手國醫-前後台試做 3"
+                                        class="carousel-slide-fg" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/royaltouch/royal04.jpg" alt="" class="carousel-slide-bg"
+                                        loading="lazy">
+                                    <img src="assets/royaltouch/royal04.jpg" alt="御手國醫-前後台試做 4"
+                                        class="carousel-slide-fg" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/royaltouch/royal05.jpg" alt="" class="carousel-slide-bg"
+                                        loading="lazy">
+                                    <img src="assets/royaltouch/royal05.jpg" alt="御手國醫-前後台試做 5"
+                                        class="carousel-slide-fg" loading="lazy">
+                                </div>
+                                <!-- Clone First Image for Loop -->
+                                <div class="carousel-slide">
+                                    <img src="assets/royaltouch/royal01.jpg" alt="" class="carousel-slide-bg"
+                                        loading="lazy">
+                                    <img src="assets/royaltouch/royal01.jpg" alt="御手國醫-前後台試做 1"
+                                        class="carousel-slide-fg" loading="lazy">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 pointer-events-none">
+                        </div>
+
+                        <!-- External Link Icon Overlay -->
+                        <div
+                            class="absolute top-4 right-4 bg-black/50 backdrop-blur-md p-2 rounded-lg border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity z-20">
+                            <i data-lucide="external-link" class="w-5 h-5 text-white"></i>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h4 class="text-2xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
+                                按摩官網-前/後台試做</h4>
+                            <p class="text-slate-400 text-sm">前台改版設計(文章頁、預約頁) • 後台製作(預約/管理…) • RWD • 微互動 • 開發歷程</p>
                         </div>
                         <div
                             class="p-2 rounded-full border border-white/10 text-white group-hover:bg-primary group-hover:border-primary transition-all">
@@ -667,24 +508,75 @@
                 </a>
 
                 <!-- Project 2: GoldLab Web Portal -->
-                <a href="https://goldlab.tw/" target="_blank" class="group cursor-pointer work-card block">
+                <a href="https://goldlab.tw/" target="_blank" rel="noopener noreferrer"
+                    class="group cursor-pointer work-card block" data-category="functional-web web-design">
                     <div
-                        class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative border border-white/5 bg-slate-800">
-                        <img src="assets/goldlab_preview.png" alt="GoldLab Web Portal" loading="lazy" decoding="async"
-                            class="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+                        class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative border border-white/5 bg-slate-800 group-hover:border-primary/50 transition-colors">
+
+                        <!-- Carousel Container -->
+                        <div class="absolute inset-0 w-full h-full">
+                            <div class="carousel-vertical-6">
+                                <div class="carousel-slide">
+                                    <img src="assets/goldlab_preview1.jpg" alt="" class="carousel-slide-bg"
+                                        loading="lazy">
+                                    <img src="assets/goldlab_preview1.jpg" alt="GoldLab Web Portal 1"
+                                        class="carousel-slide-fg" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/goldlab_preview2.jpg" alt="" class="carousel-slide-bg"
+                                        loading="lazy">
+                                    <img src="assets/goldlab_preview2.jpg" alt="GoldLab Web Portal 2"
+                                        class="carousel-slide-fg" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/goldlab_preview3.jpg" alt="" class="carousel-slide-bg"
+                                        loading="lazy">
+                                    <img src="assets/goldlab_preview3.jpg" alt="GoldLab Web Portal 3"
+                                        class="carousel-slide-fg" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/goldlab_preview4.jpg" alt="" class="carousel-slide-bg"
+                                        loading="lazy">
+                                    <img src="assets/goldlab_preview4.jpg" alt="GoldLab Web Portal 4"
+                                        class="carousel-slide-fg" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/goldlab_preview5.jpg" alt="" class="carousel-slide-bg"
+                                        loading="lazy">
+                                    <img src="assets/goldlab_preview5.jpg" alt="GoldLab Web Portal 5"
+                                        class="carousel-slide-fg" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/goldlab_preview6.jpg" alt="" class="carousel-slide-bg"
+                                        loading="lazy">
+                                    <img src="assets/goldlab_preview6.jpg" alt="GoldLab Web Portal 6"
+                                        class="carousel-slide-fg" loading="lazy">
+                                </div>
+                                <!-- Clone First Image for Loop -->
+                                <div class="carousel-slide">
+                                    <img src="assets/goldlab_preview1.jpg" alt="" class="carousel-slide-bg"
+                                        loading="lazy">
+                                    <img src="assets/goldlab_preview1.jpg" alt="GoldLab Web Portal 1"
+                                        class="carousel-slide-fg" loading="lazy">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 pointer-events-none">
+                        </div>
 
                         <!-- External Link Icon Overlay -->
                         <div
-                            class="absolute top-4 right-4 bg-black/50 backdrop-blur-md p-2 rounded-lg border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity">
+                            class="absolute top-4 right-4 bg-black/50 backdrop-blur-md p-2 rounded-lg border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity z-20">
                             <i data-lucide="external-link" class="w-5 h-5 text-white"></i>
                         </div>
                     </div>
                     <div class="flex justify-between items-start">
                         <div>
                             <h4 class="text-2xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
-                                Web Portal & Article Dashboard</h4>
-                            <p class="text-slate-400 text-sm">獨立規劃設計/製作 • RWD Web • Full Info Site • SEO Strategy</p>
+                                內容型網站完整建置</h4>
+                            <p class="text-slate-400 text-sm">獨立規劃設計/製作/佈署 • RWD • 資訊型網站 • SEO 策略 • 文章管理後台</p>
                         </div>
                         <div
                             class="p-2 rounded-full border border-white/10 text-white group-hover:bg-primary group-hover:border-primary transition-all">
@@ -694,10 +586,11 @@
                 </a>
 
                 <!-- Project 3: Shiny Jewelry Platform -->
-                <a href="https://my8020.cloud/" target="_blank" class="group cursor-pointer work-card block">
+                <a href="https://my8020.cloud/" target="_blank" rel="noopener noreferrer"
+                    class="group cursor-pointer work-card block" data-category="web-design">
                     <div
                         class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative border border-white/5 bg-slate-800">
-                        <img src="assets/shiny_jewelry_preview.png" alt="Shiny Jewelry Platform" loading="lazy"
+                        <img src="assets/shiny_jewelry_preview.jpg" alt="Shiny Jewelry Platform" loading="lazy"
                             decoding="async"
                             class="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700">
                         <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
@@ -711,7 +604,7 @@
                     <div class="flex justify-between items-start">
                         <div>
                             <h4 class="text-2xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
-                                形像官網重新規劃製作</h4>
+                                形像官網一頁式網站(主頁設計)</h4>
                             <p class="text-slate-400 text-sm">需求規劃 • 風格提案 • UI/UX設計 • 網站開發</p>
                         </div>
                         <div
@@ -722,9 +615,8 @@
                 </a>
 
                 <!-- Project 4: Motion Showreel -->
-                <!-- Project 4: Motion Showreel -->
-                <a href="https://www.youtube.com/watch?v=V_f5eONwmPo" target="_blank"
-                    class="group cursor-pointer work-card block">
+                <a href="https://www.youtube.com/watch?v=V_f5eONwmPo" target="_blank" rel="noopener noreferrer"
+                    class="group cursor-pointer work-card block" data-category="motion-design">
                     <div
                         class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative border border-white/5 bg-slate-800 flex items-center justify-center group-hover:border-secondary/50 transition-colors">
 
@@ -763,8 +655,55 @@
                     </div>
                 </a>
 
+                <!-- Project 1: Graphic Design Portfolio -->
+                <a href="assets/Graphic_Portfolio.pdf" target="_blank" rel="noopener noreferrer"
+                    class="group cursor-pointer work-card block" data-category="graphic-design">
+                    <div
+                        class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative border border-white/5 bg-slate-800 isolate">
+
+                        <!-- Layer 1: Faint Collage Background -->
+                        <div class="absolute inset-0 z-0">
+                            <img src="assets/graphic_collage_bg.jpg" alt="Background Texture"
+                                class="object-cover w-full h-full opacity-20 grayscale group-hover:opacity-30 group-hover:grayscale-0 transition-all duration-700"
+                                loading="lazy" decoding="async">
+                        </div>
+
+                        <!-- Layer 2: Original Foreground (Book Cover) -->
+                        <div
+                            class="absolute inset-0 z-10 flex items-center justify-center p-6 group-hover:scale-105 transition-transform duration-500">
+                            <img src="assets/graphic_portfolio_thumb.jpg" alt="Graphic Design Portfolio Cover"
+                                class="w-full h-full object-contain drop-shadow-2xl shadow-black rounded-lg"
+                                loading="lazy" decoding="async">
+                        </div>
+
+                        <!-- Layer 3: Gradient Overlay -->
+                        <div
+                            class="absolute inset-0 z-20 bg-gradient-to-t from-slate-900/60 to-transparent pointer-events-none">
+                        </div>
+
+                        <!-- PDF Icon Overlay -->
+                        <div
+                            class="absolute top-4 right-4 z-30 bg-black/50 backdrop-blur-md p-2 rounded-lg border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i data-lucide="file-text" class="w-5 h-5 text-white"></i>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h4 class="text-2xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
+                                平面設計作品集</h4>
+                            <p class="text-slate-400">Graphic Design • 廣告設計 • 印刷品設計(立牌、公仔筆、海報…) • 活動頁設計 • Banner設計 •
+                                吉祥物設計 • LOGO及名片設計</p>
+                        </div>
+                        <div
+                            class="p-2 rounded-full border border-white/10 text-white group-hover:bg-primary group-hover:border-primary transition-all">
+                            <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+                        </div>
+                    </div>
+                </a>
+
                 <!-- Project 5: Content SEO Strategy -->
-                <a href="https://seo.gowork.run/" target="_blank" class="group cursor-pointer work-card block">
+                <a href="https://seo.gowork.run/" target="_blank" rel="noopener noreferrer"
+                    class="group cursor-pointer work-card block" data-category="seo">
                     <div
                         class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative border border-white/5 bg-slate-800">
                         <img src="assets/seo_preview.png" alt="Content SEO Strategy" loading="lazy" decoding="async"
@@ -780,8 +719,8 @@
                     <div class="flex justify-between items-start">
                         <div>
                             <h4 class="text-2xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
-                                Content SEO Strategy</h4>
-                            <p class="text-slate-400 text-sm">研究規劃產出內容 • 取得搜尋排名 • AI摘要</p>
+                                SEO內容行銷</h4>
+                            <p class="text-slate-400 text-sm">研究規劃產出內容 • 取得關鍵字搜尋排名 • AI摘要引用</p>
                         </div>
                         <div
                             class="p-2 rounded-full border border-white/10 text-white group-hover:bg-primary group-hover:border-primary transition-all">
@@ -791,14 +730,12 @@
                 </a>
 
                 <!-- Project 6: Lottie & Micro-interactions -->
-                <div class="group work-card block cursor-not-allowed">
+                <div class="group work-card block cursor-not-allowed" data-category="motion-design">
                     <div
                         class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative border border-white/10 bg-slate-800">
-                        <video
-                            class="lazy-video w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-700 opacity-80"
-                            loop muted playsinline preload="none" data-src="assets/loading_animation.mp4">
-                            Your browser does not support the video tag.
-                        </video>
+                        <img class="lazy-gif w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-700 opacity-80"
+                            alt="Micro-interactions Loading Animation" data-src="assets/loading_animation.gif"
+                            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
 
                         <div class="absolute inset-0 flex items-center justify-center z-10">
                             <span
@@ -811,20 +748,18 @@
                         <div>
                             <h4 class="text-2xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
                                 Micro-interactions</h4>
-                            <p class="text-slate-400 text-sm">Lottie • JSON • UI Dynamic</p>
+                            <p class="text-slate-400 text-sm">Lottie 客製化動效製作 • JSON • UI Dynamic</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Project 7: Lottie Animation Demo -->
-                <div class="group work-card block cursor-not-allowed">
+                <div class="group work-card block cursor-not-allowed" data-category="motion-design">
                     <div
                         class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative border border-white/10 bg-slate-800">
-                        <video
-                            class="lazy-video w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-700 opacity-80"
-                            loop muted playsinline preload="none" data-src="assets/lottie_animate.mp4">
-                            Your browser does not support the video tag.
-                        </video>
+                        <img class="lazy-gif w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-700 opacity-80"
+                            alt="Lottie Animation Demo" data-src="assets/lottie_animate.gif"
+                            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
 
                         <div class="absolute inset-0 flex items-center justify-center z-10">
                             <span
@@ -837,7 +772,7 @@
                         <div>
                             <h4 class="text-2xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
                                 Animated Game Cards</h4>
-                            <p class="text-slate-400 text-sm">Lottie • JSON • Animation</p>
+                            <p class="text-slate-400 text-sm">圖片動態化 • Lottie • JSON • Animation</p>
                         </div>
                     </div>
                 </div>
@@ -962,17 +897,30 @@
             </p>
 
             <div class="flex flex-col md:flex-row justify-center items-center gap-6 mb-16 reveal-text">
-                <a href="mailto:flashjen@gmail.com"
-                    class="px-8 py-4 rounded-full bg-white text-dark font-bold hover:bg-slate-200 transition-colors flex items-center gap-2 glow-hover">
-                    <i data-lucide="mail" class="w-5 h-5"></i> flashjen@gmail.com
-                </a>
-                <a href="#"
+                <div class="flex items-center gap-2 group">
+                    <button onclick="copyEmail()" id="copy-email-btn"
+                        class="px-5 py-4 rounded-full border border-white/10 hover:bg-white/5 transition-all text-white font-medium flex items-center justify-center gap-2 relative group/copy">
+                        <i data-lucide="copy" class="w-5 h-5"></i>
+                        <span class="text-sm">複製</span>
+                        <!-- Tooltip -->
+                        <span id="copy-tooltip"
+                            class="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1 bg-primary text-white text-xs rounded opacity-0 pointer-events-none transition-opacity whitespace-nowrap">
+                            已複製 e-mail
+                        </span>
+                    </button>
+                    <a href="mailto:flashjen@gmail.com"
+                        class="px-8 py-4 rounded-full bg-white text-dark font-bold hover:bg-slate-200 transition-colors flex items-center gap-2 glow-hover">
+                        <i data-lucide="mail" class="w-5 h-5"></i> flashjen@gmail.com
+                    </a>
+                </div>
+                <a href="https://line.me/ti/p/~flashjen" target="_blank" rel="noopener noreferrer"
                     class="px-8 py-4 rounded-full border border-white/10 hover:bg-white/5 transition-colors text-white font-medium flex items-center gap-2">
                     <i data-lucide="message-circle" class="w-5 h-5"></i> LINE ID: flashjen
                 </a>
             </div>
 
-            <div class="flex justify-center gap-8 mb-12 reveal-text">
+            <!-- Social links hidden until real URLs are available -->
+            <div class="flex justify-center gap-8 mb-12 reveal-text hidden">
                 <a href="#"
                     class="text-slate-400 hover:text-white transition-colors hover:-translate-y-1 transform duration-300">
                     <i data-lucide="linkedin" class="w-6 h-6"></i>
@@ -1015,444 +963,8 @@
         </div>
     </div>
 
-    <script>
-        // Use document.addEventListener in case DOM is not fully ready if this script runs early, 
-        // though it is at the end of body so it should be fine.
-
-        // ===== Video Modal Logic =====
-        const modal = document.getElementById('video-modal');
-        const closeBtn = document.getElementById('close-modal');
-        const player = document.getElementById('youtube-player');
-        const videoContainer = document.getElementById('video-container');
-        const externalLink = document.getElementById('youtube-external-link');
-
-        // Expose openVideo to global scope for onclick handler
-        window.openVideo = function (videoId) {
-            if (!modal) return;
-            modal.classList.remove('hidden');
-            // Force reflow
-            void modal.offsetWidth;
-            modal.classList.remove('opacity-0');
-            videoContainer.classList.remove('scale-95');
-
-            // Setup embed src
-            // Optimized: Added origin to fix Error 153 and removed tracking parameters
-            // Note: If running from file:// protocol, some videos may still fail. Use a local server (python -m http.server).
-            const origin = window.location.origin === 'null' ? '*' : window.location.origin;
-            let src = `https://www.youtube.com/embed/${videoId}?autoplay=1&origin=${origin}`;
-
-            player.src = src;
-
-            // Setup external link
-            if (externalLink) {
-                let watchUrl = `https://www.youtube.com/watch?v=${videoId}`;
-                externalLink.href = watchUrl;
-            }
-
-            document.body.style.overflow = 'hidden'; // Prevent scrolling
-
-            // Update icons
-            if (window.lucide) lucide.createIcons();
-        };
-
-        function closeVideo() {
-            if (!modal) return;
-            modal.classList.add('opacity-0');
-            videoContainer.classList.add('scale-95');
-
-            // Wait for transition
-            setTimeout(() => {
-                modal.classList.add('hidden');
-                player.src = ''; // Stop video
-                document.body.style.overflow = '';
-            }, 300);
-        }
-
-        if (closeBtn) closeBtn.addEventListener('click', closeVideo);
-
-        if (modal) {
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) closeVideo();
-            });
-        }
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeVideo();
-        });
-
-        // ===== Loading Screen Dismissal =====
-        window.addEventListener('load', () => {
-            const loader = document.getElementById('loading-screen');
-            if (loader) {
-                // Small delay to ensure everything is rendered
-                setTimeout(() => {
-                    loader.style.opacity = '0';
-                    setTimeout(() => {
-                        loader.style.display = 'none';
-                    }, 500);
-                }, 100);
-            }
-        });
-
-        // ===== Lazy Video Loading with Intersection Observer =====
-        const videoObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                const video = entry.target;
-                if (entry.isIntersecting) {
-                    // Load and play video when visible
-                    if (!video.src && video.dataset.src) {
-                        video.src = video.dataset.src;
-                    }
-                    video.play().catch(() => { }); // Ignore autoplay errors
-                } else {
-                    // Pause when not visible to save resources
-                    video.pause();
-                }
-            });
-        }, {
-            rootMargin: '100px',
-            threshold: 0.1
-        });
-
-        // Observe all lazy videos
-        document.querySelectorAll('.lazy-video').forEach(video => {
-            videoObserver.observe(video);
-        });
-
-        // ===== Lenis Smooth Scroll (Native Scroll + Programmatic Smooth) =====
-        // Disabled smoothWheel - let browser handle native scrolling (works better with touchpad)
-        // Lenis only used for smooth anchor navigation
-        const lenis = new Lenis({
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            smoothWheel: false,  // Use native scroll for wheel/touchpad
-            syncTouch: false,    // Use native touch scrolling
-        });
-
-        // Integrate Lenis with GSAP ScrollTrigger
-        gsap.registerPlugin(ScrollTrigger);
-        lenis.on('scroll', ScrollTrigger.update);
-
-        // Disable GSAP lag smoothing to prevent jumps
-        gsap.ticker.lagSmoothing(0);
-
-        // ===== Unified Input Manager =====
-        // Tracks global mouse state to avoid multiple event listeners
-        const Mouse = { x: 0, y: 0 };
-        window.addEventListener('mousemove', (e) => {
-            Mouse.x = e.clientX;
-            Mouse.y = e.clientY;
-        }, { passive: true });
-
-        // ===== Interactive Managers =====
-
-        // 1. Custom Cursor Manager
-        const cursorManager = {
-            dot: document.querySelector('.cursor-dot'),
-            outline: document.querySelector('.cursor-outline'),
-            outlineX: 0,
-            outlineY: 0,
-            hoverables: document.querySelectorAll('a, button, .cursor-pointer, .glass-card, .work-card'),
-
-            init() {
-                if (!this.dot || !this.outline) return;
-
-                // Add hover effects
-                this.hoverables.forEach(el => {
-                    el.addEventListener('mouseenter', () => this.outline.classList.add('hover'), { passive: true });
-                    el.addEventListener('mouseleave', () => this.outline.classList.remove('hover'), { passive: true });
-                });
-            },
-
-            update() {
-                if (!this.dot || !this.outline) return;
-
-                // Dot follows instantly
-                this.dot.style.transform = `translate(${Mouse.x - 5}px, ${Mouse.y - 5}px)`;
-
-                // Outline follows with lerp
-                this.outlineX += (Mouse.x - this.outlineX) * 0.12;
-                this.outlineY += (Mouse.y - this.outlineY) * 0.12;
-                this.outline.style.transform = `translate(${this.outlineX - 20}px, ${this.outlineY - 20}px)`;
-            }
-        };
-
-        // 2. Magnetic Buttons Manager
-        const magneticManager = {
-            elements: [],
-
-            init() {
-                document.querySelectorAll('.magnetic-btn').forEach(el => {
-                    this.elements.push({
-                        el: el,
-                        rect: null,
-                        isHovering: false
-                    });
-
-                    // Update rect on enter
-                    el.addEventListener('mouseenter', (e) => {
-                        const target = this.elements.find(item => item.el === el);
-                        if (target) {
-                            target.isHovering = true;
-                            target.rect = el.getBoundingClientRect();
-                        }
-                    }, { passive: true });
-
-                    el.addEventListener('mouseleave', (e) => {
-                        const target = this.elements.find(item => item.el === el);
-                        if (target) {
-                            target.isHovering = false;
-                            el.style.transform = 'translate(0px, 0px)';
-                        }
-                    }, { passive: true });
-                });
-            },
-
-            update() {
-                this.elements.forEach(item => {
-                    if (item.isHovering && item.rect) {
-                        const x = Mouse.x - item.rect.left - item.rect.width / 2;
-                        const y = Mouse.y - item.rect.top - item.rect.height / 2;
-                        // Apply magnetic effect
-                        item.el.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
-                    }
-                });
-            }
-        };
-
-        // 3. Tilt Card Manager
-        const tiltManager = {
-            elements: [],
-
-            init() {
-                document.querySelectorAll('.tilt-card').forEach(el => {
-                    this.elements.push({
-                        el: el,
-                        rect: null,
-                        isHovering: false
-                    });
-
-                    el.addEventListener('mouseenter', () => {
-                        const target = this.elements.find(item => item.el === el);
-                        if (target) {
-                            target.isHovering = true;
-                            target.rect = el.getBoundingClientRect();
-                            el.style.transition = 'transform 0.1s ease-out';
-                        }
-                    }, { passive: true });
-
-                    el.addEventListener('mouseleave', () => {
-                        const target = this.elements.find(item => item.el === el);
-                        if (target) {
-                            target.isHovering = false;
-                            el.style.transition = 'transform 0.5s ease-out';
-                            el.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
-                        }
-                    }, { passive: true });
-                });
-            },
-
-            update() {
-                this.elements.forEach(item => {
-                    if (item.isHovering && item.rect) {
-                        const centerX = item.rect.left + item.rect.width / 2;
-                        const centerY = item.rect.top + item.rect.height / 2;
-
-                        const rotateX = (Mouse.y - centerY) / 25;
-                        const rotateY = (centerX - Mouse.x) / 25; // Reversed for tilt effect
-
-                        item.el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
-                    }
-                });
-            }
-        };
-
-        // ===== Initialization =====
-        const isDesktop = window.matchMedia('(pointer: fine)').matches;
-
-        if (isDesktop) {
-            cursorManager.init();
-            magneticManager.init();
-            tiltManager.init();
-        } else {
-            // Hide cursor on mobile
-            const dot = document.querySelector('.cursor-dot');
-            const outline = document.querySelector('.cursor-outline');
-            if (dot) dot.style.display = 'none';
-            if (outline) outline.style.display = 'none';
-        }
-
-        // ===== Unified Render Loop (GSAP Ticker - Optimized with Frame Skipping) =====
-        // Idle detection
-        let lastActivity = Date.now();
-        const IDLE_THRESHOLD = 2000; // Stop loop after 2 seconds of inactivity
-        let isIdle = false;
-        let frameCount = 0; // For frame skipping
-
-        function updateActivity() {
-            if (isIdle) {
-                isIdle = false;
-                gsap.ticker.wake();
-            }
-            lastActivity = Date.now();
-        }
-
-        window.addEventListener('mousemove', updateActivity, { passive: true });
-        window.addEventListener('scroll', updateActivity, { passive: true });
-        window.addEventListener('keydown', updateActivity, { passive: true });
-        window.addEventListener('touchstart', updateActivity, { passive: true });
-
-        // Single loop for ALL visual updates - with frame skipping for performance
-        gsap.ticker.add((time) => {
-            frameCount++;
-
-            // Check idle state
-            if (!lenis.isScrolling && Date.now() - lastActivity > IDLE_THRESHOLD) {
-                if (!isIdle) {
-                    isIdle = true;
-                }
-            }
-
-            // Always update Lenis (it handles its own idle state mostly, but needs raf)
-            lenis.raf(time * 1000);
-
-            // Skip visual effects if idle OR on alternate frames for performance
-            // Cursor updates every frame, but magnetic/tilt only every 2nd frame
-            if (!isIdle && isDesktop) {
-                cursorManager.update(); // Keep cursor smooth
-
-                // Update magnetic and tilt effects every 2 frames to reduce load
-                if (frameCount % 2 === 0) {
-                    magneticManager.update();
-                    tiltManager.update();
-                }
-            }
-        });
-
-        // Initialize Icons after DOM is ready
-        lucide.createIcons();
-
-        // ===== GSAP ScrollTrigger Animations =====
-        // Text Reveal Animations
-        ScrollTrigger.batch('.reveal-text', {
-            onEnter: (elements) => {
-                gsap.fromTo(elements,
-                    { opacity: 0, y: 40 },
-                    {
-                        opacity: 1,
-                        y: 0,
-                        duration: 0.8,
-                        ease: 'power2.out',
-                        stagger: 0.1
-                    }
-                );
-            },
-            start: 'top 85%',
-            once: true
-        });
-
-        // Work Cards
-        ScrollTrigger.batch('.work-card', {
-            onEnter: (elements) => {
-                gsap.fromTo(elements,
-                    { opacity: 0, y: 50 },
-                    {
-                        opacity: 1,
-                        y: 0,
-                        duration: 0.6,
-                        ease: 'power2.out',
-                        stagger: 0.1
-                    }
-                );
-            },
-            start: 'top 90%',
-            once: true
-        });
-
-        // Why Me Items
-        ScrollTrigger.batch('.why-me-item', {
-            onEnter: (elements) => {
-                gsap.fromTo(elements,
-                    { opacity: 0, x: -30 },
-                    {
-                        opacity: 1,
-                        x: 0,
-                        duration: 0.6,
-                        ease: 'power2.out',
-                        stagger: 0.15
-                    }
-                );
-            },
-            start: 'top 85%',
-            once: true
-        });
-
-        // ===== Navbar Scroll Effect (Optimized via Lenis) =====
-        // Move logic to Lenis scroll event to avoid separate rAF
-        lenis.on('scroll', ({ scroll }) => {
-            const navbar = document.getElementById('navbar');
-            if (scroll > 50) {
-                navbar.classList.add('translate-y-2');
-                navbar.querySelector('.nav-glass').classList.add('bg-[#0f172a]/80');
-            } else {
-                navbar.classList.remove('translate-y-2');
-                navbar.querySelector('.nav-glass').classList.remove('bg-[#0f172a]/80');
-            }
-        });
-
-        // ===== Smooth Scroll for Nav Links (Native for Performance) =====
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    // Use native smooth scroll for instant response
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-
-                    // Close mobile menu if open
-                    if (isMenuOpen) {
-                        isMenuOpen = false;
-                        document.getElementById('mobile-menu').classList.add('hidden');
-                        document.getElementById('mobile-menu-btn').innerHTML = '<i data-lucide="menu" class="w-5 h-5"></i>';
-                        lucide.createIcons();
-                    }
-                }
-            });
-        });
-
-        // ===== Mobile Menu Toggle =====
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        let isMenuOpen = false;
-
-        menuBtn.addEventListener('click', () => {
-            isMenuOpen = !isMenuOpen;
-            if (isMenuOpen) {
-                mobileMenu.classList.remove('hidden');
-                menuBtn.innerHTML = '<i data-lucide="x" class="w-6 h-6"></i>';
-            } else {
-                mobileMenu.classList.add('hidden');
-                menuBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
-            }
-            lucide.createIcons();
-        });
-
-        // Close mobile menu on link click
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                isMenuOpen = false;
-                mobileMenu.classList.add('hidden');
-                menuBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
-                lucide.createIcons();
-            });
-        });
-    </script>
+    <!-- Main Application Script (separated for cacheability) -->
+    <script src="assets/main.js" defer></script>
 </body>
 
 </html>
