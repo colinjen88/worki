@@ -1,37 +1,72 @@
+# 部署狀態與操作手冊 (2026-02-20 更新)
 
-# 部署狀態與行動計畫
 - **專案名稱**: WANG's Portfolio (let.gowork.run)
 - **當前位置**: `c:\git_work\worki\let\`
-- **目標伺服器**: 145.79.28.71 (VPS)
+- **目標伺服器**: 72.62.66.151 (VPS)
+- **狀態**: ✅ 已成功部署
 
-## 🚧 已完成進度
-1. **GitHub 同步**: 本地代碼（包含最新的 CSS 抽取、分類篩選更新）已全部推送到 GitHub `master` 分支。
-2. **部署腳本**: 已建立自動化 PowerShell 部署腳本 (`deploy_vps_let.ps1`)。
-   - 功能：自動安裝 Nginx/Git/Certbot、拉取 GitHub 代碼、設定 Nginx、申請 SSL 憑證。
-   - 修正點：Nginx Root 路徑已修正為 `/var/www/html/worki/let` 以解決 403 錯誤。
+## 🚀 快速部署流程 (手動操作)
 
-## 🔴 當前遭遇問題
-- **SSH 連線超時**: 本地環境無法通過 Port 22 連接到 `145.79.28.71`。
-  - 錯誤訊息：`ssh: connect to host 145.79.28.71 port 22: Connection timed out`
-  - 狀態：Ping 是通的 (伺服器在線)，但 SSH 埠口無回應。
+如果自動腳本無法執行，請依照以下步驟手動更新與部署：
 
-## ⏭️ 下一步行動 (換電腦後)
-1. **驗證 SSH 連線**:
-   - 在新電腦開啟終端機 (PowerShell 或 CMD)。
-   - 執行 `ssh root@145.79.28.71` 測試連線。
-   - 如果需要密碼，準備好 root 密碼。
+### 1. 更新 VPS 程式碼
+```bash
+# 登入 VPS
+ssh root@72.62.66.151
 
-2. **執行部署**:
-   - 如果您已有 Git 環境並 Clone 了專案，進入 `c:\git_work\worki\let`。
-   - 執行部署腳本：
-     ```powershell
-     .\deploy_vps_let.ps1
-     ```
-   - 腳本會自動完成所有伺服器設定。
+# 進入專案目錄
+cd /var/www/html/worki
 
-3. **Cloudflare 設定 (如尚未完成)**:
-   - 確保 DNS 指向 `145.79.28.71` (Type A, Name: let)。
-   - 建議暫時關閉 Proxy (橘色雲 -> 灰色雲) 直到 SSL 申請成功。
+# 拉取最新代碼
+git pull origin master
+# (如果提示輸入帳號密碼，請確認 Repo 為 Public，或使用 GitHub Token)
+```
 
----
-**備註**: `deploy_vps_let.ps1` 檔案已經在專案目錄中，您不需要重新建立。
+### 2. Nginx 設定範本
+如果需要重新設定 Nginx，請使用以下配置：
+
+**檔案位置**: `/etc/nginx/sites-available/let.gowork.run`
+
+```nginx
+server {
+    listen 80;
+    server_name let.gowork.run;
+
+    # 指向專案內的 let 子目錄
+    root /var/www/html/worki/let;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
+```
+
+### 3. SSL 與 Cloudflare 設定注意事項
+本次部署採用 **Cloudflare Flexible SSL** 模式，無需在伺服器端安裝憑證 (Certbot)。
+
+1.  **Cloudflare DNS**:
+    - Type: `A`
+    - Name: `let`
+    - Content: `72.62.66.151`
+    - Proxy Status: **Proxied (橘色雲朵)**
+
+2.  **Cloudflare SSL/TLS**:
+    - Mode: **Flexible** 或 **Full**
+    - **不要**選 Full (Strict)，除非伺服器有安裝有效憑證。
+
+## ⚠️ 常見問題排除
+
+1.  **GitHub 驗證失敗 (Authentication failed)**
+    - GitHub 已移除密碼登入支援。
+    - **解法**: 將 Repo 設為 Public (最簡單)，或使用 Personal Access Token (PAT) 作為密碼登入。
+
+2.  **Nginx 啟動失敗 (emerg)**
+    - 檢查是否有其他設定檔引用了不存在的憑證檔案。
+    - 指令: `nginx -t` 檢查設定檔語法。
+    - 指令: `grep -r "不存在的檔案名" /etc/nginx/` 找出有問題的設定檔。
+    - **本次案例**: `royal.gowork.run.conf` 引用了錯誤憑證導致全站 Nginx 崩潰，解決方式為暫時移除該設定檔。
+
+3.  **403 Forbidden 錯誤**
+    - 檢查 IP 是否正確指向 VPS。
+    - 檢查 Nginx `root` 路徑是否正確指向 `/var/www/html/worki/let`。
