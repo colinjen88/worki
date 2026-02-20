@@ -650,4 +650,25 @@ function createShootingStars() {
     nightStarInterval = setInterval(spawnStar, 6000);
 }
 
+
+// ===== Copy Email Logic =====
+window.copyEmail = function () {
+    const email = 'flashjen@gmail.com';
+    navigator.clipboard.writeText(email).then(() => {
+        const tooltip = document.getElementById('copy-tooltip');
+        if (tooltip) {
+            tooltip.classList.remove('opacity-0');
+            tooltip.classList.add('opacity-100');
+
+            setTimeout(() => {
+                tooltip.classList.remove('opacity-100');
+                tooltip.classList.add('opacity-0');
+            }, 2000);
+        }
+    }).catch(err => {
+        console.error('Failed to copy: ', err);
+    });
+};
+
 checkNightMode();
+
