@@ -341,56 +341,62 @@ if (typeof lucide !== 'undefined') {
     console.warn('Lucide Icons not loaded — icons may not render.');
 }
 
-// ===== GSAP ScrollTrigger Animations =====
-ScrollTrigger.batch('.reveal-text', {
-    onEnter: (elements) => {
-        gsap.fromTo(elements,
-            { opacity: 0, y: 40 },
-            {
-                opacity: 1,
-                y: 0,
-                duration: 0.8,
-                ease: 'power2.out',
-                stagger: 0.1
-            }
-        );
-    },
-    start: 'top 85%',
-    once: true
-});
+// ===== GSAP ScrollTrigger Animations (Delayed Init) =====
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        ScrollTrigger.batch('.reveal-text', {
+            onEnter: (elements) => {
+                gsap.fromTo(elements,
+                    { opacity: 0, y: 40 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.8,
+                        ease: 'power2.out',
+                        stagger: 0.1
+                    }
+                );
+            },
+            start: 'top 85%',
+            once: true
+        });
 
-ScrollTrigger.batch('.work-card', {
-    onEnter: (elements) => {
-        gsap.fromTo(elements,
-            { opacity: 0, y: 50 },
-            {
-                opacity: 1,
-                y: 0,
-                duration: 0.6,
-                ease: 'power2.out',
-                stagger: 0.1
-            }
-        );
-    },
-    start: 'top 90%',
-    once: true
-});
+        ScrollTrigger.batch('.work-card', {
+            onEnter: (elements) => {
+                gsap.fromTo(elements,
+                    { opacity: 0, y: 50 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.6,
+                        ease: 'power2.out',
+                        stagger: 0.1
+                    }
+                );
+            },
+            start: 'top 90%',
+            once: true
+        });
 
-ScrollTrigger.batch('.why-me-item', {
-    onEnter: (elements) => {
-        gsap.fromTo(elements,
-            { opacity: 0, x: -30 },
-            {
-                opacity: 1,
-                x: 0,
-                duration: 0.6,
-                ease: 'power2.out',
-                stagger: 0.15
-            }
-        );
-    },
-    start: 'top 85%',
-    once: true
+        ScrollTrigger.batch('.why-me-item', {
+            onEnter: (elements) => {
+                gsap.fromTo(elements,
+                    { opacity: 0, x: -30 },
+                    {
+                        opacity: 1,
+                        x: 0,
+                        duration: 0.6,
+                        ease: 'power2.out',
+                        stagger: 0.15
+                    }
+                );
+            },
+            start: 'top 85%',
+            once: true
+        });
+        
+        ScrollTrigger.refresh();
+    }, 500);
 });
 
 // ===== Navbar Scroll Effect =====

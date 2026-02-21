@@ -13,11 +13,11 @@
     <meta property="og:title" content="UI/UX Designer & Motion Specialist | WANG's Portfolio">
     <meta property="og:description" content="前端工程師/設計師作品集 | 專精於動效設計 (Lottie/SVGA)、RWD 響應式網頁設計與前端開發，有獨立規劃設計及架站能力。">
     <meta property="og:url" content="https://let.gowork.run/">
-    <meta property="og:image" content="https://let.gowork.run/assets/goodeats_preview.jpg">
+    <meta property="og:image" content="https://let.gowork.run/assets/goodeats_preview.webp">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="UI/UX Designer & Motion Specialist | WANG's Portfolio">
     <meta name="twitter:description" content="前端工程師/設計師作品集 | 專精於動效設計、RWD 響應式網頁設計與前端開發。">
-    <meta name="twitter:image" content="https://let.gowork.run/assets/goodeats_preview.jpg">
+    <meta name="twitter:image" content="https://let.gowork.run/assets/goodeats_preview.webp">
 
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
@@ -40,18 +40,52 @@
         rel="stylesheet">
 
     <!-- Lucide Icons (locked version) -->
-    <script src="https://unpkg.com/lucide@0.575.0"></script>
+    <script src="https://unpkg.com/lucide@0.575.0" defer></script>
 
     <!-- Lenis Smooth Scroll -->
-    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js" defer></script>
 
     <!-- GSAP for Advanced Animations -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
 
 
-    <!-- Loading CSS -->
-    <link rel="stylesheet" href="loading/loading.css">
+    <!-- Loading CSS (Inlined for Performance) -->
+    <style>
+        #loading-screen {
+            position: fixed;
+            inset: 0;
+            z-index: 10000;
+            background-color: #0f172a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.7s ease-out;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
+        }
+
+        .loader-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .loader-ring {
+            position: relative;
+            width: 5rem;
+            height: 5rem;
+        }
+    </style>
     <link rel="stylesheet" href="assets/portfolio.css">
 </head>
 
@@ -199,7 +233,7 @@
                         <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
                     </span>
                     <span class="text-sm font-medium text-slate-300 tracking-wide"><span
-                            class="text-white font-bold">前端工程師 / 前端設計師 作品集</span> | #SEO #前端 #設計 #動效<BR> 專精動效設計
+                            class="text-white font-bold">前端工程師 / 前端設計師 作品集</span> | #SEO #前端 #設計 #動效<br> 專精動效設計
                         (Lottie/SVGA)、響應式網頁設計與前端開發，有獨立規劃及架站能力。致力於創造美感與實用兼具的數位體驗。</span>
                 </div>
 
@@ -215,7 +249,7 @@
                         團隊協作開發經驗</span>，主要負責
                     <span class="text-white font-medium whitespace-nowrap">網頁設計、UI/UX設計</span>及各類<span
                         class="text-white font-medium whitespace-nowrap">動效製作</span>。<br>
-                    熟練 Figma、Photoshop、Illustrator、After Effects、Antigravity等工具，並具備 <span
+                    熟練 Figma、Photoshop、Illustrator、After Effects、Antigravity 等工具，並具備 <span
                         class="text-white font-medium whitespace-nowrap">獨立製作開發網站</span> 的實務能力。
                 </p>
 
@@ -352,7 +386,7 @@
     <!-- Works Section (Visual Focus) -->
     <section id="works" class="pt-0 pb-24 md:py-24 bg-black/20 relative">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-8">
                 <div class="reveal-text">
                     <h2 class="text-sm font-bold text-primary uppercase tracking-[0.2em] mb-4">Selected Works</h2>
                     <h3 class="text-4xl md:text-5xl font-bold text-white">作品列表</h3>
@@ -383,7 +417,7 @@
                     class="group cursor-pointer work-card block" data-category="dynamic-web web-design">
                     <div
                         class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative border border-white/5 bg-slate-800">
-                        <img src="assets/goodeats_preview.jpg" alt="穀意 GoodEats" loading="lazy" decoding="async"
+                        <img src="assets/goodeats_preview.webp" alt="穀意 GoodEats" loading="lazy" decoding="async"
                             class="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700">
                         <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
 
@@ -411,7 +445,7 @@
                     class="group cursor-pointer work-card block" data-category="dynamic-web web-design">
                     <div
                         class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative border border-white/5 bg-slate-800">
-                        <img src="assets/showgoodeats.jpg" alt="穀意 GoodEats Showcase" loading="lazy" decoding="async"
+                        <img src="assets/showgoodeats.webp" alt="穀意 GoodEats Showcase" loading="lazy" decoding="async"
                             class="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700">
                         <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
 
@@ -445,40 +479,40 @@
                         <div class="absolute inset-0 w-full h-full">
                             <div class="carousel-vertical">
                                 <div class="carousel-slide">
-                                    <img src="assets/royaltouch/royal01.jpg" alt="" class="carousel-slide-bg"
+                                    <img src="assets/royaltouch/royal01.webp" alt="" class="carousel-slide-bg"
                                         loading="lazy">
-                                    <img src="assets/royaltouch/royal01.jpg" alt="御手國醫-前後台試做 1"
+                                    <img src="assets/royaltouch/royal01.webp" alt="御手國醫-前後台試做 1"
                                         class="carousel-slide-fg" loading="lazy">
                                 </div>
                                 <div class="carousel-slide">
-                                    <img src="assets/royaltouch/royal02.jpg" alt="" class="carousel-slide-bg"
+                                    <img src="assets/royaltouch/royal02.webp" alt="" class="carousel-slide-bg"
                                         loading="lazy">
-                                    <img src="assets/royaltouch/royal02.jpg" alt="御手國醫-前後台試做 2"
+                                    <img src="assets/royaltouch/royal02.webp" alt="御手國醫-前後台試做 2"
                                         class="carousel-slide-fg" loading="lazy">
                                 </div>
                                 <div class="carousel-slide">
-                                    <img src="assets/royaltouch/royal03.jpg" alt="" class="carousel-slide-bg"
+                                    <img src="assets/royaltouch/royal03.webp" alt="" class="carousel-slide-bg"
                                         loading="lazy">
-                                    <img src="assets/royaltouch/royal03.jpg" alt="御手國醫-前後台試做 3"
+                                    <img src="assets/royaltouch/royal03.webp" alt="御手國醫-前後台試做 3"
                                         class="carousel-slide-fg" loading="lazy">
                                 </div>
                                 <div class="carousel-slide">
-                                    <img src="assets/royaltouch/royal04.jpg" alt="" class="carousel-slide-bg"
+                                    <img src="assets/royaltouch/royal04.webp" alt="" class="carousel-slide-bg"
                                         loading="lazy">
-                                    <img src="assets/royaltouch/royal04.jpg" alt="御手國醫-前後台試做 4"
+                                    <img src="assets/royaltouch/royal04.webp" alt="御手國醫-前後台試做 4"
                                         class="carousel-slide-fg" loading="lazy">
                                 </div>
                                 <div class="carousel-slide">
-                                    <img src="assets/royaltouch/royal05.jpg" alt="" class="carousel-slide-bg"
+                                    <img src="assets/royaltouch/royal05.webp" alt="" class="carousel-slide-bg"
                                         loading="lazy">
-                                    <img src="assets/royaltouch/royal05.jpg" alt="御手國醫-前後台試做 5"
+                                    <img src="assets/royaltouch/royal05.webp" alt="御手國醫-前後台試做 5"
                                         class="carousel-slide-fg" loading="lazy">
                                 </div>
                                 <!-- Clone First Image for Loop -->
                                 <div class="carousel-slide">
-                                    <img src="assets/royaltouch/royal01.jpg" alt="" class="carousel-slide-bg"
+                                    <img src="assets/royaltouch/royal01.webp" alt="" class="carousel-slide-bg"
                                         loading="lazy">
-                                    <img src="assets/royaltouch/royal01.jpg" alt="御手國醫-前後台試做 1"
+                                    <img src="assets/royaltouch/royal01.webp" alt="御手國醫-前後台試做 1"
                                         class="carousel-slide-fg" loading="lazy">
                                 </div>
                             </div>
@@ -517,46 +551,46 @@
                         <div class="absolute inset-0 w-full h-full">
                             <div class="carousel-vertical-6">
                                 <div class="carousel-slide">
-                                    <img src="assets/goldlab_preview1.jpg" alt="" class="carousel-slide-bg"
+                                    <img src="assets/goldlab_preview1.webp" alt="" class="carousel-slide-bg"
                                         loading="lazy">
-                                    <img src="assets/goldlab_preview1.jpg" alt="GoldLab Web Portal 1"
+                                    <img src="assets/goldlab_preview1.webp" alt="GoldLab Web Portal 1"
                                         class="carousel-slide-fg" loading="lazy">
                                 </div>
                                 <div class="carousel-slide">
-                                    <img src="assets/goldlab_preview2.jpg" alt="" class="carousel-slide-bg"
+                                    <img src="assets/goldlab_preview2.webp" alt="" class="carousel-slide-bg"
                                         loading="lazy">
-                                    <img src="assets/goldlab_preview2.jpg" alt="GoldLab Web Portal 2"
+                                    <img src="assets/goldlab_preview2.webp" alt="GoldLab Web Portal 2"
                                         class="carousel-slide-fg" loading="lazy">
                                 </div>
                                 <div class="carousel-slide">
-                                    <img src="assets/goldlab_preview3.jpg" alt="" class="carousel-slide-bg"
+                                    <img src="assets/goldlab_preview3.webp" alt="" class="carousel-slide-bg"
                                         loading="lazy">
-                                    <img src="assets/goldlab_preview3.jpg" alt="GoldLab Web Portal 3"
+                                    <img src="assets/goldlab_preview3.webp" alt="GoldLab Web Portal 3"
                                         class="carousel-slide-fg" loading="lazy">
                                 </div>
                                 <div class="carousel-slide">
-                                    <img src="assets/goldlab_preview4.jpg" alt="" class="carousel-slide-bg"
+                                    <img src="assets/goldlab_preview4.webp" alt="" class="carousel-slide-bg"
                                         loading="lazy">
-                                    <img src="assets/goldlab_preview4.jpg" alt="GoldLab Web Portal 4"
+                                    <img src="assets/goldlab_preview4.webp" alt="GoldLab Web Portal 4"
                                         class="carousel-slide-fg" loading="lazy">
                                 </div>
                                 <div class="carousel-slide">
-                                    <img src="assets/goldlab_preview5.jpg" alt="" class="carousel-slide-bg"
+                                    <img src="assets/goldlab_preview5.webp" alt="" class="carousel-slide-bg"
                                         loading="lazy">
-                                    <img src="assets/goldlab_preview5.jpg" alt="GoldLab Web Portal 5"
+                                    <img src="assets/goldlab_preview5.webp" alt="GoldLab Web Portal 5"
                                         class="carousel-slide-fg" loading="lazy">
                                 </div>
                                 <div class="carousel-slide">
-                                    <img src="assets/goldlab_preview6.jpg" alt="" class="carousel-slide-bg"
+                                    <img src="assets/goldlab_preview6.webp" alt="" class="carousel-slide-bg"
                                         loading="lazy">
-                                    <img src="assets/goldlab_preview6.jpg" alt="GoldLab Web Portal 6"
+                                    <img src="assets/goldlab_preview6.webp" alt="GoldLab Web Portal 6"
                                         class="carousel-slide-fg" loading="lazy">
                                 </div>
                                 <!-- Clone First Image for Loop -->
                                 <div class="carousel-slide">
-                                    <img src="assets/goldlab_preview1.jpg" alt="" class="carousel-slide-bg"
+                                    <img src="assets/goldlab_preview1.webp" alt="" class="carousel-slide-bg"
                                         loading="lazy">
-                                    <img src="assets/goldlab_preview1.jpg" alt="GoldLab Web Portal 1"
+                                    <img src="assets/goldlab_preview1.webp" alt="GoldLab Web Portal 1"
                                         class="carousel-slide-fg" loading="lazy">
                                 </div>
                             </div>
@@ -590,7 +624,7 @@
                     class="group cursor-pointer work-card block" data-category="web-design">
                     <div
                         class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative border border-white/5 bg-slate-800">
-                        <img src="assets/shiny_jewelry_preview.jpg" alt="Shiny Jewelry Platform" loading="lazy"
+                        <img src="assets/shiny_jewelry_preview.webp" alt="Shiny Jewelry Platform" loading="lazy"
                             decoding="async"
                             class="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700">
                         <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
@@ -621,7 +655,7 @@
                         class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative border border-white/5 bg-slate-800 flex items-center justify-center group-hover:border-secondary/50 transition-colors">
 
                         <!-- Preview Image -->
-                        <img src="assets/motion_preview.png" alt="Motion Showreel" loading="lazy" decoding="async"
+                        <img src="assets/motion_preview.webp" alt="Motion Showreel" loading="lazy" decoding="async"
                             class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
 
                         <!-- Dark Overlay -->
@@ -663,7 +697,7 @@
 
                         <!-- Layer 1: Faint Collage Background -->
                         <div class="absolute inset-0 z-0">
-                            <img src="assets/graphic_collage_bg.jpg" alt="Background Texture"
+                            <img src="assets/graphic_collage_bg.webp" alt="Background Texture"
                                 class="object-cover w-full h-full opacity-20 grayscale group-hover:opacity-30 group-hover:grayscale-0 transition-all duration-700"
                                 loading="lazy" decoding="async">
                         </div>
@@ -671,7 +705,7 @@
                         <!-- Layer 2: Original Foreground (Book Cover) -->
                         <div
                             class="absolute inset-0 z-10 flex items-center justify-center p-6 group-hover:scale-105 transition-transform duration-500">
-                            <img src="assets/graphic_portfolio_thumb.jpg" alt="Graphic Design Portfolio Cover"
+                            <img src="assets/graphic_portfolio_thumb.webp" alt="Graphic Design Portfolio Cover"
                                 class="w-full h-full object-contain drop-shadow-2xl shadow-black rounded-lg"
                                 loading="lazy" decoding="async">
                         </div>
@@ -706,7 +740,7 @@
                     class="group cursor-pointer work-card block" data-category="seo">
                     <div
                         class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative border border-white/5 bg-slate-800">
-                        <img src="assets/seo_preview.png" alt="Content SEO Strategy" loading="lazy" decoding="async"
+                        <img src="assets/seo_preview.webp" alt="Content SEO Strategy" loading="lazy" decoding="async"
                             class="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700">
                         <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
 
@@ -734,7 +768,7 @@
                     <div
                         class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative border border-white/10 bg-slate-800">
                         <img class="lazy-gif w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-700 opacity-80"
-                            alt="Micro-interactions Loading Animation" data-src="assets/loading_animation.gif"
+                            alt="Micro-interactions Loading Animation" data-src="assets/loading_animation.webp"
                             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
 
                         <div class="absolute inset-0 flex items-center justify-center z-10">
@@ -758,7 +792,7 @@
                     <div
                         class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative border border-white/10 bg-slate-800">
                         <img class="lazy-gif w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-700 opacity-80"
-                            alt="Lottie Animation Demo" data-src="assets/lottie_animate.gif"
+                            alt="Lottie Animation Demo" data-src="assets/lottie_animate.webp"
                             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
 
                         <div class="absolute inset-0 flex items-center justify-center z-10">
