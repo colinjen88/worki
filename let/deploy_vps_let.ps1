@@ -3,7 +3,7 @@
 # Usage: .\deploy_vps_let.ps1
 
 $ErrorActionPreference = "Stop"
-$ServerIP = "145.79.28.71"
+$ServerIP = "72.62.66.151"
 $User = "root"
 $SiteName = "let.gowork.run"
 $RepoUrl = "https://github.com/colinjen88/worki.git"
@@ -45,7 +45,8 @@ try {
 
     # 1. Create Nginx config file locally
     Write-Host "Creating local Nginx config..."
-    Set-Content -Path $NginxConfigFile -Value $NginxConfigContent -Encoding UTF8
+    $utf8NoBom = New-Object System.Text.UTF8Encoding $false
+    [System.IO.File]::WriteAllText((Join-Path $PWD $NginxConfigFile), $NginxConfigContent, $utf8NoBom)
 
     # 2. Check/Install Dependencies (Nginx, Git, Certbot)
     Write-Host "Checking server dependencies..."
@@ -54,7 +55,7 @@ try {
     # 3. Clone or Pull Repository (Correct path structure)
     Write-Host "Updating repository..."
     # Always pull latest changes
-    Invoke-RemoteCommand "if [ -d $RemotePath ]; then cd $RemotePath && git pull origin master; else git clone $RepoUrl $RemotePath; fi"
+    Invoke-RemoteCommand "git config --global --add safe.directory $RemotePath && if [ -d $RemotePath ]; then cd $RemotePath && git pull origin master; else git clone $RepoUrl $RemotePath; fi"
 
     # 4. Upload Nginx Config
     Write-Host "Uploading Nginx configuration..."
@@ -67,7 +68,7 @@ try {
 
     # 6. Enable Site & Restart Nginx
     Write-Host "Enabling site and restarting Nginx..."
-    Invoke-RemoteCommand "ln -sf $RemoteNginxPath /etc/nginx/sites-enabled/ && rm -f /etc/nginx/sites-enabled/default && nginx -t && systemctl reload nginx"
+    Invoke-RemoteCommand "ln -sf $RemoteNginxPath /etc/nginx/sites-enabled/ && rm -f /etc/nginx/sites-enabled/default && nginx -t && systemctl restart nginx"
 
     # 7. SSL Certificate (Certbot)
     Write-Host "Setting up SSL with Certbot..."
