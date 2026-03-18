@@ -482,6 +482,29 @@ body {
     }
 }
 
+/* 3-Image Vertical Carousel Animation */
+.carousel-vertical-3 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    animation: slide-vertical-3 15s ease-in-out infinite;
+}
+
+.group:hover .carousel-vertical-3 {
+    animation-play-state: paused;
+}
+
+@keyframes slide-vertical-3 {
+    0%, 25%  { transform: translateY(0%); }
+    28%      { transform: translateY(-105%); }
+    33%, 58% { transform: translateY(-100%); }
+    61%      { transform: translateY(-205%); }
+    66%, 91% { transform: translateY(-200%); }
+    94%      { transform: translateY(-305%); }
+    100%     { transform: translateY(-300%); }
+}
+
 /* 6-Image Vertical Carousel Animation */
 .carousel-vertical-6 {
     display: flex;
