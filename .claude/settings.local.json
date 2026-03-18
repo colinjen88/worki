@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -la /c/git_work/worki/assets/*.jpg)",
+      "Bash(ls -la /c/git_work/worki/assets/*.webp)",
+      "Bash(curl:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(ssh:*)",
+      "Bash(ls C:/git_work/worki/let/assets/*.js)"
+    ]
+  }
+}
