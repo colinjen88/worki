@@ -1,29 +1,23 @@
 {
-  "name": "worki",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "wang-portfolio-v2",
+  "version": "2.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build:css": "npx @tailwindcss/cli -i ./src/input.css -o ./assets/styles.css"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/colinjen88/worki.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/colinjen88/worki/issues"
-  },
-  "homepage": "https://github.com/colinjen88/worki#readme",
-  "devDependencies": {
-    "@tailwindcss/cli": "^4.1.18",
-    "tailwindcss": "^4.1.18"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "serve out",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "autoprefixer": "^10.4.24",
-    "postcss": "^8.5.6"
+    "next": "^16.3.4",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@types/node": "^26.4.1",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "serve": "^14.2.6",
+    "typescript": "^7.0.2"
   }
 }
