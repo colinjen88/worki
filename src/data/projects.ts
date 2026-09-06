@@ -1,10 +1,11 @@
 export type ProjectCategory =
-  | "all"
   | "dynamic-web"
   | "functional-web"
   | "graphic-design"
   | "seo"
   | "motion-design";
+
+export type ProjectFilter = ProjectCategory | "all";
 
 export type Project = {
   id: string;
@@ -33,46 +34,24 @@ export type Project = {
 
 export const personalInfo = {
   name: "WANG",
-  title: "前端工程師 / 前端設計師",
-  subtitle: "Hybrid UI/UX Designer & Frontend Engineer",
+  title: "前端設計工程師",
+  englishTitle: "Creative Frontend Designer & Engineer",
+  subtitle: "介面視覺・動效節奏・前端工程完整實現",
   email: "flashjen@gmail.com",
-  lineUrl: "https://line.me/ti/p/~flashjen",
-  lineId: "flashjen",
-  location: "Taiwan",
-  statusBadge: "前端工程師 / 前端設計師 作品集 | #SEO #前端 #設計 #動效",
+  location: "Taipei, Taiwan",
+  statusBadge: "Open for Opportunities • 隨時可洽談新專案",
   statusDescription:
-    "專精動效設計 (Lottie/SVGA)、響應式網頁設計與前端開發，有獨立規劃及架站能力。致力於創造美感與實用兼具的數位體驗。",
+    "專精動效微互動 (Lottie/SVGA)、響應式介面設計與前端架構實作。具備獨立建置產品與從零落地能力。",
   aboutParagraphs: [
-    "我是前端設計師/工程師，擁有多年 Web/Mobile 團隊協作開發經驗，主要負責網頁設計、UI/UX設計及各類動效製作。",
-    "熟練 Figma、Photoshop、Illustrator、After Effects、Antigravity 等工具，並具備獨立製作開發網站的實務能力。",
+    "擁有多年跨足視覺設計、動效製作與前端開發的實戰經驗。早期從 Flash / Animate 動態設計奠定對時間差與緩動節奏的敏銳度，如今專注於將 Figma 設計稿以現代前端體系（Next.js / TypeScript / 語意化 CSS）精準實現為高質感產品。",
+    "重視介面層次、設計系統（Design System）組件化思維與微動效手感。懂設計的感性，也懂工程的理性邊界，能跨越溝通斷層，確保每一處邊緣狀況（Edge Cases）都具備完整的互動體驗。",
   ],
-  designerConfigCode: `const designerProfile = {
-  name: 'WANG',
-  role: 'Hybrid UI/UX Designer',
-  
-  // 核心能力矩陣
-  capabilities: [
-    'UI Design & RWD',    // 獨立製作能力
-    'Motion (Lottie/SVGA)', // Flash/Animate 背景
-    'Frontend (HTML/CSS)'   // 實際開發經驗
+  craftTokens: [
+    { label: "主軸風格", value: "Editorial Tech & Creative Studio" },
+    { label: "動態核心", value: "Lottie, SVGA, CSS Keyframe Springs" },
+    { label: "工程體系", value: "Next.js 16, React 19, TypeScript" },
+    { label: "視覺工具", value: "Figma, After Effects, Illustrator, Photoshop" },
   ],
-
-  // 設計工具
-  tools: [
-    'Figma', 'Photoshop', 'Illustrator', 'AE'
-  ],
-
-  // 團隊協作特質
-  traits: {
-    communication: true, // 溝通良好
-    collaboration: true, // 多年協作經驗
-    challengeAccepted: true
-  },
-
-  goal: 'Build impactful products'
-};
-
-designerProfile.init();`,
 };
 
 export const projects: Project[] = [
@@ -100,33 +79,36 @@ export const projects: Project[] = [
       "植園花室 後台管理平台 & SEO文章管理",
     ],
     details: {
-      role: "品牌規劃、UI/UX 設計、全站前端開發、後台管理系統與 SEO 配置",
+      role: "UI/UX 設計、網站前端與內容管理相關畫面製作",
       challenge:
-        "花藝品牌需要同時傳遞作品的細膩高級感、建立服務信任，並讓非技術人員能在後台自主維護課程、文章與日常內容，同時建立搜尋引擎能見度。",
+        "以品牌作品與服務資訊建立清楚的閱讀動線，並呈現課程、文章與內容管理的需求。",
       approach: [
         "以簡約典雅的留白與細緻字體層級，襯托花藝作品的視覺張力，打造沉浸式瀏覽動線。",
-        "建構專屬的後台管理平台，支援課程即時管理、內容維護與 SEO 文章發布系統。",
-        "實作語意化 HTML 與 RWD 響應式介面，在不同裝置上皆能保持細膩排版。",
+        "整理課程、內容維護與文章發布的管理介面與相關頁面。",
+        "完成響應式前端畫面，讓資訊能在不同裝置閱讀。",
       ],
       highlights: [
-        "品牌官網前台與管理後台完整閉環",
-        "後台整合 SEO 文章與課程管理系統",
-        "跨裝置極致響應式與優化 WebP 圖片快取",
+        "品牌官網與內容管理畫面展示",
+        "課程與文章內容的資訊架構",
+        "多張前後台畫面作為作品證據",
       ],
     },
   },
   {
     id: "royal",
     slug: "royal",
-    title: "御手國醫 按摩官網-前/後台試做",
+    title: "古風官網 按摩官網-前/後台試做",
     subtitle: "前台改版設計與後台預約管理系統",
     categories: ["functional-web"],
     summary:
-      "前台改版設計(文章頁、預約頁) • 後台製作(預約/管理…) • RWD • 微互動 • 開發歷程",
-    tags: ["預約系統", "後台管理", "微互動", "RWD 開發歷程"],
-    liveUrl: "https://royal.gowork.run/showcase",
+      "主官網視覺 • 前台改版設計(文章頁、預約頁) • 後台製作(預約/管理…) • RWD • 微互動 • 開發歷程",
+    tags: ["古風官網", "預約系統", "後台管理", "微互動", "RWD 開發歷程"],
+    liveUrl: "https://royal.gowork.run/main-site/index.html",
+    showcaseUrl: "https://royal.gowork.run/showcase",
     featured: true,
     images: [
+      "/assets/royaltouch/royal_main01.webp",
+      "/assets/royaltouch/royal_main02.webp",
       "/assets/royaltouch/royal01.webp",
       "/assets/royaltouch/royal02.webp",
       "/assets/royaltouch/royal03.webp",
@@ -134,6 +116,8 @@ export const projects: Project[] = [
       "/assets/royaltouch/royal05.webp",
     ],
     imageCaptions: [
+      "古風主官網品牌視覺與首頁",
+      "古風主官網養生知識專欄",
       "前台門市與預約流程設計",
       "線上預約步驟化引導",
       "後台管理總覽儀表板",
@@ -141,18 +125,20 @@ export const projects: Project[] = [
       "開發歷程與流程架構",
     ],
     details: {
-      role: "UI/UX 設計、前台文章/預約頁改版、後台管理介面製作",
+      role: "UI/UX 設計、主官網視覺呈現、前台文章/預約頁改版、後台管理介面製作",
       challenge:
-        "傳統連鎖門市的線上預約流程繁複，且缺乏直觀的師傅排班與預約管理後台；需在保留品牌中醫養生氛圍的同時，簡化顧客預約阻力並降低內部協調成本。",
+        "以中醫養生品牌的古典東方視覺為基礎，規劃主官網門面並整理文章、預約與管理畫面的操作流程。",
       approach: [
+        "建立沉浸式古風主官網，展現品牌文化與養生知識專欄。",
         "重塑預約動線，將繁雜的選單步驟拆解為清楚易讀的引導式介面。",
-        "打造功能型後台，包含預約管理、排班檢視與門市狀態配置。",
-        "加入細微互動回饋，提升操作流暢度，並記錄完整開發歷程以利團隊檢視。",
+        "製作預約及管理相關介面作為試做展示。",
+        "加入必要互動回饋，並記錄開發歷程。",
       ],
       highlights: [
-        "前台門市/文章/預約與後台管理雙向對接",
-        "5 張完整實務截圖展示操作流程",
-        "手機端優先的操作體驗優化",
+        "古風主官網、前台文章與線上預約流程",
+        "後台門市管理與排班儀表板",
+        "7 張畫面展示完整流程與視覺設計",
+        "RWD 與微互動試做",
       ],
     },
   },
@@ -179,16 +165,16 @@ export const projects: Project[] = [
     details: {
       role: "視覺規劃、動效整合、RWD 前端切版、Showcase 歷程製作",
       challenge:
-        "餐飲品牌必須在幾秒內建立食慾與品牌記憶，同時不能讓動態視覺犧牲頁面載入速度與資訊獲取效率。",
+        "以沉浸式影像與動效呈現餐飲品牌，同時保留清楚的內容閱讀入口。",
       approach: [
         "以大幅影像、背景影片與克制的動態節奏塑造沉浸式氛圍，避免元素過度喧賓奪主。",
         "另闢專屬 Showcase 站點，系統性展示前台視覺、後台管理規劃與互動原型設計。",
-        "嚴格調校行動端排版與觸控目標，確保跨平台流暢體驗。",
+        "安排響應式版面與觸控操作的展示畫面。",
       ],
       highlights: [
         "官網主站與 Showcase 開發介紹雙入口",
-        "高品質動效與影片背景無縫融合",
-        "前台視覺感染力與後台結構性思維兼備",
+        "動效、影片背景與品牌內容的整合",
+        "前台視覺與開發介紹雙入口",
       ],
     },
   },
@@ -222,16 +208,16 @@ export const projects: Project[] = [
     details: {
       role: "全站獨立規劃設計、前端開發、文章管理後台與伺服器佈署",
       challenge:
-        "大量高頻變動的市場資訊與文章內容，需要有清晰的資訊架構降低比對成本，並透過高效率的 SEO 佈局獲取自然搜尋流量。",
+        "整理市場資訊與文章內容，讓讀者能透過分類與頁面結構找到需要的內容。",
       approach: [
         "從零負責整體架構規劃、UI/UX 介面設計、前端程式碼撰寫至 VPS 伺服器建置與佈署。",
-        "導入內容型 SEO 策略，規劃語意化結構資料與快速檢索路徑。",
-        "打造簡潔實用的文章管理後台，讓內容發布維護不再受技術門檻阻礙。",
+        "規劃內容型網站的資訊架構、搜尋與 SEO 基礎做法。",
+        "製作文章管理相關畫面與發布流程。",
       ],
       highlights: [
-        "從設計、開發到伺服器佈署獨立一人完成",
-        "完整 6 張前後台功能畫面展示",
-        "兼具內容資訊閱讀與 SEO 搜尋引擎友善度",
+        "6 張前後台畫面展示",
+        "內容閱讀與分類架構",
+        "官網與文章管理入口",
       ],
     },
   },
@@ -240,11 +226,11 @@ export const projects: Project[] = [
     title: "聚合免費報價來源",
     subtitle: "分散式即時市場行情數據整合",
     categories: ["functional-web"],
-    summary: "分散式採集 • 15個異構數據源 • 黃金・白銀・美元匯率",
-    tags: ["數據採集", "15個異構數據源", "行情匯率", "即時介面"],
+    summary: "多來源報價整理 • 黃金、白銀與美元匯率 • 即時介面",
+    tags: ["數據整理", "多來源資料", "行情匯率", "即時介面"],
     liveUrl: "https://goldlab.cloud/",
     images: ["/assets/flashrate.jpg"],
-    imageCaptions: ["聚合 15 個異構數據源之即時報價介面"],
+    imageCaptions: ["多來源報價整理介面"],
   },
   {
     id: "shiny-jewelry",
@@ -304,10 +290,10 @@ export const projects: Project[] = [
   {
     id: "seo-strategy",
     title: "SEO內容行銷",
-    subtitle: "關鍵字搜尋策略與 AI 摘要引用",
+    subtitle: "關鍵字與內容規劃展示",
     categories: ["seo"],
-    summary: "研究規劃產出內容 • 取得關鍵字搜尋排名 • AI摘要引用",
-    tags: ["SEO 關鍵字", "自然排名", "內容行銷", "AI 引用"],
+    summary: "內容研究、關鍵字規劃與網站架構展示",
+    tags: ["SEO 關鍵字", "內容規劃", "內容行銷", "網站架構"],
     liveUrl: "https://seo.gowork.run/",
     images: ["/assets/seo_preview.webp"],
     imageCaptions: ["SEO 內容策略規劃成果"],

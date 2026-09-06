@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://let.gowork.run/sitemap.xml

@@ -1,92 +1,56 @@
-"use client";
+import { GitMerge, Compass, Sparkles } from "lucide-react";
 
-import { Users, Lightbulb, GitMerge } from "lucide-react";
+const points = [
+  {
+    icon: GitMerge,
+    number: "01",
+    tag: "SEAMLESS HANDOFF",
+    title: "零溝通斷層的高精度交付",
+    text: "在設計階段即依據 CSS Box Model、組件化架構與真實資料邊界進行規範。產出的介面自帶 Hover、Active、Loading 與字數溢出等狀態定義，大幅縮短設計與工程端的對齊成本。",
+  },
+  {
+    icon: Compass,
+    number: "02",
+    tag: "HYBRID PERSPECTIVE",
+    title: "視覺、動效與代碼的複合視野",
+    text: "能獨立完成從靜態視覺排版、Lottie / SVGA 微動效製作，到現代前端架構落地的全流程。不需要在多個角色之間轉發溝通，就能在第一時間以可執行的代碼還原精緻質感。",
+  },
+  {
+    icon: Sparkles,
+    number: "03",
+    tag: "CRAFTSMANSHIP",
+    title: "重視手感，拒絕無意義的裝飾",
+    text: "不盲目追求浮誇炫技，而是將動態與視覺用於引導使用者視線焦點。每一個緩動曲線、間距比例與邊緣狀況（Edge Cases），都經過細膩調校，打造耐看且經得起操作的產品。",
+  },
+];
 
 export function WhyMe() {
-  const points = [
-    {
-      num: "01",
-      icon: Users,
-      color: "text-indigo-400",
-      bgColor: "bg-indigo-500/10",
-      borderColor: "border-indigo-500/20",
-      title: "多年團隊協作經驗",
-      description:
-        "擁有多年 Web/Mobile 團隊協作開發經驗，習慣與 PM、前後端工程師緊密合作。溝通良好、樂於接受挑戰，能適應遠端或混合辦公模式，確保專案按時且高質量推進。",
-    },
-    {
-      num: "02",
-      icon: Lightbulb,
-      color: "text-pink-400",
-      bgColor: "bg-pink-500/10",
-      borderColor: "border-pink-500/20",
-      title: "解決問題的設計思維",
-      description:
-        "注重使用者體驗，追求核心問題的發掘和解決，而非只追求視覺表象。致力於提供符合商業目標、使用者直覺與工程開發成本的高「適用性」設計方案。",
-    },
-    {
-      num: "03",
-      icon: GitMerge,
-      color: "text-blue-400",
-      bgColor: "bg-blue-500/10",
-      borderColor: "border-blue-400/20",
-      title: "技術與設計的翻譯機",
-      description:
-        "擁有實際前端開發經驗（精通 HTML/CSS、現代 JavaScript 與組件化思維），能精準評估設計落地的技術可行性，不僅大幅減少跨職能來回溝通成本，更能協助團隊提升整體交付效率。",
-    },
-  ];
-
   return (
-    <section id="whyme" className="py-24 relative overflow-hidden">
-      {/* Background Subtle Gradient */}
-      <div className="absolute right-0 top-1/3 w-[500px] h-[500px] bg-indigo-600/5 rounded-full blur-[120px] pointer-events-none -z-10" />
-
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="max-w-3xl mb-16">
-          <div className="inline-block text-xs font-bold text-indigo-400 uppercase tracking-[0.2em] mb-3">
-            Why Work With Me
-          </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-6 leading-tight tracking-tight">
-            專業技能之外，
-            <br />
-            更重視溝通與協作。
-          </h2>
-          <p className="text-slate-400 text-base sm:text-lg leading-relaxed">
-            優秀的產品不只來自獨立的能力，更來自順暢的團隊協作與跨領域理解。
-          </p>
-        </div>
-
-        {/* 3 Value Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {points.map((point) => {
-            const Icon = point.icon;
-            return (
-              <div
-                key={point.num}
-                className="rounded-2xl border border-white/10 bg-[#0b1120] p-8 hover:border-white/20 transition-all flex flex-col justify-between shadow-lg"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-8">
-                    <div
-                      className={`w-12 h-12 rounded-xl flex items-center justify-center ${point.bgColor} ${point.borderColor} border`}
-                    >
-                      <Icon className={`w-6 h-6 ${point.color}`} />
-                    </div>
-                    <span className="font-mono text-xl font-bold text-slate-500">
-                      {point.num}
-                    </span>
-                  </div>
-
-                  <h3 className="text-xl font-bold text-white mb-3">
-                    {point.title}
-                  </h3>
-                  <p className="text-slate-400 text-sm leading-relaxed">
-                    {point.description}
-                  </p>
-                </div>
+    <section id="whyme" className="section whyme-section">
+      <div className="site-container">
+        <p className="eyebrow">Work Philosophy</p>
+        <h2 className="section-title">
+          <span className="text-nowrap">專業技術之外，</span>
+          <br className="desktop-br" />
+          <span className="text-nowrap">更在乎產品的完成度與手感。</span>
+        </h2>
+        <p className="section-intro">
+          好的作品不是靠華麗的 buzzwords 堆砌，而是來自在每一處看不見的細節裡，都有為真實使用者設想的用心。
+        </p>
+        <div className="why-grid">
+          {points.map(({ icon: Icon, number, tag, title, text }) => (
+            <article className="card why-card" key={number}>
+              <div className="why-card__top">
+                <span className="why-number">{number}</span>
+                <span className="why-tag">{tag}</span>
               </div>
-            );
-          })}
+              <div className="why-icon-wrap">
+                <Icon size={24} className="why-icon" aria-hidden="true" />
+              </div>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </article>
+          ))}
         </div>
       </div>
     </section>

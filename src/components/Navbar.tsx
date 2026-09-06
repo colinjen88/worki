@@ -1,138 +1,162 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { Menu, X, ArrowUpRight, ArrowLeft, Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
 import { personalInfo } from "@/data/projects";
+
+const navItems = [
+  { label: "關於我", id: "about", href: "/#about" },
+  { label: "核心技術", id: "expertise", href: "/#expertise" },
+  { label: "精選案例", id: "featured", href: "/#featured" },
+  { label: "完整作品", id: "works", href: "/#works" },
+  { label: "工作哲學", id: "whyme", href: "/#whyme" },
+] as const;
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("about");
+  const [isThemeMounted, setIsThemeMounted] = useState(false);
+  const { resolvedTheme, setTheme } = useTheme();
+  const pathname = usePathname();
+  const isCaseStudy = pathname?.startsWith("/work/");
+  const isDark = resolvedTheme === "dark";
 
+  useEffect(() => setIsThemeMounted(true), []);
+
+  const toggleTheme = () => setTheme(isDark ? "light" : "dark");
+
+  // ScrollSpy on homepage
   useEffect(() => {
+    if (isCaseStudy) return;
+
+    const sectionIds = ["about", "expertise", "featured", "works", "whyme", "contact"];
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      const scrollPosition = window.scrollY + 220;
+      for (let i = sectionIds.length - 1; i >= 0; i--) {
+        const id = sectionIds[i];
+        const element = document.getElementById(id);
+        if (element && element.offsetTop <= scrollPosition) {
+          setActiveSection(id);
+          break;
+        }
+      }
     };
-    window.addEventListener("scroll", handleScroll);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
+  }, [isCaseStudy]);
+
+  // Close on Escape key
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
+
+  const closeMenu = () => setIsOpen(false);
 
   return (
     <>
-      <a className="skip-link" href="#main-content">
-        跳至主要內容
-      </a>
+      <nav className="site-nav" aria-label="主要導覽">
+        <div className="nav-surface">
+          <Link href="/" className="nav-brand" onClick={closeMenu}>
+            <span className="nav-mark">W.</span>
+            <span>
+              {personalInfo.name}
+              <span className="nav-brand-suffix">.STUDIO</span>
+            </span>
+          </Link>
 
-      <nav
-        className={`fixed top-5 left-0 right-0 max-w-5xl mx-auto w-[92%] z-50 transition-all duration-300 ${
-          scrolled ? "top-3" : "top-5"
-        }`}
-        aria-label="主要導覽"
-      >
-        <div className="nav-glass rounded-full border border-white/10 shadow-2xl backdrop-blur-xl px-2 bg-[#0b1120]/80">
-          <div className="flex justify-between items-center h-16 px-5 sm:px-6">
-            {/* Logo */}
-            <Link
-              href="/"
-              className="text-lg font-bold text-white tracking-tight flex items-center gap-2 group"
+          {isCaseStudy ? (
+            <div className="nav-case-badge">
+              <span className="nav-case-dot" aria-hidden="true" />
+              <span>案例深度解析</span>
+            </div>
+          ) : (
+            <div className="nav-links">
+              {navItems.map(({ label, id, href }) => {
+                const isActive = !isCaseStudy && activeSection === id;
+                return (
+                  <Link
+                    key={href}
+                    href={href}
+                    className={`nav-link ${isActive ? "nav-link--active" : ""}`}
+                    aria-current={isActive ? "page" : undefined}
+                  >
+                    {label}
+                  </Link>
+                );
+              })}
+            </div>
+          )}
+
+          <div className="nav-actions">
+            <button
+              type="button"
+              className="theme-toggle-btn"
+              aria-label={isThemeMounted && isDark ? "切換至亮色模式" : "切換至深色模式"}
+              title={isThemeMounted && isDark ? "切換至亮色模式" : "切換至深色模式"}
+              onClick={toggleTheme}
             >
-              <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center text-white text-xs font-black shadow-lg shadow-indigo-500/30">
-                P.
-              </div>
-              <span className="font-mono tracking-wider font-extrabold text-sm sm:text-base">
-                {personalInfo.name}
-                <span className="text-indigo-400">.</span>PORTFOLIO
-              </span>
+              {isThemeMounted && isDark ? <Sun size={16} /> : <Moon size={16} />}
+            </button>
+
+            {isCaseStudy ? (
+              <Link href="/#works" className="button button--secondary button--sm">
+                <ArrowLeft size={14} /> 回作品庫
+              </Link>
+            ) : null}
+
+            <Link href="/#contact" className="button button--primary button--sm nav-cta">
+              <span>開始合作</span>
+              <ArrowUpRight size={14} />
             </Link>
 
-            {/* Desktop Menu */}
-            <div className="hidden md:flex items-center gap-1 text-sm font-medium text-slate-300">
-              <a
-                href="#about"
-                className="px-4 py-2 rounded-full hover:text-white hover:bg-white/5 transition-colors"
-              >
-                關於我
-              </a>
-              <a
-                href="#expertise"
-                className="px-4 py-2 rounded-full hover:text-white hover:bg-white/5 transition-colors"
-              >
-                核心職能
-              </a>
-              <a
-                href="#works"
-                className="px-4 py-2 rounded-full hover:text-white hover:bg-white/5 transition-colors"
-              >
-                精選作品
-              </a>
-              <a
-                href="#whyme"
-                className="px-4 py-2 rounded-full hover:text-white hover:bg-white/5 transition-colors"
-              >
-                個人特點
-              </a>
-            </div>
-
-            {/* CTA */}
-            <div className="flex items-center gap-3">
-              <a
-                href="#contact"
-                className="hidden md:inline-flex items-center gap-1.5 px-5 py-2 rounded-full bg-white text-slate-900 font-bold text-xs sm:text-sm hover:bg-slate-100 hover:scale-105 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)]"
-              >
-                聯絡我 <ArrowUpRight className="w-4 h-4" />
-              </a>
-
-              {/* Mobile menu button */}
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                aria-label="切換選單"
-                className="md:hidden text-white p-2 rounded-full hover:bg-white/10 transition-colors"
-              >
-                {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-              </button>
-            </div>
+            <button
+              className="nav-toggle"
+              type="button"
+              aria-expanded={isOpen}
+              aria-controls="mobile-navigation"
+              aria-label={isOpen ? "關閉選單" : "開啟選單"}
+              onClick={() => setIsOpen((open) => !open)}
+            >
+              {isOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
           </div>
         </div>
 
-        {/* Mobile Dropdown */}
         {isOpen && (
-          <div className="md:hidden absolute top-20 left-0 right-0 bg-[#0f172a]/95 backdrop-blur-xl border border-white/10 rounded-2xl p-4 shadow-2xl overflow-hidden mx-auto w-full transition-all animate-fadeIn">
-            <div className="flex flex-col space-y-2 text-base font-medium">
-              <a
-                href="#about"
-                onClick={() => setIsOpen(false)}
-                className="px-4 py-3 rounded-xl text-white hover:bg-white/5 transition-colors"
+          <div id="mobile-navigation" className="nav-menu">
+            {isCaseStudy && (
+              <Link href="/#works" onClick={closeMenu} className="nav-menu-case-link">
+                <ArrowLeft size={16} /> 返回完整作品庫
+              </Link>
+            )}
+            {navItems.map(({ label, href }) => (
+              <Link key={href} href={href} onClick={closeMenu}>
+                {label}
+              </Link>
+            ))}
+            <div className="nav-menu-footer">
+              <button
+                type="button"
+                className="mobile-theme-btn"
+                onClick={toggleTheme}
               >
-                關於我
-              </a>
-              <a
-                href="#expertise"
-                onClick={() => setIsOpen(false)}
-                className="px-4 py-3 rounded-xl text-white hover:bg-white/5 transition-colors"
-              >
-                核心職能
-              </a>
-              <a
-                href="#works"
-                onClick={() => setIsOpen(false)}
-                className="px-4 py-3 rounded-xl text-white hover:bg-white/5 transition-colors"
-              >
-                精選作品
-              </a>
-              <a
-                href="#whyme"
-                onClick={() => setIsOpen(false)}
-                className="px-4 py-3 rounded-xl text-white hover:bg-white/5 transition-colors"
-              >
-                個人特點
-              </a>
-              <a
-                href="#contact"
-                onClick={() => setIsOpen(false)}
-                className="px-4 py-3 rounded-xl text-indigo-400 font-bold hover:bg-indigo-500/10 transition-colors flex items-center justify-between"
-              >
-                聯絡我 <span>↗</span>
-              </a>
+                {isThemeMounted && isDark ? <Sun size={15} /> : <Moon size={15} />}
+                <span>{isThemeMounted && isDark ? "切換至亮色模式" : "切換至深色模式"}</span>
+              </button>
+              <Link href="/#contact" onClick={closeMenu} className="mobile-cta-link">
+                聯絡我
+              </Link>
             </div>
           </div>
         )}
