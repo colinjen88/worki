@@ -35,9 +35,9 @@
   --surface-card-hover: #172033;
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
-  --text-tertiary: #64748b;
-  --brand: #6366f1;
-  --brand-strong: #818cf8;
+  --text-tertiary: #94a3b8;
+  --brand: #818cf8;
+  --brand-strong: #a5b4fc;
   --brand-soft: rgba(99, 102, 241, 0.15);
   --brand-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
   --border-subtle: rgba(255, 255, 255, 0.08);
@@ -1707,12 +1707,16 @@ p { text-wrap: pretty; }
 /* 404 Page */
 .not-found {
   display: grid;
+  position: relative;
+  z-index: 1;
   min-height: 100vh;
   place-content: center;
   gap: 1.25rem;
   padding: 1.5rem;
   text-align: center;
 }
+.not-found > p:not(.eyebrow) { margin: 0; color: var(--text-secondary); }
+.not-found__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; }
 .not-found h1 {
   max-width: 30rem;
   margin: 0;
@@ -1730,6 +1734,7 @@ p { text-wrap: pretty; }
 /* Media Queries */
 @media (max-width: 860px) {
   .nav-links, .nav-cta { display: none; }
+  .nav-case-badge, .nav-case-return { display: none; }
   .nav-toggle { display: grid; place-items: center; }
   .hero, .expertise-layout, .work-header, .details { grid-template-columns: 1fr; }
   .hero { min-height: auto; padding-top: 8rem; }
@@ -1745,7 +1750,10 @@ p { text-wrap: pretty; }
 
 @media (max-width: 620px) {
   .site-container { width: min(100% - 1.5rem, 75rem); }
+  .site-nav { width: min(100% - 1.25rem, 68rem); }
+  .nav-surface { gap: .5rem; padding: .4rem .5rem .4rem .75rem; }
   .nav-brand-suffix { display: none; }
+  .section-title .text-nowrap { display: block; white-space: normal; }
   .featured-grid, .works-grid { grid-template-columns: 1fr; }
   .works-head { display: block; }
   .filters { justify-content: start; margin-top: 1.25rem; }
@@ -1755,6 +1763,11 @@ p { text-wrap: pretty; }
   .work-nav-bar { flex-direction: column; align-items: flex-start; }
   .footer-contact-box { padding: 1.5rem 1rem; }
   .footer-email-link { font-size: 1.2rem; }
+  .hero-strengths-card { padding: 1.2rem 1rem; }
+  .strengths-card__header,
+  .strength-item__header,
+  .strengths-card__footer { align-items: flex-start; flex-wrap: wrap; }
+  .strengths-card__time { white-space: nowrap; }
 }
 
 /* Accessibility */

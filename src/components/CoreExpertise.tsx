@@ -18,10 +18,10 @@ const cards = [
     icon: Layout,
     tag: "DESIGN & STRUCTURE",
     title: "UI/UX 與響應式介面設計",
-    text: "善於梳理複雜的資訊層級，並以元件化思維在 Figma 中建立完整的設計系統。從 375px 手機版到超寬螢幕，皆確保文字行氣、間距比例與操作路徑符合人體工學。",
+    text: "梳理資訊層級，並以元件化思維在 Figma 中建立設計系統；針對手機、桌面與長短內容調整排版和操作路徑。",
     points: [
       "Figma Auto Layout & 元件狀態定義",
-      "全裝置 RWD 斷點與字級比例階梯",
+      "RWD 斷點、字級比例與內容溢出處理",
       "注重邊界情境（Edge Cases）與無障礙體驗",
     ],
   },
@@ -29,7 +29,7 @@ const cards = [
     icon: Zap,
     tag: "MOTION & TIMING",
     title: "微動效與互動節奏掌控",
-    text: "源自早期 Flash / Animate 動態設計的深厚底子，對幀率、時間差（Stagger）與緩動曲線（Easing）具備敏銳手感。不追求多餘炫技，只在必要處給予使用者明確的操作反饋。",
+    text: "早期以 Flash / Animate 製作動態內容，現在將時間差（Stagger）與緩動曲線（Easing）運用在介面引導和操作回饋。",
     points: [
       "Lottie / SVGA 輕量化動效整合",
       "CSS Keyframes & Spring 彈性物理反饋",
@@ -40,11 +40,11 @@ const cards = [
     icon: Code2,
     tag: "ENGINEERING",
     title: "現代前端架構落地實作",
-    text: "以 Next.js、React 與 TypeScript 為核心，評估設計可行性並親自實作交付。能獨立完成靜態網站產生（SSG）、效能最佳化、SEO 結構化資料建置與跨瀏覽器相容測試。",
+    text: "以 Next.js、React 與 TypeScript 評估設計可行性並完成實作，涵蓋靜態輸出、效能調整、SEO 結構化資料與瀏覽器檢查。",
     points: [
       "Next.js 16 靜態導出與元件化開發",
-      "純淨無依賴語意化 CSS 架構",
-      "高度還原設計細節，告別前端交付縮水",
+      "語意化 HTML 與可維護的 CSS 架構",
+      "依真實資料驗證元件與邊界狀態",
     ],
   },
 ];

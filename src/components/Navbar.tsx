@@ -110,7 +110,7 @@ export function Navbar() {
             </button>
 
             {isCaseStudy ? (
-              <Link href="/#works" className="button button--secondary button--sm">
+              <Link href="/#works" className="button button--secondary button--sm nav-case-return">
                 <ArrowLeft size={14} /> 回作品庫
               </Link>
             ) : null}

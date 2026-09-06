@@ -5,22 +5,22 @@ const points = [
     icon: GitMerge,
     number: "01",
     tag: "SEAMLESS HANDOFF",
-    title: "零溝通斷層的高精度交付",
-    text: "在設計階段即依據 CSS Box Model、組件化架構與真實資料邊界進行規範。產出的介面自帶 Hover、Active、Loading 與字數溢出等狀態定義，大幅縮短設計與工程端的對齊成本。",
+    title: "把互動規格說清楚",
+    text: "在設計階段定義 Hover、Active、Loading、錯誤與內容溢出狀態，讓實作與驗收都有明確依據。",
   },
   {
     icon: Compass,
     number: "02",
     tag: "HYBRID PERSPECTIVE",
-    title: "視覺、動效與代碼的複合視野",
-    text: "能獨立完成從靜態視覺排版、Lottie / SVGA 微動效製作，到現代前端架構落地的全流程。不需要在多個角色之間轉發溝通，就能在第一時間以可執行的代碼還原精緻質感。",
+    title: "從視覺走到可執行程式",
+    text: "能從視覺排版與 Lottie / SVGA 動效一路處理到前端元件，及早發現設計與瀏覽器實作之間的落差。",
   },
   {
     icon: Sparkles,
     number: "03",
     tag: "CRAFTSMANSHIP",
-    title: "重視手感，拒絕無意義的裝飾",
-    text: "不盲目追求浮誇炫技，而是將動態與視覺用於引導使用者視線焦點。每一個緩動曲線、間距比例與邊緣狀況（Edge Cases），都經過細膩調校，打造耐看且經得起操作的產品。",
+    title: "讓動態服務操作",
+    text: "依資訊層級安排轉場、回饋與節奏，並檢查不同裝置、鍵盤操作及減少動態效果設定下的使用體驗。",
   },
 ];
 
@@ -35,7 +35,7 @@ export function WhyMe() {
           <span className="text-nowrap">更在乎產品的完成度與手感。</span>
         </h2>
         <p className="section-intro">
-          好的作品不是靠華麗的 buzzwords 堆砌，而是來自在每一處看不見的細節裡，都有為真實使用者設想的用心。
+          作品的完成度來自可驗證的細節：內容是否清楚、互動是否有回饋，以及不同裝置與操作方式能否順利使用。
         </p>
         <div className="why-grid">
           {points.map(({ icon: Icon, number, tag, title, text }) => (

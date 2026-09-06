@@ -43,8 +43,8 @@ export const personalInfo = {
   statusDescription:
     "專精動效微互動 (Lottie/SVGA)、響應式介面設計與前端架構實作。具備獨立建置產品與從零落地能力。",
   aboutParagraphs: [
-    "擁有多年跨足視覺設計、動效製作與前端開發的實戰經驗。早期從 Flash / Animate 動態設計奠定對時間差與緩動節奏的敏銳度，如今專注於將 Figma 設計稿以現代前端體系（Next.js / TypeScript / 語意化 CSS）精準實現為高質感產品。",
-    "重視介面層次、設計系統（Design System）組件化思維與微動效手感。懂設計的感性，也懂工程的理性邊界，能跨越溝通斷層，確保每一處邊緣狀況（Edge Cases）都具備完整的互動體驗。",
+    "從 Flash / Animate 動態設計出發，累積對時間差與緩動節奏的敏銳度；目前以 Figma、Next.js 與 TypeScript 完成介面設計及前端實作。",
+    "從設計系統、響應式排版到互動狀態，依真實內容與裝置條件逐一處理，讓設計稿能穩定落地。",
   ],
   craftTokens: [
     { label: "主軸風格", value: "Editorial Tech & Creative Studio" },
@@ -234,7 +234,7 @@ export const projects: Project[] = [
   },
   {
     id: "shiny-jewelry",
-    title: "形像官網一頁式網站(主頁設計)",
+    title: "形象官網一頁式網站（主頁設計）",
     subtitle: "璀璨珠寶 Shiny Jewelry 一頁式形象品牌",
     categories: ["dynamic-web"],
     summary: "需求規劃 • 風格提案 • UI/UX設計 • 網站開發",

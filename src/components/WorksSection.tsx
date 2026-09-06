@@ -44,7 +44,7 @@ export function WorksSection({
             </p>
             <h2 className="section-title">完整作品庫</h2>
           </div>
-          <div className="filters" role="tablist" aria-label="作品類別篩選">
+          <div className="filters" role="group" aria-label="作品類別篩選">
             {filters.map(({ label, value }) => {
               const isSelected = filter === value;
               const count =
@@ -56,8 +56,6 @@ export function WorksSection({
                   className={`filter ${isSelected ? "filter--active" : ""}`}
                   type="button"
                   key={value}
-                  role="tab"
-                  aria-selected={isSelected}
                   aria-pressed={isSelected}
                   onClick={() => setFilter(value)}
                 >

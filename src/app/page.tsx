@@ -1,36 +1,52 @@
-"use client";
-
-import { useState } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { CoreExpertise } from "@/components/CoreExpertise";
 import { FeaturedCaseStudies } from "@/components/FeaturedCaseStudies";
-import { WorksSection } from "@/components/WorksSection";
+import { HomeWorks } from "@/components/HomeWorks";
 import { WhyMe } from "@/components/WhyMe";
 import { Footer } from "@/components/Footer";
-import { VideoModal } from "@/components/VideoModal";
 import { BackToTop } from "@/components/BackToTop";
 
-export default function Home() {
-  const [activeVideoUrl, setActiveVideoUrl] = useState<string | null>(null);
+const profileJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  name: "WANG 前端設計工程師作品集",
+  url: "https://let.gowork.run/",
+  inLanguage: "zh-TW",
+  mainEntity: {
+    "@type": "Person",
+    name: "WANG",
+    url: "https://let.gowork.run/",
+    jobTitle: "前端設計工程師",
+    knowsAbout: [
+      "Frontend Engineering",
+      "UI/UX Design",
+      "Responsive Web Design",
+      "Motion Design",
+      "Search Engine Optimization",
+    ],
+  },
+};
 
+export default function Home() {
   return (
-    <div className="site-shell">
-      <Navbar />
-      <main id="main-content">
-        <Hero />
-        <CoreExpertise />
-        <FeaturedCaseStudies />
-        <WorksSection onOpenVideo={setActiveVideoUrl} />
-        <WhyMe />
-      </main>
-      <Footer />
-      <BackToTop />
-      <VideoModal
-        isOpen={Boolean(activeVideoUrl)}
-        videoUrl={activeVideoUrl}
-        onClose={() => setActiveVideoUrl(null)}
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(profileJsonLd) }}
       />
-    </div>
+      <div className="site-shell">
+        <Navbar />
+        <main id="main-content">
+          <Hero />
+          <CoreExpertise />
+          <FeaturedCaseStudies />
+          <HomeWorks />
+          <WhyMe />
+        </main>
+        <Footer />
+        <BackToTop />
+      </div>
+    </>
   );
 }

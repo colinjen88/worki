@@ -10,9 +10,10 @@ export function DynamicBackground() {
     if (!container) return;
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (reducedMotion.matches) return;
+    const precisePointer = window.matchMedia("(min-width: 861px) and (hover: hover) and (pointer: fine)");
 
     let rafId: number | undefined;
+    let isTracking = false;
     let targetX = window.innerWidth * 0.7;
     let targetY = window.innerHeight * 0.3;
     let currentX = targetX;
@@ -36,11 +37,31 @@ export function DynamicBackground() {
       rafId = distance > 0.5 ? requestAnimationFrame(animateGlow) : undefined;
     };
 
-    window.addEventListener("pointermove", handlePointerMove, { passive: true });
+    const stopTracking = () => {
+      if (!isTracking) return;
+      window.removeEventListener("pointermove", handlePointerMove);
+      isTracking = false;
+      if (rafId !== undefined) cancelAnimationFrame(rafId);
+      rafId = undefined;
+    };
+
+    const syncTracking = () => {
+      if (reducedMotion.matches || !precisePointer.matches) {
+        stopTracking();
+      } else if (!isTracking) {
+        window.addEventListener("pointermove", handlePointerMove, { passive: true });
+        isTracking = true;
+      }
+    };
+
+    reducedMotion.addEventListener("change", syncTracking);
+    precisePointer.addEventListener("change", syncTracking);
+    syncTracking();
 
     return () => {
-      window.removeEventListener("pointermove", handlePointerMove);
-      if (rafId !== undefined) cancelAnimationFrame(rafId);
+      stopTracking();
+      reducedMotion.removeEventListener("change", syncTracking);
+      precisePointer.removeEventListener("change", syncTracking);
     };
   }, []);
 

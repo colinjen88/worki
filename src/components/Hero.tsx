@@ -133,21 +133,30 @@ export function Hero() {
               <div className="strength-states-demo">
                 <span className="states-demo-label">互動狀態預覽：</span>
                 <div className="states-demo-pills" role="group" aria-label="狀態預覽展示">
-                  <span
+                  <button
+                    type="button"
                     className={`demo-pill ${activeStateDemo === "hover" ? "demo-pill--hover" : ""}`}
                     onMouseEnter={() => setActiveStateDemo("hover")}
                     onMouseLeave={() => setActiveStateDemo("normal")}
+                    onFocus={() => setActiveStateDemo("hover")}
+                    onBlur={() => setActiveStateDemo("normal")}
                   >
                     Hover
-                  </span>
-                  <span
+                  </button>
+                  <button
+                    type="button"
                     className={`demo-pill ${activeStateDemo === "active" ? "demo-pill--active" : ""}`}
-                    onMouseDown={() => setActiveStateDemo("active")}
-                    onMouseUp={() => setActiveStateDemo("normal")}
+                    onPointerDown={() => setActiveStateDemo("active")}
+                    onPointerUp={() => setActiveStateDemo("normal")}
+                    onKeyDown={(event) => {
+                      if (event.key === "Enter" || event.key === " ") setActiveStateDemo("active");
+                    }}
+                    onKeyUp={() => setActiveStateDemo("normal")}
                   >
                     Active
-                  </span>
-                  <span
+                  </button>
+                  <button
+                    type="button"
                     className={`demo-pill ${activeStateDemo === "loading" ? "demo-pill--loading" : ""}`}
                     onClick={() => {
                       setActiveStateDemo("loading");
@@ -155,7 +164,7 @@ export function Hero() {
                     }}
                   >
                     {activeStateDemo === "loading" ? "Loading..." : "Loading"}
-                  </span>
+                  </button>
                   <span className="demo-pill demo-pill--default">Empty / Error</span>
                 </div>
               </div>
@@ -178,7 +187,7 @@ export function Hero() {
               <div className="strength-tags-row">
                 <span className="strength-subtag">Fluid Easing</span>
                 <span className="strength-subtag">Stagger 節奏時差</span>
-                <span className="strength-subtag">60/120fps 硬體加速</span>
+                <span className="strength-subtag">Transform / Opacity 優先</span>
               </div>
             </div>
           </article>
@@ -209,7 +218,7 @@ export function Hero() {
         <div className="strengths-card__footer">
           <div className="strengths-footer-badge">
             <CheckCircle2 size={15} className="check-icon" />
-            <span>嚴謹交付承諾：全專案皆遵循上述工程與設計標準落地</span>
+            <span>交付檢查：依專案需求驗證響應式、互動狀態與鍵盤操作</span>
           </div>
           <a href="#featured" className="strengths-footer-link">
             <span>看實際案例</span>

@@ -17,27 +17,6 @@ const notoSansTC = Noto_Sans_TC({
   display: "swap",
 });
 
-const profileJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ProfilePage",
-  name: "WANG 前端設計工程師作品集",
-  url: "https://let.gowork.run/",
-  inLanguage: "zh-TW",
-  mainEntity: {
-    "@type": "Person",
-    name: "WANG",
-    url: "https://let.gowork.run/",
-    jobTitle: "前端設計工程師",
-    knowsAbout: [
-      "Frontend Engineering",
-      "UI/UX Design",
-      "Responsive Web Design",
-      "Motion Design",
-      "Search Engine Optimization",
-    ],
-  },
-};
-
 export const metadata: Metadata = {
   metadataBase: new URL("https://let.gowork.run"),
   title: {
@@ -92,10 +71,6 @@ export default function RootLayout({
     >
       <head>
         <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(profileJsonLd) }}
-        />
       </head>
       <body>
         <ThemeProvider>
