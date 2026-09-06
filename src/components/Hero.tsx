@@ -132,23 +132,23 @@ export function Hero() {
             </div>
           </article>
 
-          {/* Item 3: frontend delivery */}
+          {/* Item 3: full-stack delivery */}
           <article className="strength-item">
             <div className="strength-item__icon-box strength-item__icon-box--success">
               <ShieldCheck size={20} className="strength-icon" />
             </div>
             <div className="strength-item__content">
               <div className="strength-item__header">
-                <h3 className="strength-item__title">前端實作與上線調整</h3>
-                <span className="strength-tag">Development</span>
+                <h3 className="strength-item__title">全端開發、SEO 與正式上線</h3>
+                <span className="strength-tag">Full-stack Delivery</span>
               </div>
               <p className="strength-item__text">
-                將設計做成可維護的響應式網頁，處理互動、SEO 基礎設定、載入效能與跨裝置顯示。
+                從前端介面、後端功能與資料串接，到網域、CDN、部署及技術 SEO，能獨立完成網站開發並正式上線。
               </p>
               <div className="strength-tags-row">
-                <span className="strength-subtag">Next.js / TypeScript</span>
-                <span className="strength-subtag">SEO / 效能</span>
-                <span className="strength-subtag">跨裝置檢查</span>
+                <span className="strength-subtag">前後端開發</span>
+                <span className="strength-subtag">CDN / 部署</span>
+                <span className="strength-subtag">Technical SEO</span>
               </div>
             </div>
           </article>
