@@ -13,6 +13,7 @@ import {
   Layers,
 } from "lucide-react";
 import { projects, type Project, type ProjectFilter } from "@/data/projects";
+import { ScrollReveal } from "@/components/ScrollReveal";
 
 const filters: { label: string; value: ProjectFilter }[] = [
   { label: "全部", value: "all" },
@@ -37,7 +38,7 @@ export function WorksSection({
   return (
     <section id="works" className="section">
       <div className="site-container">
-        <div className="works-head">
+        <ScrollReveal className="works-head">
           <div>
             <p className="eyebrow">
               <Layers size={14} className="eyebrow-icon" /> All works
@@ -65,13 +66,15 @@ export function WorksSection({
               );
             })}
           </div>
-        </div>
+        </ScrollReveal>
 
-        <p className="works-count" role="status">
-          顯示 <strong>{filtered.length}</strong> 件作品
-        </p>
+        <ScrollReveal delay={0.1}>
+          <p className="works-count" role="status">
+            顯示 <strong>{filtered.length}</strong> 件作品
+          </p>
+        </ScrollReveal>
 
-        {filtered.length ? (
+        {filtered.length > 0 ? (
           <div className="works-grid">
             {filtered.map((project) => (
               <ProjectCard
@@ -108,118 +111,120 @@ function ProjectCard({
     );
 
   return (
-    <article className="card project-card">
-      <div
-        className={`project-media ${
-          project.id === "graphic-portfolio" ? "project-media--contain" : ""
-        }`}
-      >
-        <Image
-          src={image}
-          alt={caption}
-          fill
-          sizes="(max-width: 620px) 100vw, (max-width: 1200px) 50vw, 560px"
-        />
-        {project.status === "in-progress" && (
-          <span className="project-state">整理中</span>
-        )}
-        <span className="media-caption">
-          {hasMultipleImages ? `${index + 1}/${project.images.length} · ` : ""}
-          {caption}
-        </span>
-        {hasMultipleImages && (
-          <div className="media-nav">
-            <button
-              className="icon-button"
-              type="button"
-              aria-label={`上一張圖片，目前為第 ${index + 1} 張`}
-              onClick={() => changeImage(-1)}
-            >
-              <ChevronLeft size={18} />
-            </button>
-            <button
-              className="icon-button"
-              type="button"
-              aria-label={`下一張圖片，目前為第 ${index + 1} 張`}
-              onClick={() => changeImage(1)}
-            >
-              <ChevronRight size={18} />
-            </button>
-          </div>
-        )}
-      </div>
+    <ScrollReveal delay={0.05}>
+      <article className="card project-card">
+        <div
+          className={`project-media ${
+            project.id === "graphic-portfolio" ? "project-media--contain" : ""
+          }`}
+        >
+          <Image
+            src={image}
+            alt={caption}
+            fill
+            sizes="(max-width: 620px) 100vw, (max-width: 1200px) 50vw, 560px"
+          />
+          {project.status === "in-progress" && (
+            <span className="project-state">整理中</span>
+          )}
+          <span className="media-caption">
+            {hasMultipleImages ? `${index + 1}/${project.images.length} · ` : ""}
+            {caption}
+          </span>
+          {hasMultipleImages && (
+            <div className="media-nav">
+              <button
+                className="icon-button"
+                type="button"
+                aria-label={`上一張圖片，目前為第 ${index + 1} 張`}
+                onClick={() => changeImage(-1)}
+              >
+                <ChevronLeft size={18} />
+              </button>
+              <button
+                className="icon-button"
+                type="button"
+                aria-label={`下一張圖片，目前為第 ${index + 1} 張`}
+                onClick={() => changeImage(1)}
+              >
+                <ChevronRight size={18} />
+              </button>
+            </div>
+          )}
+        </div>
 
-      <div className="project-body">
-        <p className="project-subtitle">{project.subtitle}</p>
-        <h3>
-          {project.slug ? (
-            <Link href={`/work/${project.slug}/`} className="project-title-link">
-              {project.title}
-            </Link>
-          ) : (
-            project.title
-          )}
-        </h3>
-        <div className="tags">
-          {project.tags.map((tag) => (
-            <span className="tag" key={tag}>
-              {tag}
-            </span>
-          ))}
+        <div className="project-body">
+          <p className="project-subtitle">{project.subtitle}</p>
+          <h3>
+            {project.slug ? (
+              <Link href={`/work/${project.slug}/`} className="project-title-link">
+                {project.title}
+              </Link>
+            ) : (
+              project.title
+            )}
+          </h3>
+          <div className="tags">
+            {project.tags.map((tag) => (
+              <span className="tag" key={tag}>
+                {tag}
+              </span>
+            ))}
+          </div>
+          <p className="project-summary">{project.summary}</p>
+          <div className="project-actions">
+            {project.slug && (
+              <Link href={`/work/${project.slug}/`} className="action-btn action-btn--primary">
+                <BookOpen size={14} />
+                <span>案例解析</span>
+              </Link>
+            )}
+            {project.videoUrl && (
+              <button
+                type="button"
+                className="action-btn"
+                onClick={() => onOpenVideo(project.videoUrl!)}
+              >
+                <Play size={14} />
+                <span>播放作品</span>
+              </button>
+            )}
+            {project.pdfUrl && (
+              <a
+                href={project.pdfUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="action-btn"
+              >
+                <FileText size={14} />
+                <span>檢視 PDF</span>
+              </a>
+            )}
+            {project.showcaseUrl && (
+              <a
+                href={project.showcaseUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="action-btn"
+              >
+                <span>開發介紹</span>
+                <ArrowUpRight size={14} />
+              </a>
+            )}
+            {project.liveUrl && project.status !== "in-progress" && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="action-btn"
+              >
+                <span>線上網站</span>
+                <ArrowUpRight size={14} />
+              </a>
+            )}
+          </div>
         </div>
-        <p className="project-summary">{project.summary}</p>
-        <div className="project-actions">
-          {project.slug && (
-            <Link href={`/work/${project.slug}/`} className="action-btn action-btn--primary">
-              <BookOpen size={14} />
-              <span>案例解析</span>
-            </Link>
-          )}
-          {project.videoUrl && (
-            <button
-              type="button"
-              className="action-btn"
-              onClick={() => onOpenVideo(project.videoUrl!)}
-            >
-              <Play size={14} />
-              <span>播放作品</span>
-            </button>
-          )}
-          {project.pdfUrl && (
-            <a
-              href={project.pdfUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="action-btn"
-            >
-              <FileText size={14} />
-              <span>檢視 PDF</span>
-            </a>
-          )}
-          {project.showcaseUrl && (
-            <a
-              href={project.showcaseUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="action-btn"
-            >
-              <span>開發介紹</span>
-              <ArrowUpRight size={14} />
-            </a>
-          )}
-          {project.liveUrl && project.status !== "in-progress" && (
-            <a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="action-btn"
-            >
-              <span>線上網站</span>
-              <ArrowUpRight size={14} />
-            </a>
-          )}
-        </div>
-      </div>
-    </article>
+      </article>
+    </ScrollReveal>
   );
 }

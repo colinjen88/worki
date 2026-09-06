@@ -1,4 +1,5 @@
 import { Layout, Zap, Code2, Check } from "lucide-react";
+import { ScrollReveal } from "@/components/ScrollReveal";
 
 const skills = [
   "Figma (Design System)",
@@ -39,6 +40,15 @@ const cards = [
   {
     icon: Code2,
     tag: "ENGINEERING",
+    points: [
+      "Lottie / SVGA 輕量化動效整合",
+      "CSS Keyframes & Spring 彈性物理反饋",
+      "頁面轉場與狀態切換流暢度調優",
+    ],
+  },
+  {
+    icon: Code2,
+    tag: "ENGINEERING",
     title: "依專案需求選擇開發架構",
     text: "依網站規模、功能與維護需求，在 Next.js、Nuxt.js 等方案間評估選型，搭配 TypeScript、Tailwind CSS 與後端技術完成開發。",
     points: [
@@ -53,7 +63,7 @@ export function CoreExpertise() {
   return (
     <section id="expertise" className="section expertise-section">
       <div className="site-container expertise-layout">
-        <div className="expertise-intro">
+        <ScrollReveal className="expertise-intro">
           <p className="eyebrow">Toolkit &amp; Crafts</p>
           <h2 className="section-title">
             <span className="text-nowrap">設計感性與工程理性的</span>
@@ -70,30 +80,32 @@ export function CoreExpertise() {
               </span>
             ))}
           </div>
-        </div>
+        </ScrollReveal>
 
         <div className="expertise-grid">
-          {cards.map(({ icon: Icon, tag, title, text, points }) => (
-            <article key={title} className="card expertise-card">
-              <div className="expertise-card__head">
-                <span className="expertise-icon">
-                  <Icon size={22} />
-                </span>
-                <span className="expertise-card__tag">{tag}</span>
-              </div>
-              <h3>{title}</h3>
-              <p>{text}</p>
-              {points && (
-                <ul className="expertise-points">
-                  {points.map((point) => (
-                    <li key={point}>
-                      <Check size={14} className="point-icon" aria-hidden="true" />
-                      <span>{point}</span>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </article>
+          {cards.map(({ icon: Icon, tag, title, text, points }, idx) => (
+            <ScrollReveal key={title} delay={0.15 * idx}>
+              <article className="card expertise-card">
+                <div className="expertise-card__head">
+                  <span className="expertise-icon">
+                    <Icon size={22} />
+                  </span>
+                  <span className="expertise-card__tag">{tag}</span>
+                </div>
+                <h3>{title}</h3>
+                <p>{text}</p>
+                {points && (
+                  <ul className="expertise-points">
+                    {points.map((point) => (
+                      <li key={point}>
+                        <Check size={14} className="point-icon" aria-hidden="true" />
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </article>
+            </ScrollReveal>
           ))}
         </div>
       </div>

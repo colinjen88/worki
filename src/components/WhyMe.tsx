@@ -1,4 +1,5 @@
 import { GitMerge, Compass, Sparkles } from "lucide-react";
+import { ScrollReveal } from "@/components/ScrollReveal";
 
 const points = [
   {
@@ -28,28 +29,32 @@ export function WhyMe() {
   return (
     <section id="whyme" className="section whyme-section">
       <div className="site-container">
-        <p className="eyebrow">Work Philosophy</p>
-        <h2 className="section-title">
-          <span className="text-nowrap">專業技術之外，</span>
-          <br className="desktop-br" />
-          <span className="text-nowrap">更在乎產品的完成度與手感。</span>
-        </h2>
-        <p className="section-intro">
-          作品的完成度來自可驗證的細節：內容是否清楚、互動是否有回饋，以及不同裝置與操作方式能否順利使用。
-        </p>
+        <ScrollReveal>
+          <p className="eyebrow">Work Philosophy</p>
+          <h2 className="section-title">
+            <span className="text-nowrap">專業技術之外，</span>
+            <br className="desktop-br" />
+            <span className="text-nowrap">更在乎產品的完成度與手感。</span>
+          </h2>
+          <p className="section-intro">
+            作品的完成度來自可驗證的細節：內容是否清楚、互動是否有回饋，以及不同裝置與操作方式能否順利使用。
+          </p>
+        </ScrollReveal>
         <div className="why-grid">
-          {points.map(({ icon: Icon, number, tag, title, text }) => (
-            <article className="card why-card" key={number}>
-              <div className="why-card__top">
-                <span className="why-number">{number}</span>
-                <span className="why-tag">{tag}</span>
-              </div>
-              <div className="why-icon-wrap">
-                <Icon size={24} className="why-icon" aria-hidden="true" />
-              </div>
-              <h3>{title}</h3>
-              <p>{text}</p>
-            </article>
+          {points.map(({ icon: Icon, number, tag, title, text }, idx) => (
+            <ScrollReveal key={number} delay={idx * 0.15}>
+              <article className="card why-card">
+                <div className="why-card__top">
+                  <span className="why-number">{number}</span>
+                  <span className="why-tag">{tag}</span>
+                </div>
+                <div className="why-icon-wrap">
+                  <Icon size={24} className="why-icon" aria-hidden="true" />
+                </div>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </article>
+            </ScrollReveal>
           ))}
         </div>
       </div>

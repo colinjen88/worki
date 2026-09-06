@@ -84,7 +84,7 @@ export function Hero() {
         <div className="strengths-card__lead">
           <h2 className="strengths-card__title">從需求到上線，我能協助的工作</h2>
           <p className="strengths-card__desc">
-            可單獨協助 UI/UX 或前端實作，也能把網站規劃、設計與開發串成完整流程。
+            涵蓋 UI/UX 規劃、前台與後台程式功能建置、SEO 優化到伺服器部署上線，提供完整的端到端交付。
           </p>
         </div>
 
@@ -158,7 +158,7 @@ export function Hero() {
         <div className="strengths-card__footer">
           <div className="strengths-footer-badge">
             <CheckCircle2 size={15} className="check-icon" />
-            <span>合作範圍：品牌官網、內容型網站、活動頁與既有網站改版</span>
+            <span>合作範圍：品牌官網、功能型網站、內容型網站、活動頁與既有網站改版</span>
           </div>
           <a href="#featured" className="strengths-footer-link">
             <span>看實際案例</span>
