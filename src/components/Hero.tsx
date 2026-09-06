@@ -1,6 +1,3 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import {
   ArrowDown,
   ArrowRight,
@@ -13,27 +10,6 @@ import {
 import { personalInfo } from "@/data/projects";
 
 export function Hero() {
-  const [currentTime, setCurrentTime] = useState("");
-  const [activeStateDemo, setActiveStateDemo] = useState<"hover" | "active" | "loading" | "normal">("normal");
-
-  // Live Taipei Clock
-  useEffect(() => {
-    const updateTime = () => {
-      const now = new Date();
-      const timeString = now.toLocaleTimeString("en-US", {
-        timeZone: "Asia/Taipei",
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-        hour12: true,
-      });
-      setCurrentTime(timeString);
-    };
-    updateTime();
-    const interval = setInterval(updateTime, 1000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <section id="about" className="site-container hero">
       <div className="hero-content">
@@ -93,122 +69,86 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Core Strengths & Delivery Standards Showcase (清晰強調特點卡片) */}
-      <aside className="hero-strengths-card" aria-label="核心強調特點與交付規範">
+      {/* Concrete work scope: planning, design, and implementation */}
+      <aside className="hero-strengths-card" aria-label="網站規劃、設計與前端實作範圍">
         {/* Top Header */}
         <div className="strengths-card__header">
           <div className="strengths-card__status">
             <span className="status-live-dot" aria-hidden="true" />
-            <span className="strengths-card__time">
-              TAIPEI {currentTime ? `• ${currentTime}` : ""}
-            </span>
+            <span className="strengths-card__time">DESIGN × FRONTEND</span>
           </div>
-          <span className="strengths-card__badge">CORE STRENGTHS</span>
+          <span className="strengths-card__badge">WORK SCOPE</span>
         </div>
 
         {/* Card Title & Intro */}
         <div className="strengths-card__lead">
-          <h2 className="strengths-card__title">三大核心專業特質</h2>
+          <h2 className="strengths-card__title">從需求到上線，我能協助的工作</h2>
           <p className="strengths-card__desc">
-            在設計語言與前端工程之間無縫架橋，落實具體、可驗證的交付品質。
+            可單獨協助 UI/UX 或前端實作，也能把網站規劃、設計與開發串成完整流程。
           </p>
         </div>
 
-        {/* The 3 Core Strengths (保留並凸顯使用者指定文案) */}
+        {/* Three concrete stages that match the portfolio's demonstrated work */}
         <div className="strengths-card__list">
-          {/* Item 1: 零溝通斷層的交付 */}
+          {/* Item 1: planning */}
           <article className="strength-item">
             <div className="strength-item__icon-box strength-item__icon-box--brand">
               <Layers size={20} className="strength-icon" />
             </div>
             <div className="strength-item__content">
               <div className="strength-item__header">
-                <h3 className="strength-item__title">零溝通斷層的交付</h3>
-                <span className="strength-tag">Design System</span>
+                <h3 className="strength-item__title">需求整理與介面規劃</h3>
+                <span className="strength-tag">Planning</span>
               </div>
               <p className="strength-item__text">
-                設計時已定義好所有 Hover、Active、Loading 與極限狀態，省去工程來回確認。
+                釐清網站目標、內容優先順序與操作流程，先把頁面架構、功能範圍和 RWD 方向定清楚。
               </p>
-              {/* Interactive micro state preview demo */}
-              <div className="strength-states-demo">
-                <span className="states-demo-label">互動狀態預覽：</span>
-                <div className="states-demo-pills" role="group" aria-label="狀態預覽展示">
-                  <button
-                    type="button"
-                    className={`demo-pill ${activeStateDemo === "hover" ? "demo-pill--hover" : ""}`}
-                    onMouseEnter={() => setActiveStateDemo("hover")}
-                    onMouseLeave={() => setActiveStateDemo("normal")}
-                    onFocus={() => setActiveStateDemo("hover")}
-                    onBlur={() => setActiveStateDemo("normal")}
-                  >
-                    Hover
-                  </button>
-                  <button
-                    type="button"
-                    className={`demo-pill ${activeStateDemo === "active" ? "demo-pill--active" : ""}`}
-                    onPointerDown={() => setActiveStateDemo("active")}
-                    onPointerUp={() => setActiveStateDemo("normal")}
-                    onKeyDown={(event) => {
-                      if (event.key === "Enter" || event.key === " ") setActiveStateDemo("active");
-                    }}
-                    onKeyUp={() => setActiveStateDemo("normal")}
-                  >
-                    Active
-                  </button>
-                  <button
-                    type="button"
-                    className={`demo-pill ${activeStateDemo === "loading" ? "demo-pill--loading" : ""}`}
-                    onClick={() => {
-                      setActiveStateDemo("loading");
-                      setTimeout(() => setActiveStateDemo("normal"), 1200);
-                    }}
-                  >
-                    {activeStateDemo === "loading" ? "Loading..." : "Loading"}
-                  </button>
-                  <span className="demo-pill demo-pill--default">Empty / Error</span>
-                </div>
+              <div className="strength-tags-row">
+                <span className="strength-subtag">內容架構</span>
+                <span className="strength-subtag">Wireframe</span>
+                <span className="strength-subtag">RWD 規劃</span>
               </div>
             </div>
           </article>
 
-          {/* Item 2: 動態不炫技，專注引導 */}
+          {/* Item 2: interface and motion design */}
           <article className="strength-item">
             <div className="strength-item__icon-box strength-item__icon-box--accent">
               <Sparkles size={20} className="strength-icon" />
             </div>
             <div className="strength-item__content">
               <div className="strength-item__header">
-                <h3 className="strength-item__title">動態不炫技，專注引導</h3>
-                <span className="strength-tag">Motion &amp; Timing</span>
+                <h3 className="strength-item__title">UI 設計與動效製作</h3>
+                <span className="strength-tag">Design</span>
               </div>
               <p className="strength-item__text">
-                以精準的緩動（Easing）與時間差，引導使用者視覺焦點與操作直覺。
+                以 Figma 完成視覺與元件規格，並依內容與操作需求製作 Lottie、SVGA 或 CSS 微動效。
               </p>
               <div className="strength-tags-row">
-                <span className="strength-subtag">Fluid Easing</span>
-                <span className="strength-subtag">Stagger 節奏時差</span>
-                <span className="strength-subtag">Transform / Opacity 優先</span>
+                <span className="strength-subtag">Figma</span>
+                <span className="strength-subtag">Design System</span>
+                <span className="strength-subtag">Lottie / SVGA</span>
               </div>
             </div>
           </article>
 
-          {/* Item 3: 邊界狀況（Edge Cases）全維護 */}
+          {/* Item 3: frontend delivery */}
           <article className="strength-item">
             <div className="strength-item__icon-box strength-item__icon-box--success">
               <ShieldCheck size={20} className="strength-icon" />
             </div>
             <div className="strength-item__content">
               <div className="strength-item__header">
-                <h3 className="strength-item__title">邊界狀況（Edge Cases）全維護</h3>
-                <span className="strength-tag">RWD &amp; A11y</span>
+                <h3 className="strength-item__title">前端實作與上線調整</h3>
+                <span className="strength-tag">Development</span>
               </div>
               <p className="strength-item__text">
-                重視小尺寸手機版、字數溢出折行、高對比無障礙與鍵盤焦點操作。
+                將設計做成可維護的響應式網頁，處理互動、SEO 基礎設定、載入效能與跨裝置顯示。
               </p>
               <div className="strength-tags-row">
-                <span className="strength-subtag">320px+ 極限響應</span>
-                <span className="strength-subtag">文字換行排版</span>
-                <span className="strength-subtag">無障礙焦點導航</span>
+                <span className="strength-subtag">Next.js / TypeScript</span>
+                <span className="strength-subtag">SEO / 效能</span>
+                <span className="strength-subtag">跨裝置檢查</span>
               </div>
             </div>
           </article>
@@ -218,7 +158,7 @@ export function Hero() {
         <div className="strengths-card__footer">
           <div className="strengths-footer-badge">
             <CheckCircle2 size={15} className="check-icon" />
-            <span>交付檢查：依專案需求驗證響應式、互動狀態與鍵盤操作</span>
+            <span>合作範圍：品牌官網、內容型網站、活動頁與既有網站改版</span>
           </div>
           <a href="#featured" className="strengths-footer-link">
             <span>看實際案例</span>

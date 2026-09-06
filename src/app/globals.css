@@ -20,9 +20,6 @@
   --shadow-hover: 0 20px 45px -12px rgba(79, 70, 229, 0.16), 0 0 0 1px rgba(99, 102, 241, 0.25);
   --dot-color: rgba(148, 163, 184, 0.22);
   --card-inset-highlight: rgba(255, 255, 255, 0.8);
-  --loading-surface: #fef3c7;
-  --loading-text: #92400e;
-  --loading-border: #f59e0b;
 }
 
 /* Dark Theme (小巧思：支援極夜暗黑賽博模式) */
@@ -48,9 +45,6 @@
   --shadow-hover: 0 20px 45px -10px rgba(99, 102, 241, 0.3), 0 0 0 1px rgba(129, 140, 248, 0.35);
   --dot-color: rgba(255, 255, 255, 0.08);
   --card-inset-highlight: rgba(255, 255, 255, 0.06);
-  --loading-surface: rgba(245, 158, 11, 0.16);
-  --loading-text: #fbbf24;
-  --loading-border: rgba(251, 191, 36, 0.55);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -902,61 +896,6 @@ html:not([data-theme="dark"]) .expertise-card:nth-child(3) { animation-delay: .5
   font-size: .83rem;
   line-height: 1.55;
   color: var(--text-secondary);
-}
-
-/* Interactive States Demo Row */
-.strength-states-demo {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: .4rem;
-  padding-top: .45rem;
-  border-top: 1px dashed var(--border-subtle);
-}
-.states-demo-label {
-  font-size: .72rem;
-  color: var(--text-tertiary);
-  font-weight: 600;
-}
-.states-demo-pills {
-  display: inline-flex;
-  flex-wrap: wrap;
-  gap: .35rem;
-}
-.demo-pill {
-  font-size: .68rem;
-  font-weight: 750;
-  padding: .2rem .5rem;
-  border-radius: .4rem;
-  border: 1px solid var(--border-subtle);
-  background: var(--surface-card-subtle);
-  color: var(--text-secondary);
-  cursor: pointer;
-  transition: all .2s ease;
-  user-select: none;
-}
-.demo-pill:hover,
-.demo-pill--hover {
-  background: var(--brand-soft);
-  color: var(--brand-strong);
-  border-color: var(--brand);
-}
-.demo-pill--active {
-  background: var(--brand);
-  color: #fff;
-  border-color: var(--brand-strong);
-  transform: scale(0.96);
-}
-.demo-pill--loading {
-  background: var(--loading-surface);
-  color: var(--loading-text);
-  border-color: var(--loading-border);
-  animation: pulse-beacon 1.2s infinite;
-}
-.demo-pill--default {
-  cursor: default;
-  color: var(--text-tertiary);
-  border-style: dashed;
 }
 
 /* Tags Row */
