@@ -3,8 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ArrowUpRight, ArrowLeft, Moon, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
+import { Menu, X, ArrowUpRight, ArrowLeft, Moon } from "lucide-react";
 import { personalInfo } from "@/data/projects";
 
 const navItems = [
@@ -18,15 +17,8 @@ const navItems = [
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("about");
-  const [isThemeMounted, setIsThemeMounted] = useState(false);
-  const { resolvedTheme, setTheme } = useTheme();
   const pathname = usePathname();
   const isCaseStudy = pathname?.startsWith("/work/");
-  const isDark = resolvedTheme === "dark";
-
-  useEffect(() => setIsThemeMounted(true), []);
-
-  const toggleTheme = () => setTheme(isDark ? "light" : "dark");
 
   // ScrollSpy on homepage
   useEffect(() => {
@@ -99,15 +91,14 @@ export function Navbar() {
           )}
 
           <div className="nav-actions">
-            <button
-              type="button"
+            <a
+              href="/dark.html"
               className="theme-toggle-btn"
-              aria-label={isThemeMounted && isDark ? "切換至亮色模式" : "切換至深色模式"}
-              title={isThemeMounted && isDark ? "切換至亮色模式" : "切換至深色模式"}
-              onClick={toggleTheme}
+              aria-label="切換至原版深色作品集"
+              title="切換至原版深色作品集"
             >
-              {isThemeMounted && isDark ? <Sun size={16} /> : <Moon size={16} />}
-            </button>
+              <Moon size={16} />
+            </a>
 
             {isCaseStudy ? (
               <Link href="/#works" className="button button--secondary button--sm nav-case-return">
@@ -146,14 +137,13 @@ export function Navbar() {
               </Link>
             ))}
             <div className="nav-menu-footer">
-              <button
-                type="button"
+              <a
+                href="/dark.html"
                 className="mobile-theme-btn"
-                onClick={toggleTheme}
               >
-                {isThemeMounted && isDark ? <Sun size={15} /> : <Moon size={15} />}
-                <span>{isThemeMounted && isDark ? "切換至亮色模式" : "切換至深色模式"}</span>
-              </button>
+                <Moon size={15} />
+                <span>切換至原版深色作品集</span>
+              </a>
               <Link href="/#contact" onClick={closeMenu} className="mobile-cta-link">
                 聯絡我
               </Link>
