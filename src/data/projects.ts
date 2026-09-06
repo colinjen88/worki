@@ -38,18 +38,18 @@ export const personalInfo = {
   englishTitle: "Creative Frontend Designer & Engineer",
   subtitle: "介面視覺・動效節奏・前端工程完整實現",
   email: "flashjen@gmail.com",
-  location: "Taipei, Taiwan",
+  location: "Taiwan",
   statusBadge: "Open for Opportunities • 隨時可洽談新專案",
   statusDescription:
     "專精動效微互動 (Lottie/SVGA)、響應式介面設計與前端架構實作。具備獨立建置產品與從零落地能力。",
   aboutParagraphs: [
-    "從 Flash / Animate 動態設計出發，累積對時間差與緩動節奏的敏銳度；目前以 Figma、Next.js 與 TypeScript 完成介面設計及前端實作。",
+    "從 Flash / Animate 動態設計出發，累積對時間差與緩動節奏的敏銳度；以 Figma 規劃介面，並依專案需求選用 Next.js、Nuxt.js、TypeScript、Tailwind CSS 等技術完成開發。",
     "從設計系統、響應式排版到互動狀態，依真實內容與裝置條件逐一處理，讓設計稿能穩定落地。",
   ],
   craftTokens: [
     { label: "主軸風格", value: "Editorial Tech & Creative Studio" },
     { label: "動態核心", value: "Lottie, SVGA, CSS Keyframe Springs" },
-    { label: "工程體系", value: "Next.js 16, React 19, TypeScript" },
+    { label: "工程體系", value: "Next.js, Nuxt.js, TypeScript, Tailwind CSS" },
     { label: "視覺工具", value: "Figma, After Effects, Illustrator, Photoshop" },
   ],
 };

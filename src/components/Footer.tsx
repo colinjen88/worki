@@ -22,7 +22,7 @@ export function Footer() {
       <div className="site-container footer-inner">
         <div className="footer-status-pill">
           <span className="footer-status-dot" aria-hidden="true" />
-          <span>Taipei, Taiwan (UTC+8) • 隨時歡迎交流與合作機會</span>
+          <span>支援線上協作 • 隨時歡迎交流與合作機會</span>
         </div>
 
         <h2 className="section-title footer-title">
