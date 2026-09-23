@@ -31,6 +31,8 @@ const filters: { label: string; value: ProjectFilter }[] = [
   { label: "動態設計", value: "motion-design" },
 ];
 
+const COLLAPSED_PROJECT_ID = "flashrate";
+
 export function WorksSection({
   onOpenVideo,
 }: {
@@ -42,11 +44,16 @@ export function WorksSection({
     filter === "all"
       ? projects
       : projects.filter((project) => project.categories.includes(filter));
-  const regularProjects = filtered.filter((project) => !project.featured);
+  const collapsedProject =
+    filter === "all"
+      ? filtered.find((project) => project.id === COLLAPSED_PROJECT_ID)
+      : undefined;
+  const regularProjects = filtered.filter(
+    (project) => !project.featured && project !== collapsedProject
+  );
   const featuredProjects = filtered.filter((project) => project.featured);
-  const visibleProjects = showAll
-    ? [...regularProjects, ...featuredProjects]
-    : regularProjects;
+  const hiddenCount = featuredProjects.length + (collapsedProject ? 1 : 0);
+  const visibleCount = regularProjects.length + (showAll ? hiddenCount : 0);
 
   return (
     <section id="works" className="section">
@@ -86,7 +93,7 @@ export function WorksSection({
 
         <ScrollReveal delay={0.1}>
           <p className="works-count" role="status">
-            顯示 <strong>{visibleProjects.length}</strong>／{filtered.length} 件作品
+            顯示 <strong>{visibleCount}</strong>／{filtered.length} 件作品
           </p>
         </ScrollReveal>
 
@@ -104,7 +111,7 @@ export function WorksSection({
           <p className="section-intro">目前沒有符合此分類的作品。</p>
         ) : null}
 
-        {featuredProjects.length > 0 && (
+        {hiddenCount > 0 && (
           <div className="works-more">
             <button
               className="button button--secondary"
@@ -114,11 +121,17 @@ export function WorksSection({
             >
               <span>
                 {showAll
-                  ? "收合精選作品"
-                  : `顯示其餘 ${featuredProjects.length} 件精選作品`}
+                  ? "收合其餘作品"
+                  : `顯示其餘 ${hiddenCount} 件作品`}
               </span>
               {showAll ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
             </button>
+          </div>
+        )}
+
+        {showAll && collapsedProject && (
+          <div className="works-grid">
+            <ProjectCard project={collapsedProject} onOpenVideo={onOpenVideo} />
           </div>
         )}
 

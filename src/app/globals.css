@@ -116,10 +116,9 @@ p { text-wrap: pretty; }
 .aurora-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(85px);
   opacity: 0.65;
   mix-blend-mode: multiply;
-  will-change: transform, opacity;
+  will-change: transform;
   pointer-events: none;
 }
 
@@ -443,7 +442,8 @@ p { text-wrap: pretty; }
   border-radius: 999px;
   font-weight: 750;
   font-size: .88rem;
-  transition: all .25s var(--ease-out-quint);
+  transition: transform .3s var(--ease-out-quint), box-shadow .3s ease,
+    background-color .25s ease, border-color .25s ease, color .25s ease;
 }
 .button:hover { transform: translateY(-2px); }
 .button:active { transform: translateY(0); }
@@ -455,7 +455,6 @@ p { text-wrap: pretty; }
 }
 .button--primary:hover {
   box-shadow: 0 8px 24px rgba(79, 70, 229, .38);
-  filter: brightness(1.06);
 }
 .button--secondary {
   border-color: var(--border-strong);
@@ -734,8 +733,8 @@ p { text-wrap: pretty; }
   gap: .85rem;
   margin-top: 2.25rem;
 }
-.btn-icon-bounce { transition: transform .25s ease; }
-.button:hover .btn-icon-bounce { transform: translateY(3px); }
+.btn-icon-bounce { display: block; flex: none; transition: transform .3s var(--ease-out-quint); }
+.button:hover .btn-icon-bounce { transform: translateY(7px); }
 .btn-icon-slide { transition: transform .25s ease; }
 .button:hover .btn-icon-slide { transform: translateX(3px); }
 
