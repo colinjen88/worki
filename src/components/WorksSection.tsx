@@ -12,7 +12,12 @@ import {
   Play,
   Layers,
 } from "lucide-react";
-import { projects, type Project, type ProjectFilter } from "@/data/projects";
+import {
+  getProjectCardImage,
+  projects,
+  type Project,
+  type ProjectFilter,
+} from "@/data/projects";
 import { ScrollReveal } from "@/components/ScrollReveal";
 
 const filters: { label: string; value: ProjectFilter }[] = [
@@ -119,7 +124,7 @@ function ProjectCard({
           }`}
         >
           <Image
-            src={project.featured && index === 0 ? image.replace(/\.webp$/, "_card_v2.webp") : image}
+            src={index === 0 ? getProjectCardImage(image) : image}
             alt={caption}
             fill
             sizes="(max-width: 620px) calc(100vw - 3rem), (max-width: 1200px) 50vw, 560px"

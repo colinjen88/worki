@@ -1845,6 +1845,19 @@ p { text-wrap: pretty; }
   .work-page .work-aside,
   .work-page .gallery figure,
   .work-page .details { animation: none; }
+  .aurora-orb,
+  .bg-floating-accent,
+  .dynamic-bg-grid {
+    animation: none;
+    will-change: auto;
+  }
+  .expertise-card,
+  .feature-card,
+  .project-card,
+  .why-card {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 34rem;
+  }
   .nav-links, .nav-cta { display: none; }
   .nav-case-badge, .nav-case-return { display: none; }
   .nav-toggle { display: grid; place-items: center; }

@@ -7,6 +7,10 @@ export type ProjectCategory =
 
 export type ProjectFilter = ProjectCategory | "all";
 
+export function getProjectCardImage(source: string) {
+  return source.replace(/\.(?:jpe?g|png|webp)$/i, "_card_v3.webp");
+}
+
 export type Project = {
   id: string;
   slug?: string; // 若有獨立 Case Study 深度頁面
