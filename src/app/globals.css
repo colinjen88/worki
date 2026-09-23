@@ -95,6 +95,12 @@ p { text-wrap: pretty; }
   z-index: 1;
 }
 
+/* Let the browser defer layout and paint for sections below the first screen. */
+.site-shell main > .section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
+
 /* Dynamic Animated Aurora Background & Grid */
 .dynamic-bg {
   position: fixed;
@@ -1867,7 +1873,9 @@ p { text-wrap: pretty; }
   .case-switcher__grid { grid-template-columns: 1fr; }
   .section { padding: 4.5rem 0; }
   .footer-bottom { justify-content: center; text-align: center; }
-  .aurora-orb { filter: blur(58px); }
+  /* The radial gradients already fade out; blurring four large fixed layers
+     adds substantial paint work on mobile devices. */
+  .aurora-orb { filter: none; }
   .aurora-cursor-glow { display: none; }
 }
 
