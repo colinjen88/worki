@@ -1276,6 +1276,11 @@ p { text-wrap: pretty; }
   gap: 1.75rem;
   margin-top: 2rem;
 }
+.works-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
 .project-card {
   display: flex;
   flex-direction: column;
@@ -1849,6 +1854,12 @@ p { text-wrap: pretty; }
   .bg-floating-accent,
   .dynamic-bg-grid {
     animation: none;
+    will-change: auto;
+  }
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
     will-change: auto;
   }
   .nav-links, .nav-cta { display: none; }

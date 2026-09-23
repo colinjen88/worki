@@ -6,6 +6,7 @@ import Link from "next/link";
 import {
   ArrowUpRight,
   BookOpen,
+  ChevronDown,
   ChevronLeft,
   ChevronRight,
   FileText,
@@ -29,16 +30,23 @@ const filters: { label: string; value: ProjectFilter }[] = [
   { label: "動態設計", value: "motion-design" },
 ];
 
+const INITIAL_PROJECT_COUNT = 6;
+
 export function WorksSection({
   onOpenVideo,
 }: {
   onOpenVideo: (url: string) => void;
 }) {
   const [filter, setFilter] = useState<ProjectFilter>("all");
+  const [showAll, setShowAll] = useState(false);
   const filtered =
     filter === "all"
       ? projects
       : projects.filter((project) => project.categories.includes(filter));
+  const isCollapsed = filter === "all" && !showAll;
+  const visibleProjects = isCollapsed
+    ? filtered.slice(0, INITIAL_PROJECT_COUNT)
+    : filtered;
 
   return (
     <section id="works" className="section">
@@ -75,13 +83,13 @@ export function WorksSection({
 
         <ScrollReveal delay={0.1}>
           <p className="works-count" role="status">
-            顯示 <strong>{filtered.length}</strong> 件作品
+            顯示 <strong>{visibleProjects.length}</strong>／{filtered.length} 件作品
           </p>
         </ScrollReveal>
 
         {filtered.length > 0 ? (
           <div className="works-grid">
-            {filtered.map((project) => (
+            {visibleProjects.map((project) => (
               <ProjectCard
                 key={project.id}
                 project={project}
@@ -91,6 +99,19 @@ export function WorksSection({
           </div>
         ) : (
           <p className="section-intro">目前沒有符合此分類的作品。</p>
+        )}
+
+        {isCollapsed && filtered.length > visibleProjects.length && (
+          <div className="works-more">
+            <button
+              className="button button--secondary"
+              type="button"
+              onClick={() => setShowAll(true)}
+            >
+              <span>顯示其餘 {filtered.length - visibleProjects.length} 件作品</span>
+              <ChevronDown size={16} />
+            </button>
+          </div>
         )}
       </div>
     </section>

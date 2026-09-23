@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 interface ScrollRevealProps {
   children: React.ReactNode;
@@ -17,18 +17,19 @@ export function ScrollReveal({
   threshold = 0.1,
   rootMargin = "0px 0px -50px 0px",
 }: ScrollRevealProps) {
-  const [isRevealed, setIsRevealed] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const element = ref.current;
     if (!element) return;
 
+    if (window.matchMedia("(max-width: 860px)").matches) return;
+
     // Use Intersection Observer API
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsRevealed(true);
+          element.classList.add("is-revealed");
           observer.unobserve(element);
         }
       },
@@ -43,9 +44,7 @@ export function ScrollReveal({
   }, [threshold, rootMargin]);
 
   // Merge classes: generic scroll-reveal, plus the specific is-revealed state, plus any custom classes
-  const combinedClassName = `scroll-reveal ${
-    isRevealed ? "is-revealed" : ""
-  } ${className}`.trim();
+  const combinedClassName = `scroll-reveal ${className}`.trim();
 
   // If a delay is provided, we use inline style to set transition delay
   const style = delay > 0 ? { transitionDelay: `${delay}s` } : undefined;
