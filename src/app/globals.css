@@ -1856,12 +1856,6 @@ p { text-wrap: pretty; }
     animation: none;
     will-change: auto;
   }
-  .scroll-reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-    will-change: auto;
-  }
   .nav-links, .nav-cta { display: none; }
   .nav-case-badge, .nav-case-return { display: none; }
   .nav-toggle { display: grid; place-items: center; }
@@ -1921,26 +1915,7 @@ p { text-wrap: pretty; }
   outline-offset: -2px;
 }
 
-/* Scroll Reveal */
-.scroll-reveal {
-  opacity: 0;
-  transform: translateY(1.75rem);
-  transition: opacity 0.85s var(--ease-out-quint), transform 0.85s var(--ease-out-quint);
-  will-change: opacity, transform;
-}
-
-.scroll-reveal.is-revealed {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 @media (prefers-reduced-motion: reduce) {
-  /* Provide a smooth opacity fade fallback for all major entrance animations */
-  .scroll-reveal {
-    transform: none !important;
-    transition: opacity 0.5s ease !important;
-  }
-  
   /* Fallback animations for hero/nav */
   [class*="heroFade"], [class*="siteNav"], [class*="strengthsCard"] {
     animation-name: reducedFadeIn !important;
