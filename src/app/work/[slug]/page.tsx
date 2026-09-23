@@ -196,6 +196,7 @@ export default async function WorkPage({
           <div className="case-switcher__grid">
             <Link
               href={`/work/${prevProject.slug}/`}
+              prefetch={false}
               className="card case-switcher__card case-switcher__card--prev"
             >
               <span className="case-switcher__direction">
@@ -206,6 +207,7 @@ export default async function WorkPage({
             </Link>
             <Link
               href={`/work/${nextProject.slug}/`}
+              prefetch={false}
               className="card case-switcher__card case-switcher__card--next"
             >
               <span className="case-switcher__direction">

@@ -29,14 +29,15 @@ export function FeaturedCaseStudies() {
               <article className="card feature-card">
                 <Link
                   href={`/work/${project.slug}/`}
+                  prefetch={false}
                   className="feature-card__image"
                   aria-label={`查看 ${project.title} 案例`}
                 >
                   <Image
-                    src={project.images[0]}
+                    src={project.images[0].replace(/\.webp$/, "_card.webp")}
                     alt={project.imageCaptions?.[0] ?? project.title}
                     fill
-                    sizes="(max-width: 620px) 100vw, (max-width: 1200px) 50vw, 580px"
+                    sizes="(max-width: 620px) calc(100vw - 3rem), (max-width: 1200px) 50vw, 580px"
                   />
                   <div className="feature-card__badge-overlay">
                     <span>精選案例</span>
@@ -52,7 +53,7 @@ export function FeaturedCaseStudies() {
                       ))}
                     </div>
                     <h3>
-                      <Link href={`/work/${project.slug}/`}>{project.title}</Link>
+                      <Link href={`/work/${project.slug}/`} prefetch={false}>{project.title}</Link>
                     </h3>
                     <p>{project.subtitle}</p>
                   </div>
@@ -60,6 +61,7 @@ export function FeaturedCaseStudies() {
                     <Link
                       className="button button--quiet feature-card__cta"
                       href={`/work/${project.slug}/`}
+                      prefetch={false}
                     >
                       <span>閱讀案例</span>
                       <ArrowUpRight size={15} className="feature-card__cta-icon" />

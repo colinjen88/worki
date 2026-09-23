@@ -119,10 +119,10 @@ function ProjectCard({
           }`}
         >
           <Image
-            src={image}
+            src={project.featured && index === 0 ? image.replace(/\.webp$/, "_card.webp") : image}
             alt={caption}
             fill
-            sizes="(max-width: 620px) 100vw, (max-width: 1200px) 50vw, 560px"
+            sizes="(max-width: 620px) calc(100vw - 3rem), (max-width: 1200px) 50vw, 560px"
           />
           {project.status === "in-progress" && (
             <span className="project-state">整理中</span>
@@ -157,7 +157,7 @@ function ProjectCard({
           <p className="project-subtitle">{project.subtitle}</p>
           <h3>
             {project.slug ? (
-              <Link href={`/work/${project.slug}/`} className="project-title-link">
+              <Link href={`/work/${project.slug}/`} prefetch={false} className="project-title-link">
                 {project.title}
               </Link>
             ) : (
@@ -174,7 +174,7 @@ function ProjectCard({
           <p className="project-summary">{project.summary}</p>
           <div className="project-actions">
             {project.slug && (
-              <Link href={`/work/${project.slug}/`} className="action-btn action-btn--primary">
+              <Link href={`/work/${project.slug}/`} prefetch={false} className="action-btn action-btn--primary">
                 <BookOpen size={14} />
                 <span>案例解析</span>
               </Link>
