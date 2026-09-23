@@ -35,6 +35,8 @@ export function Footer() {
         </p>
 
         <div className="footer-contact-box">
+          {/* Cloudflare email obfuscation prevention to eliminate email-decode.min.js */}
+          <span dangerouslySetInnerHTML={{ __html: '<!--email_off-->' }} />
           <div className="footer-email-display">
             <span className="footer-email-label">DIRECT EMAIL</span>
             <a className="footer-email-link" href={`mailto:${personalInfo.email}`}>
@@ -70,6 +72,7 @@ export function Footer() {
               )}
             </button>
           </div>
+        <span dangerouslySetInnerHTML={{ __html: '<!--/email_off-->' }} />
         </div>
 
         <div className="footer-bottom">

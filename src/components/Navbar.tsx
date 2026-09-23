@@ -20,36 +20,44 @@ export function Navbar() {
   const pathname = usePathname();
   const isCaseStudy = pathname?.startsWith("/work/");
 
-  // ScrollSpy on homepage
+  // IntersectionObserver ScrollSpy on homepage (zero forced reflow)
   useEffect(() => {
     if (isCaseStudy) return;
 
     const sectionIds = ["about", "expertise", "featured", "works", "whyme", "contact"];
     const desktopViewport = window.matchMedia("(min-width: 861px)");
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY + 220;
-      for (let i = sectionIds.length - 1; i >= 0; i--) {
-        const id = sectionIds[i];
-        const element = document.getElementById(id);
-        if (element && element.offsetTop <= scrollPosition) {
-          setActiveSection(id);
-          break;
-        }
-      }
-    };
+    let observer: IntersectionObserver | null = null;
 
     const syncScrollSpy = () => {
-      window.removeEventListener("scroll", handleScroll);
-      if (desktopViewport.matches) {
-        window.addEventListener("scroll", handleScroll, { passive: true });
-        handleScroll();
-      }
+      observer?.disconnect();
+      observer = null;
+      if (!desktopViewport.matches) return;
+
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setActiveSection(entry.target.id);
+            }
+          });
+        },
+        {
+          rootMargin: "-20% 0px -60% 0px",
+          threshold: 0,
+        }
+      );
+
+      sectionIds.forEach((id) => {
+        const element = document.getElementById(id);
+        if (element) observer?.observe(element);
+      });
     };
 
     desktopViewport.addEventListener("change", syncScrollSpy);
     syncScrollSpy();
+
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      observer?.disconnect();
       desktopViewport.removeEventListener("change", syncScrollSpy);
     };
   }, [isCaseStudy]);
@@ -71,7 +79,7 @@ export function Navbar() {
     <>
       <nav className="site-nav" aria-label="主要導覽">
         <div className="nav-surface">
-          <Link href="/" className="nav-brand" onClick={closeMenu}>
+          <Link href="/" prefetch={false} className="nav-brand" onClick={closeMenu}>
             <span className="nav-mark">W.</span>
             <span>
               {personalInfo.name}
@@ -89,9 +97,7 @@ export function Navbar() {
               {navItems.map(({ label, id, href }) => {
                 const isActive = !isCaseStudy && activeSection === id;
                 return (
-                  <Link
-                    key={href}
-                    href={href}
+                  <Link key={href} href={href} prefetch={false}
                     className={`nav-link ${isActive ? "nav-link--active" : ""}`}
                     aria-current={isActive ? "page" : undefined}
                   >
@@ -113,12 +119,12 @@ export function Navbar() {
             </a>
 
             {isCaseStudy ? (
-              <Link href="/#works" className="button button--secondary button--sm nav-case-return">
+              <Link href="/#works" prefetch={false} className="button button--secondary button--sm nav-case-return">
                 <ArrowLeft size={14} /> 回作品庫
               </Link>
             ) : null}
 
-            <Link href="/#contact" className="button button--primary button--sm nav-cta">
+            <Link href="/#contact" prefetch={false} className="button button--primary button--sm nav-cta">
               <span>開始合作</span>
               <ArrowUpRight size={14} />
             </Link>
@@ -144,7 +150,7 @@ export function Navbar() {
               </Link>
             )}
             {navItems.map(({ label, href }) => (
-              <Link key={href} href={href} onClick={closeMenu}>
+              <Link key={href} href={href} prefetch={false} onClick={closeMenu}>
                 {label}
               </Link>
             ))}
@@ -156,7 +162,7 @@ export function Navbar() {
                 <Moon size={15} />
                 <span>切換至原版深色作品集</span>
               </a>
-              <Link href="/#contact" onClick={closeMenu} className="mobile-cta-link">
+              <Link href="/#contact" prefetch={false} onClick={closeMenu} className="mobile-cta-link">
                 聯絡我
               </Link>
             </div>

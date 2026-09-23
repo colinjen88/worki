@@ -56,7 +56,7 @@ body {
   overflow-x: hidden;
   background: var(--surface-page);
   color: var(--text-primary);
-  font-family: var(--font-inter), "PingFang TC", "Microsoft JhengHei", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang TC", "Microsoft JhengHei", sans-serif;
   line-height: 1.65;
   transition: background-color .3s ease, color .3s ease;
 }
@@ -257,61 +257,61 @@ p { text-wrap: pretty; }
 
 /* Nav ???脣嚗撌血??單??交楚?伐?瘥蜓?批捆? 500ms嚗憿?????200ms嚗?*/
 .site-nav {
-  animation: navEntrance 1.40s var(--ease-out-quint) 0s backwards;
+  animation: navEntrance 0.80s var(--ease-out-quint) 0s backwards;
 }
 
-/* Hero Elements Staggered Rhythm (瘥?nav ??500ms ??嚗?摨???璇臬??? */
+/* Hero Elements Staggered Rhythm (Snappy & Fluid Entrance) */
 .hero-badge {
-  animation: heroFadeUp 0.90s var(--ease-out-quint) 0.50s backwards;
+  animation: heroFadeUp 0.55s var(--ease-out-quint) 0.05s backwards;
 }
 
 .hero-heading {
-  animation: heroFadeUp 1.00s var(--ease-out-quint) 0.64s backwards;
+  animation: heroFadeUp 0.65s var(--ease-out-quint) 0.10s backwards;
 }
 
 .hero-lead {
-  animation: heroFadeUp 0.90s var(--ease-out-quint) 0.78s backwards;
+  animation: heroFadeUp 0.55s var(--ease-out-quint) 0.15s backwards;
 }
 
 .hero-copy {
-  animation: heroFadeUp 0.90s var(--ease-out-quint) 0.90s backwards;
+  animation: heroFadeUp 0.55s var(--ease-out-quint) 0.20s backwards;
 }
 
 .hero-metrics-bar {
-  animation: heroFadeUpScale 0.90s var(--ease-out-quint) 1.04s backwards;
+  animation: heroFadeUpScale 0.60s var(--ease-out-quint) 0.25s backwards;
 }
 
 .hero-actions {
-  animation: heroFadeUp 0.90s var(--ease-out-quint) 1.18s backwards;
+  animation: heroFadeUp 0.55s var(--ease-out-quint) 0.30s backwards;
 }
 
-/* Right Column: Hero Strengths Card (aside ?憛???200ms ??0.80s ??) */
+/* Right Column: Hero Strengths Card */
 .hero-strengths-card {
-  animation: strengthsCardEntrance 1.05s var(--ease-out-quint) 0.80s backwards;
+  animation: strengthsCardEntrance 0.70s var(--ease-out-quint) 0.15s backwards;
 }
 
 .hero-strengths-card .strengths-card__header {
-  animation: heroFadeUp 0.85s var(--ease-out-quint) 0.94s backwards;
+  animation: heroFadeUp 0.50s var(--ease-out-quint) 0.22s backwards;
 }
 
 .hero-strengths-card .strengths-card__lead {
-  animation: heroFadeUp 0.85s var(--ease-out-quint) 1.04s backwards;
+  animation: heroFadeUp 0.50s var(--ease-out-quint) 0.28s backwards;
 }
 
 .hero-strengths-card .strength-item:nth-child(1) {
-  animation: heroFadeUp 0.85s var(--ease-out-quint) 1.16s backwards;
+  animation: heroFadeUp 0.50s var(--ease-out-quint) 0.34s backwards;
 }
 
 .hero-strengths-card .strength-item:nth-child(2) {
-  animation: heroFadeUp 0.85s var(--ease-out-quint) 1.28s backwards;
+  animation: heroFadeUp 0.50s var(--ease-out-quint) 0.40s backwards;
 }
 
 .hero-strengths-card .strength-item:nth-child(3) {
-  animation: heroFadeUp 0.85s var(--ease-out-quint) 1.40s backwards;
+  animation: heroFadeUp 0.50s var(--ease-out-quint) 0.46s backwards;
 }
 
 .hero-strengths-card .strengths-card__footer {
-  animation: heroFadeUp 0.85s var(--ease-out-quint) 1.52s backwards;
+  animation: heroFadeUp 0.50s var(--ease-out-quint) 0.52s backwards;
 }
 
 /* Expertise Section Entrance */

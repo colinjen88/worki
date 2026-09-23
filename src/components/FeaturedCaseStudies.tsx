@@ -31,7 +31,7 @@ export function FeaturedCaseStudies() {
                   href={`/work/${project.slug}/`}
                   prefetch={false}
                   className="feature-card__image"
-                  aria-label={`查看 ${project.title} 案例`}
+                  aria-label={`精選案例：查看 ${project.title} 案例`}
                 >
                   <Image
                     src={getProjectCardImage(project.images[0])}
@@ -39,7 +39,7 @@ export function FeaturedCaseStudies() {
                     fill
                     sizes="(max-width: 620px) calc(100vw - 3rem), (max-width: 1200px) 50vw, 580px"
                   />
-                  <div className="feature-card__badge-overlay">
+                  <div className="feature-card__badge-overlay" aria-hidden="true">
                     <span>精選案例</span>
                   </div>
                 </Link>

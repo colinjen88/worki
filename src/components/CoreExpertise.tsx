@@ -40,15 +40,6 @@ const cards = [
   {
     icon: Code2,
     tag: "ENGINEERING",
-    points: [
-      "Lottie / SVGA 輕量化動效整合",
-      "CSS Keyframes & Spring 彈性物理反饋",
-      "頁面轉場與狀態切換流暢度調優",
-    ],
-  },
-  {
-    icon: Code2,
-    tag: "ENGINEERING",
     title: "依專案需求選擇開發架構",
     text: "依網站規模、功能與維護需求，在 Next.js、Nuxt.js 等方案間評估選型，搭配 TypeScript、Tailwind CSS 與後端技術完成開發。",
     points: [
