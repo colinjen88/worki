@@ -34,7 +34,7 @@ export function FeaturedCaseStudies() {
                   aria-label={`查看 ${project.title} 案例`}
                 >
                   <Image
-                    src={project.images[0].replace(/\.webp$/, "_card.webp")}
+                    src={project.images[0].replace(/\.webp$/, "_card_v2.webp")}
                     alt={project.imageCaptions?.[0] ?? project.title}
                     fill
                     sizes="(max-width: 620px) calc(100vw - 3rem), (max-width: 1200px) 50vw, 580px"

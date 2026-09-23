@@ -119,7 +119,7 @@ function ProjectCard({
           }`}
         >
           <Image
-            src={project.featured && index === 0 ? image.replace(/\.webp$/, "_card.webp") : image}
+            src={project.featured && index === 0 ? image.replace(/\.webp$/, "_card_v2.webp") : image}
             alt={caption}
             fill
             sizes="(max-width: 620px) calc(100vw - 3rem), (max-width: 1200px) 50vw, 560px"
