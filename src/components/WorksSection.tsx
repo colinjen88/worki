@@ -9,6 +9,7 @@ import {
   ChevronDown,
   ChevronLeft,
   ChevronRight,
+  ChevronUp,
   FileText,
   Play,
   Layers,
@@ -30,8 +31,6 @@ const filters: { label: string; value: ProjectFilter }[] = [
   { label: "動態設計", value: "motion-design" },
 ];
 
-const INITIAL_PROJECT_COUNT = 6;
-
 export function WorksSection({
   onOpenVideo,
 }: {
@@ -43,10 +42,11 @@ export function WorksSection({
     filter === "all"
       ? projects
       : projects.filter((project) => project.categories.includes(filter));
-  const isCollapsed = filter === "all" && !showAll;
-  const visibleProjects = isCollapsed
-    ? filtered.slice(0, INITIAL_PROJECT_COUNT)
-    : filtered;
+  const regularProjects = filtered.filter((project) => !project.featured);
+  const featuredProjects = filtered.filter((project) => project.featured);
+  const visibleProjects = showAll
+    ? [...regularProjects, ...featuredProjects]
+    : regularProjects;
 
   return (
     <section id="works" className="section">
@@ -71,7 +71,10 @@ export function WorksSection({
                   type="button"
                   key={value}
                   aria-pressed={isSelected}
-                  onClick={() => setFilter(value)}
+                  onClick={() => {
+                    setFilter(value);
+                    setShowAll(false);
+                  }}
                 >
                   <span>{label}</span>
                   <span className="filter-badge">{count}</span>
@@ -87,9 +90,9 @@ export function WorksSection({
           </p>
         </ScrollReveal>
 
-        {filtered.length > 0 ? (
+        {regularProjects.length > 0 ? (
           <div className="works-grid">
-            {visibleProjects.map((project) => (
+            {regularProjects.map((project) => (
               <ProjectCard
                 key={project.id}
                 project={project}
@@ -97,20 +100,37 @@ export function WorksSection({
               />
             ))}
           </div>
-        ) : (
+        ) : filtered.length === 0 ? (
           <p className="section-intro">目前沒有符合此分類的作品。</p>
-        )}
+        ) : null}
 
-        {isCollapsed && filtered.length > visibleProjects.length && (
+        {featuredProjects.length > 0 && (
           <div className="works-more">
             <button
               className="button button--secondary"
               type="button"
-              onClick={() => setShowAll(true)}
+              aria-expanded={showAll}
+              onClick={() => setShowAll((current) => !current)}
             >
-              <span>顯示其餘 {filtered.length - visibleProjects.length} 件作品</span>
-              <ChevronDown size={16} />
+              <span>
+                {showAll
+                  ? "收合精選作品"
+                  : `顯示其餘 ${featuredProjects.length} 件精選作品`}
+              </span>
+              {showAll ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
             </button>
+          </div>
+        )}
+
+        {showAll && featuredProjects.length > 0 && (
+          <div className="works-grid">
+            {featuredProjects.map((project) => (
+              <ProjectCard
+                key={project.id}
+                project={project}
+                onOpenVideo={onOpenVideo}
+              />
+            ))}
           </div>
         )}
       </div>
