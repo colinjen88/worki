@@ -1,13 +1,16 @@
 # 作品集 v3.1 協作交接紀錄
 
-最後更新：2026-09-06  
-目前分支：`feat/portfolio-v3`  
-起始提交：`4582432`（`feat: complete portfolio v3 with authentic projects and modern next.js architecture`）  
-工作目錄：**有尚未提交的 v3.1 變更，請保留並在此基礎上工作。**
+最後更新：2026-09-23
+
+目前分支：`master`
+
+正式站提交：`1505494`（`Improve loading performance and accessibility`）
+
+工作目錄：程式碼已提交並推送；Lighthouse JSON 僅保留在本機，不納入版本庫。
 
 ## 1. 目前可用成果
 
-作品集已完成 v3.1 的本機實作與靜態輸出驗證，尚未部署。
+作品集已完成 v3.1 實作、效能優化與正式站部署：<https://let.gowork.run/>。
 
 - 全站已從深色版改為淺色設計系統：`src/app/globals.css`。
 - 首頁結構已完成：Hero、核心職能、4 個精選案例、11 筆可篩選作品、個人特點與聯絡區。
@@ -15,6 +18,8 @@
 - 手機導覽、圖片卡片切換、影片彈窗、Email 複製回饋與鍵盤 Escape 關閉已實作。
 - 產物為靜態網站：`next.config.mjs` 使用 `output: "export"`、`trailingSlash: true`、`images.unoptimized: true`；發布單位是完整 `out/`。
 - 已新增 `public/robots.txt` 與 `public/sitemap.xml`。
+- 首頁已改用系統字體、延後載入影片播放器、停用同頁導覽預抓，並以桌面限定的 `IntersectionObserver` 處理 ScrollSpy。
+- Cloudflare Email Address Obfuscation 已對聯絡區停用，正式站不再注入 `email-decode.min.js`。
 
 ## 2. 重要檔案與責任範圍
 
@@ -54,16 +59,19 @@ npm run build
 - HTTP 200：`/`、四個 `/work/<slug>/`、`/robots.txt`、`/sitemap.xml`、`/assets/Graphic_Portfolio.pdf`
 - HTTP 404：`/not-a-real-route/`
 - In-app Browser：作品篩選、植園圖片切換、影片彈窗、YouTube 備援網址、Escape 關閉與 390 × 844 手機版。
+- 正式站：首頁、案例頁、robots 與 sitemap 回 HTTP 200；未知路徑回 HTTP 404。
+- Lighthouse：使用者最新正式站重測 Performance **99**。發布驗證為 Performance 96、Accessibility 100、Best Practices 100、SEO 100，LCP 2.4s、TBT 70ms、CLS 0。
+- 部署版本：`1505494`；回復產物為 `/var/www/html/worki-out-backup-20260923T131106Z`。
 
 詳細紀錄見 `docs/portfolio-v3.1-qa.md`。每次修改 UI 或資料後，至少重跑 typecheck、build，以及受影響的互動流程。
 
 ## 5. 尚未完成與建議下一步
 
 1. 由本人確認內容稽核表中每個「待本人確認」作品的工作範圍、可公開的後台資訊與任何可量測成效。
-2. 在隔離預覽環境檢查外站連結、真實 iOS Safari 與螢幕閱讀器。
-3. 依計畫跑首頁及最重案例的 Lighthouse mobile 三次，記錄中位數；目前尚無 Lighthouse 成績。
-4. 確認有效的伺服器／Gateway 規則後，才建立專屬部署流程和正式預覽。不要直接執行 `let/deploy_vps_let.ps1`：它拉取 `master`、服務 `let/` 目錄，並不部署新版 `out/`。
-5. 發布前確保保留舊站回復產物與必要舊 URL 路由；未知路徑不得全部轉向首頁。
+2. 檢查全部外站連結、真實 iOS Safari 與螢幕閱讀器。
+3. 對圖片最重案例頁跑 Lighthouse mobile 三次並記錄中位數。
+4. 後續部署沿用 `/home/docker-server/projects/let-final` 容器與 `/var/www/html/worki/out` 掛載；建置會重建 `out/`，完成後必須重新建立容器，不能只執行 Nginx reload。
+5. 每次發布保留上一版 `out/` 回復產物；未知路徑維持 404，不得全部轉向首頁。
 
 ## 6. 本機預覽與協作守則
 
@@ -78,11 +86,11 @@ npm run start
 
 ## 7. Git 交接注意事項
 
-目前全部 v3.1 修改仍未提交，包括程式、計畫、內容稽核、QA、SEO 檔案與精選案例元件。下一位 AI 應先執行：
+v3.1 程式與效能優化已提交到 `master`。開始新工作前仍應先執行：
 
 ```powershell
 git status --short
 git diff --check
 ```
 
-不要使用 `git reset --hard`、`git checkout --` 或刪除未追蹤檔案。提交前，將 `implementation_plan.md`、兩份 `docs/portfolio-v3.1-*.md`、內容稽核文件、程式及 SEO 檔案一起納入檢查，避免只提交部分網站變更。
+不要使用 `git reset --hard`、`git checkout --` 或刪除未追蹤檔案。本機 Lighthouse JSON 是驗證輸入，不應加入版本庫。
