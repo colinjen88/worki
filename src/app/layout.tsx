@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { SkipLink } from "@/components/SkipLink";
 import { DynamicBackground } from "@/components/DynamicBackground";
-import { ThemeProvider } from "@/components/ThemeProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -64,11 +63,9 @@ export default function RootLayout({
         <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
       </head>
       <body>
-        <ThemeProvider>
-          <SkipLink />
-          <DynamicBackground />
-          {children}
-        </ThemeProvider>
+        <SkipLink />
+        <DynamicBackground />
+        {children}
       </body>
     </html>
   );

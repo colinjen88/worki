@@ -174,7 +174,7 @@ p { text-wrap: pretty; }
   filter: blur(55px);
   pointer-events: none;
   mix-blend-mode: multiply;
-  will-change: transform;
+  will-change: auto;
 }
 
 [data-theme="dark"] .aurora-orb,
@@ -1262,7 +1262,7 @@ p { text-wrap: pretty; }
   box-shadow: 0 4px 14px rgba(79, 70, 229, .28);
 }
 .filter[aria-pressed="true"] .filter-badge, .filter--active .filter-badge {
-  background: rgba(255, 255, 255, .25);
+  background: rgba(0, 0, 0, .2);
   color: #fff;
 }
 .works-count {

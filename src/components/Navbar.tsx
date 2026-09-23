@@ -25,6 +25,7 @@ export function Navbar() {
     if (isCaseStudy) return;
 
     const sectionIds = ["about", "expertise", "featured", "works", "whyme", "contact"];
+    const desktopViewport = window.matchMedia("(min-width: 861px)");
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 220;
       for (let i = sectionIds.length - 1; i >= 0; i--) {
@@ -37,9 +38,20 @@ export function Navbar() {
       }
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+    const syncScrollSpy = () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (desktopViewport.matches) {
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        handleScroll();
+      }
+    };
+
+    desktopViewport.addEventListener("change", syncScrollSpy);
+    syncScrollSpy();
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      desktopViewport.removeEventListener("change", syncScrollSpy);
+    };
   }, [isCaseStudy]);
 
   // Close on Escape key
